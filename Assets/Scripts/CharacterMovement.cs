@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     public Vector3 Position { get { return transform.position; } }
 
     private bool busy;
+    private Coroutine move;
 
     // Use this for initialization
     void Start ()
@@ -30,14 +31,17 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
         if (!busy)
         {
+            if (move != null)
+                StopCoroutine(move);
+
             Vector3 origin = transform.position;
-            StartCoroutine(MoveToCorutine(origin, target));
+            move = StartCoroutine(MoveToCorutine(origin, target));
         }
     }
 
     IEnumerator MoveToCorutine(Vector3 origin, Vector3 target)
     {
-        while (Vector3.Distance(transform.position, target) > 0.005f)
+        while (Vector3.Distance(transform.position, target) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
             

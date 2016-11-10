@@ -18,7 +18,7 @@ public class CharacterInput : MonoBehaviour
         var mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2D = new Vector2(mousePos3D.x, mousePos3D.y); // Cast the mouse position to 2D
 
-        if (Input.GetAxis("Move") > 0 && Area.bounds.Contains(mousePos2D))
+        if (Input.GetMouseButtonUp(0) && Area.bounds.Contains(mousePos2D))
         {
             Debug.Log("Moving");
             Vector3 target = new Vector3(mousePos2D.x, Character.Position.y);
