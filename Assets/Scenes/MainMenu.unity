@@ -1489,8 +1489,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "...was created in the Game development course by team Puja:\n\n<b>Pavel
     \u0160mejkal, programmer\nUr\u0161u\u013Ea \u017D\xE1kovsk\xE1, programmer\nJozef
-    Lelil\u010D, programmer\nAnna Neumannov\xE1, artist</b> \n\nSupervised by our
-    mentors\n\n<b>Alexander Pavelek\n&\nJi\u0159\xED Wallenfels</b>"
+    Leli\u010D, programmer\nAnna Neumannov\xE1, artist</b> \n\nSupervised by our mentors\n\n<b>Alexander
+    Pavelek\n&\nJi\u0159\xED Wallenfels</b>"
 --- !u!222 &1916894065
 CanvasRenderer:
   m_ObjectHideFlags: 0
