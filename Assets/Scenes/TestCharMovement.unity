@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc16013b928a604faa82454da81c84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 3
   Curve:
     serializedVersion: 2
     m_Curve:
@@ -294,7 +294,7 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: walk
+  _animationName: idle
   loop: 1
   timeScale: 1
 --- !u!23 &1166499394

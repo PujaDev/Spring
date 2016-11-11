@@ -20,7 +20,6 @@ public class CharacterInput : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && Area.bounds.Contains(mousePos2D))
         {
-            Debug.Log("Moving");
             Vector3 target = new Vector3(mousePos2D.x, Character.Position.y);
             Character.MoveTo(target);
         }
