@@ -51,9 +51,14 @@ public class FollowCharacter : MonoBehaviour
     // Returns camera position aligned to player center but camera bounds cannot exceed Bounds
     private Vector3 GetCenterCamPos()
     {
+        return ClampToBounds(Character.position);
+    }
+
+    private Vector3 ClampToBounds(Vector3 position)
+    {
         // Center the camera to the character position
-        Vector3 adjustedPos = Character.position;
-        
+        Vector3 adjustedPos = position;
+
         // No reason to move the camera on the z axis
         adjustedPos.z = Camera.main.transform.position.z;
 
