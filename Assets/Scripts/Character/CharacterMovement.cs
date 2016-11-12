@@ -39,11 +39,11 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
                 StopCoroutine(move);
 
             Vector3 origin = transform.position;
-            move = StartCoroutine(MoveToCorutine(origin, target));
+            move = StartCoroutine(MoveToCoroutine(origin, target));
         }
     }
 
-    IEnumerator MoveToCorutine(Vector3 origin, Vector3 target)
+    IEnumerator MoveToCoroutine(Vector3 origin, Vector3 target)
     {
         if (origin.x < target.x) // Going right
         {

@@ -146,11 +146,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 209654351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 1.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.09, y: -1.94, z: 0}
+  m_LocalScale: {x: 0.9272753, y: 0.92727554, z: 0.92727554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 480676022}
+  - {fileID: 512662147}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &480676020
@@ -182,7 +183,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 2.3140392, y: -3.8633406}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 21.354885, y: 1.6885142}
 --- !u!4 &480676022
@@ -192,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 480676020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2, y: -1.55, z: 0}
+  m_LocalPosition: {x: 0.17, y: -5.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -225,6 +226,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Area: {fileID: 480676021}
   Character: {fileID: 1166499392}
+--- !u!1 &512662146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 512662147}
+  - 61: {fileID: 512662148}
+  m_Layer: 0
+  m_Name: CameraBounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &512662147
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512662146}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 209654353}
+  m_RootOrder: 1
+--- !u!61 &512662148
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512662146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.00917387, y: 0.0000052452087}
+  serializedVersion: 2
+  m_Size: {x: 22.728096, y: 13.028365}
 --- !u!1 &1166499391
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +282,7 @@ GameObject:
   - 114: {fileID: 1166499393}
   - 114: {fileID: 1166499392}
   m_Layer: 0
-  m_Name: Spine GameObject (spineboy)
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,8 +384,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1166499391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5, y: -4.76, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -11.13, y: -7.27, z: 0}
+  m_LocalScale: {x: 0.3976456, y: 0.3976456, z: 0.3976456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -358,6 +402,7 @@ GameObject:
   - 92: {fileID: 1350083396}
   - 124: {fileID: 1350083395}
   - 81: {fileID: 1350083394}
+  - 114: {fileID: 1350083399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -427,12 +472,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1350083393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -6.09, y: -2.97, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1350083399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1350083393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee0804766914aa4faf65d62c9def70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character: {fileID: 1166499396}
+  Bounds: {fileID: 512662148}
+  MoveTholdX: 0.3
+  Speed: 3
 --- !u!1 &1960942668
 GameObject:
   m_ObjectHideFlags: 0
