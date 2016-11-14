@@ -2,19 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour {
-    public bool soundOn;
+public class UIMainMenuController : MonoBehaviour {
     public GameObject playButton;
     public GameObject bigCircleAndRest;
     public GameObject smallCreditsCircle;
 
     // Use this for initialization
     void Start () {
-        soundOn = true;
-    }
-
-    public void ToggleSound() {
-        soundOn = !soundOn;
     }
 
     public void menuTransition() {

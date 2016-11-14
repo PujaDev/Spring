@@ -11,7 +11,11 @@ public class SwitchSprites : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         image = GetComponent<Image>();
-        index = 0;
+        if (GameController.controller.isSoundOn) {
+            index = 0;
+        }else {
+            index = 1;
+        }
         image.sprite = sprites[index];
 	}
 
