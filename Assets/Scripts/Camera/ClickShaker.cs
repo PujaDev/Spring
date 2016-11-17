@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class CharacterInput : MonoBehaviour
+public class ClickShaker : MonoBehaviour
 {
-    public Collider2D Area;
-    public CharacterMovement Character;
+    public BoxCollider2D Area;
+    public float Duration;
+    public float Magnitude;
+    public float Speed;
 
     // Use this for initialization
     void Start()
@@ -19,10 +22,7 @@ public class CharacterInput : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0) && Area.bounds.Contains(mousePos2D))
         {
-            Vector3 target = new Vector3(mousePos2D.x, Character.Position.y);
-            Character.MoveTo(target);
+            CameraManager.Instance.Shake(Duration, Magnitude, Speed);
         }
     }
-
-    
 }
