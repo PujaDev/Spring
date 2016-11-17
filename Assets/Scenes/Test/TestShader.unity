@@ -315,3 +315,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 3
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0.013950748
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.32278293
+      value: 0.14433566
+      inSlope: 1.238808
+      outSlope: 1.238808
+      tangentMode: 0
+    - time: 0.6302673
+      value: 0.93859166
+      inSlope: 1.7526746
+      outSlope: 1.7526746
+      tangentMode: 0
+    - time: 1
+      value: 0.7692457
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0

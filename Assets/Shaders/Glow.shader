@@ -85,7 +85,9 @@
 			{
 				fixed4 glowColor = tex2D(_GlowMap, IN.texcoord);
 				fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
-				c.r *= 1 + glowColor.a * _Amount;
+				c.r *= 1 + glowColor.a * _Amount * 2;
+				c.g *= 1 - glowColor.a * _Amount * 0.3;
+				c.b *= 1 - glowColor.a * _Amount * 0.3;
 				c.rgb *= c.a;
 				return c;
 			}

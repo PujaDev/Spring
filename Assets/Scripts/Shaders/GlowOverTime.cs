@@ -4,10 +4,10 @@ using System.Collections;
 public class GlowOverTime : MonoBehaviour
 {
     public float Duration;
+    public AnimationCurve Curve;
 
     private float elapsed;
     private SpriteRenderer sRenderer;
-    private bool decay;
 
     // Use this for initialization
     void Start()
@@ -20,23 +20,12 @@ public class GlowOverTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (decay)
-            elapsed -= Time.deltaTime;
-        else
-            elapsed += Time.deltaTime;
-
+        elapsed += Time.deltaTime;
         if (elapsed > Duration)
-        {
-            elapsed -= elapsed - Duration;
-            decay = true;
-        }
-        else if (elapsed < 0.0f)
-        {
-            elapsed = -elapsed;
-            decay = false;
-        }
+            elapsed -= Duration;
 
-        float amount = elapsed / Duration;
+        float percent = elapsed / Duration;
+        float amount = Mathf.Clamp(Curve.Evaluate(percent), 0f, 1f);
         sRenderer.material.SetFloat("_Amount", amount);
     }
 }
