@@ -3,9 +3,11 @@ using System.Collections;
 
 public class ActionWheel : MonoBehaviour
 {
+    // TODO add comments and unfuck
+
     public float scale = 0.5f;
     public float iconScale = 2f;
-    private static ActionWheel instance = null;
+    public static ActionWheel Instance { get; private set; }
     const int MAX_ACTIONS = 6;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
@@ -13,16 +15,16 @@ public class ActionWheel : MonoBehaviour
     private GameObject cancelButton;
     private GameObject[] children;
     private TextMesh actionLabel;
-    
+
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            instance = this;
-            instance.Load();
+            Instance = this;
+            Instance.Load();
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -41,10 +43,10 @@ public class ActionWheel : MonoBehaviour
 
         for (int length = 0; length <= MAX_ACTIONS; length++)
         {
-            for (int i = 0; i < length || i==0; i++)
+            for (int i = 0; i < length || i == 0; i++)
             {
-                spritesIdle[length,i] = (Sprite)Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}", length, i));
-                spritesHover[length,i] = (Sprite)Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
+                spritesIdle[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}", length, i));
+                spritesHover[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
             }
         }
 
@@ -55,21 +57,21 @@ public class ActionWheel : MonoBehaviour
     {
         resetHover();
     }
-    
+
     void OnMouseOver()
     {
         resetHover();
-        var mp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var mousePos = new Vector3(mp.x, mp.y, 0);
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
         var wheelPos = gameObject.transform.position;
         var distance = Vector3.Distance(mousePos, wheelPos);
-        if (distance < (1.19f * scale)* (1.19f * scale))
+
+        if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
         {
             if (Input.GetMouseButtonDown(0))
                 killAndBuryChildren();
 
-            cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0,0];
-
+            cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
         }
         else
         {
@@ -79,23 +81,14 @@ public class ActionWheel : MonoBehaviour
             if (angle < 0)
                 angle += 2 * Mathf.PI;
             angle += Mathf.PI / actions.Length;
-            var n = (int)(angle / (2 * Mathf.PI/actions.Length));
+            var n = (int)(angle / (2 * Mathf.PI / actions.Length));
             n %= actions.Length;
             children[n].GetComponent<SpriteRenderer>().sprite = spritesHover[actions.Length, n];
             actionLabel.text = actions[n].Label;
         }
-
-
     }
 
-
-
-    public static void ShowActions(Action[] actions)
-    {
-        instance.showActions(actions);
-    }
-
-    void showActions(Action[] actions)
+    public void ShowActions(Action[] actions)
     {
         killAndBuryChildren();
 
@@ -107,13 +100,13 @@ public class ActionWheel : MonoBehaviour
         }
 
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var wheelPosition = new Vector3(mousePos.x, mousePos.y,0);
+        var wheelPosition = new Vector3(mousePos.x, mousePos.y);
         gameObject.transform.position = wheelPosition;
         children = new GameObject[length];
         SpriteRenderer spriteRenderer;
         for (int i = 0; i < length; i++)
         {
-            var child = new GameObject("Action"+i);
+            var child = new GameObject("Action" + i);
             spriteRenderer = child.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = spritesIdle[length, i];
             spriteRenderer.sortingOrder = 6;
@@ -127,14 +120,14 @@ public class ActionWheel : MonoBehaviour
             spriteRenderer.sprite = actions[i].Icon;
             spriteRenderer.sortingOrder = 7;
             icon.transform.parent = child.transform;
-            var ix = Mathf.Sin(i * 2*Mathf.PI / length) * 1f;
- //           if (i > length / 2)
-   //             ix *= -1;
-            var iy = Mathf.Cos(i * 2*Mathf.PI / length) * 1f;
-//            if (i < length / 2)
-  //              iy = -1;
-            icon.transform.position = wheelPosition + new Vector3(ix,iy, 0);
-            icon.transform.localScale = gameObject.transform.localScale*iconScale;
+            var ix = Mathf.Sin(i * 2 * Mathf.PI / length) * 1f;
+            //           if (i > length / 2)
+            //             ix *= -1;
+            var iy = Mathf.Cos(i * 2 * Mathf.PI / length) * 1f;
+            //            if (i < length / 2)
+            //              iy = -1;
+            icon.transform.position = wheelPosition + new Vector3(ix, iy);
+            icon.transform.localScale = gameObject.transform.localScale * iconScale;
         }
 
         cancelButton = new GameObject("CancelActionButton");
@@ -155,9 +148,9 @@ public class ActionWheel : MonoBehaviour
 
         for (int i = 0; i < children.Length; i++)
         {
-            children[i].GetComponent<SpriteRenderer>().sprite = spritesIdle[actions.Length, i]; ;
+            children[i].GetComponent<SpriteRenderer>().sprite = spritesIdle[actions.Length, i];
         }
-        cancelButton.GetComponent<SpriteRenderer>().sprite = spritesIdle[0,0]; ;
+        cancelButton.GetComponent<SpriteRenderer>().sprite = spritesIdle[0, 0];
 
     }
 

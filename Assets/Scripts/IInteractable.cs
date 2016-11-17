@@ -32,7 +32,7 @@ public abstract class IInteractable : MonoBehaviour {
     {
         var actionList = getActionList();
         keepTooltipOpen = true;
-        ActionWheel.ShowActions(actionList);
+        ActionWheel.Instance.ShowActions(actionList);
     }
 
     abstract protected Action[] getActionList();
