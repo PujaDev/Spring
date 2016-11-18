@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000011750305306}
   - 23: {fileID: 23000011276580096}
   - 102: {fileID: 102000010152046010}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: tooltip_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
