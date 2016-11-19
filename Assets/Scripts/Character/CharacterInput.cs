@@ -15,6 +15,48 @@ public class CharacterInput : MonoBehaviour
         targets = new List<Vector3>();
     }
 
+    void MoveToPoint(Vector2 destination) {
+        if (Area.OverlapPoint(destination))
+        {
+            int i;
+            int target = -1;
+            targets.Clear();
+            for (i = 0; i < areas.Length; i++)
+            {
+                if (areas[i].OverlapPoint(destination))
+                {
+                    target = i;
+                    break;
+                }
+            }
+            Vector3 tmp;
+            i = GameController.controller.currentArea;
+            if (target < i)
+            {
+                while (i > target)
+                {
+                    tmp = new Vector3(transPoints[i].position.x, transPoints[i].position.y);
+                    targets.Add(tmp);
+                    i--;
+                }
+            }
+            else
+            {
+                while (i < target)
+                {
+                    tmp = new Vector3(transPoints[i + 1].position.x, transPoints[i + 1].position.y);
+                    targets.Add(tmp);
+                    i++;
+                }
+            }
+            tmp = new Vector3(destination.x, destination.y);
+            targets.Add(tmp);
+            GameController.controller.targetArea = target;
+
+            Character.MoveTo(targets);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,39 +65,7 @@ public class CharacterInput : MonoBehaviour
         
         if (Input.GetMouseButtonUp(0) && !(GameController.controller.isUI) && GameController.controller.lastUITime != Time.time)
         {
-            if (Area.OverlapPoint(mousePos2D)) {
-                int i;
-                int target = -1;
-                targets.Clear();
-                for (i = 0; i < areas.Length; i++)
-                {
-                    if (areas[i].OverlapPoint(mousePos2D)) {
-                        target = i;
-                        break;
-                    }
-                }
-                Vector3 tmp;
-                i = GameController.controller.currentArea;
-                if (target < i) {
-                    while(i > target) {
-                        tmp = new Vector3(transPoints[i].position.x, transPoints[i].position.y);
-                        targets.Add(tmp);
-                        i--;
-                    }
-                } else {
-                    while (i < target)
-                    {
-                        tmp = new Vector3(transPoints[i+1].position.x, transPoints[i+1].position.y);
-                        targets.Add(tmp);
-                        i++;
-                    }
-                }
-                tmp = new Vector3(mousePos2D.x, mousePos2D.y);
-                targets.Add(tmp);
-                GameController.controller.targetArea = target;
-
-                Character.MoveTo(targets);
-            }
+            MoveToPoint(mousePos2D);
         }
     }
 

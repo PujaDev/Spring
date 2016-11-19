@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+/// <summary>
+/// Parent class for interactable objects
+/// </summary>
 public abstract class IInteractable : MonoBehaviour {
 
     public string tooltipText = "";
@@ -12,7 +14,10 @@ public abstract class IInteractable : MonoBehaviour {
     void Start()
     {
         tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
+        var gameState = StateManager.Instance.Subscribe(this);
+        OnStateChanged(gameState, null);
     }
+
 
     void OnMouseEnter()
     {
@@ -35,7 +40,11 @@ public abstract class IInteractable : MonoBehaviour {
     {
         var actionList = getActionList();
         keepTooltipOpen = true;
-        ActionWheel.Instance.ShowActions(actionList);
+        ActionWheel.Instance.ShowActions(actionList,this);
+    }
+
+    virtual public void OnStateChanged(GameState newState, GameState oldState)
+    {
     }
 
     abstract protected Action[] getActionList();
