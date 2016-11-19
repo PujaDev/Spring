@@ -9,6 +9,9 @@ public class RadioAlarm : IInteractable {
         return new Action[] {
             new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
             new Action(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
+            new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
+            new Action(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
+            new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
         };
     }
 
