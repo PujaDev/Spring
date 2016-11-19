@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 
 public class RadioAlarm : IInteractable {
+
     protected override Action[] getActionList()
     {
         return new Action[] {
@@ -10,5 +11,13 @@ public class RadioAlarm : IInteractable {
             new Action(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
         };
     }
-    
+
+    public override void OnStateChanged(GameState newState, GameState oldState)
+    {
+        if (newState.Test.AlarmPostponed)
+            gameObject.transform.localScale = new Vector3(3,3,1);
+        if(newState.Test.AlarmTurnedOff)
+            Destroy(gameObject);
+    }
+
 }

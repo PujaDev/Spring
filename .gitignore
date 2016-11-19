@@ -4,6 +4,14 @@
 Temp/
 Library/
 
+# ================ #
+# Unity meta files #
+# ================ #
+Temp/
+Assets/Scenes/*.meta
+Assets/Scenes/Test/*.meta
+Assets/Scripts/*.meta
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
