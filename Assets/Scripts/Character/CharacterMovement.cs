@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Spine.Unity;
 
 public interface IMoveable
 {
-    void MoveTo(Vector3 target);
-    Vector3 Position { get; }
+    void MoveTo(List<Vector3> targets);
 }
 
 public class CharacterMovement : MonoBehaviour, IMoveable {
 
     public float Speed;
     public AnimationCurve Curve;
-    public Vector3 Position { get { return transform.position; } }
 
     private bool busy;
     private Coroutine move;
@@ -31,39 +30,52 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
 	}
 
-    public void MoveTo(Vector3 target)
+    public void MoveTo(List<Vector3> targets)
     {
         if (!busy)
         {
             if (move != null)
                 StopCoroutine(move);
-
-            Vector3 origin = transform.position;
-            move = StartCoroutine(MoveToCoroutine(origin, target));
+            
+            move = StartCoroutine(MoveToCoroutine(targets));
         }
     }
 
-    IEnumerator MoveToCoroutine(Vector3 origin, Vector3 target)
+    IEnumerator MoveToCoroutine(List<Vector3> targets)
     {
-        if (origin.x < target.x) // Going right
-        {
-            skeletonAnim.skeleton.FlipX = false;
-        }
-        else // Going left
-        {
-            skeletonAnim.skeleton.FlipX = true;
-        }
-
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
             skeletonAnim.AnimationState.SetAnimation(0, "walk", true);
 
-        while (Vector3.Distance(transform.position, target) > 0.05f)
+        while (targets.Count > 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
-            yield return null;
+            if (transform.position.x < targets[0].x) // Going right
+            {
+                skeletonAnim.skeleton.FlipX = false;
+            }
+            else // Going left
+            {
+                skeletonAnim.skeleton.FlipX = true;
+            }
+            while (Vector3.Distance(transform.position, targets[0]) > 0.05f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targets[0], Speed * Time.deltaTime);
+                float scaleChar = (1 - GameController.controller.scaleParam * (transform.position.y - GameController.controller.startPositionY)) * GameController.controller.defaultCharactecScale; 
+                transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar); 
+                yield return null;
+            }
+            int diff = GameController.controller.targetArea - GameController.controller.currentArea;
+            if (diff != 0)
+            {
+                if (diff > 0) {
+                    GameController.controller.currentArea++;
+                } else {
+                    GameController.controller.currentArea--;
+                }
+            }
+            targets.RemoveAt(0);
         }
-
-        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+        
+    skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
     }
 }

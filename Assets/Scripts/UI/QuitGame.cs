@@ -22,11 +22,21 @@ public class QuitGame : MonoBehaviour
     public void QuitNo()
     {
         Destroy(panel);
+        GameController.controller.isUI = false;
+        GameController.controller.lastUITime = Time.time;
+        if (GameController.controller.currentIcon != CursorIcon.NORMAL)
+        {
+            Cursor.SetCursor(GameController.controller.cursorIcons[(int)GameController.controller.currentIcon - 2], Vector2.zero, CursorMode.Auto);
+        }
+        else {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
     }
 
     public void QuitButton()
     {
         GameObject child = (GameObject)GameObject.Instantiate(panel);
         child.transform.SetParent(parent, false);
+        GameController.controller.isUI = true;
     }
 }

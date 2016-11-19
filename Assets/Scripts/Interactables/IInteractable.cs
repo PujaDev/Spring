@@ -18,8 +18,11 @@ public abstract class IInteractable : MonoBehaviour {
     {
         keepTooltipOpen = false;
         Destroy(tooltipObject);
-        tooltipObject = Instantiate(tooltipPrefab);
-        tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+        if (!GameController.controller.isUI)
+        {
+            tooltipObject = Instantiate(tooltipPrefab);
+            tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+        }
     }
 
     void OnMouseExit()

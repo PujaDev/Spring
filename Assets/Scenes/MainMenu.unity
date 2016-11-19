@@ -551,6 +551,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSoundOn: 1
+  isUI: 0
+  lastUITime: 0
+  cursorIcons:
+  - {fileID: 2800000, guid: d493f07590d701742b0df458759ade94, type: 3}
+  - {fileID: 2800000, guid: 17e3228f187014a4ab5f18a2e8a5c7b2, type: 3}
+  currentIcon: 1
+  currentArea: 0
+  targetArea: 0
+  startPositionY: -2.3
+  scaleParam: 0.1
+  defaultCharactecScale: 0.4
 --- !u!4 &246053522
 Transform:
   m_ObjectHideFlags: 0

@@ -9,10 +9,25 @@ class PlayerData
 {
     public bool isSoundOn;
 }
+public enum CursorIcon
+{
+    NORMAL = 1,
+    WALK = 2,
+    ACTION = 3
+}
 
 public class GameController : MonoBehaviour {
     public static GameController controller = null;
     public bool isSoundOn;
+    public bool isUI = false;
+    public float lastUITime = -1f;
+    public Texture2D[] cursorIcons;
+    public CursorIcon currentIcon = CursorIcon.NORMAL;
+    public int currentArea = 0;
+    public int targetArea = 0;
+    public float startPositionY;
+    public float scaleParam = 0f;
+    public float defaultCharactecScale = 0f;
 
     void Awake()
     {

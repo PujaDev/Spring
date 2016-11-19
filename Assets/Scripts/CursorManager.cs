@@ -3,28 +3,20 @@ using System.Collections;
 
 public class CursorManager : MonoBehaviour
 {
-    public Texture2D cursorTexture;
+    public CursorIcon icon;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameController.controller.currentIcon = icon;
+        if (!GameController.controller.isUI)
+            Cursor.SetCursor(GameController.controller.cursorIcons[(int)icon - 2], hotSpot, cursorMode);
     }
     void OnMouseExit()
     {
-        Cursor.SetCursor(null, hotSpot, cursorMode);
+        GameController.controller.currentIcon = CursorIcon.NORMAL;
+        if (!GameController.controller.isUI)
+            Cursor.SetCursor(null, hotSpot, cursorMode);
     }
 }
