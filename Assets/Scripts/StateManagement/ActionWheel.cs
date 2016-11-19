@@ -9,9 +9,11 @@ public class ActionWheel : MonoBehaviour
     public float iconScale = 2f;
     public static ActionWheel Instance { get; private set; }
     const int MAX_ACTIONS = 6;
+    private int actionNumber = -1;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
     private Action[] actions;
+    private IInteractable actionSource;
     private GameObject cancelButton;
     private GameObject[] children;
     private TextMesh actionLabel;
@@ -53,6 +55,16 @@ public class ActionWheel : MonoBehaviour
         killAndBuryChildren();
     }
 
+    void OnMouseDown()
+    {
+
+        if (actionNumber >= 0)
+            StateManager.Instance.DispatchAction(actions[actionNumber],actionSource);
+
+        killAndBuryChildren();
+
+    }
+
     void OnMouseExit()
     {
         resetHover();
@@ -60,6 +72,8 @@ public class ActionWheel : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (actions == null)
+            return;
         resetHover();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
@@ -72,6 +86,7 @@ public class ActionWheel : MonoBehaviour
                 killAndBuryChildren();
 
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
+            actionNumber = -1;
         }
         else
         {
@@ -85,14 +100,16 @@ public class ActionWheel : MonoBehaviour
             n %= actions.Length;
             children[n].GetComponent<SpriteRenderer>().sprite = spritesHover[actions.Length, n];
             actionLabel.text = actions[n].Label;
+            actionNumber = n;
         }
     }
 
-    public void ShowActions(Action[] actions)
+    public void ShowActions(Action[] actions, IInteractable actionSource = null)
     {
         killAndBuryChildren();
 
         this.actions = actions;
+        this.actionSource = actionSource;
         var length = actions.Length;
         for (int i = 0; i < actions.Length; i++)
         {
