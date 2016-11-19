@@ -161,6 +161,8 @@ public class ActionWheel : MonoBehaviour
             Destroy(children[i]); // kill them one by one
         }
 
+        Destroy(cancelButton); // kill their mother as well
+
         gameObject.transform.position = Vector3.left * 500; // flee the crime scene
 
         actions = null; // deny everything
