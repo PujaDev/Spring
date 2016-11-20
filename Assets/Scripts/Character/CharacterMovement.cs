@@ -5,7 +5,7 @@ using Spine.Unity;
 
 public interface IMoveable
 {
-    void MoveTo(List<Vector3> targets);
+    void MoveTo(List<Vector3> targets, Action action, IInteractable source);
 }
 
 public class CharacterMovement : MonoBehaviour, IMoveable {
@@ -30,18 +30,18 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
 	}
 
-    public void MoveTo(List<Vector3> targets)
+    public void MoveTo(List<Vector3> targets, Action action, IInteractable source)
     {
         if (!busy)
         {
             if (move != null)
                 StopCoroutine(move);
             
-            move = StartCoroutine(MoveToCoroutine(targets));
+            move = StartCoroutine(MoveToCoroutine(targets, action, source));
         }
     }
 
-    IEnumerator MoveToCoroutine(List<Vector3> targets)
+    IEnumerator MoveToCoroutine(List<Vector3> targets, Action action, IInteractable source)
     {
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
@@ -60,22 +60,29 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
             while (Vector3.Distance(transform.position, targets[0]) > 0.05f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targets[0], Speed * Time.deltaTime);
-                float scaleChar = (1 - GameController.controller.scaleParam * (transform.position.y - GameController.controller.startPositionY)) * GameController.controller.defaultCharactecScale; 
+                //scale character based on its y distance from start position 
+                float scaleChar = (1 - SceneController.controller.scaleParam * (transform.position.y - SceneController.controller.startPositionY)) * SceneController.controller.defaultCharactecScale; 
                 transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar); 
                 yield return null;
             }
-            int diff = GameController.controller.targetArea - GameController.controller.currentArea;
+            //update current area while moving
+            int diff = SceneController.controller.targetArea - SceneController.controller.currentArea;
             if (diff != 0)
             {
                 if (diff > 0) {
-                    GameController.controller.currentArea++;
+                    SceneController.controller.currentArea++;
                 } else {
-                    GameController.controller.currentArea--;
+                    SceneController.controller.currentArea--;
                 }
             }
             targets.RemoveAt(0);
         }
-        
-    skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+
+        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+
+        //calls action after reaching the destination
+        if (action != null)
+            StateManager.Instance.DispatchAction(action, source);
+
     }
 }

@@ -29,7 +29,7 @@ public class CameraManager : MonoBehaviour
         // This is the first awake, create singleton
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             Instance = this;
 
             // Center to player and save as target - we don't want to move

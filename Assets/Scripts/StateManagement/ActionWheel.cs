@@ -22,7 +22,7 @@ public class ActionWheel : MonoBehaviour
     {
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             Instance = this;
             Instance.Load();
         }
