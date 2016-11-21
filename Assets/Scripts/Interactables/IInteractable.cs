@@ -8,12 +8,12 @@ public abstract class IInteractable : MonoBehaviour {
     public string tooltipText = "";
     public Sprite[] icons;
     private bool keepTooltipOpen = false;
-    GameObject tooltipPrefab;
-    GameObject tooltipObject;
+    //GameObject tooltipPrefab;
+    //GameObject tooltipObject;
 
     void Start()
     {
-        tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
+        //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
         var gameState = StateManager.Instance.Subscribe(this);
         OnStateChanged(gameState, null);
     }
@@ -22,18 +22,22 @@ public abstract class IInteractable : MonoBehaviour {
     void OnMouseEnter()
     {
         keepTooltipOpen = false;
-        Destroy(tooltipObject);
+        //Destroy(tooltipObject);
         if (!GameController.controller.isUI)
         {
-            tooltipObject = Instantiate(tooltipPrefab);
-            tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+            //tooltipObject = Instantiate(tooltipPrefab);
+            //tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+            SceneController.controller.title.text = tooltipText;
         }
     }
 
     void OnMouseExit()
     {
-        if(!keepTooltipOpen)
-            Destroy(tooltipObject);
+        if (!keepTooltipOpen)
+        {
+            //Destroy(tooltipObject);
+            SceneController.controller.title.text = "";
+        }
     }
 
     void OnMouseDown()

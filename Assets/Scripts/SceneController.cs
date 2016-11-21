@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SceneController : MonoBehaviour
     public float startPositionY;
     public float scaleParam = 0f;
     public float defaultCharactecScale = 0f;
+    public Text title;
 
     void Awake()
     {
