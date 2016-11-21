@@ -19,8 +19,8 @@ public class RadioAlarm : IInteractable {
     {
         if (newState.Test.AlarmPostponed)
             gameObject.transform.localScale = new Vector3(3,3,1);
-        if(newState.Test.AlarmTurnedOff)
-            Destroy(gameObject);
+        if (newState.Test.AlarmTurnedOff)
+            gameObject.SetActive(false);
     }
 
 }

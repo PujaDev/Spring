@@ -45,6 +45,32 @@ public abstract class IInteractable : MonoBehaviour {
         var actionList = getActionList();
         keepTooltipOpen = true;
         ActionWheel.Instance.ShowActions(actionList,this);
+        Debug.Log(ComeCloser());
+    }
+    
+    public static void DestroyInteractable(IInteractable interactable)
+    {
+        StateManager.Instance.Unsubscribe(interactable);
+        Destroy(interactable.gameObject);
+    }
+
+    bool ComeCloser() {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, LayerMask.NameToLayer("WalkableArea"));
+        Debug.Log(LayerMask.NameToLayer("WalkableArea"));
+        Debug.DrawRay(transform.position, -Vector3.up, Color.green);
+        Debug.Log(hit.point);
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.name);
+            CharacterInput walkableArea = hit.collider.gameObject.GetComponent<CharacterInput>();
+            if(walkableArea != null)
+            {
+                walkableArea.MoveToPoint(hit.point);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     virtual public void OnStateChanged(GameState newState, GameState oldState)

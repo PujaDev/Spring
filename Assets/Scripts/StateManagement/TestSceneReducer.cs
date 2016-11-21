@@ -14,6 +14,9 @@ public class TestSceneReducer : Reducer
             case ActionType.POSTPONE_ALARM:
                 state.Test.AlarmPostponed = true;
                 break;
+            case ActionType.CHANGE_CLOTHES:
+                state.Test.ChangeClothes = true;
+                break;
         }
 
         return state;

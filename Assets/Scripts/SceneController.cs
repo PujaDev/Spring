@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     public static SceneController controller = null;
+    public CharacterInput[] walkableAreas;
 
     public int currentArea = 0;
     public int targetArea = 0;
@@ -18,6 +19,7 @@ public class SceneController : MonoBehaviour
         if (controller == null)
         {
             controller = this;
+            walkableAreas = GetComponentsInChildren<CharacterInput>();
         }
         else if (controller != this)
         {

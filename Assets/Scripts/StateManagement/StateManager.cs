@@ -98,4 +98,13 @@ public class StateManager : MonoBehaviour
         interactables.Add(interactable);
         return State;
     }
+    /// <summary>
+    /// Stops interactable from receiving notificatios about state changes
+    /// </summary>
+    /// <param name="interactable">Interactable to register</param>
+    /// <returns>Current game state</returns>
+    public void Unsubscribe(IInteractable interactable)
+    {
+        interactables.Remove(interactable);
+    }
 }

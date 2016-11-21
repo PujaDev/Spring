@@ -30,7 +30,7 @@ public class CharacterInput : MonoBehaviour
     }
 
     // calculates path for character to move along to reach destination 
-    void MoveToPoint(Vector2 destination, Action action=null, IInteractable source=null) {
+    public void MoveToPoint(Vector2 destination, Action action=null, IInteractable source=null) {
         if (Area.OverlapPoint(destination)) //checks whether mouse is in the walkable area
         {
             int i;

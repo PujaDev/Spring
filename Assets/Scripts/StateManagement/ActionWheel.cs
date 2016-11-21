@@ -51,8 +51,7 @@ public class ActionWheel : MonoBehaviour
                 spritesHover[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
             }
         }
-
-        killAndBuryChildren();
+        
     }
 
     void OnMouseDown()
@@ -82,9 +81,6 @@ public class ActionWheel : MonoBehaviour
 
         if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
         {
-            if (Input.GetMouseButtonDown(0))
-                killAndBuryChildren();
-
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
             actionNumber = -1;
         }
