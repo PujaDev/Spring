@@ -103,7 +103,7 @@ GameObject:
   - 114: {fileID: 114000013150911104}
   - 114: {fileID: 114000012264405294}
   - 60: {fileID: 60000013924173028}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WalkableArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,14 +401,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010276100732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07da4fe36e787a64185b7e2e3ef110cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c3a9b7dadb52bc4f81a53dc94ae2491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkableAreas: []
   currentArea: 0
   targetArea: 0
   startPositionY: -2.3
   scaleParam: 0.1
   defaultCharactecScale: 0.4
+  title: {fileID: 0}
 --- !u!114 &114000010897756158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,22 +433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4384537cc7cee4383c4af4d4958fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Area: {fileID: 60000013924173028}
   Character: {fileID: 0}
-  areas:
-  - {fileID: 60000012143035998}
-  - {fileID: 60000011689905558}
-  - {fileID: 60000010561016978}
-  - {fileID: 60000011818187668}
-  - {fileID: 60000010208865316}
-  - {fileID: 60000011511022120}
-  transPoints:
-  - {fileID: 4000014128614632}
-  - {fileID: 4000013806143848}
-  - {fileID: 4000011649395578}
-  - {fileID: 4000013888190672}
-  - {fileID: 4000013083996706}
-  - {fileID: 4000013987243948}
+  Area: {fileID: 0}
+  areas: []
+  transPoints: []
 --- !u!114 &114000013150911104
 MonoBehaviour:
   m_ObjectHideFlags: 1
