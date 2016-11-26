@@ -61,18 +61,18 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
             {
                 transform.position = Vector3.MoveTowards(transform.position, targets[0], Speed * Time.deltaTime);
                 //scale character based on its y distance from start position 
-                float scaleChar = (1 - SceneController.controller.scaleParam * (transform.position.y - SceneController.controller.startPositionY)) * SceneController.controller.defaultCharactecScale; 
+                float scaleChar = (1 - SceneController.Instance.scaleParam * (transform.position.y - SceneController.Instance.startPositionY)) * SceneController.Instance.defaultCharactecScale; 
                 transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar); 
                 yield return null;
             }
             //update current area while moving
-            int diff = SceneController.controller.targetArea - SceneController.controller.currentArea;
+            int diff = SceneController.Instance.targetAreaIndex - SceneController.Instance.currentAreaIndex;
             if (diff != 0)
             {
                 if (diff > 0) {
-                    SceneController.controller.currentArea++;
+                    SceneController.Instance.currentAreaIndex++;
                 } else {
-                    SceneController.controller.currentArea--;
+                    SceneController.Instance.currentAreaIndex--;
                 }
             }
             targets.RemoveAt(0);

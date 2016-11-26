@@ -6,21 +6,22 @@ public class CharacterInput : MonoBehaviour
 {
     public CharacterMovement Character;
 
-    [HideInInspector] public Collider2D Area;
+    [HideInInspector] public Collider2D WalkableArea;
     [HideInInspector] public Collider2D[] areas;
     [HideInInspector] public Transform[] transPoints;
 
     private List<Vector3> targets;
-    
-    // inicializes collider areas and transforms from children in the ORDER as they are in the Hierarchy view
-    void Awake() {
+
+    // Initializes collider areas and transforms from children in the ORDER as they are in the Hierarchy view
+    void Awake()
+    {
         List<Transform> tmp_T = new List<Transform>();
         List<Collider2D> tmp_C = new List<Collider2D>();
 
-        GetComponentsInChildren<Transform>(tmp_T);
-        GetComponentsInChildren<Collider2D>(tmp_C);
+        GetComponentsInChildren(tmp_T);
+        GetComponentsInChildren(tmp_C);
 
-        Area = tmp_C[0];
+        WalkableArea = tmp_C[0];
         tmp_T.RemoveAt(0);
         tmp_C.RemoveAt(0);
 
@@ -29,9 +30,9 @@ public class CharacterInput : MonoBehaviour
         targets = new List<Vector3>();
     }
 
-    // calculates path for character to move along to reach destination 
+    // Calculates path for character to move along to reach destination 
     public void MoveToPoint(Vector2 destination, Action action=null, IInteractable source=null) {
-        if (Area.OverlapPoint(destination)) //checks whether mouse is in the walkable area
+        if (WalkableArea.OverlapPoint(destination)) //checks whether mouse is in the walkable area
         {
             int i;
             int target = -1;
@@ -45,7 +46,7 @@ public class CharacterInput : MonoBehaviour
                 }
             }
             Vector3 tmp;
-            i = SceneController.controller.currentArea;
+            i = SceneController.Instance.currentAreaIndex;
             if (target < i) //path through areas with decreasing numbers
             {
                 while (i > target)
@@ -66,13 +67,13 @@ public class CharacterInput : MonoBehaviour
             }
             tmp = new Vector3(destination.x, destination.y);
             targets.Add(tmp);
-            SceneController.controller.targetArea = target;
+            SceneController.Instance.targetAreaIndex = target;
 
             Character.MoveTo(targets, action, source);
         }
     }
 
-    // called each frame, checks for mouse clicks on moveable areas to move the character there
+    // called each frame, checks for mouse clicks on movable areas to move the character there
     void Update()
     {
         if (Input.GetMouseButtonUp(0) && !(GameController.controller.isUI) && GameController.controller.lastUITime != Time.time)
@@ -83,6 +84,4 @@ public class CharacterInput : MonoBehaviour
             MoveToPoint(mousePos2D);
         }
     }
-
-    
 }

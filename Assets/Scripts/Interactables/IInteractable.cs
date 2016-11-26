@@ -27,7 +27,7 @@ public abstract class IInteractable : MonoBehaviour {
         {
             //tooltipObject = Instantiate(tooltipPrefab);
             //tooltipObject.GetComponent<TextMesh>().text = tooltipText;
-            SceneController.controller.title.text = tooltipText;
+            SceneController.Instance.title.text = tooltipText;
         }
     }
 
@@ -36,7 +36,7 @@ public abstract class IInteractable : MonoBehaviour {
         if (!keepTooltipOpen)
         {
             //Destroy(tooltipObject);
-            SceneController.controller.title.text = "";
+            SceneController.Instance.title.text = "";
         }
     }
 
