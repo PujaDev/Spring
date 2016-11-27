@@ -310,7 +310,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: 40e7c1ac58a07c843a3fdb5db33ecdae, type: 3}
   Book: {fileID: 316977508}
-  Turner: {fileID: 0}
+  Turner: {fileID: 274729293}
 --- !u!114 &274729291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +360,6 @@ MonoBehaviour:
   - {fileID: 929362273}
   NextButton: {fileID: 628845458}
   PreviousButton: {fileID: 2104738949}
-  TotalPages: 3
 --- !u!1 &316977508
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +432,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 23
   m_TargetDisplay: 0
 --- !u!224 &316977512
 RectTransform:
@@ -4448,7 +4447,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274729290}
+      - m_Target: {fileID: 274729293}
         m_MethodName: CloseBook
         m_Mode: 1
         m_Arguments:
