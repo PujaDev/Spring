@@ -21,5 +21,4 @@ abstract public class Reducer : MonoBehaviour  {
     /// <param name="source">Interactable that dispatched action</param>
     /// <returns>Updated state</returns>
     abstract public GameState Reduce(GameState state, Action action, IInteractable source = null);
-
 }

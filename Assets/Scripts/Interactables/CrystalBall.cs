@@ -5,7 +5,7 @@ using System;
 public class CrystalBall : IInteractable {
 
     
-    protected override Action[] getActionList()
+    protected override Action[] GetActionList()
     {
         // if state == taky then nahadz to pola akcie
         return new Action[] {

@@ -4,7 +4,7 @@ using System;
 
 public class Crown : IInteractable
 {
-    protected override Action[] getActionList()
+    protected override Action[] GetActionList()
     {
         return new Action[] {
             new Action(ActionType.SELL, "Put on head",icons[0]),

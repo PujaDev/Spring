@@ -99,7 +99,7 @@ public class StateManager : MonoBehaviour
         return State;
     }
     /// <summary>
-    /// Stops interactable from receiving notificatios about state changes
+    /// Stops interactable from receiving notifications about state changes
     /// </summary>
     /// <param name="interactable">Interactable to register</param>
     /// <returns>Current game state</returns>

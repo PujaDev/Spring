@@ -42,7 +42,7 @@ public abstract class IInteractable : MonoBehaviour {
 
     void OnMouseDown()
     {
-        var actionList = getActionList();
+        var actionList = GetActionList();
         keepTooltipOpen = true;
         ActionWheel.Instance.ShowActions(actionList,this);
         Debug.Log(ComeCloser());
@@ -77,6 +77,5 @@ public abstract class IInteractable : MonoBehaviour {
     {
     }
 
-    abstract protected Action[] getActionList();
-
+    abstract protected Action[] GetActionList();
 }

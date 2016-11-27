@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013643278478}
   - 114: {fileID: 114000010897756158}
-  - 114: {fileID: 114000010510489070}
+  - 114: {fileID: 114000011269176556}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -393,24 +393,6 @@ PolygonCollider2D:
       - {x: -0.38763854, y: -0.466928}
       - {x: -0.48347032, y: -0.047073524}
       - {x: -0.41144675, y: 1.1329665}
---- !u!114 &114000010510489070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010276100732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3a9b7dadb52bc4f81a53dc94ae2491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkableAreas: []
-  currentArea: 0
-  targetArea: 0
-  startPositionY: -2.3
-  scaleParam: 0.1
-  defaultCharactecScale: 0.4
-  title: {fileID: 0}
 --- !u!114 &114000010897756158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -422,6 +404,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d590b01aeec48a48b517333e08c1025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011269176556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010276100732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3173f0eb0c7074baac56ffc932eb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkableArea: {fileID: 0}
+  currentAreaIndex: 0
+  targetAreaIndex: 0
+  startPositionY: -2.3
+  scaleParam: 0.1
+  defaultCharactecScale: 0.4
+  title: {fileID: 0}
 --- !u!114 &114000012264405294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 0}
-  Area: {fileID: 0}
+  WalkableArea: {fileID: 0}
   areas: []
   transPoints: []
 --- !u!114 &114000013150911104

@@ -17,6 +17,12 @@ public class TestSceneReducer : Reducer
             case ActionType.CHANGE_CLOTHES:
                 state.Test.ChangeClothes = true;
                 break;
+            case ActionType.START_READING_VEGAN_BOOK:
+                state.Test.ReadingVeganBook = true;
+                break;
+            case ActionType.STOP_READING_VEGAN_BOOK:
+                state.Test.ReadingVeganBook = false;
+                break;
         }
 
         return state;

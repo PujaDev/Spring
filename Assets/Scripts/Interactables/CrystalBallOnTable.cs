@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 public class CrystalBallOnTable : IInteractable {
-    protected override Action[] getActionList()
+    protected override Action[] GetActionList()
     {
         return new Action[] {
             new Action(ActionType.CALL_MOM, "Call mom",icons[0]),

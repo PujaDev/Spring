@@ -4,7 +4,7 @@ using System;
 
 public class RadioAlarm : IInteractable {
 
-    protected override Action[] getActionList()
+    protected override Action[] GetActionList()
     {
         return new Action[] {
             new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),

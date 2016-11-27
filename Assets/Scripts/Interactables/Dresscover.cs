@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 public class Dresscover : IInteractable {
-    protected override Action[] getActionList()
+    protected override Action[] GetActionList()
     {
         return new Action[] {
             new Action(ActionType.CHANGE_CLOTHES, "Change clothes",icons[0])

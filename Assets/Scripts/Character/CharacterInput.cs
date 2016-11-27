@@ -74,7 +74,7 @@ public class CharacterInput : MonoBehaviour
     }
 
     // called each frame, checks for mouse clicks on movable areas to move the character there
-    void Update()
+    void OnMouseUp()
     {
         if (Input.GetMouseButtonUp(0) && !(GameController.controller.isUI) && GameController.controller.lastUITime != Time.time)
         {
