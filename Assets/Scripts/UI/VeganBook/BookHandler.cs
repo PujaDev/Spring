@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class BookHandler : MonoBehaviour
 {
     //-- Editor fields --//
-    public float FadeInTime;
+    public float OpenFadeInTime;
+    public float TextFadeInTime;
     public GameObject[] LeftPages;
     public GameObject[] RightPages;
     public GameObject NextButton;
@@ -80,7 +81,7 @@ public class BookHandler : MonoBehaviour
                 g.color = col;
 
                 // Fade it in over time
-                FadeIn.Add(StartCoroutine(FadeInVisibleCoroutine(g, FadeInTime)));
+                FadeIn.Add(StartCoroutine(FadeInVisibleCoroutine(g, OpenFadeInTime)));
             }
         }
     }
@@ -109,6 +110,8 @@ public class BookHandler : MonoBehaviour
             LeftPages[CurrentPageIdx].SetActive(true);
             RightPages[CurrentPageIdx].SetActive(true);
 
+            FadeInActiveTexts();
+
             PreviousButton.SetActive(true);
         }
 
@@ -135,6 +138,8 @@ public class BookHandler : MonoBehaviour
 
             LeftPages[CurrentPageIdx].SetActive(true);
             RightPages[CurrentPageIdx].SetActive(true);
+
+            FadeInActiveTexts();
 
             NextButton.SetActive(true);
         }
@@ -166,6 +171,23 @@ public class BookHandler : MonoBehaviour
         {
             currentColor.a = 1f;
             g.color = currentColor;
+        }
+    }
+
+    void FadeInActiveTexts()
+    {
+        var texts = GetComponentsInChildren<Text>();
+        foreach (var t in texts)
+        {
+            if (t.IsActive())
+            {
+                var col = t.color;
+                col.a = 0.0001f;
+                t.color = col;
+                // We should probably save these coroutines and stop them eventually
+                // This is probably not necessary as long as the time is low enough
+                StartCoroutine(FadeInVisibleCoroutine(t, TextFadeInTime));
+            }
         }
     }
 
