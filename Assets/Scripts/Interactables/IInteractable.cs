@@ -42,10 +42,13 @@ public abstract class IInteractable : MonoBehaviour {
 
     void OnMouseDown()
     {
-        var actionList = GetActionList();
-        keepTooltipOpen = true;
-        ActionWheel.Instance.ShowActions(actionList,this);
-        Debug.Log(ComeCloser());
+        if (!GameController.controller.isUI)
+        {
+            var actionList = GetActionList();
+            keepTooltipOpen = true;
+            ActionWheel.Instance.ShowActions(actionList, this);
+            Debug.Log(ComeCloser());
+        }
     }
     
     public static void DestroyInteractable(IInteractable interactable)

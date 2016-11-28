@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PageTurner : MonoBehaviour
 {
+    public float FadeInTime;
+
     public GameObject[] LeftPages;
     public GameObject[] RightPages;
     public GameObject NextButton;
@@ -13,15 +17,18 @@ public class PageTurner : MonoBehaviour
     private bool Opened;
     private Action StopReading;
 
+    private List<Coroutine> FadeIn;
+
     void Awake()
     {
         if (LeftPages.Length != RightPages.Length)
         {
-            throw new System.Exception("Left and right pages' lengths do not match!");
+            throw new System.Exception("Number of left and right pages must be equal.");
         }
         TotalPages = LeftPages.Length;
 
         StopReading = new Action(ActionType.STOP_READING_VEGAN_BOOK, null, null);
+        FadeIn = new List<Coroutine>();
     }
 
     /// <summary>
@@ -49,15 +56,74 @@ public class PageTurner : MonoBehaviour
             PreviousButton.SetActive(false);
             NextButton.SetActive(true);
         }
+
+        var graphics = GetComponentsInChildren<Graphic>();
+
+        foreach (var g in graphics)
+        {
+            if (g.IsActive())
+            {
+                var col = g.color;
+                col.a = 0.0001f;
+                g.color = col;
+
+                FadeIn.Add(StartCoroutine(FadeInVisibleCoroutine(g, FadeInTime)));
+            }
+        }
+    }
+
+    void StopFadeIn()
+    {
+        foreach (var c in FadeIn)
+        {
+            StopCoroutine(c);
+        }
+        FadeIn.Clear();
+    }
+
+    void MakeAllVisible()
+    {
+        var graphics = GetComponentsInChildren<Graphic>();
+
+        foreach (var g in graphics)
+        {
+            var col = g.color;
+            col.a = 1f;
+            g.color = col;
+        }
+    }
+
+    IEnumerator FadeInVisibleCoroutine(Graphic g, float duration)
+    {
+        Color currentColor = g.color;
+        currentColor.a = 0f;
+        float speed = 1 / duration;
+
+        while(currentColor.a < 1f)
+        {
+            currentColor.a += speed * Time.deltaTime;
+            g.color = currentColor;
+            yield return null;
+        }
+
+        if (currentColor.a > 1f)
+        {
+            currentColor.a = 1f;
+            g.color = currentColor;
+        }
     }
 
     public void CloseBook()
     {
+        StopFadeIn();
         StateManager.Instance.DispatchAction(StopReading, GetComponentInParent<IInteractable>());
     }
 
     public void NextPage()
     {
+        StopFadeIn();
+        MakeAllVisible();
+
         // We are not at the end - turn it
         if (CurrentPageIdx < TotalPages - 1)
         {
@@ -82,6 +148,9 @@ public class PageTurner : MonoBehaviour
 
     public void PreviousPage()
     {
+        StopFadeIn();
+        MakeAllVisible();
+
         // We are not at the beginning - turn it
         if (CurrentPageIdx > 0)
         {

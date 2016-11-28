@@ -17,13 +17,14 @@ public class VeganMagicBook : IInteractable
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
+        // Start reading
         if (newState.Test.ReadingVeganBook)
         {
             Book.SetActive(true);
             Turner.OpenBook();
             GameController.controller.isUI = true;
         }
-        else
+        else // Stop reading
         {
             Book.SetActive(false);
             GameController.controller.isUI = false;
