@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class VeganMagicBook : IInteractable
 {
     public GameObject Book;
-    public PageTurner Turner;
+    public BookHandler Handler;
 
     protected override Action[] GetActionList()
     {
@@ -21,7 +21,7 @@ public class VeganMagicBook : IInteractable
         if (newState.Test.ReadingVeganBook)
         {
             Book.SetActive(true);
-            Turner.OpenBook();
+            Handler.OpenBook();
             GameController.controller.isUI = true;
         }
         else // Stop reading

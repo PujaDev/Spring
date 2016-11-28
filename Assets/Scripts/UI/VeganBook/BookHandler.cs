@@ -3,21 +3,27 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class PageTurner : MonoBehaviour
+public class BookHandler : MonoBehaviour
 {
+    //-- Editor fields --//
     public float FadeInTime;
-
     public GameObject[] LeftPages;
     public GameObject[] RightPages;
     public GameObject NextButton;
     public GameObject PreviousButton;
 
+
+    //-- Private --//
     private int TotalPages;
     private int CurrentPageIdx;
-    private bool Opened;
+    /// <summary>
+    /// Only false before first openning
+    /// </summary>
+    private bool WasOpen;
     private Action StopReading;
 
     private List<Coroutine> FadeIn;
+
 
     void Awake()
     {
@@ -31,19 +37,23 @@ public class PageTurner : MonoBehaviour
         FadeIn = new List<Coroutine>();
     }
 
+
+    #region API
     /// <summary>
     /// Initializes the book
     /// </summary>
     public void OpenBook()
     {
         // First time open - initialize
-        if (!Opened)
+        if (!WasOpen)
         {
-            Opened = true;
+            WasOpen = true;
 
+            // First time - show first page
             LeftPages[0].SetActive(true);
             RightPages[0].SetActive(true);
 
+            // Hide the rest
             for (int i = 1; i < LeftPages.Length; i++)
             {
                 LeftPages[i].SetActive(false);
@@ -53,63 +63,25 @@ public class PageTurner : MonoBehaviour
                 RightPages[i].SetActive(false);
             }
 
+            // Can go only forward from the first page
             PreviousButton.SetActive(false);
             NextButton.SetActive(true);
         }
 
+        // Fade in all graphics on current book page
         var graphics = GetComponentsInChildren<Graphic>();
-
         foreach (var g in graphics)
         {
             if (g.IsActive())
             {
+                // Set the graphic transparent
                 var col = g.color;
-                col.a = 0.0001f;
+                col.a = 0.0001f; // Don't go from 0, there may be glitches apparently
                 g.color = col;
 
+                // Fade it in over time
                 FadeIn.Add(StartCoroutine(FadeInVisibleCoroutine(g, FadeInTime)));
             }
-        }
-    }
-
-    void StopFadeIn()
-    {
-        foreach (var c in FadeIn)
-        {
-            StopCoroutine(c);
-        }
-        FadeIn.Clear();
-    }
-
-    void MakeAllVisible()
-    {
-        var graphics = GetComponentsInChildren<Graphic>();
-
-        foreach (var g in graphics)
-        {
-            var col = g.color;
-            col.a = 1f;
-            g.color = col;
-        }
-    }
-
-    IEnumerator FadeInVisibleCoroutine(Graphic g, float duration)
-    {
-        Color currentColor = g.color;
-        currentColor.a = 0f;
-        float speed = 1 / duration;
-
-        while(currentColor.a < 1f)
-        {
-            currentColor.a += speed * Time.deltaTime;
-            g.color = currentColor;
-            yield return null;
-        }
-
-        if (currentColor.a > 1f)
-        {
-            currentColor.a = 1f;
-            g.color = currentColor;
         }
     }
 
@@ -119,6 +91,8 @@ public class PageTurner : MonoBehaviour
         StateManager.Instance.DispatchAction(StopReading, GetComponentInParent<IInteractable>());
     }
 
+    // Next and previous page methods are very similar
+    // If you change one, you probably want to change the other as well
     public void NextPage()
     {
         StopFadeIn();
@@ -172,4 +146,47 @@ public class PageTurner : MonoBehaviour
             PreviousButton.SetActive(false);
         }
     }
+    #endregion
+
+    #region Helpers
+    IEnumerator FadeInVisibleCoroutine(Graphic g, float duration)
+    {
+        Color currentColor = g.color;
+        currentColor.a = 0f;
+        float speed = 1 / duration;
+
+        while (currentColor.a < 1f)
+        {
+            currentColor.a += speed * Time.deltaTime;
+            g.color = currentColor;
+            yield return null;
+        }
+
+        if (currentColor.a > 1f)
+        {
+            currentColor.a = 1f;
+            g.color = currentColor;
+        }
+    }
+
+    void StopFadeIn()
+    {
+        foreach (var c in FadeIn)
+        {
+            StopCoroutine(c);
+        }
+        FadeIn.Clear();
+    }
+    void MakeAllVisible()
+    {
+        var graphics = GetComponentsInChildren<Graphic>();
+
+        foreach (var g in graphics)
+        {
+            var col = g.color;
+            col.a = 1f;
+            g.color = col;
+        }
+    }
+    #endregion
 }
