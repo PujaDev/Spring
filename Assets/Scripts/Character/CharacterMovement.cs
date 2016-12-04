@@ -23,6 +23,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
         busy = false;
         skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+        ScaleCharacter();
 	}
 	
 	// Update is called once per frame
@@ -60,9 +61,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
             while (Vector3.Distance(transform.position, targets[0]) > 0.05f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targets[0], Speed * Time.deltaTime);
-                //scale character based on its y distance from start position 
-                float scaleChar = (1 - SceneController.Instance.scaleParam * (transform.position.y - SceneController.Instance.startPositionY)) * SceneController.Instance.defaultCharactecScale; 
-                transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar); 
+                ScaleCharacter();
                 yield return null;
             }
             //update current area while moving
@@ -84,5 +83,14 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
         if (action != null)
             StateManager.Instance.DispatchAction(action, source);
 
+    }
+
+    /// <summary>
+    /// Scale character based on its y distance from start position
+    /// </summary>
+    private void ScaleCharacter()
+    {
+        float scaleChar = (1 - SceneController.Instance.scaleParam * (transform.position.y - SceneController.Instance.startPositionY)) * SceneController.Instance.defaultCharactecScale;
+        transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar);
     }
 }
