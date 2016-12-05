@@ -4,9 +4,16 @@ using System;
 
 public class Switch : MonoBehaviour
 {
-    private bool IsOn;
+    public bool IsOn { get; private set; }
     private int Value;
     private Action<bool, int> OnClickCallback;
+
+    public void Reset()
+    {
+        IsOn = false;
+        var r = GetComponent<SpriteRenderer>();
+        r.color = Color.white;
+    }
 
     void OnMouseDown()
     {
