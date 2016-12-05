@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1339306809}
   - 61: {fileID: 1339306811}
+  - 61: {fileID: 1339306812}
   - 114: {fileID: 1339306810}
   m_Layer: 0
   m_Name: LockColumn
@@ -310,10 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f91e4ba2d83b1e4395a95f861f16263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwitchCount: 5
+  SwitchCount: 4
   SwitchOffset: 1
   CorrectAnswer: 5
   ButtonArea: {fileID: 1339306811}
+  ColumnArea: {fileID: 1339306812}
+  StepPrefab: {fileID: 1000011515191230, guid: 6cc118cd1ecd4d34aa308a7ff33da07d, type: 2}
+  PointerPrefab: {fileID: 1000013836896722, guid: 4c63e57706423544a8c44b0e6b386055,
+    type: 2}
 --- !u!61 &1339306811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328,3 +333,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.04373169}
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.4169159}
+--- !u!61 &1339306812
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339306808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.71904016, y: 3.263587}
+  serializedVersion: 2
+  m_Size: {x: 0.5269457, y: 4.461384}
