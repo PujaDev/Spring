@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class BookHandler : MonoBehaviour
 {
     //-- Editor fields --//
+    public GameObject Book;
     public float OpenFadeInTime;
     public float TextFadeInTime;
     public GameObject[] LeftPages;
@@ -70,7 +71,7 @@ public class BookHandler : MonoBehaviour
         }
 
         // Fade in all graphics on current book page
-        var graphics = GetComponentsInChildren<Graphic>();
+        var graphics = Book.GetComponentsInChildren<Graphic>();
         foreach (var g in graphics)
         {
             if (g.IsActive())
@@ -176,7 +177,7 @@ public class BookHandler : MonoBehaviour
 
     void FadeInActiveTexts()
     {
-        var texts = GetComponentsInChildren<Text>();
+        var texts = Book.GetComponentsInChildren<Text>();
         foreach (var t in texts)
         {
             if (t.IsActive())
@@ -201,7 +202,7 @@ public class BookHandler : MonoBehaviour
     }
     void MakeAllVisible()
     {
-        var graphics = GetComponentsInChildren<Graphic>();
+        var graphics = Book.GetComponentsInChildren<Graphic>();
 
         foreach (var g in graphics)
         {
