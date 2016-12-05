@@ -58,8 +58,10 @@ public class ActionWheel : MonoBehaviour
     {
 
         if (actionNumber >= 0)
-            StateManager.Instance.DispatchAction(actions[actionNumber],actionSource);
-
+        {
+            //StateManager.Instance.DispatchAction(actions[actionNumber], actionSource);
+            actionSource.ComeCloser(actions[actionNumber]);
+        }
         killAndBuryChildren();
 
     }
