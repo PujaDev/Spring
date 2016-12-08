@@ -52,7 +52,7 @@ public class LockController : MonoBehaviour
         if (!TryToOpen())
         {
             float time = 3f;
-            //CameraManager.Instance.Shake(time);
+            CameraManager.Instance.Shake(time, magnitude: 0.03f);
             while (time > 0)
             {
                 time -= Time.deltaTime;
