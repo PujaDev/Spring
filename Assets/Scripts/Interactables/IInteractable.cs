@@ -47,7 +47,7 @@ public abstract class IInteractable : MonoBehaviour {
             var actionList = GetActionList();
             keepTooltipOpen = true;
             ActionWheel.Instance.ShowActions(actionList, this);
-            Debug.Log(ComeCloser());
+            //Debug.Log(ComeCloser());
         }
     }
     
@@ -57,18 +57,26 @@ public abstract class IInteractable : MonoBehaviour {
         Destroy(interactable.gameObject);
     }
 
-    bool ComeCloser() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, LayerMask.NameToLayer("WalkableArea"));
-        Debug.Log(LayerMask.NameToLayer("WalkableArea"));
-        Debug.DrawRay(transform.position, -Vector3.up, Color.green);
-        Debug.Log(hit.point);
-        if (hit.collider != null)
+    public bool ComeCloser(Action action = null) {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
+        Vector2 destination;
+        //Debug.Log(hit.point);
+        if (hit.collider == null) {
+            hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
+            //Debug.Log(hit.point);
+            destination = hit.point;
+            destination.y += 0.001f;
+        }else{
+            destination = hit.point;
+            destination.y -= 0.001f;
+        }
+        if(hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
             CharacterInput walkableArea = hit.collider.gameObject.GetComponent<CharacterInput>();
             if(walkableArea != null)
             {
-                walkableArea.MoveToPoint(hit.point);
+                walkableArea.MoveToPoint(destination, action, this);
                 return true;
             }
         }

@@ -148,7 +148,8 @@ public class CameraManager : MonoBehaviour
     }
     private void ApplyShake()
     {
-        MainCam.transform.position += shaker.NextShake();
+        prevShake = shaker.NextShake();
+        MainCam.transform.position += prevShake;
     }
 
     private void ApplyRotation()
