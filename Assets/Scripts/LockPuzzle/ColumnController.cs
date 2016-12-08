@@ -13,6 +13,8 @@ public class ColumnController : MonoBehaviour
     public GameObject PointerPrefab;
 
     public bool IsCorrect { get { return CorrectAnswer == CurrentAnswer; } }
+    public bool ReadyToUnlock { get { return !Moving; } }
+    public bool IsZero { get { return CurrentAnswer == 0; } }
 
     private List<Switch> Switches;
     private int CurrentAnswer;
@@ -20,6 +22,7 @@ public class ColumnController : MonoBehaviour
     private List<Vector3> StepPositions;
     private Vector3 PtrShift;
     private Coroutine PtrMovement;
+    private bool Moving;
 
     void Awake()
     {
@@ -29,7 +32,7 @@ public class ColumnController : MonoBehaviour
         var switchPositions = GeneratePositions(ButtonArea, SwitchCount, true);
         for (int i = 0; i < SwitchCount; i++)
         {
-            GameObject s = Switch.Create(value, ClickCallback, switchPositions[i]);
+            GameObject s = Switch.Create(value, OnClickCallback, switchPositions[i]);
             s.transform.parent = transform;
 
             var swit = s.GetComponent<Switch>();
@@ -57,6 +60,18 @@ public class ColumnController : MonoBehaviour
         Pointer = Instantiate(PointerPrefab, StepPositions[0] + PtrShift, Quaternion.identity) as GameObject;
     }
 
+    void OnClickCallback(bool isOn, int value)
+    {
+        if (isOn)
+        {
+            CurrentAnswer |= value;
+        }
+        else
+        {
+            CurrentAnswer &= ~value;
+        }
+    }
+
     public void Reset()
     {
         foreach (var s in Switches)
@@ -65,38 +80,32 @@ public class ColumnController : MonoBehaviour
         }
 
         CurrentAnswer = 0;
-        MovePointer(0);
+        MovePointer(0, 0.3f);
     }
 
-    void ClickCallback(bool isOn, int value)
+    public void PrepareToUnlock()
     {
-        if(isOn)
-        {
-            CurrentAnswer |= value;
-        }
-        else
-        {
-            CurrentAnswer &= ~value;
-        }
-        Debug.Log(CurrentAnswer);
         MovePointer(CurrentAnswer);
     }
 
-    private void MovePointer(int index)
+    private void MovePointer(int index, float time = 1f)
     {
         if (PtrMovement != null)
             StopCoroutine(PtrMovement);
 
-        PtrMovement = StartCoroutine(MovePointerCoroutine(StepPositions[index] + PtrShift));
+        PtrMovement = StartCoroutine(MovePointerCoroutine(StepPositions[index] + PtrShift, time));
     }
 
-    IEnumerator MovePointerCoroutine(Vector3 target)
+    IEnumerator MovePointerCoroutine(Vector3 target, float time)
     {
-        while(Vector3.Distance(Pointer.transform.position, target) > 0.005f)
+        Moving = true;
+        float speed = Vector3.Distance(Pointer.transform.position, target) / time;
+        while (Vector3.Distance(Pointer.transform.position, target) > 0.005f)
         {
-            Pointer.transform.position = Vector3.MoveTowards(Pointer.transform.position, target, 0.05f);
+            Pointer.transform.position = Vector3.MoveTowards(Pointer.transform.position, target, speed * Time.deltaTime);
             yield return null;
         }
+        Moving = false;
     }
 
     private List<Vector3> GeneratePositions(BoxCollider2D area, int count, bool horizontal)

@@ -5,7 +5,7 @@ using System;
 public class Switch : MonoBehaviour
 {
     public bool IsOn { get; private set; }
-    private int Value;
+    public int Value { get; private set; }
     private Action<bool, int> OnClickCallback;
 
     public void Reset()
