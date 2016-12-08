@@ -88,6 +88,9 @@ public class LockController : MonoBehaviour
 
     public void Reset()
     {
+        if (Unlocking)
+            return;
+
         foreach (var col in Columns)
         {
             col.Reset();
