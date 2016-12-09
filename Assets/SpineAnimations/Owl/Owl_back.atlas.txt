@@ -1,0 +1,118 @@
+
+Owl_back.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+L_wing
+  rotate: false
+  xy: 2, 123
+  size: 82, 201
+  orig: 82, 201
+  offset: 0, 0
+  index: -1
+L_wing_fly
+  rotate: false
+  xy: 2, 746
+  size: 380, 208
+  orig: 380, 208
+  offset: 0, 0
+  index: -1
+P_wing
+  rotate: false
+  xy: 510, 540
+  size: 76, 204
+  orig: 76, 204
+  offset: 0, 0
+  index: -1
+P_wing_fly
+  rotate: false
+  xy: 384, 746
+  size: 380, 208
+  orig: 380, 208
+  offset: 0, 0
+  index: -1
+body_flying
+  rotate: false
+  xy: 384, 530
+  size: 124, 214
+  orig: 124, 214
+  offset: 0, 0
+  index: -1
+head_back_flying
+  rotate: true
+  xy: 2, 2
+  size: 119, 81
+  orig: 119, 81
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 240, 223
+  size: 74, 101
+  orig: 74, 101
+  offset: 0, 0
+  index: -1
+tail_fly
+  rotate: false
+  xy: 86, 216
+  size: 152, 108
+  orig: 152, 108
+  offset: 0, 0
+  index: -1
+white/L_wing
+  rotate: false
+  xy: 384, 327
+  size: 82, 201
+  orig: 82, 201
+  offset: 0, 0
+  index: -1
+white/L_wing_fly
+  rotate: false
+  xy: 2, 536
+  size: 380, 208
+  orig: 380, 208
+  offset: 0, 0
+  index: -1
+white/P_wing
+  rotate: true
+  xy: 766, 752
+  size: 76, 204
+  orig: 76, 204
+  offset: 0, 0
+  index: -1
+white/P_wing_fly
+  rotate: false
+  xy: 2, 326
+  size: 380, 208
+  orig: 380, 208
+  offset: 0, 0
+  index: -1
+white/body_flying
+  rotate: true
+  xy: 766, 830
+  size: 124, 214
+  orig: 124, 214
+  offset: 0, 0
+  index: -1
+white/head_back_flying
+  rotate: false
+  xy: 86, 133
+  size: 119, 81
+  orig: 119, 81
+  offset: 0, 0
+  index: -1
+white/tail
+  rotate: true
+  xy: 588, 560
+  size: 74, 101
+  orig: 74, 101
+  offset: 0, 0
+  index: -1
+white/tail_fly
+  rotate: false
+  xy: 588, 636
+  size: 152, 108
+  orig: 152, 108
+  offset: 0, 0
+  index: -1
