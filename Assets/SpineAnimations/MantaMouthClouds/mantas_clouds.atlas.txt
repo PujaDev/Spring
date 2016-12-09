@@ -1,0 +1,67 @@
+
+mantas_clouds.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mantas_1
+  rotate: false
+  xy: 2, 48
+  size: 126, 82
+  orig: 126, 82
+  offset: 0, 0
+  index: -1
+mantas_2
+  rotate: false
+  xy: 2, 2
+  size: 53, 44
+  orig: 53, 44
+  offset: 0, 0
+  index: -1
+mantas_3
+  rotate: false
+  xy: 1926, 1541
+  size: 100, 93
+  orig: 100, 93
+  offset: 0, 0
+  index: -1
+sky
+  rotate: false
+  xy: 2, 132
+  size: 1922, 1502
+  orig: 1922, 1502
+  offset: 0, 0
+  index: -1
+
+mantas_clouds2.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clouds_1
+  rotate: false
+  xy: 2, 693
+  size: 1922, 990
+  orig: 1922, 990
+  offset: 0, 0
+  index: -1
+clouds_2
+  rotate: false
+  xy: 2, 2
+  size: 1922, 689
+  orig: 1922, 689
+  offset: 0, 0
+  index: -1
+
+mantas_clouds3.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+clouds_3
+  rotate: false
+  xy: 2, 2
+  size: 1922, 589
+  orig: 1922, 589
+  offset: 0, 0
+  index: -1
