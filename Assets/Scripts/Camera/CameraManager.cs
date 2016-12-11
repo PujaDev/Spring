@@ -8,6 +8,7 @@ public class CameraManager : MonoBehaviour
     public BoxCollider2D Bounds;
     public float MoveSpeed;
     public float RotationSpeed;
+    public bool IsOn;
 
 
     //-- Public --//
@@ -32,12 +33,16 @@ public class CameraManager : MonoBehaviour
             //DontDestroyOnLoad(gameObject);
             Instance = this;
 
-            // Center to player and save as target - we don't want to move
-            MainCam.transform.position = ClampCamToBounds(MainCam.transform.position);
-            TargetPosition = MainCam.transform.position;
-            TargetRotation = MainCam.transform.rotation;
+            if (IsOn)
+            {
+                // Center to player and save as target - we don't want to move
+                MainCam.transform.position = ClampCamToBounds(MainCam.transform.position);
+                TargetPosition = MainCam.transform.position;
+                TargetRotation = MainCam.transform.rotation;
+            }
 
             shaker = new CameraShaker();
+
         }
         else // Instance already exist - second manager is not allowed
         {
@@ -47,6 +52,19 @@ public class CameraManager : MonoBehaviour
 
 
     //-- Interface --//
+
+    public void TurnOn()
+    {
+        IsOn = true;
+        TargetPosition = MainCam.transform.position;
+        TargetRotation = MainCam.transform.rotation;
+    }
+
+    public void TurnOff()
+    {
+        IsOn = false;
+    }
+
     /// <summary>
     /// Returns camera position clamped to bounds from given desired position.
     /// Does not move the camera
@@ -117,26 +135,29 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (prevShake != Vector3.zero)
-            RevertShake();
-
-        if (TargetRotation.eulerAngles.z != MainCam.transform.rotation.eulerAngles.z || 
-            Vector3.Distance(MainCam.transform.position, TargetPosition) > 0.05f)
+        if (IsOn)
         {
-            // Rotation may cause movement not the other way around - rotation first
-            ApplyRotation();
-            ApplyMovement();
-        }
+            if (prevShake != Vector3.zero)
+                RevertShake();
 
-        MainCam.transform.position = ClampCamToBounds(MainCam.transform.position);
+            if (TargetRotation.eulerAngles.z != MainCam.transform.rotation.eulerAngles.z ||
+                Vector3.Distance(MainCam.transform.position, TargetPosition) > 0.05f)
+            {
+                // Rotation may cause movement not the other way around - rotation first
+                ApplyRotation();
+                ApplyMovement();
+            }
 
-        if (shaker.IsShaking)
-        {
-            ApplyShake();
-        }
-        else
-        {
-            prevShake = Vector2.zero;
+            MainCam.transform.position = ClampCamToBounds(MainCam.transform.position);
+
+            if (shaker.IsShaking)
+            {
+                ApplyShake();
+            }
+            else
+            {
+                prevShake = Vector2.zero;
+            }
         }
     }
 

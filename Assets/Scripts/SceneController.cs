@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
-    public CharacterInput walkableArea;
+    public CharacterInput [] walkableAreas;
 
+    public int currentSectionAreaIndex;
     public int currentAreaIndex;
     public int targetAreaIndex;
     public float startPositionY;
@@ -19,21 +20,28 @@ public class SceneController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            walkableArea = GetComponentInChildren<CharacterInput>(); // Return only the big area
-            var subAreas = walkableArea.GetComponentsInChildren<Collider2D>();
+            currentAreaIndex = -1;
+            currentSectionAreaIndex = -1;
+            //walkableArea = GetComponentInChildren<CharacterInput>(); // Return only the big area
+            for (int i = 0; i < walkableAreas.Length; i++) {
+                var subAreas = walkableAreas[i].GetComponentsInChildren<Collider2D>();
 
-            // Find in which sub-area the character is
-            var character = GameObject.FindGameObjectWithTag("Character");
-            // i == 0 -> the big collider in parent - but we want only the small sub-areas in childern
-            for (int i = 1; i < subAreas.Length; i++)
-            {
-                if (subAreas[i].OverlapPoint(character.transform.position))
+                // Find in which sub-area the character is
+                var character = GameObject.FindGameObjectWithTag("Character");
+                // i == 0 -> the big collider in parent - but we want only the small sub-areas in childern
+                for (int j = 1; j < subAreas.Length; j++)
                 {
-                    // The index points to the array of small children areas - but we have the big one at index 0
-                    currentAreaIndex = i - 1;
-                    break;
+                    if (subAreas[j].OverlapPoint(character.transform.position))
+                    {
+                        // The index points to the array of small children areas - but we have the big one at index 0
+                        currentAreaIndex = j - 1;
+                        currentSectionAreaIndex = i;
+                        break;
+                    }
                 }
+                if (currentSectionAreaIndex != -1) break;
             }
+            // switch between section areas
         }
         else if (Instance != this)
         {
