@@ -7,4 +7,5 @@ public class TestSceneState : SceneState
     public bool AlarmPostponed;
     public bool ChangeClothes;
     public bool ReadingVeganBook;
+    public bool FlyAway;
 }

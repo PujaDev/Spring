@@ -31,6 +31,9 @@ public class TestSceneReducer : Reducer
                 var chart1 = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
                 chart1.SendFungusMessage("GoIn");
                 break;
+            case ActionType.FLY_AWAY:
+                state.Test.FlyAway = true;
+                break;
         }
 
         return state;
