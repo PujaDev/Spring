@@ -27,6 +27,10 @@ public class TestSceneReducer : Reducer
                 var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
                 chart.SendFungusMessage("GoOut");
                 break;
+            case ActionType.GO_INSIDE:
+                var chart1 = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
+                chart1.SendFungusMessage("GoIn");
+                break;
         }
 
         return state;

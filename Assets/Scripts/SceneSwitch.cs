@@ -4,10 +4,11 @@ using System.Collections;
 public class SceneSwitch : MonoBehaviour
 {
     public Transform StartPoint;
+    public ActionType Action;
 
     void OnMouseDown()
     {
-        SpringAction action = new SpringAction(ActionType.GO_OUTSIDE, "Go outside", null);
+        SpringAction action = new SpringAction(Action, null, null);
         GameController.controller.MoveCharToObject(gameObject, action);
     }
 
