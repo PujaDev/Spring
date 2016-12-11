@@ -4,7 +4,7 @@ using System;
 
 public class TestSceneReducer : Reducer
 {
-    public override GameState Reduce(GameState state, Action action, IInteractable source = null)
+    public override GameState Reduce(GameState state, SpringAction action, IInteractable source = null)
     {
         switch (action.Type)
         {

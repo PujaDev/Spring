@@ -31,7 +31,7 @@ public class CharacterInput : MonoBehaviour
     }
 
     // Calculates path for character to move along to reach destination 
-    public void MoveToPoint(Vector2 destination, Action action=null, IInteractable source=null) {
+    public void MoveToPoint(Vector2 destination, SpringAction action=null, IInteractable source=null) {
         if (WalkableArea.OverlapPoint(destination)) //checks whether mouse is in the walkable area
         {
             int i;

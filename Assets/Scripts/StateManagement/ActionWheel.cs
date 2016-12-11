@@ -12,7 +12,7 @@ public class ActionWheel : MonoBehaviour
     private int actionNumber = -1;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
-    private Action[] actions;
+    private SpringAction[] actions;
     private IInteractable actionSource;
     private GameObject cancelButton;
     private GameObject[] children;
@@ -102,7 +102,7 @@ public class ActionWheel : MonoBehaviour
         }
     }
 
-    public void ShowActions(Action[] actions, IInteractable actionSource = null)
+    public void ShowActions(SpringAction[] actions, IInteractable actionSource = null)
     {
         killAndBuryChildren();
 

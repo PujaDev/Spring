@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Action {
+public class SpringAction {
 
     public readonly string Label;
     public readonly ActionType Type;
     public readonly object Payload;
     public readonly Sprite Icon;
 
-    public Action(ActionType type, string label, Sprite icon)
+    public SpringAction(ActionType type, string label, Sprite icon)
     {
         Type = type;
         Label = label;
         Icon = icon;
     }
 
-    public Action(ActionType type, string label, Sprite icon, object payload)
+    public SpringAction(ActionType type, string label, Sprite icon, object payload)
     {
         Type = type;
         Payload = payload;

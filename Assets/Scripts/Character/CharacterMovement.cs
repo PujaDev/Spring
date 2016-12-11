@@ -5,7 +5,7 @@ using Spine.Unity;
 
 public interface IMoveable
 {
-    void MoveTo(List<Vector3> targets, Action action, IInteractable source);
+    void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source);
 }
 
 public class CharacterMovement : MonoBehaviour, IMoveable {
@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
 	}
 
-    public void MoveTo(List<Vector3> targets, Action action, IInteractable source)
+    public void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source)
     {
         if (!busy)
         {
@@ -75,7 +75,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
         }
     }
 
-        IEnumerator MoveToCoroutine(List<Vector3> targets, Action action, IInteractable source)
+        IEnumerator MoveToCoroutine(List<Vector3> targets, SpringAction action, IInteractable source)
     {
         if (idleTail != null)
             StopCoroutine(idleTail);
