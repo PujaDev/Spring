@@ -144,4 +144,5 @@ MonoBehaviour:
   cursorIcons:
   - {fileID: 2800000, guid: d493f07590d701742b0df458759ade94, type: 3}
   - {fileID: 2800000, guid: 17e3228f187014a4ab5f18a2e8a5c7b2, type: 3}
+  - {fileID: 2800000, guid: 3180d4a85f2cb334188bd4c19e67ae0e, type: 3}
   currentIcon: 1
