@@ -23,6 +23,14 @@ public class TestSceneReducer : Reducer
             case ActionType.STOP_READING_VEGAN_BOOK:
                 state.Test.ReadingVeganBook = false;
                 break;
+            case ActionType.GO_OUTSIDE:
+                var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
+                chart.SendFungusMessage("GoOut");
+                break;
+            case ActionType.GO_INSIDE:
+                var chart1 = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
+                chart1.SendFungusMessage("GoIn");
+                break;
         }
 
         return state;

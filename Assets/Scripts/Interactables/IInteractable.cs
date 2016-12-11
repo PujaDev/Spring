@@ -57,31 +57,9 @@ public abstract class IInteractable : MonoBehaviour {
         Destroy(interactable.gameObject);
     }
 
-    public bool ComeCloser(SpringAction action = null) {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
-        Vector2 destination;
-        //Debug.Log(hit.point);
-        if (hit.collider == null) {
-            hit = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
-            //Debug.Log(hit.point);
-            destination = hit.point;
-            destination.y += 0.001f;
-        }else{
-            destination = hit.point;
-            destination.y -= 0.001f;
-        }
-        if(hit.collider != null)
-        {
-            //Debug.Log(hit.collider.name);
-            CharacterInput walkableArea = hit.collider.gameObject.GetComponent<CharacterInput>();
-            if(walkableArea != null)
-            {
-                walkableArea.MoveToPoint(destination, action, this);
-                return true;
-            }
-        }
-
-        return false;
+    public bool ComeCloser(SpringAction action = null)
+    {
+        return GameController.controller.MoveCharToObject(gameObject, action, this);
     }
 
     virtual public void OnStateChanged(GameState newState, GameState oldState)

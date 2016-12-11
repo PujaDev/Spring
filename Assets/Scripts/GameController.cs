@@ -13,8 +13,9 @@ class PlayerData
 public enum CursorIcon
 {
     NORMAL = 1,
-    WALK = 2,
-    ACTION = 3
+    WALK,
+    ACTION,
+    SWITCH_SCENE
 }
 
 public class GameController : MonoBehaviour {
@@ -71,5 +72,36 @@ public class GameController : MonoBehaviour {
     {
         isSoundOn = !isSoundOn;
         GetComponent<AudioSource>().enabled = isSoundOn;
+    }
+
+    public bool MoveCharToObject(GameObject obj, SpringAction action = null, IInteractable interactable = null)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(obj.transform.position, -Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
+        Vector2 destination;
+        //Debug.Log(hit.point);
+        if (hit.collider == null)
+        {
+            hit = Physics2D.Raycast(obj.transform.position, Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
+            //Debug.Log(hit.point);
+            destination = hit.point;
+            destination.y += 0.001f;
+        }
+        else
+        {
+            destination = hit.point;
+            destination.y -= 0.001f;
+        }
+        if (hit.collider != null)
+        {
+            //Debug.Log(hit.collider.name);
+            CharacterInput walkableArea = hit.collider.gameObject.GetComponent<CharacterInput>();
+            if (walkableArea != null)
+            {
+                walkableArea.MoveToPoint(destination, action, interactable);
+                return true;
+            }
+        }
+
+        return false;
     }
 }
