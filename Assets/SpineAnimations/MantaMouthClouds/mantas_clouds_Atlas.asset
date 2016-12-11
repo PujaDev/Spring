@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: mantas_clouds_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: c2e3c090a0562994f8c55b0fe67261a1, type: 3}
+  atlasFile: {fileID: 4900000, guid: 50d429a6f811d4940a5683c21850d278, type: 3}
   materials:
   - {fileID: 2100000, guid: f707459058a73834dbff0ee4dc0c2cbe, type: 2}
   - {fileID: 2100000, guid: 4a94e00cd81c02647bdb69cc29c6a0bc, type: 2}

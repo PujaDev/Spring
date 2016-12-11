@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: mantas_mouth_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 9c150de7403b7f7468193a76c8ce23a5, type: 3}
+  atlasFile: {fileID: 4900000, guid: 8dfe21ae6c16e224593d7d643604936b, type: 3}
   materials:
   - {fileID: 2100000, guid: 416ba7256df54c646b570fd0228123e1, type: 2}
