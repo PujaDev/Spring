@@ -52,7 +52,7 @@ public class StateManager : MonoBehaviour
     /// </summary>
     /// <param name="action">Dispatched action</param>
     /// <param name="actionSource">Interactable that dispatched action</param>
-    public void DispatchAction(Action action, IInteractable actionSource)
+    public void DispatchAction(SpringAction action, IInteractable actionSource)
     {
         var newState = State;
         foreach (var reducer in reducers)

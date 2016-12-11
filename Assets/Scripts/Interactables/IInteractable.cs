@@ -57,7 +57,7 @@ public abstract class IInteractable : MonoBehaviour {
         Destroy(interactable.gameObject);
     }
 
-    public bool ComeCloser(Action action = null) {
+    public bool ComeCloser(SpringAction action = null) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
         Vector2 destination;
         //Debug.Log(hit.point);
@@ -88,5 +88,5 @@ public abstract class IInteractable : MonoBehaviour {
     {
     }
 
-    abstract protected Action[] GetActionList();
+    abstract protected SpringAction[] GetActionList();
 }

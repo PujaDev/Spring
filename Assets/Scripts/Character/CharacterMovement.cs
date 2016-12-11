@@ -5,7 +5,7 @@ using Spine.Unity;
 
 public interface IMoveable
 {
-    void MoveTo(List<Vector3> targets, Action action, IInteractable source);
+    void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source);
 }
 
 public class CharacterMovement : MonoBehaviour, IMoveable {
@@ -15,6 +15,8 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
 
     private bool busy;
     private Coroutine move;
+    private Coroutine idleTail;
+    private Coroutine idleHand;
     private SkeletonAnimation skeletonAnim;
 
     // Use this for initialization
@@ -23,6 +25,8 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
         busy = false;
         skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+        idleTail = StartCoroutine(IdleTailCoroutine());
+        idleHand = StartCoroutine(IdleHandCoroutine());
         ScaleCharacter();
 	}
 	
@@ -31,7 +35,7 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
 	}
 
-    public void MoveTo(List<Vector3> targets, Action action, IInteractable source)
+    public void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source)
     {
         if (!busy)
         {
@@ -41,12 +45,46 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
             move = StartCoroutine(MoveToCoroutine(targets, action, source));
         }
     }
+    
 
-    IEnumerator MoveToCoroutine(List<Vector3> targets, Action action, IInteractable source)
+    IEnumerator IdleHandCoroutine()
     {
+        float randomDelay;
+        while (true)
+        {
+            randomDelay = Random.Range(8f, 15f);
+            yield return new WaitForSeconds(randomDelay);
+            if (Random.Range(0f, 1f) < 0.5f) {
+                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+            } else skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_hair", false, 0);
+
+        }
+    }
+
+    IEnumerator IdleTailCoroutine()
+    {
+
+        float randomDelay;
+        while (true)
+        {
+            randomDelay = Random.Range(3f, 8f);
+            yield return new WaitForSeconds(randomDelay);
+            skeletonAnim.AnimationState.AddAnimation(1, "idle_tail", false, 0);
+
+        }
+    }
+
+        IEnumerator MoveToCoroutine(List<Vector3> targets, SpringAction action, IInteractable source)
+    {
+        if (idleTail != null)
+            StopCoroutine(idleTail);
+        if (idleHand != null)
+            StopCoroutine(idleHand);
+
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
-            skeletonAnim.AnimationState.SetAnimation(0, "walk", true);
+            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 2f;
 
         while (targets.Count > 0)
         {
@@ -78,6 +116,9 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
         }
 
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+
+        idleTail = StartCoroutine(IdleTailCoroutine());
+        idleHand = StartCoroutine(IdleHandCoroutine());
 
         //calls action after reaching the destination
         if (action != null)

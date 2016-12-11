@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 
 public class EmptyElixirVials : IInteractable {
-    protected override Action[] GetActionList()
+    protected override SpringAction[] GetActionList()
     {
-        return new Action[] {
-            new Action(ActionType.LOOK, "Look at",icons[0])
+        return new SpringAction[] {
+            new SpringAction(ActionType.LOOK, "Look at",icons[0])
         };
     }
 }

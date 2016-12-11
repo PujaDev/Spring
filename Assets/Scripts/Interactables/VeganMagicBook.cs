@@ -8,10 +8,10 @@ public class VeganMagicBook : IInteractable
     public GameObject Book;
     public BookHandler Handler;
 
-    protected override Action[] GetActionList()
+    protected override SpringAction[] GetActionList()
     {
-        return new Action[]{
-            new Action(ActionType.START_READING_VEGAN_BOOK, "Read", icons[0])
+        return new SpringAction[]{
+            new SpringAction(ActionType.START_READING_VEGAN_BOOK, "Read", icons[0])
         };
     }
 

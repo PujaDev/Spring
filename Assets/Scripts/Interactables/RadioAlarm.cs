@@ -4,14 +4,14 @@ using System;
 
 public class RadioAlarm : IInteractable {
 
-    protected override Action[] GetActionList()
+    protected override SpringAction[] GetActionList()
     {
-        return new Action[] {
-            new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
-            new Action(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
-            new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
-            new Action(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
-            new Action(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
+        return new SpringAction[] {
+            new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
+            new SpringAction(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
+            new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
+            new SpringAction(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
+            new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
         };
     }
 

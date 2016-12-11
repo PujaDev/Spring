@@ -22,7 +22,7 @@ public class BookHandler : MonoBehaviour
     /// Only false before first openning
     /// </summary>
     private bool WasOpen;
-    private Action StopReading;
+    private SpringAction StopReading;
 
     private List<Coroutine> FadeIn;
 
@@ -35,7 +35,7 @@ public class BookHandler : MonoBehaviour
         }
         TotalPages = LeftPages.Length;
 
-        StopReading = new Action(ActionType.STOP_READING_VEGAN_BOOK, null, null);
+        StopReading = new SpringAction(ActionType.STOP_READING_VEGAN_BOOK, null, null);
         FadeIn = new List<Coroutine>();
     }
 

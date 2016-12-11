@@ -53,8 +53,11 @@ namespace Spine.Unity.Editor {
 		internal const string NoneLabel = "<None>";
 
 		protected T TargetAttribute { get { return (T)attribute; } }
+		protected SerializedProperty SerializedProperty { get; private set; }
 
 		public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) {
+			SerializedProperty = property;
+
 			if (property.propertyType != SerializedPropertyType.String) {
 				EditorGUI.LabelField(position, "ERROR:", "May only apply to type string");
 				return;
@@ -87,7 +90,7 @@ namespace Spine.Unity.Editor {
 
 			position = EditorGUI.PrefixLabel(position, label);
 
-			var propertyStringValue = property.stringValue;
+			var propertyStringValue = (property.hasMultipleDifferentValues) ? SpineInspectorUtility.EmDash : property.stringValue;
 			if (GUI.Button(position, string.IsNullOrEmpty(propertyStringValue) ? NoneLabel : propertyStringValue, EditorStyles.popup))
 				Selector(property);
 
@@ -148,8 +151,10 @@ namespace Spine.Unity.Editor {
 
 						bool hasBoundingBox = false;
 						foreach (var attachment in attachments) {
-							if (attachment is BoundingBoxAttachment) {
-								menu.AddItem(new GUIContent(name), name == property.stringValue, HandleSelect, new SpineDrawerValuePair(name, property));
+							var bbAttachment = attachment as BoundingBoxAttachment;
+							if (bbAttachment != null) {
+								string menuLabel = bbAttachment.IsWeighted() ? name + " (!)" : name;
+								menu.AddItem(new GUIContent(menuLabel), name == property.stringValue, HandleSelect, new SpineDrawerValuePair(name, property));
 								hasBoundingBox = true;
 								break;
 							}
@@ -302,7 +307,6 @@ namespace Spine.Unity.Editor {
 
 	[CustomPropertyDrawer(typeof(SpineBone))]
 	public class SpineBoneDrawer : SpineTreeItemDrawerBase<SpineBone> {
-
 		protected override void PopulateMenu (GenericMenu menu, SerializedProperty property, SpineBone targetAttribute, SkeletonData data) {
 			menu.AddDisabledItem(new GUIContent(skeletonDataAsset.name));
 			menu.AddSeparator("");
@@ -318,17 +322,21 @@ namespace Spine.Unity.Editor {
 
 	[CustomPropertyDrawer(typeof(SpineAtlasRegion))]
 	public class SpineAtlasRegionDrawer : PropertyDrawer {
-		Component component;
 		SerializedProperty atlasProp;
+
+		protected SpineAtlasRegion TargetAttribute { get { return (SpineAtlasRegion)attribute; } }
 
 		public override void OnGUI (Rect position, SerializedProperty property, GUIContent label) {
 			if (property.propertyType != SerializedPropertyType.String) {
 				EditorGUI.LabelField(position, "ERROR:", "May only apply to type string");
 				return;
 			}
+				
+			string atlasAssetFieldName = TargetAttribute.atlasAssetField;
+			if (string.IsNullOrEmpty(atlasAssetFieldName))
+				atlasAssetFieldName = "atlasAsset";
 
-			component = (Component)property.serializedObject.targetObject;
-			atlasProp = component != null ? property.serializedObject.FindProperty("atlasAsset") : null;
+			atlasProp = property.serializedObject.FindProperty(atlasAssetFieldName);
 
 			if (atlasProp == null) {
 				EditorGUI.LabelField(position, "ERROR:", "Must have AtlasAsset variable!");

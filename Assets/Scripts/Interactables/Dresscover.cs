@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 
 public class Dresscover : IInteractable {
-    protected override Action[] GetActionList()
+    protected override SpringAction[] GetActionList()
     {
-        return new Action[] {
-            new Action(ActionType.CHANGE_CLOTHES, "Change clothes",icons[0])
+        return new SpringAction[] {
+            new SpringAction(ActionType.CHANGE_CLOTHES, "Change clothes",icons[0])
         };
     }
 
