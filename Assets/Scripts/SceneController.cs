@@ -20,27 +20,7 @@ public class SceneController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            currentAreaIndex = -1;
-            currentSectionAreaIndex = -1;
-            //walkableArea = GetComponentInChildren<CharacterInput>(); // Return only the big area
-            for (int i = 0; i < walkableAreas.Length; i++) {
-                var subAreas = walkableAreas[i].GetComponentsInChildren<Collider2D>();
-
-                // Find in which sub-area the character is
-                var character = GameObject.FindGameObjectWithTag("Character");
-                // i == 0 -> the big collider in parent - but we want only the small sub-areas in childern
-                for (int j = 1; j < subAreas.Length; j++)
-                {
-                    if (subAreas[j].OverlapPoint(character.transform.position))
-                    {
-                        // The index points to the array of small children areas - but we have the big one at index 0
-                        currentAreaIndex = j - 1;
-                        currentSectionAreaIndex = i;
-                        break;
-                    }
-                }
-                if (currentSectionAreaIndex != -1) break;
-            }
+            InitCharArea();
             // switch between section areas
         }
         else if (Instance != this)
@@ -49,4 +29,33 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public void InitCharArea()
+    {
+        var character = GameObject.FindGameObjectWithTag("Character");
+        InitAreaForPos(character.transform.position);
+    }
+
+    public void InitAreaForPos(Vector3 pos)
+    {
+        currentAreaIndex = -1;
+        currentSectionAreaIndex = -1;
+        //walkableArea = GetComponentInChildren<CharacterInput>(); // Return only the big area
+        for (int i = 0; i < walkableAreas.Length; i++)
+        {
+            var subAreas = walkableAreas[i].GetComponentsInChildren<Collider2D>();
+
+            // i == 0 -> the big collider in parent - but we want only the small sub-areas in childern
+            for (int j = 1; j < subAreas.Length; j++)
+            {
+                if (subAreas[j].OverlapPoint(pos))
+                {
+                    // The index points to the array of small children areas - but we have the big one at index 0
+                    currentAreaIndex = j - 1;
+                    currentSectionAreaIndex = i;
+                    break;
+                }
+            }
+            if (currentSectionAreaIndex != -1) break;
+        }
+    }
 }

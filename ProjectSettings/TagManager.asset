@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Character
   - BlockingVolume
+  - Scenarios
   layers:
   - Default
   - TransparentFX
