@@ -52,7 +52,7 @@ namespace Spine.Unity {
 			SafeSubscribe(trackEntry);
 		}
 
-		void HandleComplete (AnimationState state, int trackIndex, int loopCount) {
+		void HandleComplete (TrackEntry trackEntry) {
 			m_WasFired = true;
 		}
 
@@ -62,14 +62,13 @@ namespace Spine.Unity {
 				Debug.LogWarning("TrackEntry was null. Coroutine will continue immediately.");
 				m_WasFired = true;
 			} else {
-				// Function normally.
 				trackEntry.Complete += HandleComplete;
 			}
 		}
 
 		#region Reuse
 		/// <summary>
-		/// One optimization high-frequency YieldInstruction returns is to cache instances to minimize pressure. 
+		/// One optimization high-frequency YieldInstruction returns is to cache instances to minimize GC pressure. 
 		/// Use NowWaitFor to reuse the same instance of WaitForSpineAnimationComplete.</summary>
 		public WaitForSpineAnimationComplete NowWaitFor (Spine.TrackEntry trackEntry) {
 			SafeSubscribe(trackEntry);

@@ -237,6 +237,7 @@ namespace Spine.Unity.Modules {
 			float startTime = Time.time;
 			float startMix = mix;
 			while (mix > 0) {
+				skeleton.SetBonesToSetupPose();
 				mix = Mathf.SmoothStep(startMix, target, (Time.time - startTime) / duration);
 				yield return null;
 			}
@@ -353,7 +354,7 @@ namespace Spine.Unity.Modules {
 				b.x = Mathf.Lerp(b.x, boneLocalPosition.x, mix);
 				b.y = Mathf.Lerp(b.y, boneLocalPosition.y, mix);
 				b.rotation = Mathf.Lerp(b.rotation, boneLocalRotation, mix);
-				b.appliedRotation = Mathf.Lerp(b.appliedRotation, boneLocalRotation, mix);
+				//b.AppliedRotation = Mathf.Lerp(b.AppliedRotation, boneLocalRotation, mix);
 			}
 		}
 

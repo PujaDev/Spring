@@ -35,8 +35,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Spine.Unity;
-using UnityEngine.Assertions;
 
 namespace Spine.Unity.Modules {
 	[RequireComponent(typeof(SkeletonRenderer))]
@@ -255,6 +253,7 @@ namespace Spine.Unity.Modules {
 			float startTime = Time.time;
 			float startMix = mix;
 			while (mix > 0) {
+				skeleton.SetBonesToSetupPose();
 				mix = Mathf.SmoothStep(startMix, target, (Time.time - startTime) / duration);
 				yield return null;
 			}
@@ -380,7 +379,7 @@ namespace Spine.Unity.Modules {
 				b.x = Mathf.Lerp(b.x, boneLocalPosition.x, mix);
 				b.y = Mathf.Lerp(b.y, boneLocalPosition.y, mix);
 				b.rotation = Mathf.Lerp(b.rotation, boneLocalRotation, mix);
-				b.appliedRotation = Mathf.Lerp(b.appliedRotation, boneLocalRotation, mix);
+				//b.AppliedRotation = Mathf.Lerp(b.AppliedRotation, boneLocalRotation, mix);
 			}
 		}
 
@@ -399,7 +398,7 @@ namespace Spine.Unity.Modules {
 							if (!a.Name.ToLower().Contains(AttachmentNameMarker))
 								continue;
 
-							var bbCollider = SkeletonUtility.AddBoundingBoxAsComponent(bbAttachment, go, false);
+							var bbCollider = SkeletonUtility.AddBoundingBoxAsComponent(bbAttachment, s, go, false);
 							colliders.Add(bbCollider);
 						}
 					}

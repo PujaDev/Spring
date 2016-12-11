@@ -31,6 +31,7 @@
 using UnityEngine;
 using System.Collections;
 using Spine;
+using Spine.Unity.Modules.AttachmentTools;
 
 namespace Spine.Unity.Modules {
 	public class AtlasRegionAttacher : MonoBehaviour {
@@ -53,26 +54,17 @@ namespace Spine.Unity.Modules {
 			GetComponent<SkeletonRenderer>().OnRebuild += Apply;
 		}
 
-
 		void Apply (SkeletonRenderer skeletonRenderer) {
 			atlas = atlasAsset.GetAtlas();
-
-			AtlasAttachmentLoader loader = new AtlasAttachmentLoader(atlas);
-
-			float scaleMultiplier = skeletonRenderer.skeletonDataAsset.scale;
+			float scale = skeletonRenderer.skeletonDataAsset.scale;
 
 			var enumerator = attachments.GetEnumerator();
 			while (enumerator.MoveNext()) {
 				var entry = (SlotRegionPair)enumerator.Current;
-				var regionAttachment = loader.NewRegionAttachment(null, entry.region, entry.region);
-				regionAttachment.Width = regionAttachment.RegionOriginalWidth * scaleMultiplier;
-				regionAttachment.Height = regionAttachment.RegionOriginalHeight * scaleMultiplier;
-
-				regionAttachment.SetColor(new Color(1, 1, 1, 1));
-				regionAttachment.UpdateOffset();
 
 				var slot = skeletonRenderer.skeleton.FindSlot(entry.slot);
-				slot.Attachment = regionAttachment;
+				var region = atlas.FindRegion(entry.region);
+				slot.Attachment = region.ToRegionAttachment(entry.region, scale);
 			}
 		}
 
