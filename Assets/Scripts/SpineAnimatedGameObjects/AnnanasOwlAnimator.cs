@@ -71,6 +71,10 @@ public class AnnanasOwlAnimator : MonoBehaviour {
         }
     }
 
+    public void Fly() {
+        StartCoroutine(FlyToCoroutine());
+    }
+
     // Use this for initialization
     void Start()
     {

@@ -16,5 +16,6 @@ public enum ActionType {
     START_READING_VEGAN_BOOK,
     STOP_READING_VEGAN_BOOK,
     GO_OUTSIDE,
-    GO_INSIDE
+    GO_INSIDE,
+    FLY_AWAY
 }
