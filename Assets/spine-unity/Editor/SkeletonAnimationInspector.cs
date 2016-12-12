@@ -35,9 +35,13 @@ using Spine;
 namespace Spine.Unity.Editor {
 	
 	[CustomEditor(typeof(SkeletonAnimation))]
+	[CanEditMultipleObjects]
 	public class SkeletonAnimationInspector : SkeletonRendererInspector {
 		protected SerializedProperty animationName, loop, timeScale, autoReset;
 		protected bool wasAnimationNameChanged;
+		protected bool requireRepaint;
+		readonly GUIContent LoopLabel = new GUIContent("Loop", "Whether or not .AnimationName should loop. This only applies to the initial animation specified in the inspector, or any subsequent Animations played through .AnimationName. Animations set through state.SetAnimation are unaffected.");
+		readonly GUIContent TimeScaleLabel = new GUIContent("Time Scale", "The rate at which animations progress over time. 1 means normal speed. 0.5 means 50% speed.");
 
 		protected override void OnEnable () {
 			base.OnEnable();
@@ -46,62 +50,89 @@ namespace Spine.Unity.Editor {
 			timeScale = serializedObject.FindProperty("timeScale");
 		}
 
-		protected override void DrawInspectorGUI () {
-			base.DrawInspectorGUI();
+		protected override void DrawInspectorGUI (bool multi) {
+			base.DrawInspectorGUI(multi);
+			if (!TargetIsValid) return;
+			bool sameData = SpineInspectorUtility.TargetsUseSameData(serializedObject);
 
-			SkeletonAnimation component = (SkeletonAnimation)target;
-			if (!component.valid)
+			if (multi) {
+				foreach (var o in targets)		
+					TrySetAnimation(o, multi);
+				
+				EditorGUILayout.Space();
+				if (!sameData) {
+					EditorGUILayout.DelayedTextField(animationName);
+				} else {
+					EditorGUI.BeginChangeCheck();
+					EditorGUILayout.PropertyField(animationName);
+					wasAnimationNameChanged |= EditorGUI.EndChangeCheck(); // Value used in the next update.
+				}
+				EditorGUILayout.PropertyField(loop);
+				EditorGUILayout.PropertyField(timeScale);
+				foreach (var o in targets) {
+					var component = o as SkeletonAnimation;
+					component.timeScale = Mathf.Max(component.timeScale, 0);
+				}
+			} else {
+				TrySetAnimation(target, multi);
+
+				EditorGUILayout.Space();
+				EditorGUI.BeginChangeCheck();
+				EditorGUILayout.PropertyField(animationName);
+				wasAnimationNameChanged |= EditorGUI.EndChangeCheck(); // Value used in the next update.
+				EditorGUILayout.PropertyField(loop, LoopLabel);
+				EditorGUILayout.PropertyField(timeScale, TimeScaleLabel);
+				var component = (SkeletonAnimation)target;
+				component.timeScale = Mathf.Max(component.timeScale, 0);
+			}
+
+			if (!isInspectingPrefab) {
+				if (requireRepaint) {
+					SceneView.RepaintAll();
+					requireRepaint = false;
+				}
+
+				DrawSkeletonUtilityButton(multi);
+			}
+		}
+
+		protected void TrySetAnimation (Object o, bool multi) {
+			var skeletonAnimation = o as SkeletonAnimation;
+			if (skeletonAnimation == null) return;
+			if (!skeletonAnimation.valid)
 				return;
 
 			if (!isInspectingPrefab) {
 				if (wasAnimationNameChanged) {
 					if (!Application.isPlaying) {
-						if (component.state != null) component.state.ClearTrack(0);
-						component.skeleton.SetToSetupPose();
+						if (skeletonAnimation.state != null) skeletonAnimation.state.ClearTrack(0);
+						skeletonAnimation.skeleton.SetToSetupPose();
 					}
 
-					Spine.Animation animationToUse = component.skeleton.Data.FindAnimation(animationName.stringValue);
+					Spine.Animation animationToUse = skeletonAnimation.skeleton.Data.FindAnimation(animationName.stringValue);
 
 					if (!Application.isPlaying) {
-						if (animationToUse != null) animationToUse.Apply(component.skeleton, 0f, 0f, false, null);
-						component.Update();
-						component.LateUpdate();
-						SceneView.RepaintAll();
+						if (animationToUse != null) animationToUse.Apply(skeletonAnimation.skeleton, 0f, 0f, false, null, 1f, true, false);
+						skeletonAnimation.Update();
+						skeletonAnimation.LateUpdate();
+						requireRepaint = true;
 					} else {
 						if (animationToUse != null)
-							component.state.SetAnimation(0, animationToUse, loop.boolValue);
+							skeletonAnimation.state.SetAnimation(0, animationToUse, loop.boolValue);
 						else
-							component.state.ClearTrack(0);
+							skeletonAnimation.state.ClearTrack(0);
 					}
 
 					wasAnimationNameChanged = false;
 				}
 
 				// Reflect animationName serialized property in the inspector even if SetAnimation API was used.
-				if (Application.isPlaying) {
-					TrackEntry current = component.state.GetCurrent(0);
+				if (!multi && Application.isPlaying) {
+					TrackEntry current = skeletonAnimation.state.GetCurrent(0);
 					if (current != null) {
-						if (component.AnimationName != animationName.stringValue)
+						if (skeletonAnimation.AnimationName != animationName.stringValue)
 							animationName.stringValue = current.Animation.Name;
 					}
-				}
-			}
-				
-			EditorGUILayout.Space();
-			EditorGUI.BeginChangeCheck();
-			EditorGUILayout.PropertyField(animationName);
-			wasAnimationNameChanged |= EditorGUI.EndChangeCheck(); // Value used in the next update.
-
-			EditorGUILayout.PropertyField(loop);
-			EditorGUILayout.PropertyField(timeScale);
-			component.timeScale = Mathf.Max(component.timeScale, 0);
-
-			EditorGUILayout.Space();
-
-			if (!isInspectingPrefab) {
-				if (component.GetComponent<SkeletonUtility>() == null) {
-					if (GUILayout.Button(new GUIContent("Add Skeleton Utility", SpineEditorUtilities.Icons.skeletonUtility), GUILayout.Height(30)))
-						component.gameObject.AddComponent<SkeletonUtility>();
 				}
 			}
 		}

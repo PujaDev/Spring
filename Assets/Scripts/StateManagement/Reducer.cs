@@ -20,6 +20,5 @@ abstract public class Reducer : MonoBehaviour  {
     /// <param name="state">Current state</param>
     /// <param name="source">Interactable that dispatched action</param>
     /// <returns>Updated state</returns>
-    abstract public GameState Reduce(GameState state, Action action, IInteractable source = null);
-
+    abstract public GameState Reduce(GameState state, SpringAction action, IInteractable source = null);
 }

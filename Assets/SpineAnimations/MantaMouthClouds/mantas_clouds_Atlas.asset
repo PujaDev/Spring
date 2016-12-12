@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: mantas_clouds_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: 50d429a6f811d4940a5683c21850d278, type: 3}
+  materials:
+  - {fileID: 2100000, guid: f707459058a73834dbff0ee4dc0c2cbe, type: 2}
+  - {fileID: 2100000, guid: 4a94e00cd81c02647bdb69cc29c6a0bc, type: 2}
+  - {fileID: 2100000, guid: dd162346da20a4749a83ffddf625065a, type: 2}

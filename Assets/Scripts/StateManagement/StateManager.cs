@@ -52,7 +52,7 @@ public class StateManager : MonoBehaviour
     /// </summary>
     /// <param name="action">Dispatched action</param>
     /// <param name="actionSource">Interactable that dispatched action</param>
-    public void DispatchAction(Action action, IInteractable actionSource)
+    public void DispatchAction(SpringAction action, IInteractable actionSource)
     {
         var newState = State;
         foreach (var reducer in reducers)
@@ -97,5 +97,14 @@ public class StateManager : MonoBehaviour
     {
         interactables.Add(interactable);
         return State;
+    }
+    /// <summary>
+    /// Stops interactable from receiving notifications about state changes
+    /// </summary>
+    /// <param name="interactable">Interactable to register</param>
+    /// <returns>Current game state</returns>
+    public void Unsubscribe(IInteractable interactable)
+    {
+        interactables.Remove(interactable);
     }
 }

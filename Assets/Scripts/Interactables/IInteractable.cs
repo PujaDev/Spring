@@ -8,12 +8,12 @@ public abstract class IInteractable : MonoBehaviour {
     public string tooltipText = "";
     public Sprite[] icons;
     private bool keepTooltipOpen = false;
-    GameObject tooltipPrefab;
-    GameObject tooltipObject;
+    //GameObject tooltipPrefab;
+    //GameObject tooltipObject;
 
     void Start()
     {
-        tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
+        //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
         var gameState = StateManager.Instance.Subscribe(this);
         OnStateChanged(gameState, null);
     }
@@ -22,31 +22,49 @@ public abstract class IInteractable : MonoBehaviour {
     void OnMouseEnter()
     {
         keepTooltipOpen = false;
-        Destroy(tooltipObject);
+        //Destroy(tooltipObject);
         if (!GameController.controller.isUI)
         {
-            tooltipObject = Instantiate(tooltipPrefab);
-            tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+            //tooltipObject = Instantiate(tooltipPrefab);
+            //tooltipObject.GetComponent<TextMesh>().text = tooltipText;
+            SceneController.Instance.title.text = tooltipText;
         }
     }
 
     void OnMouseExit()
     {
-        if(!keepTooltipOpen)
-            Destroy(tooltipObject);
+        if (!keepTooltipOpen)
+        {
+            //Destroy(tooltipObject);
+            SceneController.Instance.title.text = "";
+        }
     }
 
     void OnMouseDown()
     {
-        var actionList = getActionList();
-        keepTooltipOpen = true;
-        ActionWheel.Instance.ShowActions(actionList,this);
+        if (!GameController.controller.isUI)
+        {
+            var actionList = GetActionList();
+            keepTooltipOpen = true;
+            ActionWheel.Instance.ShowActions(actionList, this);
+            //Debug.Log(ComeCloser());
+        }
+    }
+    
+    public static void DestroyInteractable(IInteractable interactable)
+    {
+        StateManager.Instance.Unsubscribe(interactable);
+        Destroy(interactable.gameObject);
+    }
+
+    public bool ComeCloser(SpringAction action = null)
+    {
+        return GameController.controller.MoveCharToObject(gameObject, action, this);
     }
 
     virtual public void OnStateChanged(GameState newState, GameState oldState)
     {
     }
 
-    abstract protected Action[] getActionList();
-
+    abstract protected SpringAction[] GetActionList();
 }

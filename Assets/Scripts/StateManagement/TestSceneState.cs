@@ -3,6 +3,9 @@ using System.Collections;
 
 public class TestSceneState : SceneState
 {
-    public bool AlarmTurnedOff = false;
-    public bool AlarmPostponed = false;
+    public bool AlarmTurnedOff;
+    public bool AlarmPostponed;
+    public bool ChangeClothes;
+    public bool ReadingVeganBook;
+    public bool FlyAway;
 }

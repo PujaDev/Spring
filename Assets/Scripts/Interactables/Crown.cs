@@ -4,12 +4,12 @@ using System;
 
 public class Crown : IInteractable
 {
-    protected override Action[] getActionList()
+    protected override SpringAction[] GetActionList()
     {
-        return new Action[] {
-            new Action(ActionType.SELL, "Put on head",icons[0]),
-            new Action(ActionType.PUT_ON, "Sell",icons[1]),
-            new Action(ActionType.SELL, "Examine",icons[2]),
+        return new SpringAction[] {
+            new SpringAction(ActionType.SELL, "Put on head",icons[0]),
+            new SpringAction(ActionType.PUT_ON, "Sell",icons[1]),
+            new SpringAction(ActionType.SELL, "Examine",icons[2]),
         };
     }
 }

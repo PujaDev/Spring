@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Character
+  - BlockingVolume
+  - Scenarios
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Midground
   - Character
   - Foreground
-  - 
+  - WalkableArea
   - 
   - 
   - 

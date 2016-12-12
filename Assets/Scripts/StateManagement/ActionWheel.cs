@@ -12,7 +12,7 @@ public class ActionWheel : MonoBehaviour
     private int actionNumber = -1;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
-    private Action[] actions;
+    private SpringAction[] actions;
     private IInteractable actionSource;
     private GameObject cancelButton;
     private GameObject[] children;
@@ -22,7 +22,7 @@ public class ActionWheel : MonoBehaviour
     {
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             Instance = this;
             Instance.Load();
         }
@@ -51,16 +51,17 @@ public class ActionWheel : MonoBehaviour
                 spritesHover[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
             }
         }
-
-        killAndBuryChildren();
+        
     }
 
     void OnMouseDown()
     {
 
         if (actionNumber >= 0)
-            StateManager.Instance.DispatchAction(actions[actionNumber],actionSource);
-
+        {
+            //StateManager.Instance.DispatchAction(actions[actionNumber], actionSource);
+            actionSource.ComeCloser(actions[actionNumber]);
+        }
         killAndBuryChildren();
 
     }
@@ -82,9 +83,6 @@ public class ActionWheel : MonoBehaviour
 
         if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
         {
-            if (Input.GetMouseButtonDown(0))
-                killAndBuryChildren();
-
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
             actionNumber = -1;
         }
@@ -104,7 +102,7 @@ public class ActionWheel : MonoBehaviour
         }
     }
 
-    public void ShowActions(Action[] actions, IInteractable actionSource = null)
+    public void ShowActions(SpringAction[] actions, IInteractable actionSource = null)
     {
         killAndBuryChildren();
 

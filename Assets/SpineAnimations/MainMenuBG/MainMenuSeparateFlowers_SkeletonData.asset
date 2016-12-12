@@ -14,9 +14,9 @@ MonoBehaviour:
   atlasAssets:
   - {fileID: 11400000, guid: 56e533441d0c6b248ad05f582821b648, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: c54ef26c7ef121c438a26450e196888d, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: a3073c8397a8eca4f89dcb2d3e123fb0, type: 3}
   fromAnimation: []
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 5050931b720043b499a19509259f9e1d, type: 2}
+  controller: {fileID: 0}

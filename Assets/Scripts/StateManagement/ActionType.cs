@@ -3,10 +3,19 @@ using System.Collections;
 
 public enum ActionType {
     TELL_FORTUNE = 1,
-    PUT_ON = 2,
-    SELL = 3,
-    TURN_ALARM_OFF = 4,
-    POSTPONE_ALARM = 5,
-    TURN_MUSIC_ON = 6,
-    TURN_MUSIC_OFF = 7
+    PUT_ON,
+    SELL,
+    TURN_ALARM_OFF,
+    POSTPONE_ALARM,
+    TURN_MUSIC_ON,
+    TURN_MUSIC_OFF,
+    CHANGE_CLOTHES,
+    CALL_MOM,
+    LOOK,
+    TAKE,
+    START_READING_VEGAN_BOOK,
+    STOP_READING_VEGAN_BOOK,
+    GO_OUTSIDE,
+    GO_INSIDE,
+    FLY_AWAY
 }

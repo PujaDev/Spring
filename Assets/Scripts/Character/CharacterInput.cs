@@ -4,24 +4,40 @@ using System.Collections.Generic;
 
 public class CharacterInput : MonoBehaviour
 {
-    public Collider2D Area;
     public CharacterMovement Character;
-    public Collider2D[] areas;
-    public Transform[] transPoints;
-    List<Vector3> targets;
 
-    void Start()
+    [HideInInspector] public Collider2D WalkableArea;
+    [HideInInspector] public Collider2D[] areas;
+    [HideInInspector] public Transform[] transPoints;
+
+    private List<Vector3> targets;
+
+    // Initializes collider areas and transforms from children in the ORDER as they are in the Hierarchy view
+    void Awake()
     {
+        List<Transform> tmp_T = new List<Transform>();
+        List<Collider2D> tmp_C = new List<Collider2D>();
+
+        GetComponentsInChildren(tmp_T);
+        GetComponentsInChildren(tmp_C);
+
+        WalkableArea = tmp_C[0];
+        tmp_T.RemoveAt(0);
+        tmp_C.RemoveAt(0);
+
+        transPoints = tmp_T.ToArray();
+        areas = tmp_C.ToArray();
         targets = new List<Vector3>();
     }
 
-    void MoveToPoint(Vector2 destination) {
-        if (Area.OverlapPoint(destination))
+    // Calculates path for character to move along to reach destination 
+    public void MoveToPoint(Vector2 destination, SpringAction action=null, IInteractable source=null) {
+        if (WalkableArea.OverlapPoint(destination)) //checks whether mouse is in the walkable area
         {
             int i;
             int target = -1;
             targets.Clear();
-            for (i = 0; i < areas.Length; i++)
+            for (i = 0; i < areas.Length; i++) //checks which area is the destination in
             {
                 if (areas[i].OverlapPoint(destination))
                 {
@@ -30,8 +46,8 @@ public class CharacterInput : MonoBehaviour
                 }
             }
             Vector3 tmp;
-            i = GameController.controller.currentArea;
-            if (target < i)
+            i = SceneController.Instance.currentAreaIndex;
+            if (target < i) //path through areas with decreasing numbers
             {
                 while (i > target)
                 {
@@ -40,7 +56,7 @@ public class CharacterInput : MonoBehaviour
                     i--;
                 }
             }
-            else
+            else //path through areas with increasing numbers
             {
                 while (i < target)
                 {
@@ -51,23 +67,21 @@ public class CharacterInput : MonoBehaviour
             }
             tmp = new Vector3(destination.x, destination.y);
             targets.Add(tmp);
-            GameController.controller.targetArea = target;
+            SceneController.Instance.targetAreaIndex = target;
 
-            Character.MoveTo(targets);
+            Character.MoveTo(targets, action, source);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // called each frame, checks for mouse clicks on movable areas to move the character there
+    void OnMouseUp()
     {
-        var mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos2D = new Vector2(mousePos3D.x, mousePos3D.y); // Cast the mouse position to 2D
-        
         if (Input.GetMouseButtonUp(0) && !(GameController.controller.isUI) && GameController.controller.lastUITime != Time.time)
         {
+            var mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos3D.x, mousePos3D.y); // Cast the mouse position to 2D
+
             MoveToPoint(mousePos2D);
         }
     }
-
-    
 }

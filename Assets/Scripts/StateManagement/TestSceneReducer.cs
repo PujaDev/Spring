@@ -4,7 +4,7 @@ using System;
 
 public class TestSceneReducer : Reducer
 {
-    public override GameState Reduce(GameState state, Action action, IInteractable source = null)
+    public override GameState Reduce(GameState state, SpringAction action, IInteractable source = null)
     {
         switch (action.Type)
         {
@@ -13,6 +13,26 @@ public class TestSceneReducer : Reducer
                 break;
             case ActionType.POSTPONE_ALARM:
                 state.Test.AlarmPostponed = true;
+                break;
+            case ActionType.CHANGE_CLOTHES:
+                state.Test.ChangeClothes = true;
+                break;
+            case ActionType.START_READING_VEGAN_BOOK:
+                state.Test.ReadingVeganBook = true;
+                break;
+            case ActionType.STOP_READING_VEGAN_BOOK:
+                state.Test.ReadingVeganBook = false;
+                break;
+            case ActionType.GO_OUTSIDE:
+                var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
+                chart.SendFungusMessage("GoOut");
+                break;
+            case ActionType.GO_INSIDE:
+                var chart1 = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
+                chart1.SendFungusMessage("GoIn");
+                break;
+            case ActionType.FLY_AWAY:
+                state.Test.FlyAway = true;
                 break;
         }
 
