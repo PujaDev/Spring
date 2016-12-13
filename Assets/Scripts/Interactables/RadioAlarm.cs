@@ -4,6 +4,13 @@ using System;
 
 public class RadioAlarm : IInteractable {
 
+    Vector3 defaultScale;
+
+    private void Awake()
+    {
+        defaultScale = gameObject.transform.localScale;
+    }
+
     protected override SpringAction[] GetActionList()
     {
         return new SpringAction[] {
@@ -17,10 +24,8 @@ public class RadioAlarm : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.Test.AlarmPostponed)
-            gameObject.transform.localScale = new Vector3(3,3,1);
-        if (newState.Test.AlarmTurnedOff)
-            gameObject.SetActive(false);
+        gameObject.transform.localScale = newState.AnnanaHouse.AlarmPostponed ? new Vector3(3,3,1) : defaultScale;
+        gameObject.SetActive(!newState.AnnanaHouse.AlarmTurnedOff);
     }
 
 }

@@ -9,20 +9,15 @@ public class TestSceneReducer : Reducer
         switch (action.Type)
         {
             case ActionType.TURN_ALARM_OFF:
-                state.Test.AlarmTurnedOff = true;
-                break;
+                return state.Set(state.AnnanaHouse.SetAlarmTurnedOff(true));
             case ActionType.POSTPONE_ALARM:
-                state.Test.AlarmPostponed = true;
-                break;
+                return state.Set(state.AnnanaHouse.SetAlarmPostponed(true));
             case ActionType.CHANGE_CLOTHES:
-                state.Test.ChangeClothes = true;
-                break;
+                return state.Set(state.AnnanaHouse.SetChangeClothes(true));
             case ActionType.START_READING_VEGAN_BOOK:
-                state.Test.ReadingVeganBook = true;
-                break;
+                return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
             case ActionType.STOP_READING_VEGAN_BOOK:
-                state.Test.ReadingVeganBook = false;
-                break;
+                return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
             case ActionType.GO_OUTSIDE:
                 var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
                 chart.SendFungusMessage("GoOut");
@@ -32,8 +27,7 @@ public class TestSceneReducer : Reducer
                 chart1.SendFungusMessage("GoIn");
                 break;
             case ActionType.FLY_AWAY:
-                state.Test.FlyAway = true;
-                break;
+                return state.Set(state.AnnanaHouse.SetFlyAway(true));
         }
 
         return state;

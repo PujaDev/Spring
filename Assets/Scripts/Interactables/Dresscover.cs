@@ -12,7 +12,7 @@ public class Dresscover : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.Test.ChangeClothes)
+        if (newState.AnnanaHouse.ChangeClothes)
         {
             foreach (Transform child in transform)
             {

@@ -12,7 +12,7 @@ public class ElixirOwl : IInteractable
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.Test.FlyAway)
+        if (newState.AnnanaHouse.FlyAway)
             gameObject.GetComponent<AnnanasOwlAnimator>().Fly();
     }
 }
