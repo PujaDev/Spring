@@ -14,9 +14,12 @@ public class LockController : MonoBehaviour
         Columns = GetComponentsInChildren<ColumnController>();
     }
 
+    /// <summary>
+    /// Try to unlock the lock
+    /// </summary>
     public void Unlock()
     {
-        if (Unlocking || AllZero())
+        if (Unlocking || IsAllZero())
             return;
 
         foreach (var col in Columns)
@@ -59,11 +62,16 @@ public class LockController : MonoBehaviour
                 yield return null;
             }
 
-            Reset();
+            ForceReset();
         }
         Unlocking = false;
     }
 
+
+    /// <summary>
+    /// Check if lock is unlocked and can be open
+    /// </summary>
+    /// <returns></returns>
     private bool TryToOpen()
     {
         bool unlocked = true;
@@ -72,11 +80,17 @@ public class LockController : MonoBehaviour
             unlocked &= col.IsCorrect;
         }
 
-        Debug.Log(string.Format("Lock unlocked: {0}", unlocked));
+        // Insert other unlock logic here e.g. dispatch unlock action
+
         return unlocked;
     }
 
-    private bool AllZero()
+
+    /// <summary>
+    /// Returns whether all columns are in default state 
+    /// </summary>
+    /// <returns></returns>
+    private bool IsAllZero()
     {
         bool zero = true;
         foreach (var col in Columns)
@@ -86,14 +100,26 @@ public class LockController : MonoBehaviour
         return zero;
     }
 
+
+    /// <summary>
+    /// Resets at all circumstances
+    /// </summary>
+    private void ForceReset()
+    {
+        foreach (var col in Columns)
+        {
+            col.Reset();
+        }
+    }
+
+    /// <summary>
+    /// Resets only if user can reset the lock
+    /// </summary>
     public void Reset()
     {
         if (Unlocking)
             return;
 
-        foreach (var col in Columns)
-        {
-            col.Reset();
-        }
+        ForceReset();
     }
 }
