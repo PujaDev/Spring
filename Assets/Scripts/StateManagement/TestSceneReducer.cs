@@ -17,7 +17,7 @@ public class TestSceneReducer : Reducer
             case ActionType.START_READING_VEGAN_BOOK:
                 return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
             case ActionType.STOP_READING_VEGAN_BOOK:
-                return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
+                return state.Set(state.AnnanaHouse.SetReadingVeganBook(false));
             case ActionType.GO_OUTSIDE:
                 var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
                 chart.SendFungusMessage("GoOut");
