@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 
 public class CrystalBallOnTable : IInteractable {
+
     protected override SpringAction[] GetActionList()
     {
         return new SpringAction[] {
@@ -10,5 +11,5 @@ public class CrystalBallOnTable : IInteractable {
             new SpringAction(ActionType.TELL_FORTUNE, "Tell fortune",icons[1])
         };
     }
-    
+
 }
