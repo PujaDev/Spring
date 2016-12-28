@@ -7688,7 +7688,7 @@ MonoBehaviour:
   - table
   - box
   - crystalBall
-  currentItems: 
+  currentItems: 000000000100000002000000
 --- !u!224 &1767909153 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000013139448114, guid: 0290fb7c4d3babe40b316f2e4d7b7038,

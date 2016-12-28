@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Runtime.Serialization;
+using System;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Inventory : MonoBehaviour
     public Sprite[] ItemSprites;
     public string[] ItemNames;
 
+    // Set initial items from Unity inspector in editor
     public List<int> currentItems;
 
     private bool IsOpen;
@@ -45,14 +48,6 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             IsOpen = true;
-
-            currentItems = new List<int>();
-
-            //Fill inventory
-            currentItems.Add(0);
-            currentItems.Add(1);
-            currentItems.Add(2);
-
 
             int i = 0;
             for (; i < currentItems.Count; i++) {
