@@ -9,12 +9,12 @@ public class SceneSwitch : MonoBehaviour
     void OnMouseDown()
     {
         SpringAction action = new SpringAction(Action, null, null);
-        GameController.controller.MoveCharToObject(gameObject, action);
+        GameController.Instance.MoveCharToObject(gameObject, action);
     }
 
     public void MoveToStart()
     {
         SceneController.Instance.InitAreaForPos(StartPoint.transform.position);
-        GameController.controller.MoveCharToObject(StartPoint.gameObject);
+        GameController.Instance.MoveCharToObject(StartPoint.gameObject);
     }
 }

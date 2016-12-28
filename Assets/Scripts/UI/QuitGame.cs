@@ -9,7 +9,7 @@ public class QuitGame : MonoBehaviour
 
     public void QuitYes()
     {
-        GameController.controller.Save();
+        GameController.Instance.Save();
 
 #if UNITY_EDITOR
         // set the PlayMode to stop
@@ -22,11 +22,11 @@ public class QuitGame : MonoBehaviour
     public void QuitNo()
     {
         Destroy(panel);
-        GameController.controller.isUI = false;
-        GameController.controller.lastUITime = Time.time;
-        if (GameController.controller.currentIcon != CursorIcon.NORMAL)
+        GameController.Instance.isUI = false;
+        GameController.Instance.lastUITime = Time.time;
+        if (GameController.Instance.currentIcon != CursorIcon.NORMAL)
         {
-            Cursor.SetCursor(GameController.controller.cursorIcons[(int)GameController.controller.currentIcon - 2], Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(GameController.Instance.cursorIcons[(int)GameController.Instance.currentIcon - 2], Vector2.zero, CursorMode.Auto);
         }
         else {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -37,6 +37,6 @@ public class QuitGame : MonoBehaviour
     {
         GameObject child = (GameObject)GameObject.Instantiate(panel);
         child.transform.SetParent(parent, false);
-        GameController.controller.isUI = true;
+        GameController.Instance.isUI = true;
     }
 }

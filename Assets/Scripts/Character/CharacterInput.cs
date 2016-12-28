@@ -76,7 +76,7 @@ public class CharacterInput : MonoBehaviour
     // called each frame, checks for mouse clicks on movable areas to move the character there
     void OnMouseUp()
     {
-        if (Input.GetMouseButtonUp(0) && !(GameController.controller.isUI) && GameController.controller.lastUITime != Time.time)
+        if (Input.GetMouseButtonUp(0) && !(GameController.Instance.isUI) && GameController.Instance.lastUITime != Time.time)
         {
             var mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePos2D = new Vector2(mousePos3D.x, mousePos3D.y); // Cast the mouse position to 2D

@@ -19,7 +19,8 @@ public enum CursorIcon
 }
 
 public class GameController : MonoBehaviour {
-    public static GameController controller = null;
+    public static GameController Instance { get; private set; }
+
     public bool isSoundOn;
     public bool isUI = false;
     public float lastUITime = -1f;
@@ -28,14 +29,14 @@ public class GameController : MonoBehaviour {
 
     void Awake()
     {
-        if (controller == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            controller = this;
+            Instance = this;
             Load();
             GetComponent<AudioSource>().enabled = isSoundOn;
         }
-        else if (controller != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }

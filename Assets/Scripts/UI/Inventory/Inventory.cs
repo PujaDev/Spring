@@ -18,28 +18,25 @@ public class Inventory : MonoBehaviour
 
     public void Toggle()
     {
-        if (Instance != null)
-        {
-            //if (GameController.controller.IsInputEnabled)
-            //{
-                if (Instance.IsOpen)
-                    Close();
-                else
-                    Open();
-            //}
-        }
+        //if (GameController.Instance.IsInputEnabled)
+        //{
+        if (IsOpen)
+            Close();
+        else
+            Open();
+        //}
     }
 
     public void Open()
     {
-        Instance.gameObject.SetActive(true);
-        Instance.IsOpen = true;
+        gameObject.SetActive(true);
+        IsOpen = true;
     }
 
     public void Close()
     {
-        Instance.gameObject.SetActive(false);
-        Instance.IsOpen = false;
+        gameObject.SetActive(false);
+        IsOpen = false;
     }
 
     void Start()

@@ -22,13 +22,13 @@ public class VeganMagicBook : IInteractable
         {
             Book.SetActive(true);
             Handler.OpenBook();
-            GameController.controller.isUI = true;
+            GameController.Instance.isUI = true;
         }
         // Stop reading
         else if (!newState.AnnanaHouse.ReadingVeganBook && (oldState == null || oldState.AnnanaHouse.ReadingVeganBook))
         {
             Book.SetActive(false);
-            GameController.controller.isUI = false;
+            GameController.Instance.isUI = false;
         }
     }
 }

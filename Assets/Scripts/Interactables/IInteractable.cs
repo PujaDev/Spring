@@ -23,7 +23,7 @@ public abstract class IInteractable : MonoBehaviour {
     {
         keepTooltipOpen = false;
         //Destroy(tooltipObject);
-        if (!GameController.controller.isUI)
+        if (!GameController.Instance.isUI)
         {
             //tooltipObject = Instantiate(tooltipPrefab);
             //tooltipObject.GetComponent<TextMesh>().text = tooltipText;
@@ -42,7 +42,7 @@ public abstract class IInteractable : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (!GameController.controller.isUI)
+        if (!GameController.Instance.isUI)
         {
             var actionList = GetActionList();
             keepTooltipOpen = true;
@@ -59,7 +59,7 @@ public abstract class IInteractable : MonoBehaviour {
 
     public bool ComeCloser(SpringAction action = null)
     {
-        return GameController.controller.MoveCharToObject(gameObject, action, this);
+        return GameController.Instance.MoveCharToObject(gameObject, action, this);
     }
 
     virtual public void OnStateChanged(GameState newState, GameState oldState)
