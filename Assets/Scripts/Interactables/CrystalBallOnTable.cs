@@ -15,7 +15,7 @@ public class CrystalBallOnTable : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.AnnanaHouse.CrystalBallPickedUp && (oldState == null || !oldState.AnnanaHouse.CrystalBallPickedUp))
+        if (newState.AnnanaHouse.IsCrystalBallPickedUp && (oldState == null || !oldState.AnnanaHouse.IsCrystalBallPickedUp))
         {
             Destroy(gameObject);
         }
