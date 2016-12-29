@@ -19,15 +19,20 @@ public class TestSceneReducer : Reducer
             case ActionType.STOP_READING_VEGAN_BOOK:
                 return state.Set(state.AnnanaHouse.SetReadingVeganBook(false));
             case ActionType.GO_OUTSIDE:
-                var chart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
-                chart.SendFungusMessage("GoOut");
-                break;
+                {
+                    GameState s = state.Set(state.AnnanaHouse.SetIsOutside(true));
+                    return s.Set(s.AnnanaHouse.SetIsInside(false));
+                }
             case ActionType.GO_INSIDE:
-                var chart1 = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Fungus.Flowchart>();
-                chart1.SendFungusMessage("GoIn");
-                break;
+                {
+                    GameState s = state.Set(state.AnnanaHouse.SetIsInside(true));
+                    return s.Set(s.AnnanaHouse.SetIsOutside(false));
+                }
             case ActionType.FLY_AWAY:
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
+            case ActionType.PICK_UP_CRYSTAL_BALL:
+                return state.Set(state.AnnanaHouse.SetCrystalBallPickedUp(true));
+                
         }
 
         return state;

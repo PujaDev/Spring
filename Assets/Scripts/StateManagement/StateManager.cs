@@ -31,9 +31,9 @@ public class StateManager : MonoBehaviour
     /// </summary>
     private HashSet<Reducer> reducers;
     /// <summary>
-    /// Set of interactables subscribed to state changes
+    /// Set of changables subscribed to state changes
     /// </summary>
-    private HashSet<IInteractable> interactables;
+    private HashSet<IChangable> Changables;
 
     void Awake()
     {
@@ -55,7 +55,7 @@ public class StateManager : MonoBehaviour
 
     /// <summary>
     /// Changes game state depending on dispatched action.
-    /// Notifies subscribed interactables about these changes.
+    /// Notifies subscribed changables about these changes.
     /// </summary>
     /// <param name="action">Dispatched action</param>
     /// <param name="actionSource">Interactable that dispatched action</param>
@@ -93,9 +93,9 @@ public class StateManager : MonoBehaviour
         if (!changed)
             return;
 
-        foreach (var interactable in interactables)
+        foreach (var changable in Changables)
         {
-            interactable.OnStateChanged(newState, State);
+            changable.OnStateChanged(newState, State);
         }
 
         State = newState;
@@ -114,21 +114,21 @@ public class StateManager : MonoBehaviour
 
         GameObject.FindWithTag("Character").transform.position = loadedState.CharacterPosition.GetVector3();
 
-        foreach (var interactable in interactables)
+        foreach (var changable in Changables)
         {
-            interactable.OnStateChanged(loadedState, State);
+            changable.OnStateChanged(loadedState, State);
         }
         State = loadedState;
     }
 
     /// <summary>
-    /// Clear all subscribed interactables and reducers
+    /// Clear all subscribed changables and reducers
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
     void OnSceneStart(Scene scene, LoadSceneMode mode)
     {
-        interactables = new HashSet<IInteractable>();
+        Changables = new HashSet<IChangable>();
         reducers = new HashSet<Reducer>();
 
         try
@@ -170,24 +170,24 @@ public class StateManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Registers new interactable to notify about state changes
+    /// Registers new changable to notify about state changes
     /// </summary>
-    /// <param name="interactable">Interactable to register</param>
+    /// <param name="changable">Changable to register</param>
     /// <returns>Current game state</returns>
-    public GameState Subscribe(IInteractable interactable)
+    public GameState Subscribe(IChangable changable)
     {
-        interactables.Add(interactable);
+        Changables.Add(changable);
         return State;
     }
 
     /// <summary>
-    /// Stops interactable from receiving notificatios about state changes
+    /// Stops changable from receiving notifications about state changes
     /// </summary>
-    /// <param name="interactable">Interactable to register</param>
+    /// <param name="chnagable">Changable to register</param>
     /// <returns>Current game state</returns>
-    public void Unsubscribe(IInteractable interactable)
+    public void Unsubscribe(IChangable chnagable)
     {
-        interactables.Remove(interactable);
+        Changables.Remove(chnagable);
     }
 
     public void Update()

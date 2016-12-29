@@ -3,7 +3,8 @@
 /// <summary>
 /// Parent class for interactable objects
 /// </summary>
-public abstract class IInteractable : MonoBehaviour {
+public abstract class IInteractable : MonoBehaviour, IChangable
+{
 
     public string tooltipText = "";
     public Sprite[] icons;

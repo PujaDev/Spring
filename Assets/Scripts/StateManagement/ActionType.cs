@@ -17,5 +17,6 @@ public enum ActionType {
     STOP_READING_VEGAN_BOOK,
     GO_OUTSIDE,
     GO_INSIDE,
-    FLY_AWAY
+    FLY_AWAY,
+    PICK_UP_CRYSTAL_BALL
 }
