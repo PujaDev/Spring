@@ -28,6 +28,8 @@ public class TestSceneReducer : Reducer
                 break;
             case ActionType.FLY_AWAY:
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
+            case ActionType.PICK_UP_CRYSTAL_BALL:
+                return state.Set(state.AnnanaHouse.SetCrystalBallPickedUp(true));
         }
 
         return state;

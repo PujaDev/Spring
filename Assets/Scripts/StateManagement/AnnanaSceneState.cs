@@ -15,6 +15,7 @@ public class AnnanaSceneState : SceneState
     /// </summary>
     public string ElixirName { get; private set; }
     public int AngerLevel { get; private set; }
+    public bool CrystalBallPickedUp { get; private set; }
 
     public AnnanaSceneState()
     {
@@ -25,6 +26,7 @@ public class AnnanaSceneState : SceneState
         FlyAway = false;
         ElixirName = "";
         AngerLevel = 13;
+        CrystalBallPickedUp = false;
     }
 
     private AnnanaSceneState(AnnanaSceneState template)
@@ -36,6 +38,7 @@ public class AnnanaSceneState : SceneState
         FlyAway = template.FlyAway;
         ElixirName = template.ElixirName;
         AngerLevel = template.AngerLevel;
+        CrystalBallPickedUp = template.CrystalBallPickedUp;
     }
 
     public AnnanaSceneState SetAlarmTurnedOff(bool value)
@@ -87,6 +90,13 @@ public class AnnanaSceneState : SceneState
         return copy;
     }
 
+    public AnnanaSceneState SetCrystalBallPickedUp(bool value)
+    {
+        var copy = new AnnanaSceneState(this);
+        copy.CrystalBallPickedUp = value;
+        return copy;
+    }
+
 
     public List<string> CompareChanges(AnnanaSceneState other)
     {
@@ -112,6 +122,9 @@ public class AnnanaSceneState : SceneState
 
         if (!AngerLevel.Equals(other.AngerLevel))
             result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}", other.AngerLevel, AngerLevel));
+
+        if (!CrystalBallPickedUp.Equals(other.CrystalBallPickedUp))
+            result.Add(String.Format("CrystalBallPickedUp:\t{0}\t>>>\t{1}", other.CrystalBallPickedUp, CrystalBallPickedUp));
 
         return result;
     }

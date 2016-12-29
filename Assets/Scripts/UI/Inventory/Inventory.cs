@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Runtime.Serialization;
 using System;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IChangable
 {
     public static Inventory Instance { get; private set; }
 
@@ -59,6 +59,9 @@ public class Inventory : MonoBehaviour
             }
 
             Close();
+
+            GameState gameState = StateManager.Instance.Subscribe(this);
+            OnStateChanged(gameState, null);
         }
         else
         {
@@ -112,5 +115,9 @@ public class Inventory : MonoBehaviour
                 Debug.Log("inventory is full");
             }
         }
+    }
+
+    public virtual void OnStateChanged(GameState newState, GameState oldState)
+    {
     }
 }
