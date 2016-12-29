@@ -1541,8 +1541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4159058cd4385c4b8d12ebbe2b86306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoOutSwitch: {fileID: 839082198}
-  GoInSwitch: {fileID: 929139904}
 --- !u!4 &488654421
 Transform:
   m_ObjectHideFlags: 0
@@ -2712,8 +2710,9 @@ MonoBehaviour:
     y: -481
     width: 1122
     height: 1070
-  selectedBlock: {fileID: 768941963}
-  selectedCommands: []
+  selectedBlock: {fileID: 768941975}
+  selectedCommands:
+  - {fileID: 768941977}
   variables: []
   description: 
   stepPause: 0
