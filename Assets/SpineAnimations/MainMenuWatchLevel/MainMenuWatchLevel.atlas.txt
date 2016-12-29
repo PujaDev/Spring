@@ -1,0 +1,27 @@
+
+MainMenuWatchLevel.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hand_1
+  rotate: false
+  xy: 2, 2
+  size: 72, 182
+  orig: 72, 182
+  offset: 0, 0
+  index: -1
+hand_2
+  rotate: false
+  xy: 471, 474
+  size: 72, 179
+  orig: 72, 179
+  offset: 0, 0
+  index: -1
+watch
+  rotate: false
+  xy: 2, 186
+  size: 467, 467
+  orig: 467, 467
+  offset: 0, 0
+  index: -1

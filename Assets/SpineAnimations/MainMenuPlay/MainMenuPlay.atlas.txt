@@ -1,0 +1,97 @@
+
+MainMenuPlay.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: false
+  xy: 2, 467
+  size: 484, 471
+  orig: 484, 471
+  offset: 0, 0
+  index: -1
+Layer 10
+  rotate: true
+  xy: 380, 334
+  size: 131, 62
+  orig: 131, 62
+  offset: 0, 0
+  index: -1
+Layer 11
+  rotate: true
+  xy: 2, 152
+  size: 158, 123
+  orig: 158, 123
+  offset: 0, 0
+  index: -1
+Layer 12
+  rotate: false
+  xy: 2, 312
+  size: 140, 153
+  orig: 140, 153
+  offset: 0, 0
+  index: -1
+Layer 13
+  rotate: false
+  xy: 278, 328
+  size: 100, 137
+  orig: 100, 137
+  offset: 0, 0
+  index: -1
+Layer 2
+  rotate: false
+  xy: 488, 785
+  size: 130, 153
+  orig: 130, 153
+  offset: 0, 0
+  index: -1
+Layer 3
+  rotate: false
+  xy: 488, 473
+  size: 78, 142
+  orig: 78, 142
+  offset: 0, 0
+  index: -1
+Layer 4
+  rotate: true
+  xy: 762, 890
+  size: 48, 152
+  orig: 48, 152
+  offset: 0, 0
+  index: -1
+Layer 5
+  rotate: false
+  xy: 488, 617
+  size: 103, 166
+  orig: 103, 166
+  offset: 0, 0
+  index: -1
+Layer 6
+  rotate: false
+  xy: 144, 323
+  size: 132, 142
+  orig: 132, 142
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: false
+  xy: 620, 824
+  size: 140, 114
+  orig: 140, 114
+  offset: 0, 0
+  index: -1
+Layer 8
+  rotate: true
+  xy: 2, 2
+  size: 148, 94
+  orig: 148, 94
+  offset: 0, 0
+  index: -1
+Layer 9
+  rotate: false
+  xy: 762, 834
+  size: 116, 54
+  orig: 116, 54
+  offset: 0, 0
+  index: -1

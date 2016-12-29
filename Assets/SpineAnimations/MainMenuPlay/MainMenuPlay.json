@@ -1,0 +1,234 @@
+{
+"skeleton": { "hash": "k7z9EJujqW0p2OAwYvdJGvWGoCY", "spine": "3.5.43", "width": 484, "height": 484, "images": "./Play_images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "x": -152.37, "y": 103.8 },
+	{ "name": "bone2", "parent": "root", "x": -38.61, "y": 185.88 },
+	{ "name": "bone3", "parent": "root", "x": 10.35, "y": 195.96 },
+	{ "name": "bone4", "parent": "root", "x": 59.31, "y": 180.12 },
+	{ "name": "bone5", "parent": "root", "x": 124.11, "y": 149.88 },
+	{ "name": "bone6", "parent": "root", "x": 157.23, "y": 122.52 },
+	{ "name": "bone7", "parent": "root", "x": 175.95, "y": 85.08 },
+	{ "name": "bone8", "parent": "root", "x": 191.79, "y": 20.28 },
+	{ "name": "bone9", "parent": "root", "x": 188.91, "y": -54.6 },
+	{ "name": "bone10", "parent": "root", "x": 162.99, "y": -99.24 },
+	{ "name": "bone11", "parent": "root", "x": 106.83, "y": -148.2 },
+	{ "name": "bone12", "parent": "root", "x": -40.05, "y": -182.76 }
+],
+"slots": [
+	{ "name": "Layer 1", "bone": "root", "attachment": "Layer 1" },
+	{ "name": "Layer 2", "bone": "bone", "attachment": "Layer 2" },
+	{ "name": "Layer 3", "bone": "bone2", "attachment": "Layer 3" },
+	{ "name": "Layer 4", "bone": "bone3", "attachment": "Layer 4" },
+	{ "name": "Layer 5", "bone": "bone4", "attachment": "Layer 5" },
+	{ "name": "Layer 6", "bone": "bone5", "attachment": "Layer 6" },
+	{ "name": "Layer 7", "bone": "bone6", "attachment": "Layer 7" },
+	{ "name": "Layer 8", "bone": "bone7", "attachment": "Layer 8" },
+	{ "name": "Layer 9", "bone": "bone8", "attachment": "Layer 9" },
+	{ "name": "Layer 10", "bone": "bone9", "attachment": "Layer 10" },
+	{ "name": "Layer 11", "bone": "bone10", "attachment": "Layer 11" },
+	{ "name": "Layer 12", "bone": "bone11", "attachment": "Layer 12" },
+	{ "name": "Layer 13", "bone": "bone12", "attachment": "Layer 13" }
+],
+"skins": {
+	"default": {
+		"Layer 1": {
+			"Layer 1": { "x": -0.9, "y": -7.29, "width": 484, "height": 471 }
+		},
+		"Layer 10": {
+			"Layer 10": { "x": -16.31, "y": -1.19, "width": 131, "height": 62 }
+		},
+		"Layer 11": {
+			"Layer 11": { "x": -15.89, "y": -3.05, "width": 158, "height": 123 }
+		},
+		"Layer 12": {
+			"Layer 12": { "x": 2.27, "y": 8.91, "width": 140, "height": 153 }
+		},
+		"Layer 13": {
+			"Layer 13": { "x": -11.85, "y": 8.47, "width": 100, "height": 137 }
+		},
+		"Layer 2": {
+			"Layer 2": { "x": -13.53, "y": 4.91, "width": 130, "height": 153 }
+		},
+		"Layer 3": {
+			"Layer 3": { "x": -4.29, "y": -15.67, "width": 78, "height": 142 }
+		},
+		"Layer 4": {
+			"Layer 4": { "x": 0.75, "y": -30.75, "width": 48, "height": 152 }
+		},
+		"Layer 5": {
+			"Layer 5": { "x": 3.29, "y": -23.91, "width": 103, "height": 166 }
+		},
+		"Layer 6": {
+			"Layer 6": { "x": -12.01, "y": -20.67, "width": 132, "height": 142 }
+		},
+		"Layer 7": {
+			"Layer 7": { "x": -23.13, "y": -16.31, "width": 140, "height": 114 }
+		},
+		"Layer 8": {
+			"Layer 8": { "x": -22.85, "y": -1.87, "width": 148, "height": 94 }
+		},
+		"Layer 9": {
+			"Layer 9": { "x": -8.69, "y": -0.07, "width": 116, "height": 54 }
+		}
+	}
+},
+"animations": {
+	"breakApart": {
+		"slots": {
+			"Layer 1": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Layer 2": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 3": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 4": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"Layer 5": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"Layer 6": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 7": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"Layer 8": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"Layer 9": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 10": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 11": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			},
+			"Layer 12": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Layer 13": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"bone2": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": -16.64, "y": 118.34 }
+				]
+			},
+			"bone": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": -151.62, "y": 98 }
+				]
+			},
+			"bone3": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 13.98, "y": 343.91 }
+				]
+			},
+			"bone4": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 95.06, "y": 262.82 }
+				]
+			},
+			"bone5": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 136.83, "y": 155.32 }
+				]
+			},
+			"bone6": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 301.97, "y": 232.07 }
+				]
+			},
+			"bone7": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 301.97, "y": 120.23 }
+				]
+			},
+			"bone8": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 166.41, "y": 14.79 }
+				]
+			},
+			"bone9": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 251.46, "y": -66.56 }
+				]
+			},
+			"bone10": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 338.32, "y": -223.68 }
+				]
+			},
+			"bone11": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 156.68, "y": -230.28 }
+				]
+			},
+			"bone12": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": -67.58, "y": -248.99 }
+				]
+			}
+		}
+	}
+}
+}

@@ -11,8 +11,8 @@ public class UIMainMenuController : MonoBehaviour {
     void Start () {
     }
 
-    public void menuTransition() {
-        playButton.GetComponent<ObjectsSwapper>().SwapObject();
+    public void menuTransition(int id = 1) {
+        playButton.GetComponent<ObjectsSwapper>().SwapObject(id);
         bigCircleAndRest.GetComponent<ObjectResizer>().ResizeObject();
         smallCreditsCircle.GetComponent<ObjectsSwapper>().SwapObject();
     }

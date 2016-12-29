@@ -16,6 +16,21 @@ public class SwitchObjects : MonoBehaviour {
         objects[index].SetActive(true);
     }
 
+    public void changeToIndex(int id)
+    {
+        if (index != 0)
+        {
+            objects[index].SetActive(false);
+            index = 0;
+            objects[0].SetActive(true);
+        }
+        else {
+            objects[index].SetActive(false);
+            index = id;
+            objects[id].SetActive(true);
+        }
+    }
+
     public void next()
     {
         objects[index].SetActive(false);
