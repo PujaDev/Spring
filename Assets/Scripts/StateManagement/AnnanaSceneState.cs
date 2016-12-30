@@ -19,6 +19,7 @@ public class AnnanaSceneState : SceneState
     public bool IsInside { get; private set; }
     public bool IsOutside { get; private set; }
     public Vector3S CharPosition { get; private set; }
+    public int EmptyVialPickedUpCount { get; private set; }
 
     public AnnanaSceneState()
     {
@@ -33,6 +34,7 @@ public class AnnanaSceneState : SceneState
         IsInside = false;
         IsOutside = false;
         CharPosition = new Vector3S(10.74f, -0.52f, 0f);
+        EmptyVialPickedUpCount = 0;
     }
 
     private AnnanaSceneState(AnnanaSceneState template)
@@ -48,6 +50,7 @@ public class AnnanaSceneState : SceneState
         IsInside = template.IsInside;
         IsOutside = template.IsOutside;
         CharPosition = template.CharPosition;
+        EmptyVialPickedUpCount = template.EmptyVialPickedUpCount;
     }
 
     public AnnanaSceneState SetAlarmTurnedOff(bool value)
@@ -128,6 +131,13 @@ public class AnnanaSceneState : SceneState
     }
 
 
+    public AnnanaSceneState SetEmptyVialPickedUpCount(int value)
+    {
+        var copy = new AnnanaSceneState(this);
+        copy.EmptyVialPickedUpCount = value;
+        return copy;
+    }
+
     public List<string> CompareChanges(AnnanaSceneState other)
     {
         var result = new List<string>();
@@ -164,6 +174,9 @@ public class AnnanaSceneState : SceneState
 
         if (!CharPosition.Equals(other.CharPosition))
             result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}", other.CharPosition, CharPosition));
+
+        if (!EmptyVialPickedUpCount.Equals(other.EmptyVialPickedUpCount))
+            result.Add(String.Format("EmptyVialPickedUpCount:\t{0}\t>>>\t{1}", other.EmptyVialPickedUpCount, EmptyVialPickedUpCount));
 
         return result;
     }

@@ -68,6 +68,11 @@ public class Inventory : MonoBehaviour, IChangable
         }
     }
 
+    public bool Contains(int dataIndex)
+    {
+        return FindItemsSlotIndex(dataIndex) != -1;
+    }
+
     private int FindItemsSlotIndex(int dataIndex)
     {
         for (int i = 0; i < currentItems.Count; i++)
