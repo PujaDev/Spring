@@ -172,7 +172,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1494,7 +1494,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 486549076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.21, y: 0, z: -10}
+  m_LocalPosition: {x: 9.92, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1514,6 +1514,46 @@ MonoBehaviour:
   Character: {fileID: 1164734167}
   MoveTholdX: 0.25
   MoveTholdY: 0.25
+--- !u!1 &488654419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 488654421}
+  - 114: {fileID: 488654420}
+  m_Layer: 0
+  m_Name: SceneSwitchController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &488654420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488654419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4159058cd4385c4b8d12ebbe2b86306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &488654421
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488654419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.328873, y: 0.35428256, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &508858279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,14 +2660,25 @@ GameObject:
   - 114: {fileID: 768941957}
   - 114: {fileID: 768941960}
   - 114: {fileID: 768941959}
-  - 114: {fileID: 768941962}
   - 114: {fileID: 768941963}
   - 114: {fileID: 768941968}
   - 114: {fileID: 768941967}
-  - 114: {fileID: 768941965}
   - 114: {fileID: 768941961}
   - 114: {fileID: 768941966}
+  - 114: {fileID: 768941975}
+  - 114: {fileID: 768941974}
+  - 114: {fileID: 768941973}
+  - 114: {fileID: 768941972}
+  - 114: {fileID: 768941971}
   - 114: {fileID: 768941964}
+  - 114: {fileID: 768941970}
+  - 114: {fileID: 768941969}
+  - 114: {fileID: 768941965}
+  - 114: {fileID: 768941962}
+  - 114: {fileID: 768941976}
+  - 114: {fileID: 768941977}
+  - 114: {fileID: 768941978}
+  - 114: {fileID: 768941979}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -2648,7 +2699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 1, y: 90}
+  scrollPos: {x: -41, y: 131}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -2656,12 +2707,12 @@ MonoBehaviour:
   scrollViewRect:
     serializedVersion: 2
     x: -351
-    y: -440
+    y: -481
     width: 1122
-    height: 1025
-  selectedBlock: {fileID: 768941963}
+    height: 1070
+  selectedBlock: {fileID: 768941975}
   selectedCommands:
-  - {fileID: 768941961}
+  - {fileID: 768941977}
   variables: []
   description: 
   stepPause: 0
@@ -2823,7 +2874,7 @@ MonoBehaviour:
   fadeTexture: {fileID: 0}
 --- !u!114 &768941961
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2867,17 +2918,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 768941952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 7
+  itemId: 21
   indentLevel: 0
-  targetObject: {fileID: 839082196}
-  methodName: MoveToStart
-  delay: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 768941964}
+  startIndex: 0
+  callMode: 0
 --- !u!114 &768941963
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2889,7 +2941,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 66
-    y: 145
+    y: 143
     width: 120
     height: 40
   itemId: 8
@@ -2900,27 +2952,36 @@ MonoBehaviour:
   - {fileID: 768941967}
   - {fileID: 768941961}
   - {fileID: 768941966}
-  - {fileID: 768941965}
-  - {fileID: 768941964}
+  - {fileID: 768941971}
 --- !u!114 &768941964
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 13
-  indentLevel: 0
-  targetObject: {fileID: 929139902}
-  methodName: MoveToStart
-  delay: 0
+  nodeRect:
+    serializedVersion: 2
+    x: 213
+    y: 69
+    width: 123
+    height: 40
+  itemId: 18
+  blockName: GoOutSwitch
+  description: 
+  eventHandler: {fileID: 768941970}
+  commandList:
+  - {fileID: 768941976}
+  - {fileID: 768941978}
+  - {fileID: 768941969}
+  - {fileID: 768941965}
 --- !u!114 &768941965
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2929,14 +2990,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 10
+  itemId: 20
   indentLevel: 0
-  targetObject: {fileID: 1742712633}
-  methodName: TurnOn
+  targetObject: {fileID: 839082196}
+  methodName: SwitchScene
   delay: 0
 --- !u!114 &768941966
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2956,7 +3017,7 @@ MonoBehaviour:
   targetCamera: {fileID: 0}
 --- !u!114 &768941967
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2974,7 +3035,7 @@ MonoBehaviour:
   fadeTexture: {fileID: 0}
 --- !u!114 &768941968
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768941952}
@@ -2985,6 +3046,239 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 768941963}
   message: GoIn
+--- !u!114 &768941969
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 19
+  indentLevel: 0
+  targetObject: {fileID: 1742712633}
+  methodName: TurnOff
+  delay: 0
+--- !u!114 &768941970
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 768941964}
+  message: GoOutSwitch
+--- !u!114 &768941971
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 17
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 768941975}
+  startIndex: 0
+  callMode: 0
+--- !u!114 &768941972
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 16
+  indentLevel: 0
+  targetObject: {fileID: 929139902}
+  methodName: SwitchScene
+  delay: 0
+--- !u!114 &768941973
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 15
+  indentLevel: 0
+  targetObject: {fileID: 1742712633}
+  methodName: TurnOn
+  delay: 0
+--- !u!114 &768941974
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 768941975}
+  message: GoInSwitch
+--- !u!114 &768941975
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 217
+    y: 143
+    width: 120
+    height: 40
+  itemId: 14
+  blockName: GoInSwitch
+  description: 
+  eventHandler: {fileID: 768941974}
+  commandList:
+  - {fileID: 768941979}
+  - {fileID: 768941977}
+  - {fileID: 768941973}
+  - {fileID: 768941972}
+--- !u!114 &768941976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445c07472dafe4e0ead0e88c4b757401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 22
+  indentLevel: 0
+  _targetObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1164734162}
+  _tweenName:
+    stringRef: {fileID: 0}
+    stringVal: 
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  easeType: 2
+  loopType: 0
+  stopPreviousTweens: 0
+  waitUntilFinished: 1
+  targetObjectOLD: {fileID: 0}
+  tweenNameOLD: 
+  durationOLD: 0
+  _toTransform:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 1344558801}
+  _toPosition:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
+  isLocal: 0
+  toTransformOLD: {fileID: 0}
+  toPositionOLD: {x: 0, y: 0, z: 0}
+--- !u!114 &768941977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445c07472dafe4e0ead0e88c4b757401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 23
+  indentLevel: 0
+  _targetObject:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 1164734162}
+  _tweenName:
+    stringRef: {fileID: 0}
+    stringVal: 
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  easeType: 2
+  loopType: 0
+  stopPreviousTweens: 0
+  waitUntilFinished: 1
+  targetObjectOLD: {fileID: 0}
+  tweenNameOLD: 
+  durationOLD: 0
+  _toTransform:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 687694532}
+  _toPosition:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
+  isLocal: 0
+  toTransformOLD: {fileID: 0}
+  toPositionOLD: {x: 0, y: 0, z: 0}
+--- !u!114 &768941978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437f9a4e3dbc647f9bdce95308418bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  duration: 0
+  fadeOut: 0
+  targetView: {fileID: 1134029985}
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  targetCamera: {fileID: 0}
+--- !u!114 &768941979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768941952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437f9a4e3dbc647f9bdce95308418bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  duration: 0
+  fadeOut: 0
+  targetView: {fileID: 406852855}
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  targetCamera: {fileID: 0}
 --- !u!1 &773645293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4550,7 +4844,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1164734162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.49, y: -1.85, z: 0}
+  m_LocalPosition: {x: 7.64, y: -0.52, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -5571,6 +5865,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
   - {fileID: 21300000, guid: 59d4f61289ace0146b47a5b1de414368, type: 3}
+  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
 --- !u!114 &1381880019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6448,7 +6743,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7660,7 +7955,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766948676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b43808f21a14c4e8a488f2cce3adde, type: 3}
+  m_Script: {fileID: 11500000, guid: d3e4b5d2184787f418a58f88c2267501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Slots:

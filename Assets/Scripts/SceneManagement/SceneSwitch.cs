@@ -12,7 +12,7 @@ public class SceneSwitch : MonoBehaviour
         GameController.Instance.MoveCharToObject(gameObject, action);
     }
 
-    public void MoveToStart()
+    public void SwitchScene()
     {
         SceneController.Instance.InitAreaForPos(StartPoint.transform.position);
         GameController.Instance.MoveCharToObject(StartPoint.gameObject);
