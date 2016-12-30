@@ -9,7 +9,7 @@ public class ToggleButton : MonoBehaviour {
     public bool atStartOn;
     private bool ObjectOn;
 
-    public void Awake()
+    public void Start()
     {
         ObjectOn = (atStartOn) ? false : true;
         toggle();

@@ -17,37 +17,11 @@ public class Inventory : MonoBehaviour, IChangable
     // Set initial items from Unity inspector in editor
     public List<int> currentItems;
 
-    //private bool IsOpen;
-
-    //public void Toggle()
-    //{
-    //    //if (GameController.Instance.IsInputEnabled)
-    //    //{
-    //    if (IsOpen)
-    //        Close();
-    //    else
-    //        Open();
-    //    //}
-    //}
-
-    //public void Open()
-    //{
-    //    gameObject.SetActive(true);
-    //    IsOpen = true;
-    //}
-
-    //public void Close()
-    //{
-    //    gameObject.SetActive(false);
-    //    IsOpen = false;
-    //}
-
     void Start()
     {
         if (Instance == null)
         {
             Instance = this;
-            //IsOpen = true;
 
             int i = 0;
             for (; i < currentItems.Count; i++) {
@@ -58,7 +32,6 @@ public class Inventory : MonoBehaviour, IChangable
                 Slots[i].SetActive(false);
             }
 
-            //Close();
             GameState gameState = StateManager.Instance.Subscribe(this);
             OnStateChanged(gameState, null);
         }

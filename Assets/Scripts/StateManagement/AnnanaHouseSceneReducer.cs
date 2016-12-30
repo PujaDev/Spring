@@ -32,7 +32,14 @@ public class AnnanaHouseSceneReducer : Reducer
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
             case ActionType.PICK_UP_CRYSTAL_BALL:
                 return state.Set(state.AnnanaHouse.SetIsCrystalBallPickedUp(true));
-                
+            case ActionType.TAKE_EMPTY_VIAL:
+                {
+                    // Since we cannot stack do not take new vial if you already have one
+                    if (Inventory.Instance.Contains((int)AnnanaInventory.ItemIds.EmptyVial))
+                        return state;
+                    return state.Set(state.AnnanaHouse.SetEmptyVialPickedUpCount(state.AnnanaHouse.EmptyVialPickedUpCount + 1));
+                }
+
         }
 
         return state;
