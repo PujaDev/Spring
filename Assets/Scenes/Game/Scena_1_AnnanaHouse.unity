@@ -6143,7 +6143,7 @@ MonoBehaviour:
   tooltipText: Empty elixir vials
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
-  VialCount: 0
+  VialCount: 4
 --- !u!114 &1419371294
 MonoBehaviour:
   m_ObjectHideFlags: 0

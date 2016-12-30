@@ -2,7 +2,7 @@
 
 public class AnnanaInventory : Inventory
 {
-    enum ItemIds
+    public enum ItemIds
     {
         CrystalBall = 5,
         EmptyVial = 6
