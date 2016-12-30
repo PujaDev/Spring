@@ -3,42 +3,56 @@ using System.Collections;
 using System.Collections.Generic;
 using Spine.Unity;
 
-public interface IMoveable
-{
-    void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source);
-}
 
-public class CharacterMovement : MonoBehaviour, IMoveable {
-
-    public float Speed;
-    public AnimationCurve Curve;
-
-    protected bool busy;
-    protected Coroutine move;
-    protected SkeletonAnimation skeletonAnim;
+public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
+    
+    private Coroutine idleTail;
+    private Coroutine idleHand;
 
     // Use this for initialization
-    public virtual void Start ()
+    public override void Start ()
     {
         busy = false;
         skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+        idleTail = StartCoroutine(IdleTailCoroutine());
+        idleHand = StartCoroutine(IdleHandCoroutine());
         ScaleCharacter();
 	}
 
-    public void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source)
+    IEnumerator IdleHandCoroutine()
     {
-        if (!busy)
+        float randomDelay;
+        while (true)
         {
-            if (move != null)
-                StopCoroutine(move);
-            
-            move = StartCoroutine(MoveToCoroutine(targets, action, source));
+            randomDelay = Random.Range(8f, 15f);
+            yield return new WaitForSeconds(randomDelay);
+            if (Random.Range(0f, 1f) < 0.5f) {
+                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+            } else skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_hair", false, 0);
+
         }
     }
 
-    protected virtual IEnumerator MoveToCoroutine(List<Vector3> targets, SpringAction action, IInteractable source)
+    IEnumerator IdleTailCoroutine()
     {
+
+        float randomDelay;
+        while (true)
+        {
+            randomDelay = Random.Range(3f, 8f);
+            yield return new WaitForSeconds(randomDelay);
+            skeletonAnim.AnimationState.AddAnimation(1, "idle_tail", false, 0);
+
+        }
+    }
+    protected override IEnumerator MoveToCoroutine(List<Vector3> targets, SpringAction action, IInteractable source)
+    {
+        if (idleTail != null)
+            StopCoroutine(idleTail);
+        if (idleHand != null)
+            StopCoroutine(idleHand);
 
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
@@ -75,18 +89,12 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
 
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
 
+        idleTail = StartCoroutine(IdleTailCoroutine());
+        idleHand = StartCoroutine(IdleHandCoroutine());
+
         //calls action after reaching the destination
         if (action != null)
             StateManager.Instance.DispatchAction(action, source);
 
-    }
-
-    /// <summary>
-    /// Scale character based on its y distance from start position
-    /// </summary>
-    protected void ScaleCharacter()
-    {
-        float scaleChar = (1 - SceneController.Instance.scaleParam * (transform.position.y - SceneController.Instance.startPositionY)) * SceneController.Instance.defaultCharactecScale;
-        transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar);
     }
 }
