@@ -1,0 +1,12 @@
+AnnanaSceneState
+bool;AlarmTurnedOff;false
+bool;AlarmPostponed;false
+bool;ChangeClothes;false
+bool;ReadingVeganBook;false
+bool;FlyAway;false
+string;ElixirName;"";Name of the chosen elixir
+int;AngerLevel;13
+bool;IsCrystalBallPickedUp;false
+bool;IsInside;false
+bool;IsOutside;false
+Vector3S;CharPosition;new Vector3S(10.74f, -0.52f, 0f)
