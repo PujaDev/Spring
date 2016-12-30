@@ -1719,10 +1719,10 @@ MonoBehaviour:
   backInTimePanel: {fileID: 1000012203011022, guid: 7ceb4a9cc435a524f8a4219c5c5ccbcc,
     type: 2}
   scenes:
-  - Scene1
-  - Scene1
-  - Scene1
-  - Scene1
+  - Scena_1_AnnanaHouse
+  - Scena_1_AnnanaHouse
+  - Scena_1_AnnanaHouse
+  - Scena_1_AnnanaHouse
   clocks:
   - {fileID: 1945131701}
   - {fileID: 41742252}
