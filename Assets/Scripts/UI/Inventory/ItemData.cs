@@ -27,7 +27,7 @@ public class ItemData : MonoBehaviour, IPointerClickHandler
             //ItemHolder.Instance.GetComponent<ItemHolder>().StartHolding(Item);
             //transform.SetParent(ItemHolder.Instance.transform);
 
-            Inventory.Instance.Close();
+            //Inventory.Instance.Close();
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {

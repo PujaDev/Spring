@@ -1,0 +1,27 @@
+
+GameMenuTitle.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+InnerCircle
+  rotate: false
+  xy: 274, 243
+  size: 34, 65
+  orig: 34, 65
+  offset: 0, 0
+  index: -1
+Title
+  rotate: false
+  xy: 2, 201
+  size: 270, 107
+  orig: 270, 107
+  offset: 0, 0
+  index: -1
+cornerCircle
+  rotate: false
+  xy: 2, 92
+  size: 55, 107
+  orig: 55, 107
+  offset: 0, 0
+  index: -1
