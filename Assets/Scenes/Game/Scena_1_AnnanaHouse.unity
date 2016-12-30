@@ -5159,6 +5159,7 @@ GameObject:
   - 23: {fileID: 1164734165}
   - 114: {fileID: 1164734164}
   - 114: {fileID: 1164734163}
+  - 114: {fileID: 1164734168}
   m_Layer: 10
   m_Name: AnnanaCharacter
   m_TagString: Character
@@ -5269,6 +5270,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1164734168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164734162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ba60d70ab8093458aa9341b696b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneID: 1
 --- !u!1 &1219731766
 GameObject:
   m_ObjectHideFlags: 0

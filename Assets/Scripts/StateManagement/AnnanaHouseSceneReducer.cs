@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class TestSceneReducer : Reducer
+public class AnnanaHouseSceneReducer : Reducer
 {
     public override GameState Reduce(GameState state, SpringAction action, IInteractable source = null)
     {
@@ -31,7 +31,7 @@ public class TestSceneReducer : Reducer
             case ActionType.FLY_AWAY:
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
             case ActionType.PICK_UP_CRYSTAL_BALL:
-                return state.Set(state.AnnanaHouse.SetCrystalBallPickedUp(true));
+                return state.Set(state.AnnanaHouse.SetIsCrystalBallPickedUp(true));
                 
         }
 

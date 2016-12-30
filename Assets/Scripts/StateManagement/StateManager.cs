@@ -112,7 +112,10 @@ public class StateManager : MonoBehaviour
 
         var loadedState = loadStateFromFile(stateNum);
 
-        GameObject.FindWithTag("Character").transform.position = loadedState.CharacterPosition.GetVector3();
+        var character = GameObject.FindWithTag("Character");
+        if (character != null) {
+            character.GetComponent<LoadCharPosition>().RelocateCharacter(loadedState);
+        }
 
         foreach (var changable in Changables)
         {
