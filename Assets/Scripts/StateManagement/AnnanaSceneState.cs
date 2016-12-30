@@ -16,11 +16,9 @@ public class AnnanaSceneState : SceneState
     public string ElixirName { get; private set; }
     public int AngerLevel { get; private set; }
     public bool IsCrystalBallPickedUp { get; private set; }
-    
-    // Scene switching
     public bool IsInside { get; private set; }
     public bool IsOutside { get; private set; }
-
+    public Vector3S CharPosition { get; private set; }
 
     public AnnanaSceneState()
     {
@@ -34,6 +32,7 @@ public class AnnanaSceneState : SceneState
         IsCrystalBallPickedUp = false;
         IsInside = false;
         IsOutside = false;
+        CharPosition = new Vector3S(10.74f, -0.52f, 0f);
     }
 
     private AnnanaSceneState(AnnanaSceneState template)
@@ -48,6 +47,7 @@ public class AnnanaSceneState : SceneState
         IsCrystalBallPickedUp = template.IsCrystalBallPickedUp;
         IsInside = template.IsInside;
         IsOutside = template.IsOutside;
+        CharPosition = template.CharPosition;
     }
 
     public AnnanaSceneState SetAlarmTurnedOff(bool value)
@@ -99,7 +99,7 @@ public class AnnanaSceneState : SceneState
         return copy;
     }
 
-    public AnnanaSceneState SetCrystalBallPickedUp(bool value)
+    public AnnanaSceneState SetIsCrystalBallPickedUp(bool value)
     {
         var copy = new AnnanaSceneState(this);
         copy.IsCrystalBallPickedUp = value;
@@ -119,6 +119,14 @@ public class AnnanaSceneState : SceneState
         copy.IsOutside = value;
         return copy;
     }
+
+    public AnnanaSceneState SetCharPosition(Vector3S value)
+    {
+        var copy = new AnnanaSceneState(this);
+        copy.CharPosition = value;
+        return copy;
+    }
+
 
     public List<string> CompareChanges(AnnanaSceneState other)
     {
@@ -146,13 +154,16 @@ public class AnnanaSceneState : SceneState
             result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}", other.AngerLevel, AngerLevel));
 
         if (!IsCrystalBallPickedUp.Equals(other.IsCrystalBallPickedUp))
-            result.Add(String.Format("CrystalBallPickedUp:\t{0}\t>>>\t{1}", other.IsCrystalBallPickedUp, IsCrystalBallPickedUp));
+            result.Add(String.Format("IsCrystalBallPickedUp:\t{0}\t>>>\t{1}", other.IsCrystalBallPickedUp, IsCrystalBallPickedUp));
 
         if (!IsInside.Equals(other.IsInside))
             result.Add(String.Format("IsInside:\t{0}\t>>>\t{1}", other.IsInside, IsInside));
 
         if (!IsOutside.Equals(other.IsOutside))
             result.Add(String.Format("IsOutside:\t{0}\t>>>\t{1}", other.IsOutside, IsOutside));
+
+        if (!CharPosition.Equals(other.CharPosition))
+            result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}", other.CharPosition, CharPosition));
 
         return result;
     }

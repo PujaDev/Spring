@@ -19,6 +19,14 @@ public struct Vector3S
         z = vector.z;
     }
 
+    public Vector3S(float tmp_x, float tmp_y, float tmp_z)
+    {
+        x = tmp_x;
+        y = tmp_y;
+        z = tmp_z;
+    }
+
+
     public Vector3 GetVector3()
     {  
         return new Vector3(x, y, z);

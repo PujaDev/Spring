@@ -135,15 +135,15 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000010938544264, guid: a15abc69a7734d046b489b7f5a156ed3,
     type: 2}
   m_PrefabInternal: {fileID: 522768632}
---- !u!114 &219915082
+--- !u!114 &219915083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 219915080}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e4b5d2184787f418a58f88c2267501, type: 3}
+  m_Script: {fileID: 11500000, guid: f373639e9f2243943be72648434f67a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Slots:
@@ -157,21 +157,9 @@ MonoBehaviour:
   - {fileID: 1880454466}
   - {fileID: 332510938}
   - {fileID: 1076448285}
-  ItemSprites:
-  - {fileID: 21300000, guid: fc4a6a6b3edce2a48a161a416300e8e6, type: 3}
-  - {fileID: 21300000, guid: 1889ec363e0088848ab1a3d9fef1317e, type: 3}
-  - {fileID: 21300000, guid: b7863fd3119017644a6c91e8335c914a, type: 3}
-  - {fileID: 21300000, guid: ddd2fc50ca6fa6c45bd911a0dd6f46f0, type: 3}
-  - {fileID: 21300000, guid: 9562f18515ebff04ba7dc6415fc81496, type: 3}
-  - {fileID: 21300000, guid: e350bdca47542c64c829624805cf30a2, type: 3}
-  ItemNames:
-  - Chinese powder
-  - Dried flower
-  - Herb exctract
-  - Delivery Address
-  - Mineral mix
-  - Crystall ball
-  currentItems: 000000000100000004000000
+  ItemSprites: []
+  ItemNames: []
+  currentItems: 
 --- !u!1 &327618189
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +907,8 @@ Prefab:
       propertyPath: startPositionY
       value: -1.4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000014145444322, guid: 4badebdc690a3ed49b26289653bd959f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4badebdc690a3ed49b26289653bd959f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &443072231
@@ -1912,6 +1901,7 @@ GameObject:
   - 23: {fileID: 844694845}
   - 114: {fileID: 844694844}
   - 114: {fileID: 844694843}
+  - 114: {fileID: 844694848}
   m_Layer: 0
   m_Name: HubaCharacter
   m_TagString: Character
@@ -2016,12 +2006,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 844694842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.54, y: -1.4, z: 0}
+  m_LocalPosition: {x: -11.5, y: -1.4, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &844694848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844694842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ba60d70ab8093458aa9341b696b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneID: 2
 --- !u!1 &901165862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2138,22 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00018310547, y: 0}
   m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &934993784 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011523534138, guid: 4badebdc690a3ed49b26289653bd959f,
+    type: 2}
+  m_PrefabInternal: {fileID: 396054768}
+--- !u!114 &934993786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934993784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a615e536d2e90724ba2fa91899c27864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074443188
 GameObject:
   m_ObjectHideFlags: 0
