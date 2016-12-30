@@ -18,5 +18,6 @@ public enum ActionType {
     GO_OUTSIDE,
     GO_INSIDE,
     FLY_AWAY,
-    PICK_UP_CRYSTAL_BALL
+    PICK_UP_CRYSTAL_BALL,
+    TAKE_EMPTY_VIAL
 }

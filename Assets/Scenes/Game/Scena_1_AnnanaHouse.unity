@@ -392,6 +392,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ddd2fc50ca6fa6c45bd911a0dd6f46f0, type: 3}
   - {fileID: 21300000, guid: 9562f18515ebff04ba7dc6415fc81496, type: 3}
   - {fileID: 21300000, guid: e350bdca47542c64c829624805cf30a2, type: 3}
+  - {fileID: 21300000, guid: 84ed5a3af6b21334aa126718d9646bc1, type: 3}
   ItemNames:
   - Chinese powder
   - Dried flower
@@ -399,6 +400,7 @@ MonoBehaviour:
   - Delivery Address
   - Mineral mix
   - Crystall ball
+  - Empty vial
   currentItems: 000000000100000004000000
 --- !u!1 &274729288
 GameObject:
@@ -5293,7 +5295,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1164734162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.74, y: -0.52, z: 0}
+  m_LocalPosition: {x: 7.87, y: -0.52, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -6141,6 +6143,7 @@ MonoBehaviour:
   tooltipText: Empty elixir vials
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
+  VialCount: 0
 --- !u!114 &1419371294
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,6 +32,8 @@ public class TestSceneReducer : Reducer
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
             case ActionType.PICK_UP_CRYSTAL_BALL:
                 return state.Set(state.AnnanaHouse.SetCrystalBallPickedUp(true));
+            case ActionType.TAKE_EMPTY_VIAL:
+                return state.Set(state.AnnanaHouse.SetEmptyVialPickedUpCount(state.AnnanaHouse.EmptyVialPickedUpCount + 1));
                 
         }
 
