@@ -9,6 +9,7 @@ public class ToggleButton : MonoBehaviour {
     public bool atStartOn;
     private bool ObjectOn;
 
+    // Stat - not Awake to let the inventory initialize before being disabled
     public void Start()
     {
         ObjectOn = (atStartOn) ? false : true;

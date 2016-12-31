@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour, IChangable
     // Set initial items from Unity inspector in editor
     public List<int> currentItems;
 
+    // Start - not Awake so we can subscribe to StateManager 
     void Start()
     {
         if (Instance == null)
