@@ -10,3 +10,13 @@ bool;IsCrystalBallPickedUp;false
 bool;IsInside;false
 bool;IsOutside;false
 Vector3S;CharPosition;new Vector3S(10.74f, -0.52f, 0f)
+bool;IsEmptyVialPickedUp;false
+bool;IsEmptyVialUsed;false
+bool;IsFlowerPickedUp;false
+bool;IsFlowerUsed;false
+bool;IsBerryPickedUp;false
+bool;IsBerryUsed;false
+bool;IsLeafPickedUp;false
+bool;IsLeafUsed;false
+HashSet<int>;BoilerContents;new HashSet<int>()
+bool;IsElixirUsed;false

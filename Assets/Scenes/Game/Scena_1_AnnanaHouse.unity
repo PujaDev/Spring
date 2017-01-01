@@ -386,22 +386,30 @@ MonoBehaviour:
   - {fileID: 332510938}
   - {fileID: 1076448285}
   ItemSprites:
-  - {fileID: 21300000, guid: fc4a6a6b3edce2a48a161a416300e8e6, type: 3}
+  - {fileID: 21300000, guid: 340157807d308e444a90ed971286e7a2, type: 3}
   - {fileID: 21300000, guid: 1889ec363e0088848ab1a3d9fef1317e, type: 3}
-  - {fileID: 21300000, guid: b7863fd3119017644a6c91e8335c914a, type: 3}
+  - {fileID: 21300000, guid: 74281ae5cb4844c4db6166bb21f9f591, type: 3}
   - {fileID: 21300000, guid: ddd2fc50ca6fa6c45bd911a0dd6f46f0, type: 3}
   - {fileID: 21300000, guid: 9562f18515ebff04ba7dc6415fc81496, type: 3}
   - {fileID: 21300000, guid: e350bdca47542c64c829624805cf30a2, type: 3}
   - {fileID: 21300000, guid: 84ed5a3af6b21334aa126718d9646bc1, type: 3}
+  - {fileID: 21300000, guid: b7863fd3119017644a6c91e8335c914a, type: 3}
+  - {fileID: 21300000, guid: 1ae9969cc71c4434f89a905698c25970, type: 3}
+  - {fileID: 21300000, guid: f900beb6fa115434c8ee84d2af989eb7, type: 3}
+  - {fileID: 21300000, guid: 3efb733dc97a5984fb65c0a04d737aa5, type: 3}
   ItemNames:
-  - Chinese powder
-  - Dried flower
+  - Berry
+  - Flower
   - Herb exctract
   - Delivery Address
   - Mineral mix
   - Crystall ball
   - Empty vial
-  currentItems: 000000000100000004000000
+  - Antidote
+  - Elixir of Shrinking
+  - Elixir of Invisibility
+  - Mushroom Soup
+  currentItems: 0400000003000000
 --- !u!1 &274729288
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,7 +3102,7 @@ MonoBehaviour:
     height: 1070
   selectedBlock: {fileID: 768941975}
   selectedCommands:
-  - {fileID: 768941977}
+  - {fileID: 768941973}
   variables: []
   description: 
   stepPause: 0
@@ -5318,6 +5326,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneID: 1
+--- !u!1 &1216687458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1216687459}
+  - 61: {fileID: 1216687460}
+  - 114: {fileID: 1216687461}
+  - 114: {fileID: 1216687462}
+  m_Layer: 0
+  m_Name: Ingredients
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1216687459
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216687458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.136, y: 2.328, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1619678388}
+  m_RootOrder: 2
+--- !u!61 &1216687460
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216687458}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.008895874, y: -0.55152845}
+  serializedVersion: 2
+  m_Size: {x: 0.8754608, y: 2.103057}
+--- !u!114 &1216687461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216687458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0850c55937b14d813515af9ecbce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Ingredients
+  icons:
+  - {fileID: 21300000, guid: 340157807d308e444a90ed971286e7a2, type: 3}
+  - {fileID: 21300000, guid: 1889ec363e0088848ab1a3d9fef1317e, type: 3}
+  - {fileID: 21300000, guid: 74281ae5cb4844c4db6166bb21f9f591, type: 3}
+  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+--- !u!114 &1216687462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216687458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: 3
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1219731766
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,7 +6244,6 @@ MonoBehaviour:
   tooltipText: Empty elixir vials
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
-  VialCount: 4
 --- !u!114 &1419371294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7075,6 +7158,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1419371292}
+  - {fileID: 2045748040}
+  - {fileID: 1216687459}
   m_Father: {fileID: 75455288}
   m_RootOrder: 13
 --- !u!1 &1628489605
@@ -8123,6 +8208,79 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2045748039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2045748040}
+  - 61: {fileID: 2045748041}
+  - 114: {fileID: 2045748043}
+  - 114: {fileID: 2045748042}
+  m_Layer: 0
+  m_Name: Boiler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2045748040
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045748039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.93, y: 2.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1619678388}
+  m_RootOrder: 1
+--- !u!61 &2045748041
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045748039}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.0058193207, y: -0.07564831}
+  serializedVersion: 2
+  m_Size: {x: 1.2909542, y: 2.3616686}
+--- !u!114 &2045748042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045748039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f226ecc35d8f33d49bbc0250fb89cbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: 
+  icons:
+  - {fileID: 21300000, guid: 38f1370d0d7677e4abd4257413b130d5, type: 3}
+--- !u!114 &2045748043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045748039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: 3
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &2055671623
 GameObject:
   m_ObjectHideFlags: 0

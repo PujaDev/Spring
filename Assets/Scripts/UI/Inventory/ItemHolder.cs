@@ -77,8 +77,14 @@ public class ItemHolder : MonoBehaviour
 
                             if (Input.GetMouseButton(0))
                             {
-                                u.UseOnSelf(CurrentItemId);
+                                // Stop holding before usage to return item to inventory and then remove it via action
+                                // sometimes use on self invokes coroutine move closer - then we would be fine - item returns and is later removed
+                                // but other times there is no coroutine involved, item is in hand so action cannot remove it from inventory
+                                // and StopHolding just returns it to inventory for no reason
+
+                                int itemId = CurrentItemId;
                                 StopHolding();
+                                u.UseOnSelf(itemId);
                                 return;
                             }
                         }

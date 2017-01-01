@@ -4,15 +4,13 @@ using System;
 
 public class EmptyElixirVials : IInteractable {
 
-    public int VialCount;
-
     private SpringAction[] Actions;
 
     void Awake()
     {
         Actions = new SpringAction[]
         {
-            new SpringAction(ActionType.TAKE_EMPTY_VIAL, "Take empty vial", icons[0])
+            new SpringAction(ActionType.TAKE, "Take empty vial", icons[0], AnnanaInventory.ItemIds.EmptyVial)
         };
     }
 
@@ -24,16 +22,7 @@ public class EmptyElixirVials : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (oldState == null)
-        {
-            VialCount -= newState.AnnanaHouse.EmptyVialPickedUpCount;
-        }
-        else if (newState.AnnanaHouse.EmptyVialPickedUpCount > oldState.AnnanaHouse.EmptyVialPickedUpCount)
-        {
-            VialCount -= newState.AnnanaHouse.EmptyVialPickedUpCount - oldState.AnnanaHouse.EmptyVialPickedUpCount;
-        }
-
-        if (VialCount <= 0)
+        if (newState.AnnanaHouse.IsEmptyVialPickedUp && (oldState == null || !oldState.AnnanaHouse.IsEmptyVialPickedUp))
         {
             Actions = new SpringAction[]
             {

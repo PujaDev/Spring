@@ -9,7 +9,7 @@ public class CrystalBallOnTable : IInteractable {
         return new SpringAction[] {
             new SpringAction(ActionType.CALL_MOM, "Call mom", icons[0]),
             new SpringAction(ActionType.TELL_FORTUNE, "Tell fortune", icons[1]),
-            new SpringAction(ActionType.PICK_UP_CRYSTAL_BALL, "Pick up", icons[2])
+            new SpringAction(ActionType.TAKE, "Pick up", icons[2], (int)AnnanaInventory.ItemIds.CrystalBall)
         };
     }
 

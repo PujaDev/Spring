@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class AnnanaHouseSceneReducer : Reducer
 {
@@ -30,16 +32,78 @@ public class AnnanaHouseSceneReducer : Reducer
                 }
             case ActionType.FLY_AWAY:
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
-            case ActionType.PICK_UP_CRYSTAL_BALL:
-                return state.Set(state.AnnanaHouse.SetIsCrystalBallPickedUp(true));
-            case ActionType.TAKE_EMPTY_VIAL:
+            case ActionType.TAKE:
                 {
-                    // Since we cannot stack do not take new vial if you already have one
-                    if (Inventory.Instance.Contains((int)AnnanaInventory.ItemIds.EmptyVial))
-                        return state;
-                    return state.Set(state.AnnanaHouse.SetEmptyVialPickedUpCount(state.AnnanaHouse.EmptyVialPickedUpCount + 1));
-                }
+                    int itemId = (int)action.Data;
 
+                    switch ((AnnanaInventory.ItemIds)itemId)
+                    {
+                        case AnnanaInventory.ItemIds.Flower:
+                            return state.Set(state.AnnanaHouse.SetIsFlowerPickedUp(true));
+                        case AnnanaInventory.ItemIds.CrystalBall:
+                            return state.Set(state.AnnanaHouse.SetIsCrystalBallPickedUp(true));
+                        case AnnanaInventory.ItemIds.EmptyVial:
+                            return state.Set(state.AnnanaHouse.SetIsEmptyVialPickedUp(true));
+                        case AnnanaInventory.ItemIds.Berry:
+                            return state.Set(state.AnnanaHouse.SetIsBerryPickedUp(true));
+                        case AnnanaInventory.ItemIds.Leaf:
+                            return state.Set(state.AnnanaHouse.SetIsLeafPickedUp(true));
+                    }
+                    break;
+                }
+            case ActionType.THROW_TO_BOILER:
+                {
+                    int itemId = (int)action.Data;
+                    
+                    // Throw in new item
+                    HashSet<int> contents = new HashSet<int>(state.AnnanaHouse.BoilerContents);
+                    contents.Add(itemId);
+
+                    GameState s = null;
+
+                    switch ((AnnanaInventory.ItemIds)itemId)
+                    {
+                        case AnnanaInventory.ItemIds.Flower:
+                            s = state.Set(state.AnnanaHouse.SetIsFlowerUsed(true));
+                            break;
+                        case AnnanaInventory.ItemIds.EmptyVial:
+                            s = state.Set(state.AnnanaHouse.SetIsEmptyVialUsed(true));
+                            break;
+                        case AnnanaInventory.ItemIds.Berry:
+                            s = state.Set(state.AnnanaHouse.SetIsBerryUsed(true));
+                            break;
+                        case AnnanaInventory.ItemIds.Leaf:
+                            s = state.Set(state.AnnanaHouse.SetIsLeafUsed(true));
+                            break;
+                        default:
+                            break;
+                    }
+
+                    return s.Set(s.AnnanaHouse.SetBoilerContents(contents));
+                }
+            case ActionType.EMPTY_BOILER:
+                return state.Set(state.AnnanaHouse.SetBoilerContents(new HashSet<int>()));
+            case ActionType.FILL_ELIXIR:
+                {
+                    GameState s = state.Set(state.AnnanaHouse.SetIsEmptyVialUsed(true));
+
+                    HashSet<int> ingredients = state.AnnanaHouse.BoilerContents;
+
+                    AnnanaInventory inv = Inventory.Instance as AnnanaInventory;
+
+                    var e = inv.Elixirs
+                        .Where(x => x.Value.Ingredients.SetEquals(ingredients))
+                        .FirstOrDefault();
+                    
+                    if (e.Value == null) // Unknown elixir = soup
+                    {
+                        return s.Set(s.AnnanaHouse.SetElixirName(inv.Elixirs.Where(x => x.Key == (int)AnnanaInventory.ElixirTypes.Soup).First().Value.Name));
+                    }
+
+                    string name = e.Value.Name;
+                    // Known elixir set it
+                    return s.Set(s.AnnanaHouse.SetElixirName(name));
+                }
         }
 
         return state;

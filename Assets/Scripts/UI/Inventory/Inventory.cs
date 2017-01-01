@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Runtime.Serialization;
 using System;
 
-public class Inventory : MonoBehaviour, IChangable
+public abstract class Inventory : MonoBehaviour, IChangable
 {
     public static Inventory Instance { get; private set; }
 
@@ -17,12 +17,14 @@ public class Inventory : MonoBehaviour, IChangable
     // Set initial items from Unity inspector in editor
     public List<int> currentItems;
 
+    protected abstract Inventory GetInstance();
+
     // Start - not Awake so we can subscribe to StateManager 
     void Start()
     {
         if (Instance == null)
         {
-            Instance = this;
+            Instance = GetInstance();
 
             int i = 0;
             for (; i < currentItems.Count; i++) {

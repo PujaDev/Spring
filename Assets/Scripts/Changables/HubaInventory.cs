@@ -1,5 +1,12 @@
-﻿public class HubaInventory : Inventory
+﻿using System;
+
+public class HubaInventory : Inventory
 {
+    protected override Inventory GetInstance()
+    {
+        return this;
+    }
+
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
         // This order matters so we do not end up in state where we should not have certain item but we have it
