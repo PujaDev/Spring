@@ -1,0 +1,216 @@
+
+TortoiseBus.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BB_leg
+  rotate: false
+  xy: 2405, 1921
+  size: 494, 548
+  orig: 494, 548
+  offset: 0, 0
+  index: -1
+BF_leg
+  rotate: true
+  xy: 3646, 3495
+  size: 597, 446
+  orig: 597, 446
+  offset: 0, 0
+  index: -1
+FB_leg
+  rotate: false
+  xy: 2405, 2471
+  size: 643, 737
+  orig: 643, 737
+  offset: 0, 0
+  index: -1
+FF_leg
+  rotate: false
+  xy: 889, 405
+  size: 629, 699
+  orig: 629, 699
+  offset: 0, 0
+  index: -1
+LB_leg
+  rotate: false
+  xy: 2085, 1494
+  size: 105, 64
+  orig: 105, 64
+  offset: 0, 0
+  index: -1
+LF_leg
+  rotate: false
+  xy: 2405, 1711
+  size: 46, 76
+  orig: 46, 76
+  offset: 0, 0
+  index: -1
+RB_leg
+  rotate: true
+  xy: 1520, 697
+  size: 91, 67
+  orig: 91, 67
+  offset: 0, 0
+  index: -1
+RF_leg
+  rotate: false
+  xy: 3646, 3244
+  size: 68, 80
+  orig: 68, 80
+  offset: 0, 0
+  index: -1
+arm
+  rotate: false
+  xy: 3050, 2506
+  size: 146, 75
+  orig: 146, 75
+  offset: 0, 0
+  index: -1
+arm _back
+  rotate: false
+  xy: 889, 352
+  size: 180, 51
+  orig: 180, 51
+  offset: 0, 0
+  index: -1
+belly
+  rotate: false
+  xy: 2, 1106
+  size: 2081, 590
+  orig: 2081, 590
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 3646, 3326
+  size: 182, 167
+  orig: 182, 167
+  offset: 0, 0
+  index: -1
+body_legs
+  rotate: false
+  xy: 2405, 1789
+  size: 137, 130
+  orig: 137, 130
+  offset: 0, 0
+  index: -1
+cousion
+  rotate: false
+  xy: 2085, 1560
+  size: 248, 136
+  orig: 248, 136
+  offset: 0, 0
+  index: -1
+eyes
+  rotate: false
+  xy: 1589, 1024
+  size: 88, 80
+  orig: 88, 80
+  offset: 0, 0
+  index: -1
+eyes2
+  rotate: false
+  xy: 3021, 2458
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1
+eyes3
+  rotate: false
+  xy: 1071, 395
+  size: 12, 8
+  orig: 12, 8
+  offset: 0, 0
+  index: -1
+gear
+  rotate: false
+  xy: 2, 344
+  size: 885, 760
+  orig: 885, 760
+  offset: 0, 0
+  index: -1
+gearBack
+  rotate: false
+  xy: 3050, 2583
+  size: 362, 625
+  orig: 362, 625
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 3830, 3414
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1
+hat_head
+  rotate: false
+  xy: 3414, 3123
+  size: 125, 85
+  orig: 125, 85
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2405, 3210
+  size: 1239, 882
+  orig: 1239, 882
+  offset: 0, 0
+  index: -1
+irises
+  rotate: false
+  xy: 2544, 1899
+  size: 82, 20
+  orig: 82, 20
+  offset: 0, 0
+  index: -1
+liz_head
+  rotate: false
+  xy: 369, 235
+  size: 88, 107
+  orig: 88, 107
+  offset: 0, 0
+  index: -1
+liz_tail
+  rotate: false
+  xy: 1520, 790
+  size: 67, 314
+  orig: 67, 314
+  offset: 0, 0
+  index: -1
+money
+  rotate: false
+  xy: 2901, 2310
+  size: 46, 35
+  orig: 46, 35
+  offset: 0, 0
+  index: -1
+pelerine
+  rotate: false
+  xy: 2901, 2347
+  size: 118, 122
+  orig: 118, 122
+  offset: 0, 0
+  index: -1
+shell
+  rotate: false
+  xy: 2, 1698
+  size: 2401, 2394
+  orig: 2401, 2394
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 2, 4
+  size: 365, 338
+  orig: 365, 338
+  offset: 0, 0
+  index: -1
+tangue
+  rotate: false
+  xy: 2335, 1561
+  size: 25, 135
+  orig: 25, 135
+  offset: 0, 0
+  index: -1
