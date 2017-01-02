@@ -33,6 +33,7 @@ public class AnnanaSceneState : SceneState
 	public int OwlPackage { get; private set; }
 	public bool IsAddressPickedUp { get; private set; }
 	public bool IsAddressUsed { get; private set; }
+	public bool IsReadingFridgeNote { get; private set; }
 
 	public AnnanaSceneState() {
 		AlarmTurnedOff = false;
@@ -58,8 +59,9 @@ public class AnnanaSceneState : SceneState
 		IsElixirUsed = false;
 		OwlHasAddress = false;
 		OwlPackage = -1;
-		IsAddressPickedUp = true;
+		IsAddressPickedUp = false;
 		IsAddressUsed = false;
+		IsReadingFridgeNote = false;
 	}
 
 	private AnnanaSceneState(AnnanaSceneState template) {
@@ -88,6 +90,7 @@ public class AnnanaSceneState : SceneState
 		OwlPackage = template.OwlPackage;
 		IsAddressPickedUp = template.IsAddressPickedUp;
 		IsAddressUsed = template.IsAddressUsed;
+		IsReadingFridgeNote = template.IsReadingFridgeNote;
 	}
 
 	public AnnanaSceneState SetAlarmTurnedOff(bool value)
@@ -265,6 +268,13 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaSceneState SetIsReadingFridgeNote(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.IsReadingFridgeNote = value;
+		return copy;
+	}
+
 
 	public List<string> CompareChanges(AnnanaSceneState other) {
 		var result = new List<string>();
@@ -343,6 +353,9 @@ public class AnnanaSceneState : SceneState
 
 		if(!IsAddressUsed.Equals(other.IsAddressUsed))
 			result.Add(String.Format("IsAddressUsed:\t{0}\t>>>\t{1}",other.IsAddressUsed,IsAddressUsed));
+
+		if(!IsReadingFridgeNote.Equals(other.IsReadingFridgeNote))
+			result.Add(String.Format("IsReadingFridgeNote:\t{0}\t>>>\t{1}",other.IsReadingFridgeNote,IsReadingFridgeNote));
 
 		return result;
 	}

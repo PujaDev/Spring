@@ -15,7 +15,7 @@ public class AnnanaInventory : Inventory
         Berry = 0,
         Flower = 1,
         Leaf = 2,
-        Address = 3,
+        NoteAddress = 3,
         CrystalBall = 5,
         EmptyVial = 6,
         Antidote = 7,
@@ -117,7 +117,7 @@ public class AnnanaInventory : Inventory
         // Add address
         if (newState.AnnanaHouse.IsAddressPickedUp && (oldState == null || !oldState.AnnanaHouse.IsAddressPickedUp))
         {
-            AddItem((int)ItemIds.Address);
+            AddItem((int)ItemIds.NoteAddress);
         }
         #endregion
 
@@ -157,7 +157,7 @@ public class AnnanaInventory : Inventory
         // Remove address
         if (newState.AnnanaHouse.IsAddressUsed && (oldState == null || !oldState.AnnanaHouse.IsAddressUsed))
         {
-            RemoveItem((int)ItemIds.Address);
+            RemoveItem((int)ItemIds.NoteAddress);
         }
         #endregion
     }

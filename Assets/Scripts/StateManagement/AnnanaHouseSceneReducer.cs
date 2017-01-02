@@ -48,6 +48,8 @@ public class AnnanaHouseSceneReducer : Reducer
                             return state.Set(state.AnnanaHouse.SetIsBerryPickedUp(true));
                         case AnnanaInventory.ItemIds.Leaf:
                             return state.Set(state.AnnanaHouse.SetIsLeafPickedUp(true));
+                        case AnnanaInventory.ItemIds.NoteAddress:
+                            return state.Set(state.AnnanaHouse.SetIsAddressPickedUp(true));
                     }
                     break;
                 }
@@ -114,6 +116,10 @@ public class AnnanaHouseSceneReducer : Reducer
                     GameState s = state.Set(state.AnnanaHouse.SetIsElixirUsed(true));
                     return s.Set(s.AnnanaHouse.SetOwlPackage((int)action.Data));
                 }
+            case ActionType.START_READING_FRIDGE_NOTE:
+                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(true));
+            case ActionType.STOP_READING_FRIDGE_NOTE:
+                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(false));
         }
 
         return state;
