@@ -114,6 +114,10 @@ public class AnnanaHouseSceneReducer : Reducer
                     GameState s = state.Set(state.AnnanaHouse.SetIsElixirUsed(true));
                     return s.Set(s.AnnanaHouse.SetOwlPackage((int)action.Data));
                 }
+            case ActionType.START_READING_FRIDGE_NOTE:
+                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(true));
+            case ActionType.STOP_READING_FRIDGE_NOTE:
+                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(false));
         }
 
         return state;
