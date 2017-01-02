@@ -9,8 +9,10 @@ public class DeliveryOwl : IInteractable, IItemUsable
     SpringAction[] ReadyActions;
     HashSet<int> UsableItems;
     
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         Actions = new SpringAction[]
         {
             new SpringAction(ActionType.LOOK, "Owl is not ready to fly", icons[0])

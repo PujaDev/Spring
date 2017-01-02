@@ -5,20 +5,27 @@
 /// </summary>
 public abstract class IInteractable : MonoBehaviour, IChangable
 {
-
     public string tooltipText = "";
     public Sprite[] icons;
     private bool keepTooltipOpen = false;
     //GameObject tooltipPrefab;
     //GameObject tooltipObject;
 
+    private Highlight Highlight;
+
+    protected virtual void Awake()
+    {
+        Highlight = new BoxParticleHighlight(gameObject);
+    }
+
     void Start()
     {
+        Highlight.Subscribe();
+
         //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
         var gameState = StateManager.Instance.Subscribe(this);
         OnStateChanged(gameState, null);
     }
-
 
     void OnMouseEnter()
     {
@@ -68,4 +75,6 @@ public abstract class IInteractable : MonoBehaviour, IChangable
     }
 
     abstract protected SpringAction[] GetActionList();
+
+    
 }

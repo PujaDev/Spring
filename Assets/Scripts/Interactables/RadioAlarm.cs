@@ -6,8 +6,10 @@ public class RadioAlarm : IInteractable {
 
     Vector3 defaultScale;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         defaultScale = gameObject.transform.localScale;
     }
 

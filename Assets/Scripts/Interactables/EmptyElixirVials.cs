@@ -6,8 +6,10 @@ public class EmptyElixirVials : IInteractable {
 
     private SpringAction[] Actions;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         Actions = new SpringAction[]
         {
             new SpringAction(ActionType.TAKE, "Take empty vial", icons[0], AnnanaInventory.ItemIds.EmptyVial)

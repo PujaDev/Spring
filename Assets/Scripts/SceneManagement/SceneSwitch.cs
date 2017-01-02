@@ -6,6 +6,18 @@ public class SceneSwitch : MonoBehaviour
     public Transform StartPoint;
     public ActionType Action;
 
+    private Highlight Highlight;
+
+    void Awake()
+    {
+        Highlight = new BoxParticleHighlight(gameObject);
+    }
+
+    void Start()
+    {
+        Highlight.Subscribe();
+    }
+
     void OnMouseDown()
     {
         SpringAction action = new SpringAction(Action, null, null);
