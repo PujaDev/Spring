@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ItemHolder : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ItemHolder : MonoBehaviour
             Instance = this;
             CurrentItemId = -1;
             transform.position = new Vector3(-5000, -5000, 5000);
+            transform.localScale = new Vector3(4f, 4f, 1f);
         }
         else
         {
@@ -25,6 +27,11 @@ public class ItemHolder : MonoBehaviour
     public void StartHolding(int index, Sprite sprite)
     {
         IsHolding = true;
+
+        // Scale sprite so it looks consistent on screen
+        float scale = ComputeScale(sprite);
+        transform.localScale = new Vector3(scale, scale, 1f);
+
         GetComponent<SpriteRenderer>().sprite = sprite;
         CurrentItemId = index;
         gameObject.AddComponent<BoxCollider2D>();
@@ -94,5 +101,30 @@ public class ItemHolder : MonoBehaviour
 
             MoveToCursor();
         }
+    }
+
+    private float ComputeScale(Sprite sprite)
+    {
+        // Size constants
+        const float MIN_SIZE = 32f;
+        const float MAX_SIZE = 128f;
+
+        // Scale constants
+        const float MIN_SCALE = 1f;
+        const float MAX_SCALE = 4f;
+
+        float size = Math.Max(sprite.rect.height, sprite.rect.width);
+
+        // Handle edge cases
+        // MAX size should be potentially downscaled
+        if (size >= MAX_SIZE)
+            return MIN_SCALE;
+        if (size <= MIN_SIZE)
+            return MAX_SCALE;
+
+        float amount = (size - MIN_SIZE) / (MAX_SIZE - MIN_SIZE);
+        float scale = Mathf.Lerp(MAX_SCALE, MIN_SCALE, amount);
+
+        return scale;
     }
 }
