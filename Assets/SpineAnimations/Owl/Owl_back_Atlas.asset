@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: Owl_back_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 9080cf23f3eecd4419e912b607d921fd, type: 3}
+  atlasFile: {fileID: 4900000, guid: 1cfb2b5e3b1de6e488a046e05adde26d, type: 3}
   materials:
   - {fileID: 2100000, guid: 5a5b53554a4891843a621d95793bcbb6, type: 2}

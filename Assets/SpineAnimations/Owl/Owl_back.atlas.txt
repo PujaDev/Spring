@@ -6,112 +6,119 @@ filter: Linear,Linear
 repeat: none
 L_wing
   rotate: false
-  xy: 2, 123
+  xy: 2, 149
   size: 82, 201
   orig: 82, 201
   offset: 0, 0
   index: -1
 L_wing_fly
   rotate: false
-  xy: 2, 746
+  xy: 2, 772
   size: 380, 208
   orig: 380, 208
   offset: 0, 0
   index: -1
 P_wing
   rotate: false
-  xy: 510, 540
+  xy: 510, 566
   size: 76, 204
   orig: 76, 204
   offset: 0, 0
   index: -1
 P_wing_fly
   rotate: false
-  xy: 384, 746
+  xy: 2, 562
   size: 380, 208
   orig: 380, 208
   offset: 0, 0
   index: -1
 body_flying
   rotate: false
-  xy: 384, 530
+  xy: 384, 556
   size: 124, 214
   orig: 124, 214
   offset: 0, 0
   index: -1
 head_back_flying
   rotate: true
-  xy: 2, 2
+  xy: 2, 28
   size: 119, 81
   orig: 119, 81
   offset: 0, 0
   index: -1
+package
+  rotate: false
+  xy: 316, 267
+  size: 78, 83
+  orig: 78, 83
+  offset: 0, 0
+  index: -1
 tail
   rotate: false
-  xy: 240, 223
+  xy: 240, 249
   size: 74, 101
   orig: 74, 101
   offset: 0, 0
   index: -1
 tail_fly
   rotate: false
-  xy: 86, 216
+  xy: 86, 242
   size: 152, 108
   orig: 152, 108
   offset: 0, 0
   index: -1
 white/L_wing
   rotate: false
-  xy: 384, 327
+  xy: 384, 353
   size: 82, 201
   orig: 82, 201
   offset: 0, 0
   index: -1
 white/L_wing_fly
   rotate: false
-  xy: 2, 536
+  xy: 384, 772
   size: 380, 208
   orig: 380, 208
   offset: 0, 0
   index: -1
 white/P_wing
   rotate: true
-  xy: 766, 752
+  xy: 766, 778
   size: 76, 204
   orig: 76, 204
   offset: 0, 0
   index: -1
 white/P_wing_fly
   rotate: false
-  xy: 2, 326
+  xy: 2, 352
   size: 380, 208
   orig: 380, 208
   offset: 0, 0
   index: -1
 white/body_flying
   rotate: true
-  xy: 766, 830
+  xy: 766, 856
   size: 124, 214
   orig: 124, 214
   offset: 0, 0
   index: -1
 white/head_back_flying
   rotate: false
-  xy: 86, 133
+  xy: 86, 159
   size: 119, 81
   orig: 119, 81
   offset: 0, 0
   index: -1
 white/tail
   rotate: true
-  xy: 588, 560
+  xy: 588, 586
   size: 74, 101
   orig: 74, 101
   offset: 0, 0
   index: -1
 white/tail_fly
   rotate: false
-  xy: 588, 636
+  xy: 588, 662
   size: 152, 108
   orig: 152, 108
   offset: 0, 0
