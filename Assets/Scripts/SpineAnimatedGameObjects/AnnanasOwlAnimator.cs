@@ -69,10 +69,17 @@ public class AnnanasOwlAnimator : MonoBehaviour {
 
             yield return null;
         }
+
+        skeletonAnim.AnimationState.SetEmptyAnimation(0, 1f);
     }
 
     public void Fly() {
         StartCoroutine(FlyToCoroutine());
+    }
+
+    public void PackageAppear()
+    {
+        skeletonAnim.AnimationState.SetAnimation(2, "package_appear", false);
     }
 
     // Use this for initialization

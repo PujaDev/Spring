@@ -51,6 +51,7 @@ public class DeliveryOwl : IInteractable, IItemUsable
         // Just got package and already has address
         if (newState.AnnanaHouse.OwlPackage != -1 && (oldState == null || oldState.AnnanaHouse.OwlPackage == -1))
         {
+            gameObject.GetComponentInChildren<AnnanasOwlAnimator>().PackageAppear();
             if (newState.AnnanaHouse.OwlHasAddress)
             {
                 Actions = ReadyActions;
@@ -67,7 +68,7 @@ public class DeliveryOwl : IInteractable, IItemUsable
             if (oldState == null)
                 gameObject.SetActive(false);
             else // Playing game - start fly animation
-                gameObject.GetComponent<AnnanasOwlAnimator>().Fly();
+                gameObject.GetComponentInChildren<AnnanasOwlAnimator>().Fly();
         }
     }
 
