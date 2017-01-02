@@ -4803,6 +4803,81 @@ Transform:
   - {fileID: 395986397}
   m_Father: {fileID: 75455288}
   m_RootOrder: 7
+--- !u!1 &988604220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 988604221}
+  - 61: {fileID: 988604224}
+  - 114: {fileID: 988604223}
+  - 114: {fileID: 988604222}
+  m_Layer: 0
+  m_Name: Owl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988604221
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988604220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.98, y: -0.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 2111840708}
+  m_Father: {fileID: 1587042426}
+  m_RootOrder: 2
+--- !u!114 &988604222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988604220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267233a39e90a58419ef54ff9ee96996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Delivery owl
+  icons:
+  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  - {fileID: 21300000, guid: 3d82200f9db004c46821d6c404bf023b, type: 3}
+--- !u!114 &988604223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988604220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: 3
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
+--- !u!61 &988604224
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 988604220}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 1.1682773, y: 0.056168377}
+  serializedVersion: 2
+  m_Size: {x: 1.1393948, y: 1.7916381}
 --- !u!1 &1009271701
 GameObject:
   m_ObjectHideFlags: 0
@@ -7202,7 +7277,7 @@ Transform:
   m_Children:
   - {fileID: 1305511158}
   - {fileID: 1528831439}
-  - {fileID: 2111840708}
+  - {fileID: 988604221}
   m_Father: {fileID: 0}
   m_RootOrder: 9
 --- !u!1 &1590619596
@@ -9269,9 +9344,6 @@ GameObject:
   - 23: {fileID: 2111840710}
   - 114: {fileID: 2111840709}
   - 114: {fileID: 2111840712}
-  - 61: {fileID: 2111840713}
-  - 114: {fileID: 2111840715}
-  - 114: {fileID: 2111840714}
   m_Layer: 9
   m_Name: AnnanasOwl
   m_TagString: Untagged
@@ -9286,12 +9358,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111840707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.169998, y: -1.57, z: -0.72}
+  m_LocalPosition: {x: 1.1899981, y: -0.62000006, z: -0.72}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1587042426}
-  m_RootOrder: 2
+  m_Father: {fileID: 988604221}
+  m_RootOrder: 0
 --- !u!114 &2111840709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9377,49 +9449,6 @@ MonoBehaviour:
   percentsPerSecond: 0.2
   currentPathPercent: 0
   scaleParam: 0.1
---- !u!61 &2111840713
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111840707}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: -0.023362294, y: 0.9659122}
-  serializedVersion: 2
-  m_Size: {x: 1.6262978, y: 2.4323022}
---- !u!114 &2111840714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111840707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267233a39e90a58419ef54ff9ee96996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tooltipText: Delivery owl
-  icons:
-  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
-  - {fileID: 21300000, guid: 3d82200f9db004c46821d6c404bf023b, type: 3}
---- !u!114 &2111840715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111840707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: 3
-  cursorMode: 0
-  hotSpot: {x: 0, y: 0}
 --- !u!1 &2116061436
 GameObject:
   m_ObjectHideFlags: 0
