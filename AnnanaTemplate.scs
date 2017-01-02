@@ -4,7 +4,7 @@ bool;AlarmPostponed;false
 bool;ChangeClothes;false
 bool;ReadingVeganBook;false
 bool;FlyAway;false
-string;ElixirName;"";Name of the chosen elixir
+int;ElixirId;-1;Id of chosen elixir;Id from AnnanaInventory.ItemIds
 int;AngerLevel;13
 bool;IsCrystalBallPickedUp;false
 bool;IsInside;false
@@ -20,3 +20,7 @@ bool;IsLeafPickedUp;false
 bool;IsLeafUsed;false
 HashSet<int>;BoilerContents;new HashSet<int>()
 bool;IsElixirUsed;false
+bool;OwlHasAddress;false
+int;OwlPackage;-1
+bool;IsAddressPickedUp;true
+bool;IsAddressUsed;false

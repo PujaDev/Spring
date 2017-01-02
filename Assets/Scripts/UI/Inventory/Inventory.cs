@@ -17,6 +17,10 @@ public abstract class Inventory : MonoBehaviour, IChangable
     // Set initial items from Unity inspector in editor
     public List<int> currentItems;
 
+    /// <summary>
+    /// Implement by "return this;" to allow casting Instance to derrived classes
+    /// </summary>
+    /// <returns>"this" of derived class</returns>
     protected abstract Inventory GetInstance();
 
     // Start - not Awake so we can subscribe to StateManager 

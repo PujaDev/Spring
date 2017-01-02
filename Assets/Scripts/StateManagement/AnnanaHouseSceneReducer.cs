@@ -89,7 +89,7 @@ public class AnnanaHouseSceneReducer : Reducer
 
                     HashSet<int> ingredients = state.AnnanaHouse.BoilerContents;
 
-                    AnnanaInventory inv = Inventory.Instance as AnnanaInventory;
+                    var inv = Inventory.Instance as AnnanaInventory;
 
                     var e = inv.Elixirs
                         .Where(x => x.Value.Ingredients.SetEquals(ingredients))
@@ -97,12 +97,22 @@ public class AnnanaHouseSceneReducer : Reducer
                     
                     if (e.Value == null) // Unknown elixir = soup
                     {
-                        return s.Set(s.AnnanaHouse.SetElixirName(inv.Elixirs.Where(x => x.Key == (int)AnnanaInventory.ElixirTypes.Soup).First().Value.Name));
+                        return s.Set(s.AnnanaHouse.SetElixirId((int)AnnanaInventory.ElixirTypes.Soup));
                     }
 
-                    string name = e.Value.Name;
                     // Known elixir set it
-                    return s.Set(s.AnnanaHouse.SetElixirName(name));
+                    return s.Set(s.AnnanaHouse.SetElixirId(e.Key));
+                }
+            case ActionType.GIVE_ADDRESS_TO_OWL:
+                {
+                    GameState s = state.Set(state.AnnanaHouse.SetIsAddressUsed(true));
+                    return s.Set(s.AnnanaHouse.SetOwlHasAddress(true));
+                }
+            case ActionType.GIVE_PACKAGE_TO_OWL:
+                {
+                    // Assume only elixirs can be sent
+                    GameState s = state.Set(state.AnnanaHouse.SetIsElixirUsed(true));
+                    return s.Set(s.AnnanaHouse.SetOwlPackage((int)action.Data));
                 }
         }
 

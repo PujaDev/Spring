@@ -11,9 +11,9 @@ public class AnnanaSceneState : SceneState
 	public bool ReadingVeganBook { get; private set; }
 	public bool FlyAway { get; private set; }
 	/// <summary>
-	/// Name of the chosen elixir
+	/// Id of chosen elixir
 	/// </summary>
-	public string ElixirName { get; private set; }
+	public int ElixirId { get; private set; }
 	public int AngerLevel { get; private set; }
 	public bool IsCrystalBallPickedUp { get; private set; }
 	public bool IsInside { get; private set; }
@@ -29,6 +29,10 @@ public class AnnanaSceneState : SceneState
 	public bool IsLeafUsed { get; private set; }
 	public HashSet<int> BoilerContents { get; private set; }
 	public bool IsElixirUsed { get; private set; }
+	public bool OwlHasAddress { get; private set; }
+	public int OwlPackage { get; private set; }
+	public bool IsAddressPickedUp { get; private set; }
+	public bool IsAddressUsed { get; private set; }
 
 	public AnnanaSceneState() {
 		AlarmTurnedOff = false;
@@ -36,7 +40,7 @@ public class AnnanaSceneState : SceneState
 		ChangeClothes = false;
 		ReadingVeganBook = false;
 		FlyAway = false;
-		ElixirName = "";
+		ElixirId = -1;
 		AngerLevel = 13;
 		IsCrystalBallPickedUp = false;
 		IsInside = false;
@@ -52,6 +56,10 @@ public class AnnanaSceneState : SceneState
 		IsLeafUsed = false;
 		BoilerContents = new HashSet<int>();
 		IsElixirUsed = false;
+		OwlHasAddress = false;
+		OwlPackage = -1;
+		IsAddressPickedUp = true;
+		IsAddressUsed = false;
 	}
 
 	private AnnanaSceneState(AnnanaSceneState template) {
@@ -60,7 +68,7 @@ public class AnnanaSceneState : SceneState
 		ChangeClothes = template.ChangeClothes;
 		ReadingVeganBook = template.ReadingVeganBook;
 		FlyAway = template.FlyAway;
-		ElixirName = template.ElixirName;
+		ElixirId = template.ElixirId;
 		AngerLevel = template.AngerLevel;
 		IsCrystalBallPickedUp = template.IsCrystalBallPickedUp;
 		IsInside = template.IsInside;
@@ -76,6 +84,10 @@ public class AnnanaSceneState : SceneState
 		IsLeafUsed = template.IsLeafUsed;
 		BoilerContents = template.BoilerContents;
 		IsElixirUsed = template.IsElixirUsed;
+		OwlHasAddress = template.OwlHasAddress;
+		OwlPackage = template.OwlPackage;
+		IsAddressPickedUp = template.IsAddressPickedUp;
+		IsAddressUsed = template.IsAddressUsed;
 	}
 
 	public AnnanaSceneState SetAlarmTurnedOff(bool value)
@@ -113,10 +125,10 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
-	public AnnanaSceneState SetElixirName(string value)
+	public AnnanaSceneState SetElixirId(int value)
 	{
 		var copy = new AnnanaSceneState(this);
-		copy.ElixirName = value;
+		copy.ElixirId = value;
 		return copy;
 	}
 
@@ -225,6 +237,34 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaSceneState SetOwlHasAddress(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.OwlHasAddress = value;
+		return copy;
+	}
+
+	public AnnanaSceneState SetOwlPackage(int value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.OwlPackage = value;
+		return copy;
+	}
+
+	public AnnanaSceneState SetIsAddressPickedUp(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.IsAddressPickedUp = value;
+		return copy;
+	}
+
+	public AnnanaSceneState SetIsAddressUsed(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.IsAddressUsed = value;
+		return copy;
+	}
+
 
 	public List<string> CompareChanges(AnnanaSceneState other) {
 		var result = new List<string>();
@@ -244,8 +284,8 @@ public class AnnanaSceneState : SceneState
 		if(!FlyAway.Equals(other.FlyAway))
 			result.Add(String.Format("FlyAway:\t{0}\t>>>\t{1}",other.FlyAway,FlyAway));
 
-		if(!ElixirName.Equals(other.ElixirName))
-			result.Add(String.Format("ElixirName:\t{0}\t>>>\t{1}",other.ElixirName,ElixirName));
+		if(!ElixirId.Equals(other.ElixirId))
+			result.Add(String.Format("ElixirId:\t{0}\t>>>\t{1}",other.ElixirId,ElixirId));
 
 		if(!AngerLevel.Equals(other.AngerLevel))
 			result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}",other.AngerLevel,AngerLevel));
@@ -291,6 +331,18 @@ public class AnnanaSceneState : SceneState
 
 		if(!IsElixirUsed.Equals(other.IsElixirUsed))
 			result.Add(String.Format("IsElixirUsed:\t{0}\t>>>\t{1}",other.IsElixirUsed,IsElixirUsed));
+
+		if(!OwlHasAddress.Equals(other.OwlHasAddress))
+			result.Add(String.Format("OwlHasAddress:\t{0}\t>>>\t{1}",other.OwlHasAddress,OwlHasAddress));
+
+		if(!OwlPackage.Equals(other.OwlPackage))
+			result.Add(String.Format("OwlPackage:\t{0}\t>>>\t{1}",other.OwlPackage,OwlPackage));
+
+		if(!IsAddressPickedUp.Equals(other.IsAddressPickedUp))
+			result.Add(String.Format("IsAddressPickedUp:\t{0}\t>>>\t{1}",other.IsAddressPickedUp,IsAddressPickedUp));
+
+		if(!IsAddressUsed.Equals(other.IsAddressUsed))
+			result.Add(String.Format("IsAddressUsed:\t{0}\t>>>\t{1}",other.IsAddressUsed,IsAddressUsed));
 
 		return result;
 	}

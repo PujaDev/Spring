@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 public class Boiler : IInteractable, IItemUsable
 {
-    List<int> UsableItems;
+    HashSet<int> UsableItems;
 
     void Awake()
     {
-        UsableItems = new List<int>()
+        UsableItems = new HashSet<int>()
         {
             (int)AnnanaInventory.ItemIds.EmptyVial,
             (int)AnnanaInventory.ItemIds.Flower,

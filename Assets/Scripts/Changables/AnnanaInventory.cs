@@ -15,6 +15,7 @@ public class AnnanaInventory : Inventory
         Berry = 0,
         Flower = 1,
         Leaf = 2,
+        Address = 3,
         CrystalBall = 5,
         EmptyVial = 6,
         Antidote = 7,
@@ -23,6 +24,7 @@ public class AnnanaInventory : Inventory
         Soup = 10
     }
 
+    // If you need to access this data from other scenes move this region to class InventoryData
     #region Elixirs
     public enum ElixirTypes
     {
@@ -107,14 +109,15 @@ public class AnnanaInventory : Inventory
         }
 
         // Add elixir
-        if (newState.AnnanaHouse.ElixirName != "" && (oldState == null || oldState.AnnanaHouse.ElixirName == ""))
+        if (newState.AnnanaHouse.ElixirId != -1 && (oldState == null || oldState.AnnanaHouse.ElixirId == -1))
         {
-            int type = Elixirs
-                .Where(x => x.Value.Name == newState.AnnanaHouse.ElixirName)
-                .First()
-                .Key;
+            AddItem(newState.AnnanaHouse.ElixirId);
+        }
 
-            AddItem(type);
+        // Add address
+        if (newState.AnnanaHouse.IsAddressPickedUp && (oldState == null || !oldState.AnnanaHouse.IsAddressPickedUp))
+        {
+            AddItem((int)ItemIds.Address);
         }
         #endregion
 
@@ -148,14 +151,14 @@ public class AnnanaInventory : Inventory
         // Remove elixir
         if (newState.AnnanaHouse.IsElixirUsed && (oldState == null || !oldState.AnnanaHouse.IsElixirUsed))
         {
-            int type = Elixirs
-                .Where(x => x.Value.Name == newState.AnnanaHouse.ElixirName)
-                .First()
-                .Key;
-
-            RemoveItem(type);
+            RemoveItem(newState.AnnanaHouse.ElixirId);
         }
-        
+
+        // Remove address
+        if (newState.AnnanaHouse.IsAddressUsed && (oldState == null || !oldState.AnnanaHouse.IsAddressUsed))
+        {
+            RemoveItem((int)ItemIds.Address);
+        }
         #endregion
     }
 }

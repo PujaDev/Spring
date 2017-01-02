@@ -20,5 +20,7 @@ public enum ActionType {
     FLY_AWAY,
     EMPTY_BOILER,
     THROW_TO_BOILER,
-    FILL_ELIXIR
+    FILL_ELIXIR,
+    GIVE_ADDRESS_TO_OWL,
+    GIVE_PACKAGE_TO_OWL
 }
