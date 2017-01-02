@@ -27,7 +27,7 @@ public class DeliveryOwl : IInteractable, IItemUsable
             (int)AnnanaInventory.ItemIds.Shrink,
             (int)AnnanaInventory.ItemIds.Invis,
             (int)AnnanaInventory.ItemIds.Soup,
-            (int)AnnanaInventory.ItemIds.Address
+            (int)AnnanaInventory.ItemIds.NoteAddress
         };
     }
 
@@ -76,7 +76,7 @@ public class DeliveryOwl : IInteractable, IItemUsable
         if (UsableItems.Contains(itemId))
         {
             // If we want to append package (anything else than address) we need to check if there already isn't one
-            if (itemId != (int)AnnanaInventory.ItemIds.Address
+            if (itemId != (int)AnnanaInventory.ItemIds.NoteAddress
                 && StateManager.Instance.State.AnnanaHouse.OwlPackage != -1)
             {
                 return false;
@@ -91,7 +91,7 @@ public class DeliveryOwl : IInteractable, IItemUsable
     {
         if(CanUseOnSelf(itemId))
         {
-            if(itemId == (int)AnnanaInventory.ItemIds.Address)
+            if(itemId == (int)AnnanaInventory.ItemIds.NoteAddress)
             {
                 ComeCloser(new SpringAction(ActionType.GIVE_ADDRESS_TO_OWL, "", null));
             }

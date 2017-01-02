@@ -22,6 +22,6 @@ HashSet<int>;BoilerContents;new HashSet<int>()
 bool;IsElixirUsed;false
 bool;OwlHasAddress;false
 int;OwlPackage;-1
-bool;IsAddressPickedUp;true
+bool;IsAddressPickedUp;false
 bool;IsAddressUsed;false
-bool;IsReadingFridgeNote;false;
+bool;IsReadingFridgeNote;false

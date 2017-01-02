@@ -59,7 +59,7 @@ public class AnnanaSceneState : SceneState
 		IsElixirUsed = false;
 		OwlHasAddress = false;
 		OwlPackage = -1;
-		IsAddressPickedUp = true;
+		IsAddressPickedUp = false;
 		IsAddressUsed = false;
 		IsReadingFridgeNote = false;
 	}

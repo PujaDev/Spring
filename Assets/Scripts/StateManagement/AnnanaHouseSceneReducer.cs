@@ -48,6 +48,8 @@ public class AnnanaHouseSceneReducer : Reducer
                             return state.Set(state.AnnanaHouse.SetIsBerryPickedUp(true));
                         case AnnanaInventory.ItemIds.Leaf:
                             return state.Set(state.AnnanaHouse.SetIsLeafPickedUp(true));
+                        case AnnanaInventory.ItemIds.NoteAddress:
+                            return state.Set(state.AnnanaHouse.SetIsAddressPickedUp(true));
                     }
                     break;
                 }
