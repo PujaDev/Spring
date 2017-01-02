@@ -9,6 +9,9 @@ public class ActionWheel : MonoBehaviour
     public float iconScale = 2f;
     public static ActionWheel Instance { get; private set; }
     const int MAX_ACTIONS = 6;
+    /// <summary>
+    /// Index of hovered action, -1 if cancel button, -2 if outside of wheel
+    /// </summary>
     private int actionNumber = -1;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
@@ -51,7 +54,7 @@ public class ActionWheel : MonoBehaviour
                 spritesHover[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
             }
         }
-        
+
     }
 
     void OnMouseDown()
@@ -68,6 +71,7 @@ public class ActionWheel : MonoBehaviour
 
     void OnMouseExit()
     {
+        actionNumber = -2;
         resetHover();
     }
 
@@ -99,6 +103,16 @@ public class ActionWheel : MonoBehaviour
             children[n].GetComponent<SpriteRenderer>().sprite = spritesHover[actions.Length, n];
             actionLabel.text = actions[n].Label;
             actionNumber = n;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) &&
+            actions != null &&
+            actionNumber == -2)
+        {
+            killAndBuryChildren();
         }
     }
 
@@ -181,5 +195,7 @@ public class ActionWheel : MonoBehaviour
         gameObject.transform.position = Vector3.left * 500; // flee the crime scene
 
         actions = null; // deny everything
+
+        actionNumber = -1;
     }
 }
