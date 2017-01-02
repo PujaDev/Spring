@@ -7,8 +7,10 @@ public class Boiler : IInteractable, IItemUsable
 {
     HashSet<int> UsableItems;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         UsableItems = new HashSet<int>()
         {
             (int)AnnanaInventory.ItemIds.EmptyVial,

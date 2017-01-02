@@ -10,8 +10,10 @@ public class Ingredients : IInteractable
     private SpringAction TakeBerry;
     private SpringAction TakeLeaf;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         TakeFlower = new SpringAction(ActionType.TAKE, "Take flower", icons[1], (int)AnnanaInventory.ItemIds.Flower);
         TakeBerry = new SpringAction(ActionType.TAKE, "Take berry", icons[0], (int)AnnanaInventory.ItemIds.Berry);
         TakeLeaf = new SpringAction(ActionType.TAKE, "Take leaf", icons[2], (int)AnnanaInventory.ItemIds.Leaf);
