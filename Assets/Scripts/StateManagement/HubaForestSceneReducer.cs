@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class HubaForestSceneReducer : Reducer
 {
@@ -10,9 +11,30 @@ public class HubaForestSceneReducer : Reducer
         {
             case ActionType.GIVE_MONEY_TO_SHRINE:
                 {
-                    GameState s = state.Set(state.HubaForest.SetIsCoinUsed(true));
+                    var used = new HashSet<int>(state.HubaForest.UsedItems);
+                    used.Add((int)HubaForestInventory.ItemIds.Coin);
+
+                    GameState s = state.Set(state.HubaForest.SetUsedItems(used));
                     return s.Set(s.HubaForest.SetIsHubaBlessed(true));
                 }
+            case ActionType.BUY_IN_FOREST:
+                {
+                    // Pickup whatever was bought
+                    int item = (int)action.Data;
+                    var pickedUp = new HashSet<int>(state.HubaForest.PickedUpItems);
+                    pickedUp.Add(item);
+
+                    // Pay with coin
+                    var used = new HashSet<int>(state.HubaForest.UsedItems);
+                    used.Add((int)HubaForestInventory.ItemIds.Coin);
+
+                    GameState s = state.Set(state.HubaForest.SetPickedUpItems(pickedUp));
+                    return s.Set(s.HubaForest.SetUsedItems(used));
+                }
+            case ActionType.START_READING_MAP:
+                return state.Set(state.HubaForest.SetIsReadingMap(true));
+            case ActionType.STOP_READING_MAP:
+                return state.Set(state.HubaForest.SetIsReadingMap(false));
         }
 
         return state;

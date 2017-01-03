@@ -7,27 +7,30 @@ public class HubaForestSceneState : SceneState
 
 	public int AngerLevel { get; private set; }
 	public Vector3S CharPosition { get; private set; }
-	public bool IsCoinPickedUp { get; private set; }
-	public bool IsCoinUsed { get; private set; }
 	/// <summary>
-	/// Blessd = coin given to the shrine
+	/// Blessed = coin given to the shrine
 	/// </summary>
 	public bool IsHubaBlessed { get; private set; }
+	public HashSet<int> PickedUpItems { get; private set; }
+	public HashSet<int> UsedItems { get; private set; }
+	public bool IsReadingMap { get; private set; }
 
 	public HubaForestSceneState() {
 		AngerLevel = 13;
 		CharPosition = new Vector3S(-21.03f, -3.88f, 0f);
-		IsCoinPickedUp = true;
-		IsCoinUsed = false;
 		IsHubaBlessed = false;
+		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
+		UsedItems = new HashSet<int>();
+		IsReadingMap = false;
 	}
 
 	private HubaForestSceneState(HubaForestSceneState template) {
 		AngerLevel = template.AngerLevel;
 		CharPosition = template.CharPosition;
-		IsCoinPickedUp = template.IsCoinPickedUp;
-		IsCoinUsed = template.IsCoinUsed;
 		IsHubaBlessed = template.IsHubaBlessed;
+		PickedUpItems = template.PickedUpItems;
+		UsedItems = template.UsedItems;
+		IsReadingMap = template.IsReadingMap;
 	}
 
 	public HubaForestSceneState SetAngerLevel(int value)
@@ -44,24 +47,31 @@ public class HubaForestSceneState : SceneState
 		return copy;
 	}
 
-	public HubaForestSceneState SetIsCoinPickedUp(bool value)
-	{
-		var copy = new HubaForestSceneState(this);
-		copy.IsCoinPickedUp = value;
-		return copy;
-	}
-
-	public HubaForestSceneState SetIsCoinUsed(bool value)
-	{
-		var copy = new HubaForestSceneState(this);
-		copy.IsCoinUsed = value;
-		return copy;
-	}
-
 	public HubaForestSceneState SetIsHubaBlessed(bool value)
 	{
 		var copy = new HubaForestSceneState(this);
 		copy.IsHubaBlessed = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetPickedUpItems(HashSet<int> value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.PickedUpItems = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetUsedItems(HashSet<int> value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.UsedItems = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetIsReadingMap(bool value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.IsReadingMap = value;
 		return copy;
 	}
 
@@ -75,14 +85,17 @@ public class HubaForestSceneState : SceneState
 		if(!CharPosition.Equals(other.CharPosition))
 			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
 
-		if(!IsCoinPickedUp.Equals(other.IsCoinPickedUp))
-			result.Add(String.Format("IsCoinPickedUp:\t{0}\t>>>\t{1}",other.IsCoinPickedUp,IsCoinPickedUp));
-
-		if(!IsCoinUsed.Equals(other.IsCoinUsed))
-			result.Add(String.Format("IsCoinUsed:\t{0}\t>>>\t{1}",other.IsCoinUsed,IsCoinUsed));
-
 		if(!IsHubaBlessed.Equals(other.IsHubaBlessed))
 			result.Add(String.Format("IsHubaBlessed:\t{0}\t>>>\t{1}",other.IsHubaBlessed,IsHubaBlessed));
+
+		if(!PickedUpItems.Equals(other.PickedUpItems))
+			result.Add(String.Format("PickedUpItems:\t{0}\t>>>\t{1}",other.PickedUpItems,PickedUpItems));
+
+		if(!UsedItems.Equals(other.UsedItems))
+			result.Add(String.Format("UsedItems:\t{0}\t>>>\t{1}",other.UsedItems,UsedItems));
+
+		if(!IsReadingMap.Equals(other.IsReadingMap))
+			result.Add(String.Format("IsReadingMap:\t{0}\t>>>\t{1}",other.IsReadingMap,IsReadingMap));
 
 		return result;
 	}
