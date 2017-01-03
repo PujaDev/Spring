@@ -15,8 +15,9 @@ public class LoadCharPosition : MonoBehaviour {
                 break;
             //case 3:
             //    break;
-            //case 4:
-            //    break;
+            case 4:
+                transform.position = loadedState.HubaForest.CharPosition.GetVector3();
+                break;
         }
         
     }

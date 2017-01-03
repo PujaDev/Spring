@@ -7,6 +7,7 @@ public class GameState
 {
     public AnnanaSceneState AnnanaHouse;
     public HubaBusSceneState HubaBus;
+    public HubaForestSceneState HubaForest;
 
     // empty default constructor to allow serialization
     public GameState() { }
@@ -15,12 +16,14 @@ public class GameState
     {
         AnnanaHouse = new AnnanaSceneState();
         HubaBus = new HubaBusSceneState();
+        HubaForest = new HubaForestSceneState();
     }
 
     private GameState(GameState template)
     {
         AnnanaHouse = template.AnnanaHouse;
         HubaBus = template.HubaBus;
+        HubaForest = template.HubaForest;
     }
 
     public GameState Set(AnnanaSceneState state)
@@ -34,6 +37,13 @@ public class GameState
     {
         var copy = new GameState(this);
         copy.HubaBus = state;
+        return copy;
+    }
+
+    public GameState Set(HubaForestSceneState state)
+    {
+        var copy = new GameState(this);
+        copy.HubaForest = state;
         return copy;
     }
 
@@ -51,6 +61,10 @@ public class GameState
         var diff2 = HubaBus.CompareChanges(other.HubaBus);
         if (diff2.Count > 0)
             result["HubaBus"] = diff2;
+
+        var diff3 = HubaForest.CompareChanges(other.HubaForest);
+        if (diff3.Count > 0)
+            result["HubaForest"] = diff3;
 
         return result;
     }

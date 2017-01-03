@@ -1722,7 +1722,7 @@ MonoBehaviour:
   - Scena_1_AnnanaHouse
   - Scena_2_HubaForest
   - Scena_1_AnnanaHouse
-  - Scena_1_AnnanaHouse
+  - Scena_4_SilentForest
   clocks:
   - {fileID: 1945131701}
   - {fileID: 41742252}
