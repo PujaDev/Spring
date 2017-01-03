@@ -13,9 +13,18 @@ public abstract class IInteractable : MonoBehaviour, IChangable
 
     protected Highlight Highlight;
 
+    /// <summary>
+    /// Creates instance of Highlight to be used. Override if you want custom highlights.
+    /// </summary>
+    /// <returns>Instance of Highlight to be used for highlighting</returns>
+    protected virtual Highlight CreateHighlight()
+    {
+        return new BoxParticleHighlight(gameObject);
+    }
+
     protected virtual void Awake()
     {
-        Highlight = new BoxParticleHighlight(gameObject);
+        Highlight = CreateHighlight();
     }
 
     protected virtual void Start()
