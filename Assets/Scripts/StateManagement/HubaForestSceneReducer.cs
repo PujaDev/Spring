@@ -8,8 +8,11 @@ public class HubaForestSceneReducer : Reducer
     {
         switch (action.Type)
         {
-            //case ActionType.TURN_ALARM_OFF:
-            //    return state.Set(state.AnnanaHouse.SetAlarmTurnedOff(true));
+            case ActionType.GIVE_MONEY_TO_SHRINE:
+                {
+                    GameState s = state.Set(state.HubaForest.SetIsCoinUsed(true));
+                    return s.Set(s.HubaForest.SetIsHubaBlessed(true));
+                }
         }
 
         return state;
