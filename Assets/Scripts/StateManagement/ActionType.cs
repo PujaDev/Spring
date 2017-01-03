@@ -29,6 +29,9 @@ public enum ActionType {
 
     // Forest actions
     GIVE_MONEY_TO_SHRINE,
+    BUY_IN_FOREST,
+    START_READING_MAP,
+    STOP_READING_MAP,
 
     // Huba TortoiseBus actions
     GET_TICKET
