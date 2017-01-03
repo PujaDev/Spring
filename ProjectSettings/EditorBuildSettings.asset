@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Scena_1_AnnanaHouse.unity
   - enabled: 1
     path: Assets/Scenes/Game/Scena_2_HubaForest.unity
+  - enabled: 1
+    path: Assets/Scenes/Game/Scena_4_SilentForest.unity

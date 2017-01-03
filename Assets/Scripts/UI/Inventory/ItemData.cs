@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class ItemData : MonoBehaviour, IPointerClickHandler
+public class ItemData : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool IsDragged;
 
@@ -22,5 +22,18 @@ public class ItemData : MonoBehaviour, IPointerClickHandler
     {
         ItemHolder.Instance.GetComponent<ItemHolder>().StartHolding(DataIndex, Sprite);
         Inventory.Instance.RemoveItem(DataIndex);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!GameController.Instance.isUI)
+        {
+            SceneController.Instance.title.text = Inventory.Instance.ItemNames[DataIndex];
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SceneController.Instance.title.text = "";
     }
 }
