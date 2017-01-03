@@ -31,6 +31,10 @@ public class HubaForestSceneReducer : Reducer
                     GameState s = state.Set(state.HubaForest.SetPickedUpItems(pickedUp));
                     return s.Set(s.HubaForest.SetUsedItems(used));
                 }
+            case ActionType.START_READING_MAP:
+                return state.Set(state.HubaForest.SetIsReadingMap(true));
+            case ActionType.STOP_READING_MAP:
+                return state.Set(state.HubaForest.SetIsReadingMap(false));
         }
 
         return state;

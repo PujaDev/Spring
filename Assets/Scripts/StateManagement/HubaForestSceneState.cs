@@ -13,6 +13,7 @@ public class HubaForestSceneState : SceneState
 	public bool IsHubaBlessed { get; private set; }
 	public HashSet<int> PickedUpItems { get; private set; }
 	public HashSet<int> UsedItems { get; private set; }
+	public bool IsReadingMap { get; private set; }
 
 	public HubaForestSceneState() {
 		AngerLevel = 13;
@@ -20,6 +21,7 @@ public class HubaForestSceneState : SceneState
 		IsHubaBlessed = false;
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		UsedItems = new HashSet<int>();
+		IsReadingMap = false;
 	}
 
 	private HubaForestSceneState(HubaForestSceneState template) {
@@ -28,6 +30,7 @@ public class HubaForestSceneState : SceneState
 		IsHubaBlessed = template.IsHubaBlessed;
 		PickedUpItems = template.PickedUpItems;
 		UsedItems = template.UsedItems;
+		IsReadingMap = template.IsReadingMap;
 	}
 
 	public HubaForestSceneState SetAngerLevel(int value)
@@ -65,6 +68,13 @@ public class HubaForestSceneState : SceneState
 		return copy;
 	}
 
+	public HubaForestSceneState SetIsReadingMap(bool value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.IsReadingMap = value;
+		return copy;
+	}
+
 
 	public List<string> CompareChanges(HubaForestSceneState other) {
 		var result = new List<string>();
@@ -83,6 +93,9 @@ public class HubaForestSceneState : SceneState
 
 		if(!UsedItems.Equals(other.UsedItems))
 			result.Add(String.Format("UsedItems:\t{0}\t>>>\t{1}",other.UsedItems,UsedItems));
+
+		if(!IsReadingMap.Equals(other.IsReadingMap))
+			result.Add(String.Format("IsReadingMap:\t{0}\t>>>\t{1}",other.IsReadingMap,IsReadingMap));
 
 		return result;
 	}

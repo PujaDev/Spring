@@ -4,3 +4,4 @@ Vector3S;CharPosition;new Vector3S(-21.03f, -3.88f, 0f)
 bool;IsHubaBlessed;false;Blessed = coin given to the shrine
 HashSet<int>;PickedUpItems;new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin}
 HashSet<int>;UsedItems;new HashSet<int>()
+bool;IsReadingMap;false
