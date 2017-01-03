@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+public enum Orientation {
+    UNSPECIFIED,
+    LEFT,
+    RIGHT
+}
+
 /// <summary>
 /// Parent class for interactable objects
 /// </summary>
@@ -8,6 +14,7 @@ public abstract class IInteractable : MonoBehaviour, IChangable
     public string tooltipText = "";
     public Sprite[] icons;
     private bool keepTooltipOpen = false;
+    public Orientation orientation = Orientation.UNSPECIFIED;
     //GameObject tooltipPrefab;
     //GameObject tooltipObject;
 

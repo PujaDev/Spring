@@ -87,6 +87,12 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
             targets.RemoveAt(0);
         }
 
+        if (source != null && source.orientation != Orientation.UNSPECIFIED)
+        {
+            if (source.orientation == Orientation.LEFT) skeletonAnim.skeleton.FlipX = true;
+            else skeletonAnim.skeleton.FlipX = false;
+        }
+
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
 
         idleTail = StartCoroutine(IdleTailCoroutine());
