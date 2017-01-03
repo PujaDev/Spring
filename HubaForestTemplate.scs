@@ -1,0 +1,6 @@
+HubaForestSceneState
+int;AngerLevel;13
+Vector3S;CharPosition;new Vector3S(-21.03f, -3.88f, 0f)
+bool;IsCoinPickedUp;true
+bool;IsCoinUsed;false
+bool;IsHubaBlessed;false;Blessd = coin given to the shrine
