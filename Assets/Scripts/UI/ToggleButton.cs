@@ -8,6 +8,7 @@ public class ToggleButton : MonoBehaviour {
     public GameObject objectToToggle;
     public bool atStartOn;
     private bool ObjectOn;
+    public UIBlocker blocker;
 
     // Stat - not Awake to let the inventory initialize before being disabled
     public void Start()
@@ -24,11 +25,13 @@ public class ToggleButton : MonoBehaviour {
         {
             GetComponent<Image>().sprite = toggleImages[0];
             objectToToggle.SetActive(true);
+            Blocker.Instance.ToggleBlocker(true, blocker);
         }
         else
         {
             GetComponent<Image>().sprite = toggleImages[1];
             objectToToggle.SetActive(false);
+            Blocker.Instance.ToggleBlocker(false, blocker);
         }
     }
 }

@@ -492,6 +492,7 @@ MonoBehaviour:
   tooltipText: Vegan Magic Book
   icons:
   - {fileID: 21300000, guid: 40e7c1ac58a07c843a3fdb5db33ecdae, type: 3}
+  orientation: 0
   Book: {fileID: 2137736917}
   Handler: {fileID: 274729293}
 --- !u!114 &274729291
@@ -1687,7 +1688,8 @@ Transform:
   m_LocalPosition: {x: 10.88, y: -0.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 1769553647}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &486549082
@@ -1998,6 +2000,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012045730632, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
+    - {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &542540388
@@ -2239,6 +2242,7 @@ MonoBehaviour:
   tooltipText: Dresscover
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
+  orientation: 0
 --- !u!114 &620904968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4850,6 +4854,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
   - {fileID: 21300000, guid: 3d82200f9db004c46821d6c404bf023b, type: 3}
+  orientation: 0
 --- !u!114 &988604223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5682,6 +5687,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1889ec363e0088848ab1a3d9fef1317e, type: 3}
   - {fileID: 21300000, guid: 74281ae5cb4844c4db6166bb21f9f591, type: 3}
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  orientation: 0
 --- !u!114 &1216687462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6430,6 +6436,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
   - {fileID: 21300000, guid: 59d4f61289ace0146b47a5b1de414368, type: 3}
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  orientation: 0
 --- !u!114 &1381880019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6538,6 +6545,7 @@ MonoBehaviour:
   tooltipText: Empty elixir vials
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
+  orientation: 0
 --- !u!114 &1419371294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7464,6 +7472,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: a13c7d6aebde11e4ebc9eaceb6d27cf9, type: 3}
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  orientation: 0
 --- !u!114 &1600991203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7749,6 +7758,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: 40e7c1ac58a07c843a3fdb5db33ecdae, type: 3}
   - {fileID: 21300000, guid: eda27b4d231e997488f7eada579ca3aa, type: 3}
+  orientation: 0
   Book: {fileID: 241016986}
   Handler: {fileID: 1634141346}
 --- !u!61 &1634141348
@@ -8214,6 +8224,53 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000011994897540, guid: ef38b8fa828347647b48f01fd0adae5b,
     type: 2}
   m_PrefabInternal: {fileID: 1453540253}
+--- !u!1001 &1769553646
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 486549081}
+    m_Modifications:
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1769553647 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1769553646}
 --- !u!1 &1810688449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8827,6 +8884,7 @@ MonoBehaviour:
   tooltipText: 
   icons:
   - {fileID: 21300000, guid: 38f1370d0d7677e4abd4257413b130d5, type: 3}
+  orientation: 0
 --- !u!114 &2045748043
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1383,7 +1383,8 @@ Transform:
   m_LocalPosition: {x: -10.51, y: 0.04, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 911594202}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &486549082
@@ -1591,6 +1592,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012045730632, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
+    - {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &522768633 stripped
@@ -2481,6 +2483,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 853956262}
+--- !u!4 &911594202 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1686853910}
 --- !u!1 &913404996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,6 +3771,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e01738f2ba9f2b54e9b98a823362b056, type: 3}
   - {fileID: 21300000, guid: 0987921b206f2da4d9bb2cfefccc3603, type: 3}
   - {fileID: 21300000, guid: 7aaced805efc38e4e9bd8281b05e4129, type: 3}
+  orientation: 0
 --- !u!114 &1685955452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3792,6 +3800,48 @@ BoxCollider2D:
   m_Offset: {x: -2.9715757, y: 1.3691027}
   serializedVersion: 2
   m_Size: {x: 3.271463, y: 3.3648133}
+--- !u!1001 &1686853910
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 486549081}
+    m_Modifications:
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013440206806, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9e1187de6b410524bbd8da5e47e2767d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1728695361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,6 +4287,7 @@ MonoBehaviour:
   tooltipText: Shrine
   icons:
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  orientation: 0
 --- !u!114 &1993540092
 MonoBehaviour:
   m_ObjectHideFlags: 0
