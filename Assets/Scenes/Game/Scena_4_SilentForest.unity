@@ -3593,8 +3593,8 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: glow
-  loop: 1
+  _animationName: 
+  loop: 0
   timeScale: 1
 --- !u!23 &1302241968
 MeshRenderer:
