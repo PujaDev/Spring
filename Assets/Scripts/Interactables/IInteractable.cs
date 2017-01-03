@@ -11,14 +11,14 @@ public abstract class IInteractable : MonoBehaviour, IChangable
     //GameObject tooltipPrefab;
     //GameObject tooltipObject;
 
-    private Highlight Highlight;
+    protected Highlight Highlight;
 
     protected virtual void Awake()
     {
         Highlight = new BoxParticleHighlight(gameObject);
     }
 
-    void Start()
+    protected virtual void Start()
     {
         Highlight.Subscribe();
 
