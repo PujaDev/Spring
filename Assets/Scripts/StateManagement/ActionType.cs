@@ -26,6 +26,10 @@ public enum ActionType {
     START_READING_FRIDGE_NOTE,
     STOP_READING_FRIDGE_NOTE,
 
+
     // Forest actions
-    GIVE_MONEY_TO_SHRINE
+    GIVE_MONEY_TO_SHRINE,
+
+    // Huba TortoiseBus actions
+    GET_TICKET
 }
