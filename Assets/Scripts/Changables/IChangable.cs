@@ -1,4 +1,12 @@
-﻿public interface IChangable
+﻿using UnityEngine;
+
+public abstract class IChangable : MonoBehaviour
 {
-    void OnStateChanged(GameState newState, GameState oldState);
+    abstract public void OnStateChanged(GameState newState, GameState oldState);
+
+    virtual protected void Start()
+    {
+        var gameState = StateManager.Instance.Subscribe(this);
+        OnStateChanged(gameState, null);
+    }
 }

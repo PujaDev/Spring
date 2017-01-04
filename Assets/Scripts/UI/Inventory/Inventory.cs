@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Runtime.Serialization;
 using System;
 
-public abstract class Inventory : MonoBehaviour, IChangable
+public abstract class Inventory : IChangable
 {
     public static Inventory Instance { get; private set; }
 
@@ -24,7 +24,7 @@ public abstract class Inventory : MonoBehaviour, IChangable
     protected abstract Inventory GetInstance();
 
     // Start - not Awake so we can subscribe to StateManager 
-    void Start()
+    override protected void Start()
     {
         if (Instance == null)
         {
@@ -39,8 +39,7 @@ public abstract class Inventory : MonoBehaviour, IChangable
                 Slots[i].SetActive(false);
             }
 
-            GameState gameState = StateManager.Instance.Subscribe(this);
-            OnStateChanged(gameState, null);
+            base.Start();
         }
         else
         {
@@ -99,9 +98,5 @@ public abstract class Inventory : MonoBehaviour, IChangable
                 Debug.Log("inventory is full");
             }
         }
-    }
-
-    public virtual void OnStateChanged(GameState newState, GameState oldState)
-    {
     }
 }

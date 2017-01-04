@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class HubaCharacter : MonoBehaviour, IItemUsable, IChangable
+public class HubaCharacter : IChangable, IItemUsable
 {
     public GameObject Map;
     public BookHandler Handler;
@@ -16,14 +16,6 @@ public class HubaCharacter : MonoBehaviour, IItemUsable, IChangable
         {
             (int)HubaForestInventory.ItemIds.Map
         };
-    }
-
-    void Start()
-    {
-        StateManager.Instance.Subscribe(this);
-
-        GameState state = StateManager.Instance.State;
-        OnStateChanged(state, null);
     }
 
     public bool CanUseOnSelf(int itemId)
@@ -42,7 +34,7 @@ public class HubaCharacter : MonoBehaviour, IItemUsable, IChangable
         }
     }
 
-    public void OnStateChanged(GameState newState, GameState oldState)
+    public override void OnStateChanged(GameState newState, GameState oldState)
     {
         // Start reading
         if (newState.HubaForest.IsReadingMap && (oldState == null || !oldState.HubaForest.IsReadingMap))

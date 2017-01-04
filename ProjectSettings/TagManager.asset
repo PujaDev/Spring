@@ -21,7 +21,7 @@ TagManager:
   - Character
   - Foreground
   - WalkableArea
-  - 
+  - Triggered
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Midground
     uniqueID: 3217583867
+    locked: 0
+  - name: Triggered
+    uniqueID: 2595735529
     locked: 0
   - name: Character
     uniqueID: 1003039223
