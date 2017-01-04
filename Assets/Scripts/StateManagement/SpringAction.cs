@@ -8,6 +8,12 @@ public class SpringAction {
     public readonly object Data;
     public readonly Sprite Icon;
 
+    public SpringAction(ActionType type, string label = "")
+    {
+        Type = type;
+        Label = label;
+    }
+
     public SpringAction(ActionType type, string label, Sprite icon)
     {
         Type = type;

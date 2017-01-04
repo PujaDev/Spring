@@ -3,5 +3,7 @@ int;AngerLevel;13
 Vector3S;CharPosition;new Vector3S(-11.5f, -1.4f, 0f)
 bool;isBusWaiting;false;Bus is waiting at the busstop
 bool;hasBusLeft;false;Bus already arrived and left
-HashSet<int>;PickedUpItems;new HashSet<int>() {(int)HubaBusInventory.HubaBusItemIds.GoldCoins,(int)HubaBusInventory.HubaBusItemIds.SilverCoin}
+HashSet<int>;PickedUpItems;new HashSet<int>() {(int)HubaBusInventory.ItemIds.GoldCoins,(int)HubaBusInventory.ItemIds.SilverCoin}
 HashSet<int>;UsedItems;new HashSet<int>()
+bool;isDelivered;false;Package is delivered on the ground
+bool;isDrunk;false;Huba drank the elixir

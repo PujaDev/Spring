@@ -9,8 +9,19 @@ public class HubaBusSceneReducer : Reducer
     {
         switch (action.Type)
         {
-            //case ActionType.TURN_ALARM_OFF:
-            //    return state.Set(state.AnnanaHouse.SetAlarmTurnedOff(true));
+            case ActionType.GET_ELIXIR:
+                {
+                    // Pickup whatever was delivered
+                    int item = (int)action.Data;
+                    var pickedUp = new HashSet<int>(state.HubaBus.PickedUpItems);
+                    pickedUp.Add(item);
+                    Destroy(source.gameObject);
+                    return state.Set(state.HubaBus.SetPickedUpItems(pickedUp));
+                }
+            case ActionType.DELIVERY:
+                {
+                    return state.Set(state.HubaBus.SetisDelivered(true));
+                }
         }
 
         return state;

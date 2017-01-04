@@ -9,7 +9,7 @@ public enum Orientation {
 /// <summary>
 /// Parent class for interactable objects
 /// </summary>
-public abstract class IInteractable : MonoBehaviour, IChangable
+public abstract class IInteractable : IChangable
 {
     public string tooltipText = "";
     public Sprite[] icons;
@@ -34,13 +34,14 @@ public abstract class IInteractable : MonoBehaviour, IChangable
         Highlight = CreateHighlight();
     }
 
-    protected virtual void Start()
+    override protected void Start()
     {
+        base.Start();
+
         Highlight.Subscribe();
 
         //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
-        var gameState = StateManager.Instance.Subscribe(this);
-        OnStateChanged(gameState, null);
+        
     }
 
     void OnMouseEnter()
@@ -86,7 +87,7 @@ public abstract class IInteractable : MonoBehaviour, IChangable
         return GameController.Instance.MoveCharToObject(gameObject, action, this);
     }
 
-    virtual public void OnStateChanged(GameState newState, GameState oldState)
+    override public void OnStateChanged(GameState newState, GameState oldState)
     {
     }
 

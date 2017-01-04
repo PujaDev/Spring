@@ -38,5 +38,7 @@ public enum ActionType {
     GO_FOREST_FINISH,
 
     // Huba TortoiseBus actions
-    GET_TICKET
+    GET_TICKET,
+    GET_ELIXIR,
+    DELIVERY
 }
