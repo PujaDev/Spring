@@ -32,7 +32,7 @@ public class ForestSSC : SceneSwitchControler
         List<int> path = new List<int>();
         for (int i = 0; i < depth; i++)
         {
-            path.Add(rnd.Next((int)Direction.Left, (int)Direction.Right));
+            path.Add(rnd.Next((int)Direction.Left, (int)Direction.Right + 1));
         }
 
         return path;

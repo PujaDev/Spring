@@ -26,7 +26,7 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		UsedItems = new HashSet<int>();
 		IsReadingMap = false;
-		CorrectForestWay = ForestSSC.GenerateNewPath(1);
+		CorrectForestWay = ForestSSC.GenerateNewPath(5);
 		CurrentForestWay = new List<int>();
 		IsInForest = false;
 		IsOnSite = false;

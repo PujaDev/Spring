@@ -5,7 +5,7 @@ bool;IsHubaBlessed;false;Blessed = coin given to the shrine
 HashSet<int>;PickedUpItems;new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin}
 HashSet<int>;UsedItems;new HashSet<int>()
 bool;IsReadingMap;false
-List<int>;CorrectForestWay;ForestSSC.GenerateNewPath(1)
+List<int>;CorrectForestWay;ForestSSC.GenerateNewPath(5)
 List<int>;CurrentForestWay;new List<int>()
 bool;IsInForest;false
 bool;IsOnSite;false
