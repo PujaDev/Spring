@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class HubaForestSceneReducer : Reducer
 {
@@ -35,8 +36,30 @@ public class HubaForestSceneReducer : Reducer
                 return state.Set(state.HubaForest.SetIsReadingMap(true));
             case ActionType.STOP_READING_MAP:
                 return state.Set(state.HubaForest.SetIsReadingMap(false));
+            case ActionType.GO_TO_FOREST:
+                return state.Set(state.HubaForest.SetIsInForest(true));
+            case ActionType.GO_FOREST_LEFT:
+                return GoForestCrossroads(state, ForestSSC.Direction.Left);
+            case ActionType.GO_FOREST_RIGHT:
+                return GoForestCrossroads(state, ForestSSC.Direction.Right);
+
         }
 
         return state;
+    }
+
+    private GameState GoForestCrossroads(GameState state, ForestSSC.Direction direction)
+    {
+        var path = new List<int>(state.HubaForest.CurrentForestWay);
+        path.Add((int)direction);
+
+        GameState s = state;
+        if (path.Count == state.HubaForest.CorrectForestWay.Count
+            && path.SequenceEqual(state.HubaForest.CorrectForestWay))
+        {
+            s = state.Set(state.HubaForest.SetIsOnSite(true));
+        }
+
+        return s.Set(s.HubaForest.SetCurrentForestWay(path));
     }
 }

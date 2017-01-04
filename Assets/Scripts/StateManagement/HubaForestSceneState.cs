@@ -14,6 +14,10 @@ public class HubaForestSceneState : SceneState
 	public HashSet<int> PickedUpItems { get; private set; }
 	public HashSet<int> UsedItems { get; private set; }
 	public bool IsReadingMap { get; private set; }
+	public List<int> CorrectForestWay { get; private set; }
+	public List<int> CurrentForestWay { get; private set; }
+	public bool IsInForest { get; private set; }
+	public bool IsOnSite { get; private set; }
 
 	public HubaForestSceneState() {
 		AngerLevel = 13;
@@ -22,6 +26,10 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		UsedItems = new HashSet<int>();
 		IsReadingMap = false;
+		CorrectForestWay = ForestSSC.GenerateNewPath(1);
+		CurrentForestWay = new List<int>();
+		IsInForest = false;
+		IsOnSite = false;
 	}
 
 	private HubaForestSceneState(HubaForestSceneState template) {
@@ -31,6 +39,10 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = template.PickedUpItems;
 		UsedItems = template.UsedItems;
 		IsReadingMap = template.IsReadingMap;
+		CorrectForestWay = template.CorrectForestWay;
+		CurrentForestWay = template.CurrentForestWay;
+		IsInForest = template.IsInForest;
+		IsOnSite = template.IsOnSite;
 	}
 
 	public HubaForestSceneState SetAngerLevel(int value)
@@ -75,6 +87,34 @@ public class HubaForestSceneState : SceneState
 		return copy;
 	}
 
+	public HubaForestSceneState SetCorrectForestWay(List<int> value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.CorrectForestWay = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetCurrentForestWay(List<int> value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.CurrentForestWay = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetIsInForest(bool value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.IsInForest = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetIsOnSite(bool value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.IsOnSite = value;
+		return copy;
+	}
+
 
 	public List<string> CompareChanges(HubaForestSceneState other) {
 		var result = new List<string>();
@@ -96,6 +136,18 @@ public class HubaForestSceneState : SceneState
 
 		if(!IsReadingMap.Equals(other.IsReadingMap))
 			result.Add(String.Format("IsReadingMap:\t{0}\t>>>\t{1}",other.IsReadingMap,IsReadingMap));
+
+		if(!CorrectForestWay.Equals(other.CorrectForestWay))
+			result.Add(String.Format("CorrectForestWay:\t{0}\t>>>\t{1}",other.CorrectForestWay,CorrectForestWay));
+
+		if(!CurrentForestWay.Equals(other.CurrentForestWay))
+			result.Add(String.Format("CurrentForestWay:\t{0}\t>>>\t{1}",other.CurrentForestWay,CurrentForestWay));
+
+		if(!IsInForest.Equals(other.IsInForest))
+			result.Add(String.Format("IsInForest:\t{0}\t>>>\t{1}",other.IsInForest,IsInForest));
+
+		if(!IsOnSite.Equals(other.IsOnSite))
+			result.Add(String.Format("IsOnSite:\t{0}\t>>>\t{1}",other.IsOnSite,IsOnSite));
 
 		return result;
 	}

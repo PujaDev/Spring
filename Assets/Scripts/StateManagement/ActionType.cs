@@ -32,6 +32,10 @@ public enum ActionType {
     BUY_IN_FOREST,
     START_READING_MAP,
     STOP_READING_MAP,
+    GO_TO_FOREST,
+    GO_FOREST_LEFT,
+    GO_FOREST_RIGHT,
+    GO_FOREST_FINISH,
 
     // Huba TortoiseBus actions
     GET_TICKET
