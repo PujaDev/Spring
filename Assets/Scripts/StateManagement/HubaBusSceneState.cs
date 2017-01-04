@@ -17,6 +17,14 @@ public class HubaBusSceneState : SceneState
     public bool hasBusLeft { get; private set; }
     public HashSet<int> PickedUpItems { get; private set; }
     public HashSet<int> UsedItems { get; private set; }
+    /// <summary>
+    /// Package is delivered on the ground
+    /// </summary>
+    public bool isDelivered { get; private set; }
+    /// <summary>
+    /// Huba drank the elixir
+    /// </summary>
+    public bool isDrunk { get; private set; }
 
     public HubaBusSceneState()
     {
@@ -24,8 +32,10 @@ public class HubaBusSceneState : SceneState
         CharPosition = new Vector3S(-11.5f, -1.4f, 0f);
         isBusWaiting = false;
         hasBusLeft = false;
-        PickedUpItems = new HashSet<int>() { (int)HubaBusInventory.HubaBusItemIds.GoldCoins, (int)HubaBusInventory.HubaBusItemIds.SilverCoin };
+        PickedUpItems = new HashSet<int>() { (int)HubaBusInventory.ItemIds.GoldCoins, (int)HubaBusInventory.ItemIds.SilverCoin };
         UsedItems = new HashSet<int>();
+        isDelivered = false;
+        isDrunk = false;
     }
 
     private HubaBusSceneState(HubaBusSceneState template)
@@ -36,6 +46,8 @@ public class HubaBusSceneState : SceneState
         hasBusLeft = template.hasBusLeft;
         PickedUpItems = template.PickedUpItems;
         UsedItems = template.UsedItems;
+        isDelivered = template.isDelivered;
+        isDrunk = template.isDrunk;
     }
 
     public HubaBusSceneState SetAngerLevel(int value)
@@ -80,6 +92,20 @@ public class HubaBusSceneState : SceneState
         return copy;
     }
 
+    public HubaBusSceneState SetisDelivered(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.isDelivered = value;
+        return copy;
+    }
+
+    public HubaBusSceneState SetisDrunk(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.isDrunk = value;
+        return copy;
+    }
+
 
     public List<string> CompareChanges(HubaBusSceneState other)
     {
@@ -102,6 +128,12 @@ public class HubaBusSceneState : SceneState
 
         if (!UsedItems.Equals(other.UsedItems))
             result.Add(String.Format("UsedItems:\t{0}\t>>>\t{1}", other.UsedItems, UsedItems));
+
+        if (!isDelivered.Equals(other.isDelivered))
+            result.Add(String.Format("isDelivered:\t{0}\t>>>\t{1}", other.isDelivered, isDelivered));
+
+        if (!isDrunk.Equals(other.isDrunk))
+            result.Add(String.Format("isDrunk:\t{0}\t>>>\t{1}", other.isDrunk, isDrunk));
 
         return result;
     }

@@ -34,5 +34,7 @@ public enum ActionType {
     STOP_READING_MAP,
 
     // Huba TortoiseBus actions
-    GET_TICKET
+    GET_TICKET,
+    GET_ELIXIR,
+    DELIVERY
 }

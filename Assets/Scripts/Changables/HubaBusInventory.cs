@@ -5,10 +5,11 @@ using System.Collections.Generic;
 
 public class HubaBusInventory : Inventory
 {
-    public enum HubaBusItemIds
+    public enum ItemIds
     {
         GoldCoins = 0,
-        SilverCoin = 1
+        SilverCoin = 1,
+        Elixir = 2
     }
 
     protected override Inventory GetInstance()

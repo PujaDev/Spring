@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class AnnanaCharacter : MonoBehaviour, IItemUsable, IChangable
+public class AnnanaCharacter : IChangable, IItemUsable
 {
     private HashSet<int> UsableItems;
 
@@ -14,12 +14,7 @@ public class AnnanaCharacter : MonoBehaviour, IItemUsable, IChangable
             (int)AnnanaInventory.ItemIds.NoteAddress
         };
     }
-
-    void Start()
-    {
-        StateManager.Instance.Subscribe(this);
-    }
-
+    
     public bool CanUseOnSelf(int itemId)
     {
         return UsableItems.Contains(itemId);
@@ -36,8 +31,8 @@ public class AnnanaCharacter : MonoBehaviour, IItemUsable, IChangable
         }
     }
 
-    public void OnStateChanged(GameState newState, GameState oldState)
+    public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        // React to state change
+        throw new NotImplementedException();
     }
 }
