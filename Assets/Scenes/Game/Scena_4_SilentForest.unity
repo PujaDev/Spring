@@ -809,6 +809,7 @@ GameObject:
   - 114: {fileID: 197431158}
   - 114: {fileID: 197431160}
   - 114: {fileID: 197431159}
+  - 114: {fileID: 197431161}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -854,9 +855,9 @@ MonoBehaviour:
     y: -356
     width: 1106
     height: 979
-  selectedBlock: {fileID: 197431140}
+  selectedBlock: {fileID: 197431155}
   selectedCommands:
-  - {fileID: 197431159}
+  - {fileID: 197431145}
   variables: []
   description: 
   stepPause: 0
@@ -1384,6 +1385,7 @@ MonoBehaviour:
   eventHandler: {fileID: 197431154}
   commandList:
   - {fileID: 197431148}
+  - {fileID: 197431161}
   - {fileID: 197431147}
   - {fileID: 197431146}
   - {fileID: 197431145}
@@ -1474,6 +1476,22 @@ MonoBehaviour:
   indentLevel: 0
   targetObject: {fileID: 1634740939}
   methodName: Reset
+  delay: 0
+--- !u!114 &197431161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 27
+  indentLevel: 0
+  targetObject: {fileID: 1904043257}
+  methodName: SetScaleForRitualSite
   delay: 0
 --- !u!1 &219915080 stripped
 GameObject:

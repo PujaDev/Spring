@@ -75,6 +75,11 @@ public class ForestSSC : SceneSwitchControler
         }
     }
 
+    public void SetScaleForRitualSite()
+    {
+        SceneController.Instance.defaultCharactecScale = 0.24f;
+    }
+
     public static List<int> GenerateNewPath(int depth)
     {
         var rnd = new System.Random();
