@@ -13,6 +13,10 @@ public class SceneSwitchControler : IChangable
     {
     }
 
+    protected virtual void Awake()
+    {
+    }
+
     override protected void Start()
     {
         if (Instance == null)
