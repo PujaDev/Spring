@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BackgroundSwitch : MonoBehaviour
 {
-    public SpriteRenderer ObjToSwitch;
+    public SpriteRenderer[] ObjToSwitch;
 
     bool IsForeground;
     Collider2D MyCollider;
@@ -13,16 +13,20 @@ public class BackgroundSwitch : MonoBehaviour
         MyCollider = gameObject.GetComponent<Collider2D>();
     }
 
+    public void Reset()
+    {
+        IsForeground = false;
+        SwitchLayer();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger enter");
         IsForeground = !IsForeground;
         SwitchLayer();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Trigger exit");
         bool behind = other.bounds.center.y > MyCollider.bounds.center.y;
 
         if ((IsForeground && !behind)
@@ -35,9 +39,11 @@ public class BackgroundSwitch : MonoBehaviour
 
     private void SwitchLayer()
     {
-        if (IsForeground)
-            ObjToSwitch.sortingLayerName = "Foreground";
-        else
-            ObjToSwitch.sortingLayerName = "Background";
+        string layerName = IsForeground ? "Foreground" : "Background";
+        
+        foreach (var item in ObjToSwitch)
+        {
+            item.sortingLayerName = layerName;
+        }
     }
 }

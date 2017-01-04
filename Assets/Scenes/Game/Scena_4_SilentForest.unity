@@ -167,7 +167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &43695993
 Transform:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1594706145
-  m_SortingOrder: 10
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 2f1abaa2ac63cb04497cf16b768ccf05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -460,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &92517816
 Transform:
   m_ObjectHideFlags: 0
@@ -501,8 +501,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1594706145
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6a8e4d174d278b1439b92de48eec6db0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -766,7 +766,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -461580635
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: ba2607e687b94e6429a9803afc649cd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -806,6 +806,10 @@ GameObject:
   - 114: {fileID: 197431147}
   - 114: {fileID: 197431146}
   - 114: {fileID: 197431145}
+  - 114: {fileID: 197431158}
+  - 114: {fileID: 197431160}
+  - 114: {fileID: 197431159}
+  - 114: {fileID: 197431161}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -1039,7 +1043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -21
+    x: -22
     y: 111
     width: 120
     height: 40
@@ -1051,6 +1055,9 @@ MonoBehaviour:
   - {fileID: 197431138}
   - {fileID: 197431142}
   - {fileID: 197431144}
+  - {fileID: 197431158}
+  - {fileID: 197431160}
+  - {fileID: 197431159}
   - {fileID: 197431137}
   - {fileID: 197431134}
 --- !u!114 &197431141
@@ -1378,6 +1385,7 @@ MonoBehaviour:
   eventHandler: {fileID: 197431154}
   commandList:
   - {fileID: 197431148}
+  - {fileID: 197431161}
   - {fileID: 197431147}
   - {fileID: 197431146}
   - {fileID: 197431145}
@@ -1421,6 +1429,70 @@ MonoBehaviour:
   - {fileID: 197431150}
   - {fileID: 197431149}
   - {fileID: 197431153}
+--- !u!114 &197431158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 23
+  indentLevel: 0
+  targetObject: {fileID: 1904043257}
+  methodName: GenerateNewLayout
+  delay: 0
+--- !u!114 &197431159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  targetObject: {fileID: 1047336131}
+  methodName: Reset
+  delay: 0
+--- !u!114 &197431160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  targetObject: {fileID: 1634740939}
+  methodName: Reset
+  delay: 0
+--- !u!114 &197431161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 27
+  indentLevel: 0
+  targetObject: {fileID: 1904043257}
+  methodName: SetScaleForRitualSite
+  delay: 0
 --- !u!1 &219915080 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010938544264, guid: a15abc69a7734d046b489b7f5a156ed3,
@@ -1731,8 +1803,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -461580635
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: bb8b70eae23f6374da86413a0f2bff8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2413,7 +2485,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -461580635
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: f00b1e2e9736c7f40a5922aa74a6c6be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3213,7 +3285,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 844694842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.55, y: -6.86, z: 0}
+  m_LocalPosition: {x: -21.13, y: -3.41, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3676,7 +3748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af5e966dbf824a49b1faa33d762218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjToSwitch: {fileID: 1567436812}
+  ObjToSwitch:
+  - {fileID: 1567436812}
+  - {fileID: 92517817}
 --- !u!1 &1076448285 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010244393426, guid: a15abc69a7734d046b489b7f5a156ed3,
@@ -4356,7 +4430,7 @@ Prefab:
     - target: {fileID: 114000013107531838, guid: ef38b8fa828347647b48f01fd0adae5b,
         type: 2}
       propertyPath: IsOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 61000013865252176, guid: ef38b8fa828347647b48f01fd0adae5b,
         type: 2}
@@ -4817,7 +4891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af5e966dbf824a49b1faa33d762218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjToSwitch: {fileID: 1893349398}
+  ObjToSwitch:
+  - {fileID: 1893349398}
+  - {fileID: 43695994}
 --- !u!1001 &1647715109
 Prefab:
   m_ObjectHideFlags: 0
@@ -5580,6 +5656,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb36caddabd16842a258ddffc4a83d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GlowingObjects:
+  - {fileID: 343175718}
+  - {fileID: 92517815}
+  - {fileID: 43695992}
+  Setup1:
+  - {fileID: 1904043257}
+  Setup2:
+  - {fileID: 1893349396}
+  - {fileID: 727759030}
+  Setup3:
+  - {fileID: 537200989}
+  - {fileID: 727759030}
+  - {fileID: 1893349396}
 --- !u!4 &1904043259
 Transform:
   m_ObjectHideFlags: 0
