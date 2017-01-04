@@ -2242,7 +2242,7 @@ MonoBehaviour:
   tooltipText: Dresscover
   icons:
   - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
-  orientation: 0
+  orientation: 2
 --- !u!114 &620904968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,7 +4854,7 @@ MonoBehaviour:
   icons:
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
   - {fileID: 21300000, guid: 3d82200f9db004c46821d6c404bf023b, type: 3}
-  orientation: 0
+  orientation: 2
 --- !u!114 &988604223
 MonoBehaviour:
   m_ObjectHideFlags: 0

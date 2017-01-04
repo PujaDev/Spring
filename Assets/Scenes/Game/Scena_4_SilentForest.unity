@@ -3771,7 +3771,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e01738f2ba9f2b54e9b98a823362b056, type: 3}
   - {fileID: 21300000, guid: 0987921b206f2da4d9bb2cfefccc3603, type: 3}
   - {fileID: 21300000, guid: 7aaced805efc38e4e9bd8281b05e4129, type: 3}
-  orientation: 0
+  orientation: 1
 --- !u!114 &1685955452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4287,7 +4287,7 @@ MonoBehaviour:
   tooltipText: Shrine
   icons:
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
-  orientation: 0
+  orientation: 2
 --- !u!114 &1993540092
 MonoBehaviour:
   m_ObjectHideFlags: 0
