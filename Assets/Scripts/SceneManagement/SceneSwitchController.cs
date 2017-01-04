@@ -13,6 +13,10 @@ public class SceneSwitchControler : MonoBehaviour, IChangable
     {
     }
 
+    protected virtual void Awake()
+    {
+    }
+
     protected virtual void Start()
     {
         if (Instance == null)
