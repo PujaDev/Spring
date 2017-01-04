@@ -807,6 +807,8 @@ GameObject:
   - 114: {fileID: 197431146}
   - 114: {fileID: 197431145}
   - 114: {fileID: 197431158}
+  - 114: {fileID: 197431160}
+  - 114: {fileID: 197431159}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -854,7 +856,7 @@ MonoBehaviour:
     height: 979
   selectedBlock: {fileID: 197431140}
   selectedCommands:
-  - {fileID: 197431158}
+  - {fileID: 197431159}
   variables: []
   description: 
   stepPause: 0
@@ -1053,6 +1055,8 @@ MonoBehaviour:
   - {fileID: 197431142}
   - {fileID: 197431144}
   - {fileID: 197431158}
+  - {fileID: 197431160}
+  - {fileID: 197431159}
   - {fileID: 197431137}
   - {fileID: 197431134}
 --- !u!114 &197431141
@@ -1438,6 +1442,38 @@ MonoBehaviour:
   indentLevel: 0
   targetObject: {fileID: 1904043257}
   methodName: GenerateNewLayout
+  delay: 0
+--- !u!114 &197431159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  targetObject: {fileID: 1047336131}
+  methodName: Reset
+  delay: 0
+--- !u!114 &197431160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  targetObject: {fileID: 1634740939}
+  methodName: Reset
   delay: 0
 --- !u!1 &219915080 stripped
 GameObject:

@@ -13,6 +13,12 @@ public class BackgroundSwitch : MonoBehaviour
         MyCollider = gameObject.GetComponent<Collider2D>();
     }
 
+    public void Reset()
+    {
+        IsForeground = false;
+        SwitchLayer();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         IsForeground = !IsForeground;
