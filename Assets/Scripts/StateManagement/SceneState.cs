@@ -16,6 +16,7 @@ abstract public class SceneState
     /// </summary>
     static Dictionary<Type, string> SceneNameMap;
     static Dictionary<Type, int> TimeRangeMap;
+    static Dictionary<string, int> NameTimeRangeMap;
 
     /// <summary>
     /// Initializes class type - scene name map
@@ -30,6 +31,11 @@ abstract public class SceneState
         TimeRangeMap.Add(typeof(AnnanaSceneState), 0);
         TimeRangeMap.Add(typeof(HubaBusSceneState), 1);
         TimeRangeMap.Add(typeof(HubaForestSceneState), 2);
+        NameTimeRangeMap = new Dictionary<string, int>();
+        NameTimeRangeMap.Add("MainMenu", -1);
+        NameTimeRangeMap.Add("Scena_1_AnnanaHouse", 0);
+        NameTimeRangeMap.Add("Scena_2_HubaForest", 1);
+        NameTimeRangeMap.Add("Scena_4_SilentForest", 2);
     }
 
     /// <summary>
@@ -48,7 +54,13 @@ abstract public class SceneState
             return TimeRangeMap[this.GetType()];
         }
     }
-
+    public static int ActiveTimeRange
+    {
+        get
+        {
+            return NameTimeRangeMap[SceneManager.GetActiveScene().name];
+        }
+    }
     /// <summary>
     /// Sets current character position to this state
     /// </summary>

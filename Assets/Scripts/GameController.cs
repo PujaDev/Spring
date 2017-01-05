@@ -10,6 +10,7 @@ class PlayerData
     public bool isSoundOn;
     public int lastPlayedTimeline;
     public int[] stateNums;
+    public bool playedAny;
 }
 
 public enum CursorIcon
@@ -23,13 +24,14 @@ public enum CursorIcon
 public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
-    public bool isSoundOn;
     public bool isUI = false;
     public int[] stateNums = new int[3];
     public float lastUITime = -1f;
     public Texture2D[] cursorIcons;
     public CursorIcon currentIcon = CursorIcon.NORMAL;
 
+    private bool isSoundOn;
+    private bool playedAny = false;
     private int lastPlayedTimeRange;
     public int LastPlayedTimeRange
     {
@@ -39,7 +41,19 @@ public class GameController : MonoBehaviour {
             Save();
         }
     }
-
+    public bool PlayedAny
+    {
+        get { return playedAny; }
+        set
+        {
+            playedAny = value;
+            Save();
+        }
+    }
+    public bool IsSoundOn
+    {
+        get { return isSoundOn; }
+    }
     void Awake()
     {
         if (Instance == null)
@@ -47,6 +61,13 @@ public class GameController : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             Instance = this;
             Load();
+            if (SceneState.ActiveTimeRange != -1)
+            {
+                Debug.Log("juchuuu " + SceneState.ActiveTimeRange );
+                StateManager.Instance.SetAsLastState(SceneState.ActiveTimeRange);
+                LastPlayedTimeRange = SceneState.ActiveTimeRange;
+                PlayedAny = true;
+            }
             GetComponent<AudioSource>().enabled = isSoundOn;
         }
         else if (Instance != this)
@@ -54,7 +75,10 @@ public class GameController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        Debug.Log("taddadda");
+    }
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -63,6 +87,7 @@ public class GameController : MonoBehaviour {
         data.isSoundOn = isSoundOn;
         data.lastPlayedTimeline = lastPlayedTimeRange;
         data.stateNums = stateNums;
+        data.playedAny = playedAny;
         bf.Serialize(file, data);
         file.Close();
     }
@@ -79,10 +104,14 @@ public class GameController : MonoBehaviour {
             isSoundOn = data.isSoundOn;
             lastPlayedTimeRange = data.lastPlayedTimeline;
             stateNums = data.stateNums;
+            playedAny = data.playedAny;
         }
         else
         {
             isSoundOn = true;
+            lastPlayedTimeRange = 0;
+            //stateNums
+            playedAny = false;
         }
     }
 
@@ -90,6 +119,7 @@ public class GameController : MonoBehaviour {
     {
         isSoundOn = !isSoundOn;
         GetComponent<AudioSource>().enabled = isSoundOn;
+        Save();
     }
 
     public void SetLastStateNum(int timeRange, int stateNum)

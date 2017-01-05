@@ -187,25 +187,43 @@ public class StateManager : MonoBehaviour
         reducers.Add(reducer);
     }
 
-    public void SetAsLastState(int stateNum)
+    public void SetAsLastState(int lastTimeRange)
     {
-        string[] fileEntries = Directory.GetFiles(SaveDirectory);
-        Array.Sort(fileEntries);
-        var lastStateName = stateNumToFile(stateNum);
-        var delete = false;
-        foreach(var statePath in fileEntries)
+        int stateNum;
+        try
         {
-            var stateName = Path.GetFileName(statePath);
-            if (delete)
-            {
-                File.Delete(statePath);
+            string[] fileEntries = Directory.GetFiles(SaveDirectory);
+            Array.Sort(fileEntries);
+            if (lastTimeRange == -1) {
+                stateNum = 0;
+                lastTimeRange = 0;
             }
-            else if (lastStateName == stateName)
+            else {
+                stateNum = GameController.Instance.stateNums[lastTimeRange];
+            }
+            var lastStateName = stateNumToFile(stateNum);
+            var delete = false;
+            foreach(var statePath in fileEntries)
             {
-                delete = true;
+                var stateName = Path.GetFileName(statePath);
+                if (delete)
+                {
+                    File.Delete(statePath);
+                }
+                else if (lastStateName == stateName)
+                {
+                    delete = true;
+                }
             }
         }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+            stateNum = GameController.Instance.stateNums[lastTimeRange];
+        }
         StateNum = stateNum;
+
+        GameController.Instance.SetLastStateNum(lastTimeRange, StateNum);
     }
 
     /// <summary>
