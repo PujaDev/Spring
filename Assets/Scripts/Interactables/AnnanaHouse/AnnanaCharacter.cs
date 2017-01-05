@@ -33,6 +33,5 @@ public class AnnanaCharacter : IChangable, IItemUsable
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        throw new NotImplementedException();
     }
 }
