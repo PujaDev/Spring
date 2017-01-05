@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Spine.Unity;
 
 public class BackgroundSwitch : MonoBehaviour
 {
-    public SpriteRenderer[] ObjToSwitch;
+    public MeshRenderer[] ObjToSwitch;
 
-    bool IsForeground;
+    public int BgOrder;
+    public int FgOrder;
+
+    bool IsBackground;
     Collider2D MyCollider;
 
     void Awake()
@@ -15,35 +19,36 @@ public class BackgroundSwitch : MonoBehaviour
 
     public void Reset()
     {
-        IsForeground = false;
+        IsBackground = false;
         SwitchLayer();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        IsForeground = !IsForeground;
+        IsBackground = !IsBackground;
         SwitchLayer();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+        // Other = character
         bool behind = other.bounds.center.y > MyCollider.bounds.center.y;
 
-        if ((IsForeground && !behind)
-            || (!IsForeground && behind))
+        if ((IsBackground && !behind)
+            || (!IsBackground && behind))
         {
-            IsForeground = !IsForeground;
+            IsBackground = !IsBackground;
             SwitchLayer();
         }
     }
 
     private void SwitchLayer()
     {
-        string layerName = IsForeground ? "Foreground" : "Background";
+        int layerOrder = IsBackground ? BgOrder : FgOrder;
         
         foreach (var item in ObjToSwitch)
         {
-            item.sortingLayerName = layerName;
+            item.sortingOrder = layerOrder;
         }
     }
 }
