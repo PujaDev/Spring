@@ -1,0 +1,20 @@
+
+Spirit_crossroad.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+main_light
+  rotate: false
+  xy: 2, 2
+  size: 309, 308
+  orig: 309, 308
+  offset: 0, 0
+  index: -1
+tail_light
+  rotate: false
+  xy: 2, 312
+  size: 494, 238
+  orig: 494, 238
+  offset: 0, 0
+  index: -1
