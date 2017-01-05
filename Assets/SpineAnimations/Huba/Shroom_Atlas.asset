@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: Shroom_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 3f623d791c7b99f4cad49f3e62307138, type: 3}
+  atlasFile: {fileID: 4900000, guid: d63e0b9950354b24c80c8149b7250b07, type: 3}
   materials:
   - {fileID: 2100000, guid: d78de08aa1b639f4e87ca14651ddd8cb, type: 2}
