@@ -1574,6 +1574,10 @@ Prefab:
       propertyPath: ItemNames.Array.data[2]
       value: Elixir
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
   m_IsPrefabParent: 0

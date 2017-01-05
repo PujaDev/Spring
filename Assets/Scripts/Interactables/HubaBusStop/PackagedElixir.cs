@@ -33,7 +33,7 @@ public class PackagedElixir : IInteractable
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
         if (newState.HubaBus.isDelivered
-           && (oldState == null || !oldState.HubaBus.isDelivered))
+           && (oldState == null || !oldState.HubaBus.isDelivered) && !(newState.HubaBus.PickedUpItems.Contains((int)HubaBusInventory.ItemIds.Elixir) || newState.HubaBus.UsedItems.Contains((int)HubaBusInventory.ItemIds.Elixir)))
         {
             TogglePackage(true);
             transform.position = touchDownPoint.position;
