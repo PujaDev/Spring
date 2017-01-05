@@ -37,28 +37,30 @@ public class LevelSelector : MonoBehaviour {
 
             for (int i = 0; i < clocks.Length; i++)
             {
-                if (timeRanges[i] < lastTimeRange)
-                {
-                    clocks[i].GetComponentsInChildren<Image>()[1].enabled = true;
-                }
-                else
-                {
-                    clocks[i].GetComponentsInChildren<Image>()[1].enabled = false;
-                }
-                int frame = timeRangeValues[timeRanges[i]];
-                if (frame < 90)
-                {
-                    skeletonGraphic = clocks[i].GetComponentInChildren<SkeletonGraphic>();
-                    skeletonGraphic.AnimationState.SetAnimation(0, "clock", false).timeScale = 3f;
-                    Spine.TrackEntry track = skeletonGraphic.AnimationState.GetCurrent(0);
-                    track.animationEnd = (frame * 2) / 30f;
-                }
-                else {
-                    skeletonGraphic = clocks[i].GetComponentInChildren<SkeletonGraphic>();
-                    skeletonGraphic.AnimationState.SetAnimation(0, "clock", false).timeScale = 3f;
-                    Spine.TrackEntry track = skeletonGraphic.AnimationState.AddAnimation(0, "clock", false, 0);
-                    track.timeScale = 3f;
-                    track.animationEnd = ((frame - 90) * 2) / 30f;
+                if (clocks[i].activeInHierarchy) {
+                    if (timeRanges[i] < lastTimeRange)
+                    {
+                        clocks[i].GetComponentsInChildren<Image>()[1].enabled = true;
+                    }
+                    else
+                    {
+                        clocks[i].GetComponentsInChildren<Image>()[1].enabled = false;
+                    }
+                    int frame = timeRangeValues[timeRanges[i]];
+                    if (frame < 90)
+                    {
+                        skeletonGraphic = clocks[i].GetComponentInChildren<SkeletonGraphic>();
+                        skeletonGraphic.AnimationState.SetAnimation(0, "clock", false).timeScale = 3f;
+                        Spine.TrackEntry track = skeletonGraphic.AnimationState.GetCurrent(0);
+                        track.animationEnd = (frame * 2) / 30f;
+                    }
+                    else {
+                        skeletonGraphic = clocks[i].GetComponentInChildren<SkeletonGraphic>();
+                        skeletonGraphic.AnimationState.SetAnimation(0, "clock", false).timeScale = 3f;
+                        Spine.TrackEntry track = skeletonGraphic.AnimationState.AddAnimation(0, "clock", false, 0);
+                        track.timeScale = 3f;
+                        track.animationEnd = ((frame - 90) * 2) / 30f;
+                    }
                 }
             }
             if (GameController.Instance.PlayedAny) {
