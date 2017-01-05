@@ -2,12 +2,16 @@
 using System.Collections;
 using System;
 
-public class BoxParticleHighlight : Highlight
+public class ColliderParticleHighlight : Highlight
 {
     private GameObject HighlightEffect;
+    /// <summary>
+    /// Is true only if the object has collider
+    /// </summary>
+    private bool Enabled;
     private static GameObject HighlightPrefab;
 
-    public BoxParticleHighlight(GameObject source)
+    public ColliderParticleHighlight(GameObject source)
     {
         // TODO Create resource manager and move following there
         if (HighlightPrefab == null)
@@ -16,21 +20,24 @@ public class BoxParticleHighlight : Highlight
         HighlightEffect = GameObject.Instantiate(HighlightPrefab);
         HighlightEffect.transform.parent = source.transform;
 
-        var collider = source.GetComponent<BoxCollider2D>();
+        var collider = source.GetComponent<Collider2D>();
         if (collider != null)
+        {
+            Enabled = true;
             HighlightEffect.transform.position = collider.bounds.center;
-        else
-            HighlightEffect.transform.position = source.transform.position;
+        }
 
         HighlightEffect.SetActive(false);
     }
 
     public override void StartHighlight()
     {
-        HighlightEffect.SetActive(true);
+        if (Enabled)
+            HighlightEffect.SetActive(true);
     }
     public override void StopHighlight()
     {
-        HighlightEffect.SetActive(false);
+        if (Enabled)
+            HighlightEffect.SetActive(false);
     }
 }

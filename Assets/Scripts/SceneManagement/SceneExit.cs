@@ -8,7 +8,7 @@ public class SceneExit : MonoBehaviour
 
     void Awake()
     {
-        Highlight = new BoxParticleHighlight(gameObject);
+        Highlight = new ColliderParticleHighlight(gameObject);
     }
 
     void Start()

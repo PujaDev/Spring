@@ -26,7 +26,7 @@ public abstract class IInteractable : IChangable
     /// <returns>Instance of Highlight to be used for highlighting</returns>
     protected virtual Highlight CreateHighlight()
     {
-        return new BoxParticleHighlight(gameObject);
+        return new ColliderParticleHighlight(gameObject);
     }
 
     protected virtual void Awake()
