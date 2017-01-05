@@ -4430,7 +4430,7 @@ Prefab:
     - target: {fileID: 114000013107531838, guid: ef38b8fa828347647b48f01fd0adae5b,
         type: 2}
       propertyPath: IsOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61000013865252176, guid: ef38b8fa828347647b48f01fd0adae5b,
         type: 2}
