@@ -14,7 +14,7 @@ public class HubaForestSceneState : SceneState
 	public HashSet<int> PickedUpItems { get; private set; }
 	public HashSet<int> UsedItems { get; private set; }
 	public bool IsReadingMap { get; private set; }
-	public List<int> CorrectForestWay { get; private set; }
+	public List<int> RightForestWay { get; private set; }
 	public List<int> CurrentForestWay { get; private set; }
 	public bool IsInForest { get; private set; }
 	public bool IsOnSite { get; private set; }
@@ -26,7 +26,7 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		UsedItems = new HashSet<int>();
 		IsReadingMap = false;
-		CorrectForestWay = ForestSSC.GenerateNewPath(5);
+		RightForestWay = ForestSSC.GenerateNewPath(5);
 		CurrentForestWay = new List<int>();
 		IsInForest = false;
 		IsOnSite = false;
@@ -39,7 +39,7 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = template.PickedUpItems;
 		UsedItems = template.UsedItems;
 		IsReadingMap = template.IsReadingMap;
-		CorrectForestWay = template.CorrectForestWay;
+		RightForestWay = template.RightForestWay;
 		CurrentForestWay = template.CurrentForestWay;
 		IsInForest = template.IsInForest;
 		IsOnSite = template.IsOnSite;
@@ -87,10 +87,10 @@ public class HubaForestSceneState : SceneState
 		return copy;
 	}
 
-	public HubaForestSceneState SetCorrectForestWay(List<int> value)
+	public HubaForestSceneState SetRightForestWay(List<int> value)
 	{
 		var copy = new HubaForestSceneState(this);
-		copy.CorrectForestWay = value;
+		copy.RightForestWay = value;
 		return copy;
 	}
 
@@ -137,8 +137,8 @@ public class HubaForestSceneState : SceneState
 		if(!IsReadingMap.Equals(other.IsReadingMap))
 			result.Add(String.Format("IsReadingMap:\t{0}\t>>>\t{1}",other.IsReadingMap,IsReadingMap));
 
-		if(!CorrectForestWay.Equals(other.CorrectForestWay))
-			result.Add(String.Format("CorrectForestWay:\t{0}\t>>>\t{1}",other.CorrectForestWay,CorrectForestWay));
+		if(!RightForestWay.Equals(other.RightForestWay))
+			result.Add(String.Format("CorrectForestWay:\t{0}\t>>>\t{1}",other.RightForestWay,RightForestWay));
 
 		if(!CurrentForestWay.Equals(other.CurrentForestWay))
 			result.Add(String.Format("CurrentForestWay:\t{0}\t>>>\t{1}",other.CurrentForestWay,CurrentForestWay));

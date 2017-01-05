@@ -54,8 +54,8 @@ public class HubaForestSceneReducer : Reducer
         path.Add((int)direction);
 
         GameState s = state;
-        if (path.Count == state.HubaForest.CorrectForestWay.Count
-            && path.SequenceEqual(state.HubaForest.CorrectForestWay))
+        if (path.Count == state.HubaForest.RightForestWay.Count
+            && path.SequenceEqual(state.HubaForest.RightForestWay))
         {
             s = state.Set(state.HubaForest.SetIsOnSite(true));
         }

@@ -10,7 +10,7 @@ public class MapWriter : MonoBehaviour
     void Start()
     {
         StringBuilder sb = new StringBuilder();
-        foreach (var d in StateManager.Instance.State.HubaForest.CorrectForestWay)
+        foreach (var d in StateManager.Instance.State.HubaForest.RightForestWay)
         {
             if (d == (int)ForestSSC.Direction.Left)
             {

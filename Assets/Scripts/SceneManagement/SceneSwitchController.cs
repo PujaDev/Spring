@@ -3,17 +3,21 @@ using System.Collections;
 using System;
 using Fungus;
 
-public class SceneSwitchControler : MonoBehaviour, IChangable
+public class SceneSwitchControler : IChangable
 {
     public static SceneSwitchControler Instance { get; private set; }
-
+    
     protected Flowchart Flowchart;
-
-    public virtual void OnStateChanged(GameState newState, GameState oldState)
+    
+    override public void OnStateChanged(GameState newState, GameState oldState)
     {
     }
 
-    protected virtual void Start()
+    protected virtual void Awake()
+    {
+    }
+
+    override protected void Start()
     {
         if (Instance == null)
         {
@@ -23,6 +27,7 @@ public class SceneSwitchControler : MonoBehaviour, IChangable
 
             GameState gameState = StateManager.Instance.Subscribe(this);
             OnStateChanged(gameState, null);
+            base.Start();
         }
         else
         {

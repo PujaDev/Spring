@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "EL0iLhGKdkQVqG2lG4wlTlC+luw", "spine": "3.5.43", "width": 762, "height": 304.52, "images": "./OwlBackFly_images/" },
+"skeleton": { "hash": "zPpSG5mI2L+ZBqWWOTuJj5DXVdw", "spine": "3.5.43", "width": 762, "height": 304.52, "images": "./OwlBackFly_images/" },
 "bones": [
 	{ "name": "root", "y": 64.32 },
 	{ "name": "back", "parent": "root", "length": 86.89, "rotation": 90, "y": 1.46 },
@@ -774,6 +774,15 @@
 			"package": {
 				"attachment": [
 					{ "time": 0, "name": "package" }
+				]
+			}
+		}
+	},
+	"package_disappear": {
+		"slots": {
+			"package": {
+				"attachment": [
+					{ "time": 0, "name": null }
 				]
 			}
 		}
