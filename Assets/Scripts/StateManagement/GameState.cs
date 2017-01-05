@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class GameState
 {
-    public AnnanaSceneState AnnanaHouse;
-    public HubaBusSceneState HubaBus;
-    public HubaForestSceneState HubaForest;
-
-    // empty default constructor to allow serialization
-    public GameState() { }
+    public AnnanaSceneState AnnanaHouse = null;
+    public HubaBusSceneState HubaBus = null;
+    public HubaForestSceneState HubaForest = null;
+    // empty default constructor to allow deserialization
+    private GameState() {
+    }
 
     public GameState(bool initial)
     {
-        AnnanaHouse = new AnnanaSceneState();
-        HubaBus = new HubaBusSceneState();
-        HubaForest = new HubaForestSceneState();
+        AnnanaHouse = new AnnanaSceneState(initial);
+        HubaBus = new HubaBusSceneState(initial);
+        HubaForest = new HubaForestSceneState(initial);
     }
 
     private GameState(GameState template)
@@ -45,6 +46,25 @@ public class GameState
         var copy = new GameState(this);
         copy.HubaForest = state;
         return copy;
+    }
+
+    public SceneState GetSceneState(string SceneName)
+    {
+        switch (SceneName)
+        {
+            case "Scena_1_AnnanaHouse":
+                return AnnanaHouse;
+            case "Scena_2_HubaForest":
+                return HubaForest;
+            case "Scena_4_HubaBus":
+                return HubaBus;
+        }
+        return null;
+    }
+
+    public SceneState GetCurrentSceneState()
+    {
+        return GetSceneState(SceneManager.GetActiveScene().name);
     }
 
     public Dictionary<string, List<string>> CompareChanges(GameState other)

@@ -109,12 +109,17 @@ public class StateManager : MonoBehaviour
     {
         if (DebugLog)
             Debug.Log("Loading state " + stateNumToFile(stateNum));
-
+        
         var loadedState = loadStateFromFile(stateNum);
+        
+        //if(SceneManager.GetActiveScene().name != loadedState.SceneName)
+        //{
+        //    SceneManager.LoadScene(loadedState.SceneName);
+        //}
 
         var character = GameObject.FindWithTag("Character");
         if (character != null) {
-            character.GetComponent<LoadCharPosition>().RelocateCharacter(loadedState);
+            character.transform.position = loadedState.GetCurrentSceneState().CharacterPosition.GetVector3();
         }
 
         foreach (var changable in Changables)
