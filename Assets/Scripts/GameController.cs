@@ -63,7 +63,6 @@ public class GameController : MonoBehaviour {
             Load();
             if (SceneState.ActiveTimeRange != -1)
             {
-                Debug.Log("juchuuu " + SceneState.ActiveTimeRange );
                 StateManager.Instance.SetAsLastState(SceneState.ActiveTimeRange);
                 LastPlayedTimeRange = SceneState.ActiveTimeRange;
                 PlayedAny = true;
@@ -74,10 +73,6 @@ public class GameController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        Debug.Log("taddadda");
     }
     public void Save()
     {
