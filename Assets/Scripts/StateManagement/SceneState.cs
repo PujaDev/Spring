@@ -14,7 +14,8 @@ abstract public class SceneState
     /// <summary>
     /// Maps types of scene state classes to their corresponding scene names
     /// </summary>
-    static Dictionary<Type,string> SceneNameMap;
+    static Dictionary<Type, string> SceneNameMap;
+    static Dictionary<Type, int> TimeRangeMap;
 
     /// <summary>
     /// Initializes class type - scene name map
@@ -25,6 +26,10 @@ abstract public class SceneState
         SceneNameMap.Add(typeof(AnnanaSceneState), "Scena_1_AnnanaHouse");
         SceneNameMap.Add(typeof(HubaBusSceneState), "Scena_2_HubaForest");
         SceneNameMap.Add(typeof(HubaForestSceneState), "Scena_4_SilentForest");
+        TimeRangeMap = new Dictionary<Type, int>();
+        TimeRangeMap.Add(typeof(AnnanaSceneState), 0);
+        TimeRangeMap.Add(typeof(HubaBusSceneState), 1);
+        TimeRangeMap.Add(typeof(HubaForestSceneState), 2);
     }
 
     /// <summary>
@@ -33,6 +38,14 @@ abstract public class SceneState
     public string SceneName {
         get {
             return SceneNameMap[this.GetType()];
+        }
+    }
+
+    public int TimeRange
+    {
+        get
+        {
+            return TimeRangeMap[this.GetType()];
         }
     }
 

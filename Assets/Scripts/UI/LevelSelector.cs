@@ -12,16 +12,16 @@ public class LevelSelector : MonoBehaviour {
     public GameObject[] clocks;
     public int[] timeRanges;
     public int[] timeRangeValues; //in 8 minutes rate (7:04 == 7 * 60 + 4 == 424 => 424/8 = 53), min =  0 (0:00)  max = 180 (12:00) middle = 90
-    public int lastTimeRange = -1;
     public int pastIndexToLoad;
     public Image timeFill;
+    public int lastTimeRange;
 
-    void Awake()
+    void Start()
     {
         if (selector == null)
         {
             selector = this;
-            //load the lastTimeRange --TODO--
+            lastTimeRange = GameController.Instance.LastPlayedTimeRange;
         }
         else if (selector != this)
         {
@@ -66,6 +66,7 @@ public class LevelSelector : MonoBehaviour {
         //discard all progress in the following scenes --TODO--
 
         lastTimeRange = timeRanges[pastIndexToLoad];
+        StateManager.Instance.SetAsLastState(GameController.Instance.stateNums[lastTimeRange]);
         LoadScene(pastIndexToLoad);
     }
 
@@ -85,6 +86,8 @@ public class LevelSelector : MonoBehaviour {
             child.transform.SetParent(parent, false);
             SceneManager.LoadScene(scenes[id]);
         }
+        lastTimeRange = timeRanges[id];
+        GameController.Instance.LastPlayedTimeRange = lastTimeRange;
     }
 
 

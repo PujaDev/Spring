@@ -8,6 +8,8 @@ using System.IO;
 class PlayerData
 {
     public bool isSoundOn;
+    public int lastPlayedTimeline;
+    public int[] stateNums;
 }
 
 public enum CursorIcon
@@ -23,9 +25,20 @@ public class GameController : MonoBehaviour {
 
     public bool isSoundOn;
     public bool isUI = false;
+    public int[] stateNums = new int[3];
     public float lastUITime = -1f;
     public Texture2D[] cursorIcons;
     public CursorIcon currentIcon = CursorIcon.NORMAL;
+
+    private int lastPlayedTimeRange;
+    public int LastPlayedTimeRange
+    {
+        get { return lastPlayedTimeRange; }
+        set {
+            lastPlayedTimeRange = value;
+            Save();
+        }
+    }
 
     void Awake()
     {
@@ -48,6 +61,8 @@ public class GameController : MonoBehaviour {
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData data = new PlayerData();
         data.isSoundOn = isSoundOn;
+        data.lastPlayedTimeline = lastPlayedTimeRange;
+        data.stateNums = stateNums;
         bf.Serialize(file, data);
         file.Close();
     }
@@ -62,6 +77,8 @@ public class GameController : MonoBehaviour {
             file.Close();
             
             isSoundOn = data.isSoundOn;
+            lastPlayedTimeRange = data.lastPlayedTimeline;
+            stateNums = data.stateNums;
         }
         else
         {
@@ -73,6 +90,15 @@ public class GameController : MonoBehaviour {
     {
         isSoundOn = !isSoundOn;
         GetComponent<AudioSource>().enabled = isSoundOn;
+    }
+
+    public void SetLastStateNum(int timeRange, int stateNum)
+    {
+        for (int i = timeRange; i < stateNums.Length; i++)
+        {
+            stateNums[i] = stateNum;
+        }
+        Save();
     }
 
     public bool MoveCharToObject(GameObject obj, SpringAction action = null, IInteractable interactable = null)
