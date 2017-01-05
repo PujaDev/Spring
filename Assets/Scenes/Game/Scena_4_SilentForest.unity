@@ -1539,7 +1539,7 @@ MonoBehaviour:
   - {fileID: 332510938}
   - {fileID: 1076448285}
   ItemSprites:
-  - {fileID: 21300000, guid: 8fe1941260ad3b747b26901722a80e54, type: 3}
+  - {fileID: 21300000, guid: 3190848a2185eba469f058e287fbcf48, type: 3}
   - {fileID: 21300000, guid: ff40689b580779242bd46445f99439d1, type: 3}
   - {fileID: 21300000, guid: 91973623bf535f240a2c39bad91a5f60, type: 3}
   - {fileID: 21300000, guid: 0632a4f51af116b4185219d6276d17fa, type: 3}
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0987921b206f2da4d9bb2cfefccc3603, type: 3}
   - {fileID: 21300000, guid: 7aaced805efc38e4e9bd8281b05e4129, type: 3}
   ItemNames:
-  - Coins
+  - Silver Coin
   - Vases
   - Spices
   - Map
