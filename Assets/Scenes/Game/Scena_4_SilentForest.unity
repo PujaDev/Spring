@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 31a89d78e3110f74189d33068288d1f7, type: 2}
-  initialSkinName: default
+  initialSkinName: Night
   separatorSlotNames: []
   zSpacing: 0
   renderMeshes: 1
@@ -1682,7 +1682,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 35e21df66aa16664ca442a485560bdfa, type: 2}
+  - {fileID: 2100000, guid: a6f5cc122d8c98f4aa3ea85ea6ac5b53, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
