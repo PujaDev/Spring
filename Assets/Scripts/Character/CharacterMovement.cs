@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Spine.Unity;
+using System;
 
 public interface IMoveable
 {
     void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source);
 }
 
-public class CharacterMovement : MonoBehaviour, IMoveable {
+public class CharacterMovement : IChangable, IMoveable {
 
     public float Speed;
     public AnimationCurve Curve;
@@ -18,8 +19,9 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     protected SkeletonAnimation skeletonAnim;
 
     // Use this for initialization
-    public virtual void Start ()
+    override protected void Start ()
     {
+        base.Start();
         busy = false;
         skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
@@ -93,5 +95,10 @@ public class CharacterMovement : MonoBehaviour, IMoveable {
     {
         float scaleChar = (1 - SceneController.Instance.scaleParam * (transform.position.y - SceneController.Instance.startPositionY)) * SceneController.Instance.defaultCharactecScale;
         transform.localScale = new Vector3(scaleChar, scaleChar, scaleChar);
+    }
+
+    public override void OnStateChanged(GameState newState, GameState oldState)
+    {
+        
     }
 }

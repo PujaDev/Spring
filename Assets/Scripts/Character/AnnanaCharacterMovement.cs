@@ -10,14 +10,11 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
     private Coroutine idleHand;
 
     // Use this for initialization
-    public override void Start ()
+    override protected void Start ()
     {
-        busy = false;
-        skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
-        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+        base.Start();
         idleTail = StartCoroutine(IdleTailCoroutine());
         idleHand = StartCoroutine(IdleHandCoroutine());
-        ScaleCharacter();
 	}
 
     IEnumerator IdleHandCoroutine()

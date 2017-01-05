@@ -2,11 +2,14 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
+using Spine;
 
 public class ForestSSC : SceneSwitchControler
 {
     public enum Direction
     {
+        None = -1,
         Left = 0,
         Right
     }
@@ -40,8 +43,9 @@ public class ForestSSC : SceneSwitchControler
             string mssg = oldState == null ? "GoSiteSwitch" : "GoSite";
             Flowchart.SendFungusMessage(mssg);
         }
-        else if ((newState.HubaForest.IsInForest && (oldState == null || !oldState.HubaForest.IsInForest))                      // We just came to forest
-            || (oldState != null && oldState.HubaForest.CurrentForestWay.Count < newState.HubaForest.CurrentForestWay.Count))   // We went further to the forest
+        // Regular forest
+        else if ((newState.HubaForest.IsInForest && (oldState == null || !oldState.HubaForest.IsInForest))                      // Player just came to forest
+            || (oldState != null && oldState.HubaForest.CurrentForestWay.Count < newState.HubaForest.CurrentForestWay.Count))   // Player went further to the forest
         {
             ToggleGlow(newState.HubaForest.IsHubaBlessed);
 
