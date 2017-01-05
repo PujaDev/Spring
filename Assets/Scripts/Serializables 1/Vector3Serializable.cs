@@ -6,11 +6,16 @@ using System;
 /// Serializable version of Vector3 class
 /// </summary>
 [Serializable]
-public struct Vector3S
+public class Vector3S
 {
     readonly public float x;
     readonly public float y;
     readonly public float z;
+
+    public Vector3S()
+    {
+
+    }
 
     public Vector3S(Vector3 vector)
     {
