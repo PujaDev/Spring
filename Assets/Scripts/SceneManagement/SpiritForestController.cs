@@ -57,7 +57,6 @@ public class SpiritForestController : IChangable
             if (newState.HubaForest.IsHubaBlessed)
             {
                 ForestSSC.Direction dir = GetCurrentDir(newState);
-                Debug.Log(string.Format("Direction: {0}", dir));
                 if (dir != ForestSSC.Direction.None)
                 {
                     // Prepare data for Fungus method
@@ -76,7 +75,6 @@ public class SpiritForestController : IChangable
     /// </summary>
     public void ReleaseSpirit()
     {
-        Debug.Log("Trying to release spirit");
         if (IsSpiritReleased)
         {
             // Reset spirit
