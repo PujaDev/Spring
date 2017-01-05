@@ -109,9 +109,10 @@ public class StateManager : MonoBehaviour
     {
         if (DebugLog)
             Debug.Log("Loading state " + stateNumToFile(stateNum));
-        
-        var loadedState = loadStateFromFile(stateNum);
-        
+
+        var oldState = State;
+        State = loadStateFromFile(stateNum);
+         
         //if(SceneManager.GetActiveScene().name != loadedState.SceneName)
         //{
         //    SceneManager.LoadScene(loadedState.SceneName);
@@ -119,14 +120,21 @@ public class StateManager : MonoBehaviour
 
         var character = GameObject.FindWithTag("Character");
         if (character != null) {
-            character.transform.position = loadedState.GetCurrentSceneState().CharacterPosition.GetVector3();
+            var positionS = State.GetCurrentSceneState().CharacterPosition;
+            if (positionS != null) { 
+                character.transform.position = positionS.GetVector3();
+            }
+            else
+            {
+                State.GetCurrentSceneState().SetCharacterPosition();
+                saveStateToFile();
+            }
         }
 
         foreach (var changable in Changables)
         {
-            changable.OnStateChanged(loadedState, State);
+            changable.OnStateChanged(State, oldState);
         }
-        State = loadedState;
     }
 
     /// <summary>
@@ -203,7 +211,7 @@ public class StateManager : MonoBehaviour
         if (PressToLoadState)
         {
             PressToLoadState = false;
-            LoadState(StateNum);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

@@ -55,9 +55,9 @@ public class GameState
             case "Scena_1_AnnanaHouse":
                 return AnnanaHouse;
             case "Scena_2_HubaForest":
-                return HubaForest;
-            case "Scena_4_HubaBus":
                 return HubaBus;
+            case "Scena_4_SilentForest":
+                return HubaForest;
         }
         return null;
     }

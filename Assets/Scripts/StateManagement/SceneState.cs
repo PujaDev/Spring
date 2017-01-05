@@ -23,8 +23,8 @@ abstract public class SceneState
     {
         SceneNameMap = new Dictionary<Type, string>();
         SceneNameMap.Add(typeof(AnnanaSceneState), "Scena_1_AnnanaHouse");
-        SceneNameMap.Add(typeof(HubaForestSceneState), "Scena_2_HubaForest");
-        SceneNameMap.Add(typeof(HubaBusSceneState), "Scena_4_HubaBus");
+        SceneNameMap.Add(typeof(HubaBusSceneState), "Scena_2_HubaForest");
+        SceneNameMap.Add(typeof(HubaForestSceneState), "Scena_4_SilentForest");
     }
 
     /// <summary>
@@ -36,7 +36,10 @@ abstract public class SceneState
         }
     }
 
-    protected void SetCharacterPosition()
+    /// <summary>
+    /// Sets current character position to this state
+    /// </summary>
+    public void SetCharacterPosition()
     {
         try
         {
