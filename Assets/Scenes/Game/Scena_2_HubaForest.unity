@@ -292,7 +292,7 @@ GameObject:
   - 23: {fileID: 337749039}
   - 114: {fileID: 337749038}
   - 114: {fileID: 337749042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TortoiseBus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 31a89d78e3110f74189d33068288d1f7, type: 2}
-  initialSkinName: default
+  initialSkinName: Day
   separatorSlotNames: []
   zSpacing: 0
   renderMeshes: 1
@@ -338,7 +338,9 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 35e21df66aa16664ca442a485560bdfa, type: 2}
+  - {fileID: 2100000, guid: a6f5cc122d8c98f4aa3ea85ea6ac5b53, type: 2}
+  - {fileID: 2100000, guid: f7b49adc7a47f134592afd0641025a5e, type: 2}
+  - {fileID: 2100000, guid: a6f5cc122d8c98f4aa3ea85ea6ac5b53, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1600,7 +1602,7 @@ GameObject:
   - 60: {fileID: 994768503}
   - 114: {fileID: 994768502}
   - 114: {fileID: 994768501}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Empty_Bus
   m_TagString: Untagged
   m_Icon: {fileID: 0}

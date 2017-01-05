@@ -129,7 +129,7 @@ public class ActionWheel : MonoBehaviour
         }
 
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var wheelPosition = new Vector3(mousePos.x, mousePos.y);
+        var wheelPosition = new Vector3(mousePos.x, mousePos.y, -0.5f);
         gameObject.transform.position = wheelPosition;
         children = new GameObject[length];
         SpriteRenderer spriteRenderer;
