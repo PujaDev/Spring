@@ -5,39 +5,50 @@ using System;
 public class ColliderParticleHighlight : Highlight
 {
     private GameObject HighlightEffect;
-    /// <summary>
-    /// Is true only if the object has collider
-    /// </summary>
-    private bool Enabled;
+    private GameObject Source;
+    private Collider2D Collider;
+    
     private static GameObject HighlightPrefab;
 
     public ColliderParticleHighlight(GameObject source)
     {
-        // TODO Create resource manager and move following there
+        // TODO Create resource manager and move following condition there
         if (HighlightPrefab == null)
             HighlightPrefab = Resources.Load<GameObject>("Prefabs/InteractableEffect");
 
+        Source = source;
         HighlightEffect = GameObject.Instantiate(HighlightPrefab);
-        HighlightEffect.transform.parent = source.transform;
+        HighlightEffect.transform.parent = Source.transform;
 
-        var collider = source.GetComponent<Collider2D>();
-        if (collider != null)
-        {
-            Enabled = true;
-            HighlightEffect.transform.position = collider.bounds.center;
-        }
-
-        HighlightEffect.SetActive(false);
+        StopHighlight();
     }
 
     public override void StartHighlight()
     {
-        if (Enabled)
+        if (IsColliderOn())
+        {
+            AdjustPosition();
             HighlightEffect.SetActive(true);
+        }
     }
     public override void StopHighlight()
     {
-        if (Enabled)
-            HighlightEffect.SetActive(false);
+        // Turn off even if there is no collider - it may have been destroyed
+        HighlightEffect.SetActive(false);
+    }
+
+    private void AdjustPosition()
+    {
+        HighlightEffect.transform.position = Collider.bounds.center;
+    }
+
+    /// <summary>
+    /// Is true only if the object has enabled collider
+    /// </summary>
+    private bool IsColliderOn()
+    {
+        // Search for it every time since it may have been created
+        Collider = Source.GetComponent<Collider2D>();
+        return Collider != null && Collider.enabled;
     }
 }
