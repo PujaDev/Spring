@@ -28,9 +28,13 @@ public class ItemHolder : MonoBehaviour
             var highlightGameObject = GameObject.Instantiate(HighlightPrefab);
             highlightGameObject.transform.parent = transform;
             highlightGameObject.transform.position = transform.position;
-            highlightGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            highlightGameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
 
             HighlightEffect = highlightGameObject.GetComponent<ParticleSystem>();
+
+            var renderer = HighlightEffect.GetComponent<Renderer>();
+            renderer.sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
+            renderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
         }
         else
         {
@@ -84,6 +88,7 @@ public class ItemHolder : MonoBehaviour
             {
                 // No effect - item cannot be used
                 bool isHighlight = false;
+                GetComponent<SpriteRenderer>().color = Color.white;
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] objects = Physics2D.RaycastAll(ray.origin, ray.direction);
@@ -97,6 +102,7 @@ public class ItemHolder : MonoBehaviour
                         {
                             // Effect to show that the item can be used
                             isHighlight = true;
+                            GetComponent<SpriteRenderer>().color = Color.yellow;
 
                             if (Input.GetMouseButton(0))
                             {
