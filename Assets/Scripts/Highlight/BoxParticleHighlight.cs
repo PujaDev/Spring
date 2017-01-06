@@ -4,7 +4,7 @@ using System;
 
 public class ColliderParticleHighlight : Highlight
 {
-    private GameObject HighlightEffect;
+    private ParticleSystem HighlightEffect;
     private GameObject Source;
     private Collider2D Collider;
     
@@ -17,8 +17,10 @@ public class ColliderParticleHighlight : Highlight
             HighlightPrefab = Resources.Load<GameObject>("Prefabs/InteractableEffect");
 
         Source = source;
-        HighlightEffect = GameObject.Instantiate(HighlightPrefab);
-        HighlightEffect.transform.parent = Source.transform;
+
+        var hlGameObject = GameObject.Instantiate(HighlightPrefab);
+        hlGameObject.transform.parent = Source.transform;
+        HighlightEffect = hlGameObject.GetComponent<ParticleSystem>();
 
         StopHighlight();
     }
@@ -28,13 +30,17 @@ public class ColliderParticleHighlight : Highlight
         if (IsColliderOn())
         {
             AdjustPosition();
-            HighlightEffect.SetActive(true);
+
+            // Enable emission
+            var em = HighlightEffect.emission;
+            em.enabled = true;
         }
     }
     public override void StopHighlight()
     {
         // Turn off even if there is no collider - it may have been destroyed
-        HighlightEffect.SetActive(false);
+        var em = HighlightEffect.emission;
+        em.enabled = false;
     }
 
     private void AdjustPosition()
