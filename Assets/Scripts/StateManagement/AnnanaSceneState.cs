@@ -66,7 +66,6 @@ public class AnnanaSceneState : SceneState
 		OwlHasAddress = false;
 		OwlPackage = -1;
 		ReadingVeganBook = false;
-		SetCharacterPosition();
 	}
 
 	// copy constructor

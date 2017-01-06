@@ -99,7 +99,7 @@ public class GameState
         foreach(var otherState in GetScenes())
         {
             if (presentState.TimeRange < otherState.TimeRange)
-                newState = Reset(otherState.SceneName);
+                newState = newState.Reset(otherState.SceneName);
         }
 
         return newState;

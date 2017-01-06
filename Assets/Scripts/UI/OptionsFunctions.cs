@@ -15,7 +15,6 @@ public class OptionsFunctions : MonoBehaviour {
     public void GoBackHome()
     {
         SceneManager.LoadScene(home);
-
     }
 
 }

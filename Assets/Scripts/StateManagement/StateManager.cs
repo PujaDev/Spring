@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
+using Spine.Unity;
 
 /// <summary>
 /// Stores game state and handles its changes
@@ -119,13 +120,14 @@ public class StateManager : MonoBehaviour
 
         var character = GameObject.FindWithTag("Character");
         if (character != null) {
-            var positionS = State.GetCurrentSceneState().CharacterPosition;
-            if (positionS != null) { 
-                character.transform.position = positionS.GetVector3();
+            var state = State.GetCurrentSceneState();
+            if (state.CharacterPosition != null) { 
+                character.transform.position = state.CharacterPosition.GetVector3();
+                character.GetComponent<SkeletonAnimation>().skeleton.FlipX = state.CharacterFacingLeft;
             }
             else
             {
-                State.GetCurrentSceneState().SetCharacterPosition();
+                state.SetCharacterPosition();
                 saveStateToFile();
             }
         }
@@ -138,8 +140,8 @@ public class StateManager : MonoBehaviour
 
     public void ResetCurrentScene()
     {
-        if(DebugLog)
-            Debug.Log("Reseting currest scene state!")
+        if (DebugLog)
+            Debug.Log("Reseting currest scene state!");
         State = State.Reset(SceneManager.GetActiveScene().name);
         StateNum++;
         saveStateToFile();
