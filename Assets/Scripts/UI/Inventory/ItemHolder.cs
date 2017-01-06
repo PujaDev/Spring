@@ -9,6 +9,9 @@ public class ItemHolder : MonoBehaviour
 
     private int CurrentItemId;
 
+    private GameObject HighlightPrefab;
+    private ParticleSystem HighlightEffect;
+
     void Awake()
     {
         if (Instance == null)
@@ -17,6 +20,17 @@ public class ItemHolder : MonoBehaviour
             CurrentItemId = -1;
             transform.position = new Vector3(-5000, -5000, 5000);
             transform.localScale = new Vector3(4f, 4f, 1f);
+
+            // TODO move following condition to resource manager
+            if (HighlightPrefab == null)
+                HighlightPrefab = Resources.Load<GameObject>("Prefabs/InteractableEffect");
+
+            var highlightGameObject = GameObject.Instantiate(HighlightPrefab);
+            highlightGameObject.transform.parent = transform;
+            highlightGameObject.transform.position = transform.position;
+            highlightGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            HighlightEffect = highlightGameObject.GetComponent<ParticleSystem>();
         }
         else
         {
@@ -46,6 +60,8 @@ public class ItemHolder : MonoBehaviour
         transform.position = new Vector3(-5000, -5000, 5000);
         GetComponent<SpriteRenderer>().sprite = null;
         Destroy(gameObject.GetComponent<BoxCollider2D>());
+
+        ToggleHighlight(false);
     }
 
     void MoveToCursor()
@@ -67,7 +83,7 @@ public class ItemHolder : MonoBehaviour
             else
             {
                 // No effect - item cannot be used
-                GetComponent<SpriteRenderer>().color = Color.white;
+                bool isHighlight = false;
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] objects = Physics2D.RaycastAll(ray.origin, ray.direction);
@@ -80,7 +96,7 @@ public class ItemHolder : MonoBehaviour
                         if (u.CanUseOnSelf(CurrentItemId))
                         {
                             // Effect to show that the item can be used
-                            GetComponent<SpriteRenderer>().color = Color.yellow;
+                            isHighlight = true;
 
                             if (Input.GetMouseButton(0))
                             {
@@ -97,10 +113,18 @@ public class ItemHolder : MonoBehaviour
                         }
                     }
                 }
+
+                ToggleHighlight(isHighlight);
             }
 
             MoveToCursor();
         }
+    }
+
+    private void ToggleHighlight(bool isOn)
+    {
+        var em = HighlightEffect.emission;
+        em.enabled = isOn;
     }
 
     private float ComputeScale(Sprite sprite)
