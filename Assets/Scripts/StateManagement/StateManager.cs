@@ -102,8 +102,6 @@ public class StateManager : MonoBehaviour
 
         StateNum++;
         saveStateToFile();
-        GameController.Instance.SetLastStateNum(State.GetCurrentSceneState().TimeRange, StateNum);
-
     }
 
     public void LoadState(int stateNum)
@@ -138,6 +136,15 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    public void ResetCurrentScene()
+    {
+        if(DebugLog)
+            Debug.Log("Reseting currest scene state!")
+        State = State.Reset(SceneManager.GetActiveScene().name);
+        StateNum++;
+        saveStateToFile();
+    }
+
     /// <summary>
     /// Clear all subscribed changables and reducers
     /// </summary>
@@ -147,7 +154,6 @@ public class StateManager : MonoBehaviour
     {
         Changables = new HashSet<IChangable>();
         reducers = new HashSet<Reducer>();
-
         try
         {
             string[] fileEntries = Directory.GetFiles(SaveDirectory);
@@ -172,6 +178,23 @@ public class StateManager : MonoBehaviour
             StateNum = 0;
             saveStateToFile();
         }
+
+        var currentSceneState = State.GetCurrentSceneState();
+        if (currentSceneState != null) //main menu
+        {
+            var currentTimeRange = State.GetCurrentSceneState().TimeRange;
+            var previousTimeRange = GameController.Instance.LastPlayedTimeRange;
+
+            if (currentTimeRange < previousTimeRange)
+            {
+                if (DebugLog)
+                    Debug.Log("Returning to past, reseting future!");
+                State = State.ReturnTo(scene.name);
+                StateNum++;
+                saveStateToFile();
+            }
+            GameController.Instance.LastPlayedTimeRange = currentTimeRange;
+        }
     }
 
     private void OnSceneEnd(Scene scene)
@@ -185,45 +208,6 @@ public class StateManager : MonoBehaviour
     public void AddReducer(Reducer reducer)
     {
         reducers.Add(reducer);
-    }
-
-    public void SetAsLastState(int lastTimeRange)
-    {
-        int stateNum;
-        try
-        {
-            string[] fileEntries = Directory.GetFiles(SaveDirectory);
-            Array.Sort(fileEntries);
-            if (lastTimeRange == -1) {
-                stateNum = 0;
-                lastTimeRange = 0;
-            }
-            else {
-                stateNum = GameController.Instance.stateNums[lastTimeRange];
-            }
-            var lastStateName = stateNumToFile(stateNum);
-            var delete = false;
-            foreach(var statePath in fileEntries)
-            {
-                var stateName = Path.GetFileName(statePath);
-                if (delete)
-                {
-                    File.Delete(statePath);
-                }
-                else if (lastStateName == stateName)
-                {
-                    delete = true;
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-            stateNum = GameController.Instance.stateNums[lastTimeRange];
-        }
-        StateNum = stateNum;
-
-        GameController.Instance.SetLastStateNum(lastTimeRange, StateNum);
     }
 
     /// <summary>

@@ -37,7 +37,7 @@ abstract public class SceneState
         NameTimeRangeMap.Add("Scena_2_HubaForest", 1);
         NameTimeRangeMap.Add("Scena_4_SilentForest", 2);
     }
-
+    
     /// <summary>
     /// Name of corresponding scene
     /// </summary>
