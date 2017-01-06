@@ -15,7 +15,10 @@ public class AnnanaHouseSceneReducer : Reducer
             case ActionType.POSTPONE_ALARM:
                 return state.Set(state.AnnanaHouse.SetAlarmPostponed(true));
             case ActionType.CHANGE_CLOTHES:
-                return state.Set(state.AnnanaHouse.SetChangeClothes(true));
+                {
+                    string dress = (string)action.Data;
+                    return state.Set(state.AnnanaHouse.SetAnnanaDress(dress));
+                }
             case ActionType.START_READING_VEGAN_BOOK:
                 return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
             case ActionType.STOP_READING_VEGAN_BOOK:

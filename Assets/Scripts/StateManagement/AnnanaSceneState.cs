@@ -8,14 +8,14 @@ public class AnnanaSceneState : SceneState
 	public bool AlarmPostponed { get; private set; }
 	public bool AlarmTurnedOff { get; private set; }
 	public int AngerLevel { get; private set; }
+	public string AnnanaDress { get; private set; }
 	public HashSet<int> BoilerContents { get; private set; }
-	public bool ChangeClothes { get; private set; }
-	public Vector3S CharPosition { get; private set; }
 	/// <summary>
 	/// Id of chosen elixir
 	/// </summary>
 	public int ElixirId { get; private set; }
 	public bool FlyAway { get; private set; }
+	public Vector3S CharPosition { get; private set; }
 	public bool IsAddressPickedUp { get; private set; }
 	public bool IsAddressUsed { get; private set; }
 	public bool IsBerryPickedUp { get; private set; }
@@ -43,11 +43,11 @@ public class AnnanaSceneState : SceneState
 		AlarmPostponed = false;
 		AlarmTurnedOff = false;
 		AngerLevel = 13;
+		AnnanaDress = "clothes_2";
 		BoilerContents = new HashSet<int>();
-		ChangeClothes = false;
-		CharPosition = new Vector3S(10.74f, -0.52f, 0f);
 		ElixirId = -1;
 		FlyAway = false;
+		CharPosition = new Vector3S(10.74f, -0.52f, 0f);
 		IsAddressPickedUp = false;
 		IsAddressUsed = false;
 		IsBerryPickedUp = false;
@@ -66,7 +66,6 @@ public class AnnanaSceneState : SceneState
 		OwlHasAddress = false;
 		OwlPackage = -1;
 		ReadingVeganBook = false;
-		SetCharacterPosition();
 	}
 
 	// copy constructor
@@ -74,11 +73,11 @@ public class AnnanaSceneState : SceneState
 		AlarmPostponed = template.AlarmPostponed;
 		AlarmTurnedOff = template.AlarmTurnedOff;
 		AngerLevel = template.AngerLevel;
+		AnnanaDress = template.AnnanaDress;
 		BoilerContents = template.BoilerContents;
-		ChangeClothes = template.ChangeClothes;
-		CharPosition = template.CharPosition;
 		ElixirId = template.ElixirId;
 		FlyAway = template.FlyAway;
+		CharPosition = template.CharPosition;
 		IsAddressPickedUp = template.IsAddressPickedUp;
 		IsAddressUsed = template.IsAddressUsed;
 		IsBerryPickedUp = template.IsBerryPickedUp;
@@ -121,24 +120,17 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaSceneState SetAnnanaDress(string value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.AnnanaDress = value;
+		return copy;
+	}
+
 	public AnnanaSceneState SetBoilerContents(HashSet<int> value)
 	{
 		var copy = new AnnanaSceneState(this);
 		copy.BoilerContents = value;
-		return copy;
-	}
-
-	public AnnanaSceneState SetChangeClothes(bool value)
-	{
-		var copy = new AnnanaSceneState(this);
-		copy.ChangeClothes = value;
-		return copy;
-	}
-
-	public AnnanaSceneState SetCharPosition(Vector3S value)
-	{
-		var copy = new AnnanaSceneState(this);
-		copy.CharPosition = value;
 		return copy;
 	}
 
@@ -153,6 +145,13 @@ public class AnnanaSceneState : SceneState
 	{
 		var copy = new AnnanaSceneState(this);
 		copy.FlyAway = value;
+		return copy;
+	}
+
+	public AnnanaSceneState SetCharPosition(Vector3S value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.CharPosition = value;
 		return copy;
 	}
 
@@ -296,20 +295,20 @@ public class AnnanaSceneState : SceneState
 		if(!AngerLevel.Equals(other.AngerLevel))
 			result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}",other.AngerLevel,AngerLevel));
 
+		if(!AnnanaDress.Equals(other.AnnanaDress))
+			result.Add(String.Format("AnnanaDress:\t{0}\t>>>\t{1}",other.AnnanaDress,AnnanaDress));
+
 		if(!BoilerContents.Equals(other.BoilerContents))
 			result.Add(String.Format("BoilerContents:\t{0}\t>>>\t{1}",other.BoilerContents,BoilerContents));
-
-		if(!ChangeClothes.Equals(other.ChangeClothes))
-			result.Add(String.Format("ChangeClothes:\t{0}\t>>>\t{1}",other.ChangeClothes,ChangeClothes));
-
-		if(!CharPosition.Equals(other.CharPosition))
-			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
 
 		if(!ElixirId.Equals(other.ElixirId))
 			result.Add(String.Format("ElixirId:\t{0}\t>>>\t{1}",other.ElixirId,ElixirId));
 
 		if(!FlyAway.Equals(other.FlyAway))
 			result.Add(String.Format("FlyAway:\t{0}\t>>>\t{1}",other.FlyAway,FlyAway));
+
+		if(!CharPosition.Equals(other.CharPosition))
+			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
 
 		if(!IsAddressPickedUp.Equals(other.IsAddressPickedUp))
 			result.Add(String.Format("IsAddressPickedUp:\t{0}\t>>>\t{1}",other.IsAddressPickedUp,IsAddressPickedUp));

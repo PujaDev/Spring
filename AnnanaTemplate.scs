@@ -1,7 +1,6 @@
 AnnanaSceneState
 bool;AlarmTurnedOff;false
 bool;AlarmPostponed;false
-bool;ChangeClothes;false
 bool;ReadingVeganBook;false
 bool;FlyAway;false
 int;ElixirId;-1;Id of chosen elixir;Id from AnnanaInventory.ItemIds
@@ -25,3 +24,4 @@ int;OwlPackage;-1
 bool;IsAddressPickedUp;false
 bool;IsAddressUsed;false
 bool;IsReadingFridgeNote;false
+string;AnnanaDress;"clothes_2"
