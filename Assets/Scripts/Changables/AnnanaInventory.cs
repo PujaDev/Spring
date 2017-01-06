@@ -55,20 +55,22 @@ public class AnnanaInventory : Inventory
             (int)ItemIds.Berry,
             (int)ItemIds.Flower
         }));
-        Elixirs.Add((int)ElixirTypes.Shrink, new Elixir("Shrinking elixir", new HashSet<int>()
+        Elixirs.Add((int)ElixirTypes.Shrink, new Elixir("Serum of shrinking", new HashSet<int>()
         {
-            (int)ItemIds.Flower
+            (int)ItemIds.Berry,
+            (int)ItemIds.Leaf
         }));
         Elixirs.Add((int)ElixirTypes.Invis, new Elixir("Elixir of invisibility", new HashSet<int>()
         {
-            (int)ItemIds.Berry,
             (int)ItemIds.Flower,
             (int)ItemIds.Leaf
         }));
         Elixirs.Add((int)ElixirTypes.Soup, new Elixir("Soup", new HashSet<int>()
         {
+            // Not necessary if soup is everything unknown
             (int)ItemIds.Berry,
-            (int)ItemIds.Leaf
+            (int)ItemIds.Leaf,
+            (int)ItemIds.Flower
         }));
     }
     #endregion
