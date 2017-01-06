@@ -600,10 +600,10 @@ RectTransform:
   - {fileID: 1460085992}
   m_Father: {fileID: 1678399289}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 650}
+  m_SizeDelta: {x: 2000, y: 1100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &274729288
 GameObject:
@@ -4831,15 +4831,15 @@ RectTransform:
   m_GameObject: {fileID: 1198368234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 601146903}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00001657, y: 74.1}
-  m_SizeDelta: {x: 1360.1, y: 1131}
+  m_AnchoredPosition: {x: 0, y: -16}
+  m_SizeDelta: {x: 833, y: 1143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198368236
 MonoBehaviour:
@@ -4862,10 +4862,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 77f6f32a89a03734fa84d5c7fef2fa4a, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -4873,7 +4873,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Prepare antidote potion and send it to:
+  m_Text: 'Prepare an antidote potion and send it to:
 
 
     Huba
@@ -4884,6 +4884,9 @@ MonoBehaviour:
 
 
     As soon as possible
+
+
+    P.S. She already payed
 
 '
 --- !u!222 &1198368237
