@@ -5,16 +5,8 @@ using UnityEngine.UI;
 
 public abstract class TipManager : IChangable {
 
-    public string InitialTip = "Klikni na otaznik debile";
     public Text TutorialTipsText;
-    bool showInitialTip;
-
-    protected override void Start()
-    {
-        showInitialTip = !GameController.Instance.PlayedAny;
-        base.Start();
-    }
-
+    
     void OnMousOver()
     {
         Debug.Log("CLICK");
@@ -36,9 +28,6 @@ public abstract class TipManager : IChangable {
         // maybe later
         // if (oldText != text)
         //    gameObject.SetActive(false);
-
-        if (showInitialTip && oldState == null)
-            text = InitialTip;
 
         TutorialTipsText.text = text;
     }
