@@ -131,7 +131,7 @@ public class Boiler : IInteractable, IItemUsable
         {
             ElixirObject.transform.position = new Vector3(pos.x, newY, pos.z);
             newY -= RefillSpeed;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         StopCoroutine("ChangeElixirColor");
@@ -143,7 +143,7 @@ public class Boiler : IInteractable, IItemUsable
         // wait
         for (int i = 0; i < RefillWait; i++)
         {
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         // move elixir up
@@ -151,7 +151,7 @@ public class Boiler : IInteractable, IItemUsable
         {
             ElixirObject.transform.position = new Vector3(pos.x, newY, pos.z);
             newY += RefillSpeed;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         // reset elixir position
@@ -180,7 +180,7 @@ public class Boiler : IInteractable, IItemUsable
                 )
                 break;
             Debug.Log(Elixir.color);
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         Elixir.color = ElixirColor;
     }
