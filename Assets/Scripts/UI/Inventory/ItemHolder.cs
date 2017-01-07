@@ -35,6 +35,8 @@ public class ItemHolder : MonoBehaviour
             var renderer = HighlightEffect.GetComponent<Renderer>();
             renderer.sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
             renderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+
+            ToggleHighlight(false);
         }
         else
         {
