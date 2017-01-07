@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496307655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6983f9901a86ef246b01af51dace54c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 07da4fe36e787a64185b7e2e3ef110cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkableAreas:
