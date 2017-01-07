@@ -31,8 +31,15 @@ public class ForestSSC : SceneSwitchControler
         {
             Setup1,
             Setup2,
-            Setup3
+            Setup3,
         };
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        GenerateNewLayout();
     }
 
     public override void OnStateChanged(GameState newState, GameState oldState)
@@ -41,6 +48,7 @@ public class ForestSSC : SceneSwitchControler
         if (newState.HubaForest.IsOnSite && (oldState == null || !oldState.HubaForest.IsOnSite))
         {
             string mssg = oldState == null ? "GoSiteSwitch" : "GoSite";
+            Debug.Log(mssg);
             Flowchart.SendFungusMessage(mssg);
         }
         // Regular forest
@@ -72,7 +80,9 @@ public class ForestSSC : SceneSwitchControler
             }
         }
 
-        int activeSetup = Rnd.Next(0, Setups.Count);
+        // Deterministic setup switching seems to look better than random
+        //int activeSetup = Rnd.Next(0, Setups.Count);
+        int activeSetup = StateManager.Instance.State.HubaForest.CurrentForestWay.Count % Setups.Count;
         foreach (var obj in Setups[activeSetup])
         {
             obj.SetActive(true);
