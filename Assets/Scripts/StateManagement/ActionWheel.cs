@@ -84,8 +84,7 @@ public class ActionWheel : MonoBehaviour
         mousePos.z = 0;
         var wheelPos = gameObject.transform.position;
         var distance = Vector3.Distance(mousePos, wheelPos);
-
-        if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
+        if (distance < (1.35f * scale) * (1.35f * scale)) // It's a kind of magic
         {
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
             actionNumber = -1;
