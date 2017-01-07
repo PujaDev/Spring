@@ -20,7 +20,7 @@ public class AnnanaHouseSceneReducer : Reducer
                     return state.Set(state.AnnanaHouse.SetAnnanaDress(dress));
                 }
             case ActionType.START_READING_VEGAN_BOOK:
-                return state.Set(state.AnnanaHouse.SetReadingVeganBook(true));
+                return state.Set(state.AnnanaHouse.SetReadingVeganBook(true).SetReadVeganBook(true));
             case ActionType.STOP_READING_VEGAN_BOOK:
                 return state.Set(state.AnnanaHouse.SetReadingVeganBook(false));
             case ActionType.GO_OUTSIDE:
@@ -120,7 +120,7 @@ public class AnnanaHouseSceneReducer : Reducer
                     return s.Set(s.AnnanaHouse.SetOwlPackage((int)action.Data));
                 }
             case ActionType.START_READING_FRIDGE_NOTE:
-                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(true));
+                return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(true).SetDidReadFridgeNote(true));
             case ActionType.STOP_READING_FRIDGE_NOTE:
                 return state.Set(state.AnnanaHouse.SetIsReadingFridgeNote(false));
         }

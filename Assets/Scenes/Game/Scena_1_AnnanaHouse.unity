@@ -771,6 +771,25 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &314543341 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+--- !u!114 &314543342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 314543341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db002fa5b5e67f4408619518401f43cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialTip: Klikni na otaznik debile
+  TutorialTipsText: {fileID: 466915261}
+  CancelButton: {fileID: 0}
 --- !u!1 &317847784 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013452837816, guid: 8c40cf26ad74d5d4a8e1a7effb4d34ac,
@@ -1066,6 +1085,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!114 &466915261 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011908837152, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &467159616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,7 +1316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496307655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07da4fe36e787a64185b7e2e3ef110cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 6983f9901a86ef246b01af51dace54c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkableAreas:

@@ -10,12 +10,16 @@ public class AnnanaSceneState : SceneState
 	public int AngerLevel { get; private set; }
 	public string AnnanaDress { get; private set; }
 	public HashSet<int> BoilerContents { get; private set; }
+	public Vector3S CharPosition { get; private set; }
+	/// <summary>
+	/// Did player ever read the fridge note
+	/// </summary>
+	public bool DidReadFridgeNote { get; private set; }
 	/// <summary>
 	/// Id of chosen elixir
 	/// </summary>
 	public int ElixirId { get; private set; }
 	public bool FlyAway { get; private set; }
-	public Vector3S CharPosition { get; private set; }
 	public bool IsAddressPickedUp { get; private set; }
 	public bool IsAddressUsed { get; private set; }
 	public bool IsBerryPickedUp { get; private set; }
@@ -30,10 +34,20 @@ public class AnnanaSceneState : SceneState
 	public bool IsLeafPickedUp { get; private set; }
 	public bool IsLeafUsed { get; private set; }
 	public bool IsOutside { get; private set; }
+	/// <summary>
+	/// Is player currently reading the fridge note
+	/// </summary>
 	public bool IsReadingFridgeNote { get; private set; }
 	public bool OwlHasAddress { get; private set; }
 	public int OwlPackage { get; private set; }
+	/// <summary>
+	/// Is player currently reading the book?
+	/// </summary>
 	public bool ReadingVeganBook { get; private set; }
+	/// <summary>
+	/// Did player ever read the book?
+	/// </summary>
+	public bool ReadVeganBook { get; private set; }
 
 	// empty constructor - for deserialization
 	public AnnanaSceneState() {}
@@ -45,9 +59,10 @@ public class AnnanaSceneState : SceneState
 		AngerLevel = 13;
 		AnnanaDress = "clothes_2";
 		BoilerContents = new HashSet<int>();
+		CharPosition = new Vector3S(10.74f, -0.52f, 0f);
+		DidReadFridgeNote = false;
 		ElixirId = -1;
 		FlyAway = false;
-		CharPosition = new Vector3S(10.74f, -0.52f, 0f);
 		IsAddressPickedUp = false;
 		IsAddressUsed = false;
 		IsBerryPickedUp = false;
@@ -66,6 +81,7 @@ public class AnnanaSceneState : SceneState
 		OwlHasAddress = false;
 		OwlPackage = -1;
 		ReadingVeganBook = false;
+		ReadVeganBook = false;
 	}
 
 	// copy constructor
@@ -75,9 +91,10 @@ public class AnnanaSceneState : SceneState
 		AngerLevel = template.AngerLevel;
 		AnnanaDress = template.AnnanaDress;
 		BoilerContents = template.BoilerContents;
+		CharPosition = template.CharPosition;
+		DidReadFridgeNote = template.DidReadFridgeNote;
 		ElixirId = template.ElixirId;
 		FlyAway = template.FlyAway;
-		CharPosition = template.CharPosition;
 		IsAddressPickedUp = template.IsAddressPickedUp;
 		IsAddressUsed = template.IsAddressUsed;
 		IsBerryPickedUp = template.IsBerryPickedUp;
@@ -96,6 +113,7 @@ public class AnnanaSceneState : SceneState
 		OwlHasAddress = template.OwlHasAddress;
 		OwlPackage = template.OwlPackage;
 		ReadingVeganBook = template.ReadingVeganBook;
+		ReadVeganBook = template.ReadVeganBook;
 		SetCharacterPosition();
 	}
 
@@ -134,6 +152,20 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaSceneState SetCharPosition(Vector3S value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.CharPosition = value;
+		return copy;
+	}
+
+	public AnnanaSceneState SetDidReadFridgeNote(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.DidReadFridgeNote = value;
+		return copy;
+	}
+
 	public AnnanaSceneState SetElixirId(int value)
 	{
 		var copy = new AnnanaSceneState(this);
@@ -145,13 +177,6 @@ public class AnnanaSceneState : SceneState
 	{
 		var copy = new AnnanaSceneState(this);
 		copy.FlyAway = value;
-		return copy;
-	}
-
-	public AnnanaSceneState SetCharPosition(Vector3S value)
-	{
-		var copy = new AnnanaSceneState(this);
-		copy.CharPosition = value;
 		return copy;
 	}
 
@@ -281,6 +306,13 @@ public class AnnanaSceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaSceneState SetReadVeganBook(bool value)
+	{
+		var copy = new AnnanaSceneState(this);
+		copy.ReadVeganBook = value;
+		return copy;
+	}
+
 
 	// compare method
 	public List<string> CompareChanges(AnnanaSceneState other) {
@@ -301,14 +333,17 @@ public class AnnanaSceneState : SceneState
 		if(!BoilerContents.Equals(other.BoilerContents))
 			result.Add(String.Format("BoilerContents:\t{0}\t>>>\t{1}",other.BoilerContents,BoilerContents));
 
+		if(!CharPosition.Equals(other.CharPosition))
+			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
+
+		if(!DidReadFridgeNote.Equals(other.DidReadFridgeNote))
+			result.Add(String.Format("DidReadFridgeNote:\t{0}\t>>>\t{1}",other.DidReadFridgeNote,DidReadFridgeNote));
+
 		if(!ElixirId.Equals(other.ElixirId))
 			result.Add(String.Format("ElixirId:\t{0}\t>>>\t{1}",other.ElixirId,ElixirId));
 
 		if(!FlyAway.Equals(other.FlyAway))
 			result.Add(String.Format("FlyAway:\t{0}\t>>>\t{1}",other.FlyAway,FlyAway));
-
-		if(!CharPosition.Equals(other.CharPosition))
-			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
 
 		if(!IsAddressPickedUp.Equals(other.IsAddressPickedUp))
 			result.Add(String.Format("IsAddressPickedUp:\t{0}\t>>>\t{1}",other.IsAddressPickedUp,IsAddressPickedUp));
@@ -363,6 +398,9 @@ public class AnnanaSceneState : SceneState
 
 		if(!ReadingVeganBook.Equals(other.ReadingVeganBook))
 			result.Add(String.Format("ReadingVeganBook:\t{0}\t>>>\t{1}",other.ReadingVeganBook,ReadingVeganBook));
+
+		if(!ReadVeganBook.Equals(other.ReadVeganBook))
+			result.Add(String.Format("ReadVeganBook:\t{0}\t>>>\t{1}",other.ReadVeganBook,ReadVeganBook));
 
 		return result;
 	}

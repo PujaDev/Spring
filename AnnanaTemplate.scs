@@ -1,7 +1,8 @@
 AnnanaSceneState
 bool;AlarmTurnedOff;false
 bool;AlarmPostponed;false
-bool;ReadingVeganBook;false
+bool;ReadingVeganBook;false;Is player currently reading the book?
+bool;ReadVeganBook;false;Did player ever read the book?
 bool;FlyAway;false
 int;ElixirId;-1;Id of chosen elixir;Id from AnnanaInventory.ItemIds
 int;AngerLevel;13
@@ -23,5 +24,6 @@ bool;OwlHasAddress;false
 int;OwlPackage;-1
 bool;IsAddressPickedUp;false
 bool;IsAddressUsed;false
-bool;IsReadingFridgeNote;false
+bool;IsReadingFridgeNote;false;Is player currently reading the fridge note
+bool;DidReadFridgeNote;false;Did player ever read the fridge note
 string;AnnanaDress;"clothes_2"
