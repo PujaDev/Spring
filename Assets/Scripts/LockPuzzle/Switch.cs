@@ -7,12 +7,14 @@ public class Switch : MonoBehaviour
     public bool IsOn { get; private set; }
     public int Value { get; private set; }
     private Action<bool, int> OnClickCallback;
+    private Sprite OnSprite;
+    private Sprite OffSprite;
 
     public void Reset()
     {
         IsOn = false;
         var r = GetComponent<SpriteRenderer>();
-        r.color = Color.white;
+        r.sprite = OffSprite;
     }
 
     void OnMouseDown()
@@ -21,11 +23,11 @@ public class Switch : MonoBehaviour
         var r = GetComponent<SpriteRenderer>();
         if(IsOn)
         {
-            r.color = Color.red;
+            r.sprite = OnSprite;
         }
         else
         {
-            r.color = Color.white;
+            r.sprite = OffSprite;
         }
 
         OnClickCallback(IsOn, Value);
@@ -35,11 +37,15 @@ public class Switch : MonoBehaviour
     #region Factory
     static bool Loaded;
     static UnityEngine.Object prefab;
+    static Sprite spriteOn;
+    static Sprite spriteOff;
 
     public static GameObject Create(int value, Action<bool, int> onClickCallback, Vector3 position)
     {
         if (!Loaded)
         {
+            spriteOn = Resources.Load<Sprite>("Sprites/LockPuzzle/switch_on");
+            spriteOff = Resources.Load<Sprite>("Sprites/LockPuzzle/switch_off");
             prefab = Resources.Load("Prefabs/LockPuzzle/Switch");
             Loaded = true;
         }
@@ -49,6 +55,8 @@ public class Switch : MonoBehaviour
 
         s.Value = value;
         s.OnClickCallback = onClickCallback;
+        s.OnSprite = spriteOn;
+        s.OffSprite = spriteOff;
         swch.transform.position = position;
 
         return swch;

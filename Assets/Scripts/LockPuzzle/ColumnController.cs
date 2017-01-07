@@ -24,8 +24,18 @@ public class ColumnController : MonoBehaviour
     private Coroutine PtrMovement;
     private bool Moving;
 
+    static bool Loaded;
+    static Sprite CorrectSelected;
+    static Sprite CorrectDeselected;
+
     void Awake()
     {
+        if (!Loaded)
+        {
+            CorrectSelected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_on");
+            CorrectDeselected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_off");
+        }
+
         Switches = new List<Switch>();
 
         int value = 1;
@@ -50,11 +60,14 @@ public class ColumnController : MonoBehaviour
             var rend = s.GetComponent<SpriteRenderer>();
 
             if (i == CorrectAnswer)
-                rend.color = Color.green;
+            {
+                rend.sprite = CorrectDeselected;
+                var step = rend.GetComponent<Step>();
+                step.Selected = CorrectSelected;
+                step.Deselected = CorrectDeselected;
+            }
             else if (i == 0)
                 rend.color = Color.black;
-            else
-                rend.color = Color.yellow;
         }
         PtrShift = new Vector3(0.35f, 0);
         Pointer = Instantiate(PointerPrefab, StepPositions[0] + PtrShift, Quaternion.identity) as GameObject;
