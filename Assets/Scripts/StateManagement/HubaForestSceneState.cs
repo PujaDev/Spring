@@ -34,7 +34,6 @@ public class HubaForestSceneState : SceneState
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		RightForestWay = ForestSSC.GenerateNewPath(5);
 		UsedItems = new HashSet<int>();
-		SetCharacterPosition();
 	}
 
 	// copy constructor

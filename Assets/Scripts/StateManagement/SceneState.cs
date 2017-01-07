@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
+using Spine.Unity;
 
 /// <summary>
 /// Wrapper class for Scene States
@@ -9,7 +10,14 @@ using UnityEngine.SceneManagement;
 [Serializable]
 abstract public class SceneState
 {
+    /// <summary>
+    /// Character's position in the scene
+    /// </summary>
     public Vector3S CharacterPosition { get; protected set; }
+    /// <summary>
+    /// Describes whether character in the scene is facing left
+    /// </summary>
+    public bool CharacterFacingLeft { get; protected set; }
 
     /// <summary>
     /// Maps types of scene state classes to their corresponding scene names
@@ -37,7 +45,7 @@ abstract public class SceneState
         NameTimeRangeMap.Add("Scena_2_HubaForest", 1);
         NameTimeRangeMap.Add("Scena_4_SilentForest", 2);
     }
-
+    
     /// <summary>
     /// Name of corresponding scene
     /// </summary>
@@ -70,7 +78,11 @@ abstract public class SceneState
         {
             if (SceneManager.GetActiveScene().name == SceneName)
             {
-                CharacterPosition = new Vector3S(GameObject.FindWithTag("Character").transform.position);
+                var characterObject = GameObject.FindWithTag("Character");
+
+                CharacterPosition = new Vector3S(characterObject.transform.position);
+
+                CharacterFacingLeft = characterObject.GetComponent<SkeletonAnimation>().skeleton.FlipX;
             }
         }
         catch (Exception e)

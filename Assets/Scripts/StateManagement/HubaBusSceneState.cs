@@ -39,7 +39,6 @@ public class HubaBusSceneState : SceneState
 		isDrunk = false;
 		PickedUpItems = new HashSet<int>() {(int)HubaBusInventory.ItemIds.GoldCoins,(int)HubaBusInventory.ItemIds.SilverCoin};
 		UsedItems = new HashSet<int>();
-		SetCharacterPosition();
 	}
 
 	// copy constructor

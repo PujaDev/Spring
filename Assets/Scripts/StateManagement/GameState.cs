@@ -27,6 +27,11 @@ public class GameState
         HubaForest = template.HubaForest;
     }
 
+    public GameState Set(SceneState state)
+    {
+        throw new Exception();
+    }
+
     public GameState Set(AnnanaSceneState state)
     {
         var copy = new GameState(this);
@@ -65,6 +70,39 @@ public class GameState
     public SceneState GetCurrentSceneState()
     {
         return GetSceneState(SceneManager.GetActiveScene().name);
+    }
+
+    public SceneState[] GetScenes()
+    {
+        return new SceneState[] {AnnanaHouse, HubaBus, HubaForest };
+    }
+    
+    public GameState Reset(string SceneName)
+    {
+        switch (SceneName)
+        {
+            case "Scena_1_AnnanaHouse":
+                return Set(new AnnanaSceneState(true));
+            case "Scena_2_HubaForest":
+                return Set(new HubaBusSceneState(true));
+            case "Scena_4_SilentForest":
+                return Set(new HubaForestSceneState(true));
+        }
+        return null;
+    }
+
+    public GameState ReturnTo(string SceneName)
+    {
+        var presentState = GetSceneState(SceneName);
+        var newState = new GameState(this);
+
+        foreach(var otherState in GetScenes())
+        {
+            if (presentState.TimeRange < otherState.TimeRange)
+                newState = newState.Reset(otherState.SceneName);
+        }
+
+        return newState;
     }
 
     public Dictionary<string, List<string>> CompareChanges(GameState other)

@@ -72,10 +72,7 @@ public class LevelSelector : MonoBehaviour {
     }
 
     public void GoBackInTime() {
-        //discard all progress in the following scenes --TODO--
-
         lastTimeRange = timeRanges[pastIndexToLoad];
-        StateManager.Instance.SetAsLastState(lastTimeRange);
         LoadScene(pastIndexToLoad);
     }
 
@@ -95,7 +92,6 @@ public class LevelSelector : MonoBehaviour {
             child.transform.SetParent(parent, false);
             SceneManager.LoadScene(scenes[id]);
             lastTimeRange = timeRanges[id];
-            GameController.Instance.LastPlayedTimeRange = lastTimeRange;
             GameController.Instance.PlayedAny = true;
         }
     }
