@@ -41,7 +41,7 @@ abstract public class SceneState
         SceneNameMap = new Dictionary<Type, string>();
         SceneNameMap.Add(typeof(AnnanaSceneState), ANNANA_HOUSE_NAME);
         SceneNameMap.Add(typeof(HubaBusSceneState), HUBA_FOREST_NAME);
-        SceneNameMap.Add(typeof(HubaBusSceneState), ANNANA_TEA_PARTY_NAME);
+        SceneNameMap.Add(typeof(AnnanaTeaPartySceneState), ANNANA_TEA_PARTY_NAME);
         SceneNameMap.Add(typeof(HubaForestSceneState), SILENT_FOREST_NAME);
 
         TimeRangeMap = new Dictionary<Type, int>();
