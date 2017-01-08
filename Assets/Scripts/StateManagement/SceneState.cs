@@ -10,6 +10,13 @@ using Spine.Unity;
 [Serializable]
 abstract public class SceneState
 {
+    
+    public const string MAIN_MENU_NAME = "MainMenu";
+    public const string ANNANA_HOUSE_NAME = "Scena_1_AnnanaHouse";
+    public const string HUBA_FOREST_NAME = "Scena_2_HubaForest";
+    public const string ANNANA_TEA_PARTY_NAME = "Scena_3_AnnanaTeaParty";
+    public const string SILENT_FOREST_NAME = "Scena_4_SilentForest";
+
     /// <summary>
     /// Character's position in the scene
     /// </summary>
@@ -32,18 +39,23 @@ abstract public class SceneState
     static SceneState()
     {
         SceneNameMap = new Dictionary<Type, string>();
-        SceneNameMap.Add(typeof(AnnanaSceneState), "Scena_1_AnnanaHouse");
-        SceneNameMap.Add(typeof(HubaBusSceneState), "Scena_2_HubaForest");
-        SceneNameMap.Add(typeof(HubaForestSceneState), "Scena_4_SilentForest");
+        SceneNameMap.Add(typeof(AnnanaSceneState), ANNANA_HOUSE_NAME);
+        SceneNameMap.Add(typeof(HubaBusSceneState), HUBA_FOREST_NAME);
+        SceneNameMap.Add(typeof(HubaBusSceneState), ANNANA_TEA_PARTY_NAME);
+        SceneNameMap.Add(typeof(HubaForestSceneState), SILENT_FOREST_NAME);
+
         TimeRangeMap = new Dictionary<Type, int>();
         TimeRangeMap.Add(typeof(AnnanaSceneState), 0);
         TimeRangeMap.Add(typeof(HubaBusSceneState), 1);
+        TimeRangeMap.Add(typeof(AnnanaTeaPartySceneState), 1);
         TimeRangeMap.Add(typeof(HubaForestSceneState), 2);
+
         NameTimeRangeMap = new Dictionary<string, int>();
-        NameTimeRangeMap.Add("MainMenu", -1);
-        NameTimeRangeMap.Add("Scena_1_AnnanaHouse", 0);
-        NameTimeRangeMap.Add("Scena_2_HubaForest", 1);
-        NameTimeRangeMap.Add("Scena_4_SilentForest", 2);
+        NameTimeRangeMap.Add(MAIN_MENU_NAME, -1);
+        NameTimeRangeMap.Add(ANNANA_HOUSE_NAME, 0);
+        NameTimeRangeMap.Add(HUBA_FOREST_NAME, 1);
+        NameTimeRangeMap.Add(ANNANA_TEA_PARTY_NAME,1);
+        NameTimeRangeMap.Add(SILENT_FOREST_NAME, 0);
     }
     
     /// <summary>
