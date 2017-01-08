@@ -87,13 +87,13 @@ public class Boiler : IInteractable, IItemUsable
         // calculate new color from ingredients
 
         if (contents.Contains((int)AnnanaInventory.ItemIds.Flower))
-            color.r = 1f;
+            color.r = 0.8f;
 
         if (contents.Contains((int)AnnanaInventory.ItemIds.Berry))
-            color.b = 1f;
+            color.b = 0.8f;
 
         if (contents.Contains((int)AnnanaInventory.ItemIds.Leaf))
-            color.g = 1f;
+            color.g = 0.8f;
 
         // if there are no ingredients and it is start of the game set the elixir color to water
         // if the game is already in progress and we need to set the color to water,
@@ -113,9 +113,16 @@ public class Boiler : IInteractable, IItemUsable
         // in that case we will set elixir color during refill animation
         if (!color.Equals(defaultColor))
         {
-            ElixirColor = color;
-            StopCoroutine("ChangeElixirColor");
-            StartCoroutine("ChangeElixirColor");
+            if(oldState== null)
+            {
+                Elixir.color = ElixirColor;
+            }
+            else
+            {
+                ElixirColor = color;
+                StopCoroutine("ChangeElixirColor");
+                StartCoroutine("ChangeElixirColor");
+            }
         }
     }
 
@@ -174,12 +181,11 @@ public class Boiler : IInteractable, IItemUsable
             var b = -Mathf.Sign(color.b - ElixirColor.b) * ColorChangeSpeed;
             Elixir.color = new Color(color.r + r, color.g + g, color.b + b);
             if (
-                Mathf.Abs(diffR) < ColorChangeSpeed / 2 &&
-                Mathf.Abs(diffG) < ColorChangeSpeed / 2 &&
-                Mathf.Abs(diffB) < ColorChangeSpeed / 2
+                Mathf.Abs(diffR) < ColorChangeSpeed  &&
+                Mathf.Abs(diffG) < ColorChangeSpeed  &&
+                Mathf.Abs(diffB) < ColorChangeSpeed
                 )
                 break;
-            Debug.Log(Elixir.color);
             yield return new WaitForFixedUpdate();
         }
         Elixir.color = ElixirColor;

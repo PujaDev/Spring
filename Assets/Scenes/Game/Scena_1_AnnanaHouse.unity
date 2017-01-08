@@ -1781,7 +1781,7 @@ Prefab:
     - target: {fileID: 114000011449782366, guid: 17312a951d1bb044e9120e7952d41d8b,
         type: 2}
       propertyPath: StateNum
-      value: 115
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013574027094, guid: 17312a951d1bb044e9120e7952d41d8b,
         type: 2}
@@ -1983,7 +1983,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Dresscover
   icons:
-  - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
+  - {fileID: 21300000, guid: 82019d0344648484da5ad796506455e6, type: 3}
+  - {fileID: 21300000, guid: 4c0d4c5750d485f41a4251da9cc1814b, type: 3}
+  - {fileID: 21300000, guid: 217518aead70e0248b37d4df59a6bf01, type: 3}
   orientation: 2
   Pajamas: clothes_2
   DayClothes: clothes_1
@@ -4476,8 +4478,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Delivery owl
   icons:
-  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
-  - {fileID: 21300000, guid: 3d82200f9db004c46821d6c404bf023b, type: 3}
+  - {fileID: 21300000, guid: 87698aa7f099f794588c8e7d834c58fc, type: 3}
+  - {fileID: 21300000, guid: 5103f39f5c8288d4781b2bcfc1760ff5, type: 3}
   orientation: 2
 --- !u!114 &988604223
 MonoBehaviour:
@@ -5998,7 +6000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Empty elixir vials
   icons:
-  - {fileID: 21300000, guid: ecc5de0787355994297552f21065202a, type: 3}
+  - {fileID: 21300000, guid: 57d81f6d4ae16e44d8525e9b02b37c50, type: 3}
+  - {fileID: 21300000, guid: 663b50baf74c02d429a9de16b032eb53, type: 3}
   orientation: 0
 --- !u!114 &1419371294
 MonoBehaviour:
@@ -6749,8 +6752,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Radio alarmclock
   icons:
-  - {fileID: 21300000, guid: a13c7d6aebde11e4ebc9eaceb6d27cf9, type: 3}
-  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
+  - {fileID: 21300000, guid: 2c69d54c6182f82479308de3a1bbb395, type: 3}
+  - {fileID: 21300000, guid: 88c147563dd0a6b4fb88ed58a23b3b12, type: 3}
   orientation: 0
 --- !u!114 &1600991203
 MonoBehaviour:
@@ -10085,7 +10088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: 
   icons:
-  - {fileID: 21300000, guid: 38f1370d0d7677e4abd4257413b130d5, type: 3}
+  - {fileID: 21300000, guid: 1fd0a999439bc3842bfb1b40b04fd856, type: 3}
   orientation: 0
   WaterColor: {r: 0.77205884, g: 0.9151116, b: 1, a: 1}
   SoupColor: {r: 0.39526758, g: 0.45588237, b: 0.22458911, a: 1}
