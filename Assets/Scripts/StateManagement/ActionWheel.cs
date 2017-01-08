@@ -122,10 +122,6 @@ public class ActionWheel : MonoBehaviour
         this.actions = actions;
         this.actionSource = actionSource;
         var length = actions.Length;
-        for (int i = 0; i < actions.Length; i++)
-        {
-            Debug.Log(actions[i]);
-        }
 
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var wheelPosition = new Vector3(mousePos.x, mousePos.y, -0.5f);
