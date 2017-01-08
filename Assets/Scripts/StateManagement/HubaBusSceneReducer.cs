@@ -30,6 +30,10 @@ public class HubaBusSceneReducer : Reducer
                 {
                     return state.Set(state.HubaBus.SethasBusLeft(true));
                 }
+            case ActionType.EXIT_HOUSE:
+                {
+                    return state.Set(state.HubaBus.SetisOutOfTheHouse(true));
+                }
         }
 
         return state;

@@ -42,5 +42,6 @@ public enum ActionType {
     GET_ELIXIR,
     DELIVERY,
     ARRIVAL,
-    DEPARTURE
+    DEPARTURE,
+    EXIT_HOUSE
 }

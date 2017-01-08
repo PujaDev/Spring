@@ -23,13 +23,17 @@ public class BusTrigger : IChangable {
                 yield return null;
             }
         }
-        if (isEnd) bus.setInteractibleActive(true);
+        if (isEnd) {
+            bus.setInteractibleActive(true);
+            GameObject.FindGameObjectWithTag("Character").GetComponent<CharacterMovement>().Busy = false;
+        }
     }
      
     public void OnTriggerEnter2D(Collider2D collision)
     {
         bus.BusComesToTheBusstop();
         GetComponent<Collider2D>().isTrigger = false;
+        GameObject.FindGameObjectWithTag("Character").GetComponent<CharacterMovement>().Busy = true;
         follow.Character = busStopFollowTarget;
         move = StartCoroutine(MoveToCoroutine(topTargets, true));
     }

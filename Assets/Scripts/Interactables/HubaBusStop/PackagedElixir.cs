@@ -20,9 +20,11 @@ public class PackagedElixir : IInteractable
         };
     }
     public void TogglePackage(bool On) {
-        GetComponent<Rigidbody2D>().isKinematic = !On;
-        GetComponent<Collider2D>().enabled = On;
-        GetComponent<SpriteRenderer>().enabled = On;
+        if (gameObject != null) {
+            GetComponent<Rigidbody2D>().isKinematic = !On;
+            GetComponent<Collider2D>().enabled = On;
+            GetComponent<SpriteRenderer>().enabled = On;
+        }
     }
 
     protected override void Start()

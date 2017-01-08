@@ -35,6 +35,7 @@ public class HubaOwlAnimator : MonoBehaviour
 
         skeletonAnim.AnimationState.SetEmptyAnimation(0, 1f);
         StateManager.Instance.DispatchAction(new SpringAction(ActionType.DELIVERY, "Was delivered"));
+        Destroy(gameObject);
     }
 
     public void Fly() {
