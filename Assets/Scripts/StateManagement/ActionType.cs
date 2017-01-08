@@ -42,6 +42,11 @@ public enum ActionType {
     GET_ELIXIR,
     DELIVERY,
 
-    RESET_ALARM
+    // Added to Annana House - if I put it at the beggining it breaks several references in first scene
+    RESET_ALARM,
 
+
+    // Annana Tea Party actions
+    FILL_TEAPOT,
+    PUT_TEAPON_ON_THE_STOVE
 }
