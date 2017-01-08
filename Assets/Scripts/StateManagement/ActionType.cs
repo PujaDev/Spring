@@ -44,5 +44,10 @@ public enum ActionType {
     ARRIVAL,
     DEPARTURE,
     EXIT_HOUSE,
-    DRINK
+    DRINK,
+
+
+    // Annana Tea Party actions
+    FILL_TEAPOT,
+    PUT_TEAPON_ON_THE_STOVE
 }
