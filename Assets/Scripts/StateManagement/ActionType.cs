@@ -40,5 +40,8 @@ public enum ActionType {
     // Huba TortoiseBus actions
     GET_TICKET,
     GET_ELIXIR,
-    DELIVERY
+    DELIVERY,
+
+    RESET_ALARM
+
 }
