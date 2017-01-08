@@ -441,6 +441,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010722626468, guid: ef38b8fa828347647b48f01fd0adae5b,
     type: 2}
   m_PrefabInternal: {fileID: 1453540253}
+--- !u!114 &315118442 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011908837152, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &337749037
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +559,23 @@ MonoBehaviour:
   endPoint: {fileID: 173997340}
   trigger: {fileID: 1319756192}
   Speed: 1.2
+--- !u!1 &358871427 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+--- !u!114 &358871429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358871427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ebb1374ec34484285c7324d074505b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TutorialTipsText: {fileID: 315118442}
 --- !u!1 &401472355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1169,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
