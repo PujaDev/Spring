@@ -24,9 +24,7 @@ public class SceneSwitchControler : IChangable
             Instance = this;
 
             Flowchart = GameObject.FindGameObjectWithTag("Scenarios").GetComponent<Flowchart>();
-
-            GameState gameState = StateManager.Instance.Subscribe(this);
-            OnStateChanged(gameState, null);
+            
             base.Start();
         }
         else
