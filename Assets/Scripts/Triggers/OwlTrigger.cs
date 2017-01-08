@@ -8,8 +8,7 @@ public class OwlTrigger : IChangable
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.HubaBus.isDelivered
-            && (oldState == null || !oldState.HubaBus.isDelivered))
+        if (newState.AnnanaHouse.OwlPackage == -1 || newState.HubaBus.isDelivered)
         {
             GetComponent<Collider2D>().isTrigger = false;
         }

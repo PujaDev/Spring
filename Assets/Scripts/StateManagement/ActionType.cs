@@ -25,7 +25,7 @@ public enum ActionType {
     GIVE_PACKAGE_TO_OWL,
     START_READING_FRIDGE_NOTE,
     STOP_READING_FRIDGE_NOTE,
-
+    RESET_ALARM,
 
     // Forest actions
     GIVE_MONEY_TO_SHRINE,
@@ -41,9 +41,10 @@ public enum ActionType {
     GET_TICKET,
     GET_ELIXIR,
     DELIVERY,
-
-    // Added to Annana House - if I put it at the beggining it breaks several references in first scene
-    RESET_ALARM,
+    ARRIVAL,
+    DEPARTURE,
+    EXIT_HOUSE,
+    DRINK,
 
 
     // Annana Tea Party actions

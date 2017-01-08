@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Spine.Unity;
+using System;
 
 public class TortoiseBusDayAnimator : MonoBehaviour
 {
@@ -11,35 +12,34 @@ public class TortoiseBusDayAnimator : MonoBehaviour
     public BusTrigger trigger;
     public float Speed;
 
-    void Start()
+
+    public void Start()
     {
         skeletonAnim = GetComponent<SkeletonAnimation>();
-
-        //skeletonAnim.AnimationState.SetAnimation(0, "no_lights", false);
-        //MoneyIn();
     }
-
+    
     public void BusDeparts()
     {
 
     }
+
+    
 
     public void BusArrives() {
         transform.position = startPoint.position;
         StartCoroutine(MoveToCoroutine(middlePoint.position));
     }
 
+    public void BusGoesOn()
+    {
+        transform.position = startPoint.position;
+        StartCoroutine(MoveToCoroutine(endPoint.position));
+    }
+
     IEnumerator MoveToCoroutine(Vector3 target)
     {
+        bool passes = (StateManager.Instance.State.HubaBus.isDrunk && StateManager.Instance.State.AnnanaHouse.OwlPackage == (int)AnnanaInventory.ItemIds.Invis) ? true:false;
         skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
-
-        while (Vector3.Distance(transform.position, target) > 8f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
-            yield return null;
-        }
-
-        trigger.CameraGoDown(); 
 
         while (Vector3.Distance(transform.position, target) > 4f)
         {
@@ -47,7 +47,8 @@ public class TortoiseBusDayAnimator : MonoBehaviour
             yield return null;
         }
 
-        skeletonAnim.AnimationState.SetAnimation(1, "breaks", false);
+        if(!passes)
+            skeletonAnim.AnimationState.SetAnimation(1, "breaks", false);
 
         while (Vector3.Distance(transform.position, target) > 0.05f)
         {
@@ -55,7 +56,25 @@ public class TortoiseBusDayAnimator : MonoBehaviour
             yield return null;
         }
 
-        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
-        skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+        if (passes) {
+            skeletonAnim.AnimationState.SetEmptyAnimations(1f);
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.DEPARTURE, "Bus has left"));
+        }
+        else
+        {
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+            skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.ARRIVAL, "Bus Arrived"));
+        }
+    }
+
+    public void Arrived()
+    {
+        transform.position = middlePoint.position;
+        if (skeletonAnim.AnimationName != "idle")
+        {
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+            skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+        }
     }
 }

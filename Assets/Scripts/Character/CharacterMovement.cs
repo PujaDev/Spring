@@ -12,25 +12,35 @@ public interface IMoveable
 public class CharacterMovement : IChangable, IMoveable {
 
     public float Speed;
+    public float AnimationSpeed = 1f;
     public AnimationCurve Curve;
 
-    protected bool busy;
+    protected bool busy = false;
     protected Coroutine move;
     protected SkeletonAnimation skeletonAnim;
 
+    public bool Busy
+    {
+        get { return busy; }
+        set
+        {
+            busy = value;
+        }
+    }
     // Use this for initialization
     override protected void Start ()
     {
         base.Start();
-        busy = false;
-        skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
-        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
         ScaleCharacter();
-	}
-
+        SceneController.Instance.InitCharArea();
+    }
+    virtual protected void Awake()
+    {
+        skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
+    }
     public void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source)
     {
-        if (!busy)
+        if (!Busy)
         {
             if (move != null)
                 StopCoroutine(move);
@@ -44,7 +54,7 @@ public class CharacterMovement : IChangable, IMoveable {
 
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
-            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
+            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = AnimationSpeed;
 
         while (targets.Count > 0)
         {
@@ -99,6 +109,7 @@ public class CharacterMovement : IChangable, IMoveable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        
+        if (move == null && skeletonAnim.AnimationName != "idle")
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
     }
 }

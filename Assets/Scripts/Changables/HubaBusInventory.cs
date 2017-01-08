@@ -9,7 +9,11 @@ public class HubaBusInventory : Inventory
     {
         GoldCoins = 0,
         SilverCoin = 1,
-        Elixir = 2
+        Antidote = 2,
+        Shrink = 3,
+        Invis = 4,
+        Soup = 5,
+
     }
 
     protected override Inventory GetInstance()
