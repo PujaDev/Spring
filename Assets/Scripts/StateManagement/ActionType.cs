@@ -25,7 +25,7 @@ public enum ActionType {
     GIVE_PACKAGE_TO_OWL,
     START_READING_FRIDGE_NOTE,
     STOP_READING_FRIDGE_NOTE,
-
+    RESET_ALARM,
 
     // Forest actions
     GIVE_MONEY_TO_SHRINE,
