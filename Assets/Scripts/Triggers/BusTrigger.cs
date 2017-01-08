@@ -1,40 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class BusTrigger : MonoBehaviour {
-    public TurtleBusFirstStop bus;
+public class BusTrigger : IChangable {
+    public HubaBusFirstStop bus;
     public FollowCharacter follow;
-    private Transform defaultFollowTarget;
     public Transform busStopFollowTarget;
-    public Transform topTarget;
+    public Transform[] topTargets;
     public Transform bottomTarget;
     public float Speed;
+    public CameraManager cameraManager;
+    public BoxCollider2D boxCollider;
 
-    void Start()
-    {
-        defaultFollowTarget = follow.Character;
-    }
+    protected Coroutine move;
 
-    IEnumerator MoveToCoroutine(Vector3 target, bool bottom = false)
+    IEnumerator MoveToCoroutine(Transform[] targets, bool isEnd = false)
     {
-        while (Vector3.Distance(busStopFollowTarget.position, target) > 0.05f)
-        {
-            busStopFollowTarget.position = Vector3.MoveTowards(busStopFollowTarget.position, target, Speed * Time.deltaTime);
-            yield return null;
+        for (int i = 0; i < targets.Length; i++) {
+            while (Vector3.Distance(busStopFollowTarget.position, targets[i].position) > 0.05f)
+            {
+                busStopFollowTarget.position = Vector3.MoveTowards(busStopFollowTarget.position, targets[i].position, Speed * Time.deltaTime);
+                yield return null;
+            }
         }
-
-        if (bottom) bus.setInteractibleActive();
-    }
-
-    public void CameraGoDown() {
-        StartCoroutine(MoveToCoroutine(bottomTarget.position, true));
+        if (isEnd) bus.setInteractibleActive(true);
     }
      
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        bus.StartBus();
+        bus.BusComesToTheBusstop();
         GetComponent<Collider2D>().isTrigger = false;
         follow.Character = busStopFollowTarget;
-        StartCoroutine(MoveToCoroutine(topTarget.position));
+        move = StartCoroutine(MoveToCoroutine(topTargets, true));
+    }
+
+    public override void OnStateChanged(GameState newState, GameState oldState)
+    {
+        if (newState.HubaBus.isBusWaiting
+            && (oldState == null || !oldState.HubaBus.isBusWaiting))
+        {
+            GetComponent<Collider2D>().isTrigger = false;
+            busStopFollowTarget.position = topTargets[topTargets.Length - 1].position;
+            follow.Character = busStopFollowTarget;
+            cameraManager.Bounds = boxCollider;
+        }
     }
 }

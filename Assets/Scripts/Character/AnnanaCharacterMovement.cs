@@ -53,7 +53,7 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
 
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
-            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
+            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = AnimationSpeed;
 
         while (targets.Count > 0)
         {

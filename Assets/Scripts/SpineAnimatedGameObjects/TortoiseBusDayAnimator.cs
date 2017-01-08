@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Spine.Unity;
+using System;
 
 public class TortoiseBusDayAnimator : MonoBehaviour
 {
@@ -11,18 +12,18 @@ public class TortoiseBusDayAnimator : MonoBehaviour
     public BusTrigger trigger;
     public float Speed;
 
-    void Start()
+
+    public void Start()
     {
         skeletonAnim = GetComponent<SkeletonAnimation>();
-
-        //skeletonAnim.AnimationState.SetAnimation(0, "no_lights", false);
-        //MoneyIn();
     }
-
+    
     public void BusDeparts()
     {
 
     }
+
+    
 
     public void BusArrives() {
         transform.position = startPoint.position;
@@ -33,13 +34,11 @@ public class TortoiseBusDayAnimator : MonoBehaviour
     {
         skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
 
-        while (Vector3.Distance(transform.position, target) > 8f)
+        while (Vector3.Distance(transform.position, target) > 7f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
             yield return null;
         }
-
-        trigger.CameraGoDown(); 
 
         while (Vector3.Distance(transform.position, target) > 4f)
         {
@@ -57,5 +56,16 @@ public class TortoiseBusDayAnimator : MonoBehaviour
 
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
         skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+        StateManager.Instance.DispatchAction(new SpringAction(ActionType.ARRIVAL, "Bus Arrived"));
+    }
+
+    public void Arrived()
+    {
+        transform.position = middlePoint.position;
+        if (skeletonAnim.AnimationName != "idle")
+        {
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+            skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+        }
     }
 }

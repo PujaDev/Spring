@@ -1,0 +1,34 @@
+
+door.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Sback_arm
+  rotate: false
+  xy: 320, 588
+  size: 59, 50
+  orig: 59, 50
+  offset: 0, 0
+  index: -1
+door
+  rotate: false
+  xy: 2, 37
+  size: 228, 234
+  orig: 228, 234
+  offset: 0, 0
+  index: -1
+door_knob
+  rotate: false
+  xy: 2, 2
+  size: 41, 33
+  orig: 41, 33
+  offset: 0, 0
+  index: -1
+shroom_house_front
+  rotate: false
+  xy: 2, 273
+  size: 316, 365
+  orig: 316, 365
+  offset: 0, 0
+  index: -1

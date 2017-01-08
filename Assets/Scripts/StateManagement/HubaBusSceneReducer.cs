@@ -22,6 +22,14 @@ public class HubaBusSceneReducer : Reducer
                 {
                     return state.Set(state.HubaBus.SetisDelivered(true));
                 }
+            case ActionType.ARRIVAL:
+                {
+                    return state.Set(state.HubaBus.SetisBusWaiting(true));
+                }
+            case ActionType.DEPARTURE:
+                {
+                    return state.Set(state.HubaBus.SethasBusLeft(true));
+                }
         }
 
         return state;

@@ -12,6 +12,7 @@ public interface IMoveable
 public class CharacterMovement : IChangable, IMoveable {
 
     public float Speed;
+    public float AnimationSpeed = 1f;
     public AnimationCurve Curve;
 
     protected bool busy;
@@ -26,7 +27,8 @@ public class CharacterMovement : IChangable, IMoveable {
         skeletonAnim = gameObject.GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
         ScaleCharacter();
-	}
+        SceneController.Instance.InitCharArea();
+    }
 
     public void MoveTo(List<Vector3> targets, SpringAction action, IInteractable source)
     {
@@ -44,7 +46,7 @@ public class CharacterMovement : IChangable, IMoveable {
 
         // Can we continue already started move animation?
         if (skeletonAnim.AnimationName != "walk")
-            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
+            skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = AnimationSpeed;
 
         while (targets.Count > 0)
         {
