@@ -9,7 +9,6 @@ public class RadioAlarm : IInteractable {
     public float RotationSpeed = 3f;
     public int SnoozeTime = 5;
     ParticleSystem ParticleSystem;
-    bool AlarmActive;
 
     protected override void Awake()
     {
