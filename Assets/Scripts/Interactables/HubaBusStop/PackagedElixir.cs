@@ -16,15 +16,13 @@ public class PackagedElixir : IInteractable
 
         Actions = new SpringAction[]
         {
-            new SpringAction(ActionType.GET_ELIXIR, "Open package", icons[0], (int)HubaBusInventory.ItemIds.Elixir)
+            new SpringAction(ActionType.GET_ELIXIR, "Open package", icons[0])
         };
     }
     public void TogglePackage(bool On) {
-        if (gameObject != null) {
-            GetComponent<Rigidbody2D>().isKinematic = !On;
-            GetComponent<Collider2D>().enabled = On;
-            GetComponent<SpriteRenderer>().enabled = On;
-        }
+        GetComponent<Rigidbody2D>().isKinematic = !On;
+        GetComponent<Collider2D>().enabled = On;
+        GetComponent<SpriteRenderer>().enabled = On;
     }
 
     protected override void Start()
@@ -35,12 +33,13 @@ public class PackagedElixir : IInteractable
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
         if (newState.HubaBus.isDelivered
-           && (oldState == null || !oldState.HubaBus.isDelivered) && !(newState.HubaBus.PickedUpItems.Contains((int)HubaBusInventory.ItemIds.Elixir) || newState.HubaBus.UsedItems.Contains((int)HubaBusInventory.ItemIds.Elixir)))
+        && !(newState.HubaBus.isOpened))
         {
             TogglePackage(true);
             transform.position = touchDownPoint.position;
         }
-        else {
+        else
+        {
             TogglePackage(false);
         }
     }

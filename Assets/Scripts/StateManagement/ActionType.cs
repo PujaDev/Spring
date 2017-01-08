@@ -43,5 +43,6 @@ public enum ActionType {
     DELIVERY,
     ARRIVAL,
     DEPARTURE,
-    EXIT_HOUSE
+    EXIT_HOUSE,
+    DRINK
 }

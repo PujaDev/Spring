@@ -24,8 +24,9 @@ public class BusTrigger : IChangable {
             }
         }
         if (isEnd) {
-            bus.setInteractibleActive(true);
-            GameObject.FindGameObjectWithTag("Character").GetComponent<CharacterMovement>().Busy = false;
+            HubaDayCharacterMovement character = GameObject.FindGameObjectWithTag("Character").GetComponent<HubaDayCharacterMovement>();
+            character.Busy = false;
+            character.GetAngry();
         }
     }
      
@@ -35,13 +36,26 @@ public class BusTrigger : IChangable {
         GetComponent<Collider2D>().isTrigger = false;
         GameObject.FindGameObjectWithTag("Character").GetComponent<CharacterMovement>().Busy = true;
         follow.Character = busStopFollowTarget;
-        move = StartCoroutine(MoveToCoroutine(topTargets, true));
+        if (StateManager.Instance.State.HubaBus.isDrunk && StateManager.Instance.State.AnnanaHouse.OwlPackage == (int)AnnanaInventory.ItemIds.Invis)
+        {
+            Vector3 pos = topTargets[topTargets.Length - 1].transform.position;
+            pos = new Vector3(pos.x, pos.y - 6f,pos.z);
+            topTargets[topTargets.Length - 1].transform.position = pos;
+        }
+            move = StartCoroutine(MoveToCoroutine(topTargets, true));
     }
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.HubaBus.isBusWaiting
-            && (oldState == null || !oldState.HubaBus.isBusWaiting))
+        if (newState.HubaBus.hasBusLeft)
+        {
+            GetComponent<Collider2D>().isTrigger = false;
+            //Vector3 pos = topTargets[topTargets.Length - 1].transform.position;
+            //pos = new Vector3(pos.x, pos.y - 6f, pos.z);
+            //busStopFollowTarget.position = pos;
+            follow.Character = GameObject.FindGameObjectWithTag("Character").transform.GetChild(0);
+            cameraManager.Bounds = boxCollider;
+        } else if (newState.HubaBus.isBusWaiting)
         {
             GetComponent<Collider2D>().isTrigger = false;
             busStopFollowTarget.position = topTargets[topTargets.Length - 1].position;

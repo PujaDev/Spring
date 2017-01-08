@@ -30,15 +30,16 @@ public class TortoiseBusDayAnimator : MonoBehaviour
         StartCoroutine(MoveToCoroutine(middlePoint.position));
     }
 
+    public void BusGoesOn()
+    {
+        transform.position = startPoint.position;
+        StartCoroutine(MoveToCoroutine(endPoint.position));
+    }
+
     IEnumerator MoveToCoroutine(Vector3 target)
     {
+        bool passes = (StateManager.Instance.State.HubaBus.isDrunk && StateManager.Instance.State.AnnanaHouse.OwlPackage == (int)AnnanaInventory.ItemIds.Invis) ? true:false;
         skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
-
-        while (Vector3.Distance(transform.position, target) > 7f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
-            yield return null;
-        }
 
         while (Vector3.Distance(transform.position, target) > 4f)
         {
@@ -46,7 +47,8 @@ public class TortoiseBusDayAnimator : MonoBehaviour
             yield return null;
         }
 
-        skeletonAnim.AnimationState.SetAnimation(1, "breaks", false);
+        if(!passes)
+            skeletonAnim.AnimationState.SetAnimation(1, "breaks", false);
 
         while (Vector3.Distance(transform.position, target) > 0.05f)
         {
@@ -54,9 +56,16 @@ public class TortoiseBusDayAnimator : MonoBehaviour
             yield return null;
         }
 
-        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
-        skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
-        StateManager.Instance.DispatchAction(new SpringAction(ActionType.ARRIVAL, "Bus Arrived"));
+        if (passes) {
+            skeletonAnim.AnimationState.SetEmptyAnimations(1f);
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.DEPARTURE, "Bus has left"));
+        }
+        else
+        {
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+            skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.ARRIVAL, "Bus Arrived"));
+        }
     }
 
     public void Arrived()

@@ -19,7 +19,7 @@ public class HubaOwlAnimator : MonoBehaviour
     {
         skeletonAnim.AnimationState.AddAnimation(0, "flying", true, 0).timeScale = 4f;
         
-        while (Vector3.Distance(transform.position, path[path.Length - 1].position) > 0.05f)
+        while (Vector3.Distance(transform.position, path[path.Length - 1].position) > 0.05f && currentPathPercent < 1f)
         {
             currentPathPercent += percentsPerSecond * Time.deltaTime;
             iTween.PutOnPath(gameObject, path, currentPathPercent);

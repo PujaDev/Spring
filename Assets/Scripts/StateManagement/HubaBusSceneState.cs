@@ -23,6 +23,10 @@ public class HubaBusSceneState : SceneState
     /// Huba drank the elixir
     /// </summary>
     public bool isDrunk { get; private set; }
+    /// <summary>
+    /// package is not there anymore
+    /// </summary>
+    public bool isOpened { get; private set; }
     public bool isOutOfTheHouse { get; private set; }
     public HashSet<int> PickedUpItems { get; private set; }
     public HashSet<int> UsedItems { get; private set; }
@@ -39,6 +43,7 @@ public class HubaBusSceneState : SceneState
         isBusWaiting = false;
         isDelivered = false;
         isDrunk = false;
+        isOpened = false;
         isOutOfTheHouse = false;
         PickedUpItems = new HashSet<int>() { (int)HubaBusInventory.ItemIds.GoldCoins, (int)HubaBusInventory.ItemIds.SilverCoin };
         UsedItems = new HashSet<int>();
@@ -53,6 +58,7 @@ public class HubaBusSceneState : SceneState
         isBusWaiting = template.isBusWaiting;
         isDelivered = template.isDelivered;
         isDrunk = template.isDrunk;
+        isOpened = template.isOpened;
         isOutOfTheHouse = template.isOutOfTheHouse;
         PickedUpItems = template.PickedUpItems;
         UsedItems = template.UsedItems;
@@ -101,6 +107,13 @@ public class HubaBusSceneState : SceneState
         return copy;
     }
 
+    public HubaBusSceneState SetisOpened(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.isOpened = value;
+        return copy;
+    }
+
     public HubaBusSceneState SetisOutOfTheHouse(bool value)
     {
         var copy = new HubaBusSceneState(this);
@@ -145,6 +158,9 @@ public class HubaBusSceneState : SceneState
 
         if (!isDrunk.Equals(other.isDrunk))
             result.Add(String.Format("isDrunk:\t{0}\t>>>\t{1}", other.isDrunk, isDrunk));
+
+        if (!isOpened.Equals(other.isOpened))
+            result.Add(String.Format("isOpened:\t{0}\t>>>\t{1}", other.isOpened, isOpened));
 
         if (!isOutOfTheHouse.Equals(other.isOutOfTheHouse))
             result.Add(String.Format("isOutOfTheHouse:\t{0}\t>>>\t{1}", other.isOutOfTheHouse, isOutOfTheHouse));

@@ -2,12 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using Spine.Unity;
+using System;
 
-
-public class HubaDayCharacterMovement : CharacterMovement, IMoveable
+public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsable
 {
     public DoorSwitch door;
     public Transform startPosition;
+    private HashSet<int> UsableItems;
+
+    public bool CanUseOnSelf(int itemId)
+    {
+        return UsableItems.Contains(itemId);
+    }
+    override protected void Awake()
+    {
+        base.Awake();
+        UsableItems = new HashSet<int>()
+        {
+            (int)HubaBusInventory.ItemIds.Antidote,
+            (int)HubaBusInventory.ItemIds.Shrink,
+            (int)HubaBusInventory.ItemIds.Invis,
+            (int)HubaBusInventory.ItemIds.Soup
+        };
+    }
 
     public IEnumerator MoveToStartCoroutine()
     {
@@ -48,10 +65,61 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable
         else
         {
             Busy = false;
-            if (move == null && skeletonAnim.AnimationName != "idle")
+
+            if (newState.HubaBus.isDrunk)
             {
-                skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+                switch (newState.AnnanaHouse.OwlPackage)
+                {
+                    case (int)AnnanaInventory.ItemIds.Antidote:
+                        skeletonAnim.skeleton.SetSkin("Edible"); Debug.Log("edible");
+                        break;
+                    case (int)AnnanaInventory.ItemIds.Invis:
+                        skeletonAnim.skeleton.a = 0.15f;
+                        break;
+                    case (int)AnnanaInventory.ItemIds.Shrink:
+                        float tmp = gameObject.transform.localScale.x;
+                        tmp = tmp / 2f;
+                        gameObject.transform.localScale = new Vector3(tmp, tmp, tmp); Debug.Log("shrink");
+                        SceneController.Instance.defaultCharactecScale = SceneController.Instance.defaultCharactecScale / 2f;
+                        break;
+                    //case (int)HubaBusInventory.ItemIds.Soup:
+                    //    skeletonAnim.skeleton.SetSkin("poisonous");
+                    //    break;
+                    default:
+                        Debug.Log("WTF");
+                        break;
+                }
             }
+
+            if (newState.HubaBus.hasBusLeft)
+            {
+                if (skeletonAnim.AnimationName != "anger")
+                    GetAngry();
+
+            }
+            else
+            {
+                if (move == null && skeletonAnim.AnimationName != "idle")
+                {
+                    skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+                }
+            }
+        }
+    }
+    public void GetAngry()
+    {
+        skeletonAnim.AnimationState.SetAnimation(0, "anger", true);
+    }
+
+    public void UseOnSelf(int itemId)
+    {
+        if (CanUseOnSelf(itemId))
+        {
+            //if (itemId == (int)HubaForestInventory.ItemIds.Coin)
+            //{
+            //    ComeCloser(new SpringAction(ActionType.GIVE_MONEY_TO_SHRINE, "", null));
+            //}
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.DRINK));
         }
     }
 }

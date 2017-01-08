@@ -29,7 +29,13 @@ public class HubaBusFirstStop : IInteractable
 
     public void BusComesToTheBusstop()
     {
-        tortoise.BusArrives();
+        if (StateManager.Instance.State.HubaBus.isDrunk && StateManager.Instance.State.AnnanaHouse.OwlPackage == (int)AnnanaInventory.ItemIds.Invis) {
+            tortoise.BusGoesOn();
+        }
+        else
+        {
+            tortoise.BusArrives();
+        }
     }
 
     public void setInteractibleActive(bool toggle)
@@ -39,8 +45,7 @@ public class HubaBusFirstStop : IInteractable
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (newState.HubaBus.isBusWaiting && !newState.HubaBus.hasBusLeft
-            && (oldState == null || !oldState.HubaBus.isBusWaiting))
+        if (newState.HubaBus.isBusWaiting && !newState.HubaBus.hasBusLeft)
         {
             tortoise.Arrived();
             setInteractibleActive(true);
