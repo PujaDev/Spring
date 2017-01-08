@@ -26,8 +26,8 @@ public class Dresscover : IInteractable
         ActionMap = new Dictionary<string, SpringAction>()
         {
             { Pajamas, new SpringAction(ActionType.CHANGE_CLOTHES, "Wear pajamas", icons[0], Pajamas) },
-            { DayClothes, new SpringAction(ActionType.CHANGE_CLOTHES, "Wear day clothes", icons[0], DayClothes) },
-            { NightRobe, new SpringAction(ActionType.CHANGE_CLOTHES, "Wear night robe", icons[0], NightRobe) }
+            { DayClothes, new SpringAction(ActionType.CHANGE_CLOTHES, "Wear day clothes", icons[1], DayClothes) },
+            { NightRobe, new SpringAction(ActionType.CHANGE_CLOTHES, "Wear night robe", icons[2], NightRobe) }
         };
 
         Actions = new HashSet<SpringAction>(ActionMap.Values);

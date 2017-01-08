@@ -4,13 +4,16 @@ using System;
 
 public class RadioAlarm : IInteractable {
 
-    Vector3 defaultScale;
+    public GameObject ParticleSystemObject;
+    public int MaxRotation = 45;
+    public float RotationSpeed = 3f;
+    public int SnoozeTime = 5;
+    ParticleSystem ParticleSystem;
 
     protected override void Awake()
     {
         base.Awake();
-
-        defaultScale = gameObject.transform.localScale;
+        ParticleSystem = ParticleSystemObject.GetComponent<ParticleSystem>();
     }
 
     protected override SpringAction[] GetActionList()
@@ -26,8 +29,52 @@ public class RadioAlarm : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        gameObject.transform.localScale = newState.AnnanaHouse.AlarmPostponed ? new Vector3(3,3,1) : defaultScale;
-        gameObject.SetActive(!newState.AnnanaHouse.AlarmTurnedOff);
+        StopCoroutine("AlarmRinging");
+        ParticleSystem.Stop();
+
+        if (newState.AnnanaHouse.AlarmTurnedOff)
+        {
+            transform.rotation = Quaternion.identity;
+        }
+        else if (newState.AnnanaHouse.AlarmPostponed)
+        {
+            transform.rotation = Quaternion.identity;
+            StartCoroutine("PostponeAlarm");
+        }
+        else
+        {
+            StartCoroutine("AlarmRinging");
+            ParticleSystem.Play();
+        }
     }
 
+    IEnumerator AlarmRinging()
+    {
+        bool toLeft = true;
+        var origPos = transform.position;
+        for (;;)
+        {
+            var rotZ = transform.rotation.eulerAngles.z;
+            if (toLeft)
+            {
+                transform.Rotate(0, 0, RotationSpeed);
+                if (rotZ < 180 && rotZ > MaxRotation)
+                    toLeft = false;
+            }
+            else
+            {
+                transform.Rotate(0, 0, -RotationSpeed);
+                if (rotZ > 180 && rotZ < 360 - MaxRotation)
+                    toLeft = true;
+            }
+            
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    IEnumerator PostponeAlarm()
+    {
+        yield return new WaitForSeconds(SnoozeTime);
+        StateManager.Instance.DispatchAction(new SpringAction(ActionType.RESET_ALARM));
+    }
 }

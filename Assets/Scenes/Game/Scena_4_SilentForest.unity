@@ -1603,13 +1603,13 @@ MonoBehaviour:
   - {fileID: 1076448285}
   ItemSprites:
   - {fileID: 21300000, guid: 3190848a2185eba469f058e287fbcf48, type: 3}
-  - {fileID: 21300000, guid: ff40689b580779242bd46445f99439d1, type: 3}
-  - {fileID: 21300000, guid: 91973623bf535f240a2c39bad91a5f60, type: 3}
-  - {fileID: 21300000, guid: 0632a4f51af116b4185219d6276d17fa, type: 3}
-  - {fileID: 21300000, guid: e01738f2ba9f2b54e9b98a823362b056, type: 3}
-  - {fileID: 21300000, guid: ad8f10f47e26e9c408bf6a72ba9d9e36, type: 3}
-  - {fileID: 21300000, guid: 0987921b206f2da4d9bb2cfefccc3603, type: 3}
-  - {fileID: 21300000, guid: 7aaced805efc38e4e9bd8281b05e4129, type: 3}
+  - {fileID: 21300000, guid: d9d50f77fe0873b4eb0f11f175258f50, type: 3}
+  - {fileID: 21300000, guid: c58fc6eae8feda045a551424744479bf, type: 3}
+  - {fileID: 21300000, guid: 32309b81b03797d4cb88a89a92e0af17, type: 3}
+  - {fileID: 21300000, guid: a191b937c340ca342be310ca8f312d9d, type: 3}
+  - {fileID: 21300000, guid: 3685e9e370dd3084bb660dae848fa3d4, type: 3}
+  - {fileID: 21300000, guid: cbe2c1b9e6cdb6b4688ae85b2ac99b3e, type: 3}
+  - {fileID: 21300000, guid: 065d5a4f0d79daa4e909d24c58fe17bc, type: 3}
   ItemNames:
   - Silver Coin
   - Vases
@@ -2614,7 +2614,7 @@ Prefab:
     - target: {fileID: 114000011449782366, guid: 17312a951d1bb044e9120e7952d41d8b,
         type: 2}
       propertyPath: StateNum
-      value: -1
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 114000013574027094, guid: 17312a951d1bb044e9120e7952d41d8b,
         type: 2}
@@ -5165,13 +5165,13 @@ MonoBehaviour:
   tooltipText: Gypsy seller
   icons:
   - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
-  - {fileID: 21300000, guid: ad8f10f47e26e9c408bf6a72ba9d9e36, type: 3}
-  - {fileID: 21300000, guid: ff40689b580779242bd46445f99439d1, type: 3}
-  - {fileID: 21300000, guid: 91973623bf535f240a2c39bad91a5f60, type: 3}
-  - {fileID: 21300000, guid: 0632a4f51af116b4185219d6276d17fa, type: 3}
-  - {fileID: 21300000, guid: e01738f2ba9f2b54e9b98a823362b056, type: 3}
-  - {fileID: 21300000, guid: 0987921b206f2da4d9bb2cfefccc3603, type: 3}
-  - {fileID: 21300000, guid: 7aaced805efc38e4e9bd8281b05e4129, type: 3}
+  - {fileID: 21300000, guid: 3685e9e370dd3084bb660dae848fa3d4, type: 3}
+  - {fileID: 21300000, guid: d9d50f77fe0873b4eb0f11f175258f50, type: 3}
+  - {fileID: 21300000, guid: c58fc6eae8feda045a551424744479bf, type: 3}
+  - {fileID: 21300000, guid: 32309b81b03797d4cb88a89a92e0af17, type: 3}
+  - {fileID: 21300000, guid: a191b937c340ca342be310ca8f312d9d, type: 3}
+  - {fileID: 21300000, guid: cbe2c1b9e6cdb6b4688ae85b2ac99b3e, type: 3}
+  - {fileID: 21300000, guid: 065d5a4f0d79daa4e909d24c58fe17bc, type: 3}
   orientation: 1
 --- !u!114 &1685955452
 MonoBehaviour:

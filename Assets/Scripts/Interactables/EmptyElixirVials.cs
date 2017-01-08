@@ -28,7 +28,7 @@ public class EmptyElixirVials : IInteractable {
         {
             Actions = new SpringAction[]
             {
-                new SpringAction(ActionType.LOOK, "No more vials", icons[0])
+                new SpringAction(ActionType.LOOK, "No more vials", icons[1])
             };
         }
     }

@@ -14,6 +14,8 @@ public class AnnanaHouseSceneReducer : Reducer
                 return state.Set(state.AnnanaHouse.SetAlarmTurnedOff(true));
             case ActionType.POSTPONE_ALARM:
                 return state.Set(state.AnnanaHouse.SetAlarmPostponed(true));
+            case ActionType.RESET_ALARM:
+                return state.Set(state.AnnanaHouse.SetAlarmPostponed(false));
             case ActionType.CHANGE_CLOTHES:
                 {
                     string dress = (string)action.Data;

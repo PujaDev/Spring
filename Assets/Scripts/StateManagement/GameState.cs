@@ -8,14 +8,17 @@ public class GameState
 {
     public AnnanaSceneState AnnanaHouse = null;
     public HubaBusSceneState HubaBus = null;
+    public AnnanaTeaPartySceneState AnnanaTeaParty = null;
     public HubaForestSceneState HubaForest = null;
     // empty default constructor to allow deserialization
     private GameState() {
     }
 
+    // this constructor uses parameter just to differ from empty one
     public GameState(bool initial)
     {
         AnnanaHouse = new AnnanaSceneState(initial);
+        AnnanaTeaParty = new AnnanaTeaPartySceneState(initial);
         HubaBus = new HubaBusSceneState(initial);
         HubaForest = new HubaForestSceneState(initial);
     }
@@ -24,12 +27,8 @@ public class GameState
     {
         AnnanaHouse = template.AnnanaHouse;
         HubaBus = template.HubaBus;
+        AnnanaTeaParty = template.AnnanaTeaParty;
         HubaForest = template.HubaForest;
-    }
-
-    public GameState Set(SceneState state)
-    {
-        throw new Exception();
     }
 
     public GameState Set(AnnanaSceneState state)
@@ -46,6 +45,13 @@ public class GameState
         return copy;
     }
 
+    public GameState Set(AnnanaTeaPartySceneState state)
+    {
+        var copy = new GameState(this);
+        copy.AnnanaTeaParty = state;
+        return copy;
+    }
+
     public GameState Set(HubaForestSceneState state)
     {
         var copy = new GameState(this);
@@ -57,11 +63,13 @@ public class GameState
     {
         switch (SceneName)
         {
-            case "Scena_1_AnnanaHouse":
+            case SceneState.ANNANA_HOUSE_NAME:
                 return AnnanaHouse;
-            case "Scena_2_HubaForest":
+            case SceneState.HUBA_FOREST_NAME:
                 return HubaBus;
-            case "Scena_4_SilentForest":
+            case SceneState.ANNANA_TEA_PARTY_NAME:
+                return AnnanaTeaParty;
+            case SceneState.SILENT_FOREST_NAME:
                 return HubaForest;
         }
         return null;
@@ -74,18 +82,20 @@ public class GameState
 
     public SceneState[] GetScenes()
     {
-        return new SceneState[] {AnnanaHouse, HubaBus, HubaForest };
+        return new SceneState[] {AnnanaHouse, HubaBus, AnnanaTeaParty, HubaForest };
     }
     
     public GameState Reset(string SceneName)
     {
         switch (SceneName)
         {
-            case "Scena_1_AnnanaHouse":
+            case SceneState.ANNANA_HOUSE_NAME:
                 return Set(new AnnanaSceneState(true));
-            case "Scena_2_HubaForest":
+            case SceneState.HUBA_FOREST_NAME:
                 return Set(new HubaBusSceneState(true));
-            case "Scena_4_SilentForest":
+            case SceneState.ANNANA_TEA_PARTY_NAME:
+                return Set(new AnnanaTeaPartySceneState(true));
+            case SceneState.SILENT_FOREST_NAME:
                 return Set(new HubaForestSceneState(true));
         }
         return null;
@@ -114,15 +124,19 @@ public class GameState
 
         var diff = AnnanaHouse.CompareChanges(other.AnnanaHouse);
         if (diff.Count > 0)
-           result["AnnanaHouse"] = diff;
+           result["Annana House"] = diff;
 
         var diff2 = HubaBus.CompareChanges(other.HubaBus);
         if (diff2.Count > 0)
-            result["HubaBus"] = diff2;
+            result["Huba Bus"] = diff2;
 
-        var diff3 = HubaForest.CompareChanges(other.HubaForest);
+        var diff3 = AnnanaTeaParty.CompareChanges(other.AnnanaTeaParty);
         if (diff3.Count > 0)
-            result["HubaForest"] = diff3;
+            result["Annana Tea Party"] = diff3;
+
+        var diff4 = HubaForest.CompareChanges(other.HubaForest);
+        if (diff4.Count > 0)
+            result["Huba Forest"] = diff4;
 
         return result;
     }
