@@ -25,7 +25,7 @@ public enum ActionType {
     GIVE_PACKAGE_TO_OWL,
     START_READING_FRIDGE_NOTE,
     STOP_READING_FRIDGE_NOTE,
-
+    RESET_ALARM,
 
     // Forest actions
     GIVE_MONEY_TO_SHRINE,
@@ -41,7 +41,8 @@ public enum ActionType {
     GET_TICKET,
     GET_ELIXIR,
     DELIVERY,
-
-    RESET_ALARM
-
+    ARRIVAL,
+    DEPARTURE,
+    EXIT_HOUSE,
+    DRINK
 }
