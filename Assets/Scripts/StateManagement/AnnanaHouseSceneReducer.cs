@@ -49,6 +49,7 @@ public class AnnanaHouseSceneReducer : Reducer
                 return state.Set(state.AnnanaHouse.SetFlyAway(true));
             case ActionType.TAKE:
                 {
+                    InventoryAnimator.Instance.Animate();
                     int itemId = (int)action.Data;
 
                     switch ((AnnanaInventory.ItemIds)itemId)
@@ -102,6 +103,7 @@ public class AnnanaHouseSceneReducer : Reducer
                 return state.Set(state.AnnanaHouse.SetBoilerContents(new HashSet<int>()));
             case ActionType.FILL_ELIXIR:
                 {
+                    InventoryAnimator.Instance.Animate();
                     GameState s = state.Set(state.AnnanaHouse.SetIsEmptyVialUsed(true));
 
                     HashSet<int> ingredients = state.AnnanaHouse.BoilerContents;
