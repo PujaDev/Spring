@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using Spine.Unity;
+using Spine;
 
 public class KitchenManager : IChangable
 {
@@ -16,6 +17,8 @@ public class KitchenManager : IChangable
     GameObject Character;
     AnnanaCharacterMovement Movement;
     MeshRenderer Renderer;
+    bool TeaInHand = false;
+
     void Awake()
     {
         Character = GameObject.FindGameObjectWithTag("Character");
@@ -47,8 +50,14 @@ public class KitchenManager : IChangable
         }
         else
         {
-            if(oldState != null && oldState.AnnanaTeaParty.DrankTea == false)
+            if(oldState == null)
             {
+                Movement.TeaInHandAnimation();
+                TeaInHand = true;
+            }
+            else if( oldState.AnnanaTeaParty.DrankTea == false)
+            {
+                Movement.DrinkTeaAnimation().End += OnTeaDrank;
                 DialogManager.Instance.SetDialogue(
                     oldState.AnnanaTeaParty.WaterInTheCup == 0 ? 1 : 2
                     );
@@ -62,6 +71,15 @@ public class KitchenManager : IChangable
             }
         }
     }
+
+    private void OnTeaDrank(TrackEntry trackEntry)
+    {
+        if (TeaInHand)
+            return;
+        TeaInHand = true;
+        Movement.TeaInHandAnimation();
+    }
+
 
     IEnumerator ZoomOut()
     {

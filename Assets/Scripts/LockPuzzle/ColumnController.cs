@@ -11,12 +11,13 @@ public class ColumnController : MonoBehaviour
     public BoxCollider2D ColumnArea;
     public GameObject StepPrefab;
     public GameObject PointerPrefab;
+    public int BrokenIndex;
 
     public bool IsCorrect { get { return CorrectAnswer == CurrentAnswer; } }
     public bool ReadyToUnlock { get { return !Moving; } }
     public bool IsZero { get { return CurrentAnswer == 0; } }
 
-    private List<Switch> Switches;
+    public List<Switch> Switches { get; private set; }
     private int CurrentAnswer;
     private GameObject Pointer;
     private List<Vector3> StepPositions;
@@ -32,6 +33,7 @@ public class ColumnController : MonoBehaviour
     {
         if (!Loaded)
         {
+            Loaded = true;
             CorrectSelected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_on");
             CorrectDeselected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_off");
         }
@@ -42,7 +44,7 @@ public class ColumnController : MonoBehaviour
         var switchPositions = GeneratePositions(ButtonArea, SwitchCount, true);
         for (int i = 0; i < SwitchCount; i++)
         {
-            GameObject s = Switch.Create(value, OnClickCallback, switchPositions[i]);
+            GameObject s = Switch.Create(value, OnClickCallback, switchPositions[i], i == BrokenIndex);
             s.transform.parent = transform;
 
             var swit = s.GetComponent<Switch>();

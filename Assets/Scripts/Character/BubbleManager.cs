@@ -46,7 +46,7 @@ public class BubbleManager : MonoBehaviour {
         {
             images.Add(Resources.Load<Sprite>(string.Format("Sprites/Bubbles/{0}", image_names[i])));
             if (images[i] == null)
-                throw new System.Exception("Couldn't load bubble image from resource");
+                throw new System.Exception("Couldn't load bubble image from resource: "+image_names[i]);
         }
     }
 

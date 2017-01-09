@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Spine.Unity;
-
+using Spine;
 
 public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
     
     private Coroutine idleTail;
     private Coroutine idleHand;
+    private bool TeaInHand;
 
     // Use this for initialization
     override protected void Start ()
@@ -15,7 +16,29 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
         base.Start();
         idleTail = StartCoroutine(IdleTailCoroutine());
         idleHand = StartCoroutine(IdleHandCoroutine());
-	}
+    }
+
+    public Spine.AnimationState DrinkTeaAnimation()
+    {
+        TeaInHand = true;
+        skeletonAnim.AnimationState.SetAnimation(2, "tea_drink", false);
+        return skeletonAnim.AnimationState;
+    }
+
+    public Spine.AnimationState ThrowTeaAnimation()
+    {
+        TeaInHand = false;// :(
+        skeletonAnim.AnimationState.SetAnimation(0, "tea_throw", false);
+        skeletonAnim.AnimationState.SetAnimation(1, "tea_throw", false);
+        skeletonAnim.AnimationState.SetAnimation(2, "tea_throw", false);
+        return skeletonAnim.AnimationState;
+    }
+
+    public Spine.AnimationState TeaInHandAnimation()
+    {
+        skeletonAnim.AnimationState.AddAnimation(2, "tea_in_hand", true, 1f);
+        return skeletonAnim.AnimationState;
+    }
 
     IEnumerator IdleHandCoroutine()
     {
@@ -24,11 +47,15 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
         {
             randomDelay = Random.Range(8f, 15f);
             yield return new WaitForSeconds(randomDelay);
-            if (Random.Range(0f, 1f) < 0.5f) {
-                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
-                skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
-            } else skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_hair", false, 0);
-
+            if (!TeaInHand)
+            {
+                if (Random.Range(0f, 1f) < 0.5f)
+                {
+                    skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+                    skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_scratch", false, 0);
+                }
+                else skeletonAnim.AnimationState.AddAnimation(2, "idle_hand_hair", false, 0);
+            }
         }
     }
 
@@ -40,7 +67,8 @@ public class AnnanaCharacterMovement : CharacterMovement, IMoveable {
         {
             randomDelay = Random.Range(3f, 8f);
             yield return new WaitForSeconds(randomDelay);
-            skeletonAnim.AnimationState.AddAnimation(1, "idle_tail", false, 0);
+            if (!TeaInHand)
+                skeletonAnim.AnimationState.AddAnimation(1, "idle_tail", false, 0);
 
         }
     }

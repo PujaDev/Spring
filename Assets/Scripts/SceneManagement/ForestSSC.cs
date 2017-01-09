@@ -17,6 +17,7 @@ public class ForestSSC : SceneSwitchControler
     public GameObject Bus;
     public GameObject Huba;
     public GameObject InvButton;
+    public GameObject Mug;
 
     public GameObject[] GlowingObjects;
     public GameObject[] Setup1;
@@ -62,8 +63,16 @@ public class ForestSSC : SceneSwitchControler
             string mssg = oldState == null ? "GoForestSwitch" : "GoForest";
             Flowchart.SendFungusMessage(mssg);
         }
+        // Annana killed the turtle
+        else if (newState.AnnanaTeaParty.ThrewCup)
+        {
+            Flowchart.SendFungusMessage("WrongStart");
+            Bus.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "killed", false);
+            Mug.SetActive(true);
+            InvButton.SetActive(false);
+        }
         // First time coming to scene
-        else if (oldState == null && newState.HubaBus.getOnTheBus && !newState.HubaForest.IsSceneStarted)
+        else if (newState.HubaBus.getOnTheBus && !newState.HubaForest.IsSceneStarted)
         {
             // Set bus in front of Huba
             Bus.GetComponent<MeshRenderer>().sortingLayerName = "Character";
@@ -72,8 +81,9 @@ public class ForestSSC : SceneSwitchControler
             StateManager.Instance.DispatchAction(new SpringAction(ActionType.START_FOREST_SCENE));
         }
         // Huba cannot be here if she did not take the bus
-        else if (oldState == null && !newState.HubaBus.getOnTheBus)
+        else if (!newState.HubaBus.getOnTheBus)
         {
+            // Following is pretty ugly but works
             Huba.SetActive(false);
 
             // Disable all interactivity

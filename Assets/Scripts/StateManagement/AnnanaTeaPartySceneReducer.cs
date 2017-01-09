@@ -69,9 +69,7 @@ public class AnnanaTeaPartySceneReducer : Reducer
                 }
                 return state.Set(
                     state.AnnanaTeaParty.SetPickedUpItems(
-                        swap(state,
-                            Item.None,
-                            heldPod)
+                        remove(state, heldPod)
                         ).SetTeapotOnTheStove(potId));
 
             case ActionType.WATER_BOILED:
@@ -80,17 +78,13 @@ public class AnnanaTeaPartySceneReducer : Reducer
             case ActionType.FILL_CUP:
                 return state.Set(
                     state.AnnanaTeaParty.SetPickedUpItems(
-                        swap(state,
-                            Item.None,
-                            (Item)action.Data
+                        remove(state, (Item)action.Data
                         )).SetWaterInTheCup((int)action.Data));
 
             case ActionType.USE_TEA_BAG:
                 return state.Set(
                     state.AnnanaTeaParty.SetPickedUpItems(
-                        swap(state,
-                            Item.None,
-                            Item.TeaBag
+                        remove(state, Item.TeaBag
                         )).SetTeaBagInTheCup(true));
 
             case ActionType.STEEP_TEA:
@@ -103,17 +97,39 @@ public class AnnanaTeaPartySceneReducer : Reducer
                 var happy = state.AnnanaTeaParty.WaterInTheCup == 0;
                 return state.Set(
                     state.AnnanaTeaParty
+                    .SetPickedUpItems(add(state,Item.Cup))
                     .SetWaterInTheCup(-1)
-                    .SetDrankTea(true)
-                    .SetIsHappy(happy)
+                    .SetDrankTea(true).SetIsHappy(happy)
                     );
 
             case ActionType.WALKED_OUT:
                 return state.Set(state.AnnanaTeaParty.SetInTheKitchen(false));
 
+            case ActionType.TAKE_FINE:
+                return state.Set(state.AnnanaTeaParty.SetIsReadingTheFine(true).SetTookTheFine(true));
+
+            case ActionType.FINISH_READING_FINE:
+                return state.Set(state.AnnanaTeaParty.SetIsReadingTheFine(false));
+
+            case ActionType.FLY_AWAY:
+                return state.Set(state.AnnanaTeaParty.SetOwlFlownAway(true));
+
+            case ActionType.THROW_CUP:
+                return state.Set(state.AnnanaTeaParty.SetThrewCup(true));
+
         }
 
         return state;
+    }
+
+    private HashSet<int> add(GameState state, Item putIn)
+    {
+        return swap(state, putIn, Item.None);
+    }
+
+    private HashSet<int> remove(GameState state, Item throwOut)
+    {
+        return swap(state, Item.None, throwOut);
     }
 
     private HashSet<int> swap(GameState state, Item putIn, Item throwOut = Item.None)
@@ -121,8 +137,9 @@ public class AnnanaTeaPartySceneReducer : Reducer
         var newItems = new HashSet<int>(state.AnnanaTeaParty.PickedUpItems);
         if (putIn != Item.None)
             newItems.Add((int)putIn);
-        if(throwOut!= Item.None)
+        if (throwOut != Item.None)
             newItems.Remove((int)throwOut);
         return newItems;
     }
+
 }

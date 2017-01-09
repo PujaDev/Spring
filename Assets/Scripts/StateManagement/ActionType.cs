@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ActionType {
+public enum ActionType
+{
     TELL_FORTUNE = 1,
     PUT_ON,
     SELL,
@@ -58,5 +59,8 @@ public enum ActionType {
     STEEP_TEA,
     OVERSTEEP_TEA,
     DRINK_TEA,
-    WALKED_OUT
+    WALKED_OUT,
+    TAKE_FINE,
+    FINISH_READING_FINE,
+    THROW_CUP
 }

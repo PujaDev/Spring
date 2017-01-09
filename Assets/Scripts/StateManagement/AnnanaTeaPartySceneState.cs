@@ -9,6 +9,8 @@ public class AnnanaTeaPartySceneState : SceneState
 	public bool InTheKitchen { get; private set; }
 	public bool IsHappy { get; private set; }
 	public bool IsInside { get; private set; }
+	public bool IsReadingTheFine { get; private set; }
+	public bool OwlFlownAway { get; private set; }
 	public HashSet<int> PickedUpItems { get; private set; }
 	public bool TeaBagInTheCup { get; private set; }
 	/// <summary>
@@ -16,6 +18,8 @@ public class AnnanaTeaPartySceneState : SceneState
 	/// </summary>
 	public int TeapotOnTheStove { get; private set; }
 	public bool TeapotOnTheTable { get; private set; }
+	public bool ThrewCup { get; private set; }
+	public bool TookTheFine { get; private set; }
 	public HashSet<int> UsedItems { get; private set; }
 	/// <summary>
 	/// -1 - none, 0 - tea, 1- cold, 2 - hot, 3 - nasty
@@ -31,10 +35,14 @@ public class AnnanaTeaPartySceneState : SceneState
 		InTheKitchen = true;
 		IsHappy = false;
 		IsInside = true;
+		IsReadingTheFine = false;
+		OwlFlownAway = false;
 		PickedUpItems = new HashSet<int>(){(int)AnnanaTeaPartyInventory.ItemIds.TeaBag};
 		TeaBagInTheCup = false;
 		TeapotOnTheStove = -1;
 		TeapotOnTheTable = true;
+		ThrewCup = false;
+		TookTheFine = false;
 		UsedItems = new HashSet<int>();
 		WaterInTheCup = -1;
 		SetCharacterPosition();
@@ -46,10 +54,14 @@ public class AnnanaTeaPartySceneState : SceneState
 		InTheKitchen = template.InTheKitchen;
 		IsHappy = template.IsHappy;
 		IsInside = template.IsInside;
+		IsReadingTheFine = template.IsReadingTheFine;
+		OwlFlownAway = template.OwlFlownAway;
 		PickedUpItems = template.PickedUpItems;
 		TeaBagInTheCup = template.TeaBagInTheCup;
 		TeapotOnTheStove = template.TeapotOnTheStove;
 		TeapotOnTheTable = template.TeapotOnTheTable;
+		ThrewCup = template.ThrewCup;
+		TookTheFine = template.TookTheFine;
 		UsedItems = template.UsedItems;
 		WaterInTheCup = template.WaterInTheCup;
 		SetCharacterPosition();
@@ -83,6 +95,20 @@ public class AnnanaTeaPartySceneState : SceneState
 		return copy;
 	}
 
+	public AnnanaTeaPartySceneState SetIsReadingTheFine(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.IsReadingTheFine = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetOwlFlownAway(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.OwlFlownAway = value;
+		return copy;
+	}
+
 	public AnnanaTeaPartySceneState SetPickedUpItems(HashSet<int> value)
 	{
 		var copy = new AnnanaTeaPartySceneState(this);
@@ -108,6 +134,20 @@ public class AnnanaTeaPartySceneState : SceneState
 	{
 		var copy = new AnnanaTeaPartySceneState(this);
 		copy.TeapotOnTheTable = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetThrewCup(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.ThrewCup = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetTookTheFine(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.TookTheFine = value;
 		return copy;
 	}
 
@@ -142,6 +182,12 @@ public class AnnanaTeaPartySceneState : SceneState
 		if(!IsInside.Equals(other.IsInside))
 			result.Add(String.Format("IsInside:\t{0}\t>>>\t{1}",other.IsInside,IsInside));
 
+		if(!IsReadingTheFine.Equals(other.IsReadingTheFine))
+			result.Add(String.Format("IsReadingTheFine:\t{0}\t>>>\t{1}",other.IsReadingTheFine,IsReadingTheFine));
+
+		if(!OwlFlownAway.Equals(other.OwlFlownAway))
+			result.Add(String.Format("OwlFlownAway:\t{0}\t>>>\t{1}",other.OwlFlownAway,OwlFlownAway));
+
 		if(!PickedUpItems.Equals(other.PickedUpItems))
 			result.Add(String.Format("PickedUpItems:\t{0}\t>>>\t{1}",other.PickedUpItems,PickedUpItems));
 
@@ -153,6 +199,12 @@ public class AnnanaTeaPartySceneState : SceneState
 
 		if(!TeapotOnTheTable.Equals(other.TeapotOnTheTable))
 			result.Add(String.Format("TeapotOnTheTable:\t{0}\t>>>\t{1}",other.TeapotOnTheTable,TeapotOnTheTable));
+
+		if(!ThrewCup.Equals(other.ThrewCup))
+			result.Add(String.Format("ThrewCup:\t{0}\t>>>\t{1}",other.ThrewCup,ThrewCup));
+
+		if(!TookTheFine.Equals(other.TookTheFine))
+			result.Add(String.Format("TookTheFine:\t{0}\t>>>\t{1}",other.TookTheFine,TookTheFine));
 
 		if(!UsedItems.Equals(other.UsedItems))
 			result.Add(String.Format("UsedItems:\t{0}\t>>>\t{1}",other.UsedItems,UsedItems));
