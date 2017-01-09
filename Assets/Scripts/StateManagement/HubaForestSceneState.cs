@@ -6,8 +6,8 @@ public class HubaForestSceneState : SceneState
 {
 
 	public int AngerLevel { get; private set; }
-	public Vector3S CharPosition { get; private set; }
 	public List<int> CurrentForestWay { get; private set; }
+	public Vector3S CharPosition { get; private set; }
 	/// <summary>
 	/// Blessed = coin given to the shrine
 	/// </summary>
@@ -15,6 +15,7 @@ public class HubaForestSceneState : SceneState
 	public bool IsInForest { get; private set; }
 	public bool IsOnSite { get; private set; }
 	public bool IsReadingMap { get; private set; }
+	public bool IsSceneStarted { get; private set; }
 	public HashSet<int> PickedUpItems { get; private set; }
 	public List<int> RightForestWay { get; private set; }
 	public HashSet<int> UsedItems { get; private set; }
@@ -25,12 +26,13 @@ public class HubaForestSceneState : SceneState
 	// initial constructor - default values
 	public HubaForestSceneState(bool initial) {
 		AngerLevel = 13;
-		CharPosition = new Vector3S(-21.03f, -3.88f, 0f);
 		CurrentForestWay = new List<int>();
+		CharPosition = new Vector3S(-61.9f, -3.59f, 0f);
 		IsHubaBlessed = false;
 		IsInForest = false;
 		IsOnSite = false;
 		IsReadingMap = false;
+		IsSceneStarted = false;
 		PickedUpItems = new HashSet<int>() {(int)HubaForestInventory.ItemIds.Coin};
 		RightForestWay = ForestSSC.GenerateNewPath(5);
 		UsedItems = new HashSet<int>();
@@ -39,12 +41,13 @@ public class HubaForestSceneState : SceneState
 	// copy constructor
 	private HubaForestSceneState(HubaForestSceneState template) {
 		AngerLevel = template.AngerLevel;
-		CharPosition = template.CharPosition;
 		CurrentForestWay = template.CurrentForestWay;
+		CharPosition = template.CharPosition;
 		IsHubaBlessed = template.IsHubaBlessed;
 		IsInForest = template.IsInForest;
 		IsOnSite = template.IsOnSite;
 		IsReadingMap = template.IsReadingMap;
+		IsSceneStarted = template.IsSceneStarted;
 		PickedUpItems = template.PickedUpItems;
 		RightForestWay = template.RightForestWay;
 		UsedItems = template.UsedItems;
@@ -58,17 +61,17 @@ public class HubaForestSceneState : SceneState
 		return copy;
 	}
 
-	public HubaForestSceneState SetCharPosition(Vector3S value)
-	{
-		var copy = new HubaForestSceneState(this);
-		copy.CharPosition = value;
-		return copy;
-	}
-
 	public HubaForestSceneState SetCurrentForestWay(List<int> value)
 	{
 		var copy = new HubaForestSceneState(this);
 		copy.CurrentForestWay = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetCharPosition(Vector3S value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.CharPosition = value;
 		return copy;
 	}
 
@@ -97,6 +100,13 @@ public class HubaForestSceneState : SceneState
 	{
 		var copy = new HubaForestSceneState(this);
 		copy.IsReadingMap = value;
+		return copy;
+	}
+
+	public HubaForestSceneState SetIsSceneStarted(bool value)
+	{
+		var copy = new HubaForestSceneState(this);
+		copy.IsSceneStarted = value;
 		return copy;
 	}
 
@@ -129,11 +139,11 @@ public class HubaForestSceneState : SceneState
 		if(!AngerLevel.Equals(other.AngerLevel))
 			result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}",other.AngerLevel,AngerLevel));
 
-		if(!CharPosition.Equals(other.CharPosition))
-			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
-
 		if(!CurrentForestWay.Equals(other.CurrentForestWay))
 			result.Add(String.Format("CurrentForestWay:\t{0}\t>>>\t{1}",other.CurrentForestWay,CurrentForestWay));
+
+		if(!CharPosition.Equals(other.CharPosition))
+			result.Add(String.Format("CharPosition:\t{0}\t>>>\t{1}",other.CharPosition,CharPosition));
 
 		if(!IsHubaBlessed.Equals(other.IsHubaBlessed))
 			result.Add(String.Format("IsHubaBlessed:\t{0}\t>>>\t{1}",other.IsHubaBlessed,IsHubaBlessed));
@@ -146,6 +156,9 @@ public class HubaForestSceneState : SceneState
 
 		if(!IsReadingMap.Equals(other.IsReadingMap))
 			result.Add(String.Format("IsReadingMap:\t{0}\t>>>\t{1}",other.IsReadingMap,IsReadingMap));
+
+		if(!IsSceneStarted.Equals(other.IsSceneStarted))
+			result.Add(String.Format("IsSceneStarted:\t{0}\t>>>\t{1}",other.IsSceneStarted,IsSceneStarted));
 
 		if(!PickedUpItems.Equals(other.PickedUpItems))
 			result.Add(String.Format("PickedUpItems:\t{0}\t>>>\t{1}",other.PickedUpItems,PickedUpItems));
