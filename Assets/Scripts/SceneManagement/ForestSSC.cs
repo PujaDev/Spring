@@ -14,19 +14,21 @@ public class ForestSSC : SceneSwitchControler
         Right
     }
 
+    public GameObject Bus;
+    public GameObject Huba;
+    public GameObject InvButton;
+
     public GameObject[] GlowingObjects;
     public GameObject[] Setup1;
     public GameObject[] Setup2;
     public GameObject[] Setup3;
 
-    private System.Random Rnd;
     private List<GameObject[]> Setups;
 
     protected override void Awake()
     {
         base.Awake();
 
-        Rnd = new System.Random();
         Setups = new List<GameObject[]>()
         {
             Setup1,
@@ -59,6 +61,27 @@ public class ForestSSC : SceneSwitchControler
 
             string mssg = oldState == null ? "GoForestSwitch" : "GoForest";
             Flowchart.SendFungusMessage(mssg);
+        }
+        // First time coming to scene
+        else if (oldState == null && newState.HubaBus.getOnTheBus && !newState.HubaForest.IsSceneStarted)
+        {
+            // Set bus in front of Huba
+            Bus.GetComponent<MeshRenderer>().sortingLayerName = "Character";
+            Bus.GetComponent<MeshRenderer>().sortingOrder = 15;
+            Flowchart.SendFungusMessage("GoStart");
+            StateManager.Instance.DispatchAction(new SpringAction(ActionType.START_FOREST_SCENE));
+        }
+        // Huba cannot be here if she did not take the bus
+        else if (oldState == null && !newState.HubaBus.getOnTheBus)
+        {
+            Huba.SetActive(false);
+            var cols = Resources.FindObjectsOfTypeAll<Collider2D>();
+            foreach (var c in cols)
+            {
+                c.enabled = false;
+            }
+            CameraManager.Instance.gameObject.GetComponentInChildren<Collider2D>().enabled = true;
+            InvButton.SetActive(false);
         }
     }
 
@@ -105,4 +128,7 @@ public class ForestSSC : SceneSwitchControler
 
         return path;
     }
+
+    #region FungusMethods
+    #endregion
 }

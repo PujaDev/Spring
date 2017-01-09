@@ -42,7 +42,8 @@ public class HubaForestSceneReducer : Reducer
                 return GoForestCrossroads(state, ForestSSC.Direction.Left);
             case ActionType.GO_FOREST_RIGHT:
                 return GoForestCrossroads(state, ForestSSC.Direction.Right);
-
+            case ActionType.START_FOREST_SCENE:
+                return state.Set(state.HubaForest.SetIsSceneStarted(true));
         }
 
         return state;

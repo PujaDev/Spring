@@ -9,3 +9,4 @@ List<int>;RightForestWay;ForestSSC.GenerateNewPath(5)
 List<int>;CurrentForestWay;new List<int>()
 bool;IsInForest;false
 bool;IsOnSite;false
+bool;IsSceneStarted;false
