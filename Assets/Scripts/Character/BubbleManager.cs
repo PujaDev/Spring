@@ -56,15 +56,22 @@ public class BubbleManager : MonoBehaviour {
         SwitchBubbles();
 
         LoadImages();
-        Spine.TrackEntry entry = skeletonAnim.AnimationState.SetAnimation(0, "grow", false);
-        entry.mixDuration = 0f;
-        entry.timeScale = 1f;
-        skeletonAnim.skeleton.a = 1f;
+        //Spine.TrackEntry entry = skeletonAnim.AnimationState.SetAnimation(0, "grow", false);
+        //entry.mixDuration = 0f;
+        //entry.timeScale = 1f;
+        //skeletonAnim.skeleton.a = 1f;
         StartCoroutine(SwitchImagesCoroutine(seconds));
     }
 
     IEnumerator SwitchImagesCoroutine(float seconds)
     {
+        yield return new WaitForSeconds(0.05f);
+
+        Spine.TrackEntry entry = skeletonAnim.AnimationState.SetAnimation(0, "grow", false);
+        entry.mixDuration = 0f;
+        entry.timeScale = 1f;
+        skeletonAnim.skeleton.a = 1f;
+
         yield return new WaitForSeconds(skeletonAnim.skeleton.data.FindAnimation("grow").duration * 1.2f);
 
         for (int i = 0; i < images.Count; i++) {
