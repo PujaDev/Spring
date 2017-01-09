@@ -1,0 +1,13 @@
+
+Bubble_say.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bubble
+  rotate: false
+  xy: 2, 21
+  size: 169, 150
+  orig: 169, 150
+  offset: 0, 0
+  index: -1

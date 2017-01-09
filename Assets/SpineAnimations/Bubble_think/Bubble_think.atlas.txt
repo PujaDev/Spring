@@ -1,0 +1,27 @@
+
+Bubble_think.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cloud_1
+  rotate: false
+  xy: 2, 54
+  size: 130, 76
+  orig: 130, 76
+  offset: 0, 0
+  index: -1
+cloud_2
+  rotate: false
+  xy: 181, 180
+  size: 62, 63
+  orig: 62, 63
+  offset: 0, 0
+  index: -1
+combined
+  rotate: false
+  xy: 2, 132
+  size: 177, 111
+  orig: 177, 111
+  offset: 0, 0
+  index: -1

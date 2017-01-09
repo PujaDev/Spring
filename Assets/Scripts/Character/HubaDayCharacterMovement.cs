@@ -95,7 +95,6 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
             {
                 if (skeletonAnim.AnimationName != "anger")
                     GetAngry();
-
             }
             else
             {
@@ -109,6 +108,8 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
     public void GetAngry()
     {
         skeletonAnim.AnimationState.SetAnimation(0, "anger", true);
+        DialogManager.Instance.SetDialogue((int)HubaBusDialogManager.DialogueTypes.Swearing);
+        DialogManager.Instance.Next();
     }
 
     public void UseOnSelf(int itemId)

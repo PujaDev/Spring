@@ -50,10 +50,7 @@ public class BusTrigger : IChangable {
         if (newState.HubaBus.hasBusLeft)
         {
             GetComponent<Collider2D>().isTrigger = false;
-            //Vector3 pos = topTargets[topTargets.Length - 1].transform.position;
-            //pos = new Vector3(pos.x, pos.y - 6f, pos.z);
-            //busStopFollowTarget.position = pos;
-            follow.Character = GameObject.FindGameObjectWithTag("Character").transform.GetChild(0);
+            follow.Character = GameObject.FindGameObjectWithTag("CharacterTarget").transform;
             cameraManager.Bounds = boxCollider;
         } else if (newState.HubaBus.isBusWaiting)
         {
