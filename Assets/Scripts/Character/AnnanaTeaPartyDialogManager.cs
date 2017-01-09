@@ -31,7 +31,7 @@ public class AnnanaTeaPartyDialogManager : DialogManager
                 break;
 
             case 1: // tea was good - happy
-                bubble.image_names = new string[] { "Bubble__Happpy"};
+                bubble.image_names = new string[] { "Bubble__happy"};
                 bubble.PlayImages(3.2f, BubbleManager.BubbleType.THINK);
                 break;
 
