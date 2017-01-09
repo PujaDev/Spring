@@ -33,6 +33,7 @@ public class ColumnController : MonoBehaviour
     {
         if (!Loaded)
         {
+            Loaded = true;
             CorrectSelected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_on");
             CorrectDeselected = Resources.Load<Sprite>("Sprites/LockPuzzle/green_off");
         }
