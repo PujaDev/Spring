@@ -54,7 +54,7 @@ public class AnnanaSceneState : SceneState
 
 	// initial constructor - default values
 	public AnnanaSceneState(bool initial) {
-		AlarmPostponed = false;
+		AlarmPostponed = true;
 		AlarmTurnedOff = false;
 		AngerLevel = 13;
 		AnnanaDress = "clothes_2";

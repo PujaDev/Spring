@@ -5,7 +5,7 @@ using System;
 public class RadioAlarm : IInteractable {
 
     public GameObject ParticleSystemObject;
-    public int MaxRotation = 45;
+    public int MaxRotation = 35;
     public float RotationSpeed = 3f;
     public int SnoozeTime = 5;
     ParticleSystem ParticleSystem;
@@ -19,9 +19,6 @@ public class RadioAlarm : IInteractable {
     protected override SpringAction[] GetActionList()
     {
         return new SpringAction[] {
-            new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
-            new SpringAction(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
-            new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
             new SpringAction(ActionType.POSTPONE_ALARM, "Postpone alarm",icons[1]),
             new SpringAction(ActionType.TURN_ALARM_OFF, "Turn alarm off",icons[0]),
         };
@@ -29,6 +26,8 @@ public class RadioAlarm : IInteractable {
 
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
+        gameObject.SetActive(!newState.AnnanaHouse.AlarmTurnedOff);
+
         StopCoroutine("AlarmRinging");
         ParticleSystem.Stop();
 

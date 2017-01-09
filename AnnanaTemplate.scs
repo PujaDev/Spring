@@ -1,6 +1,6 @@
 AnnanaSceneState
 bool;AlarmTurnedOff;false
-bool;AlarmPostponed;false
+bool;AlarmPostponed;true
 bool;ReadingVeganBook;false;Is player currently reading the book?
 bool;ReadVeganBook;false;Did player ever read the book?
 bool;FlyAway;false
