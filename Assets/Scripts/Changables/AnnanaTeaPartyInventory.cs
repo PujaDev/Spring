@@ -16,7 +16,8 @@ public class AnnanaTeaPartyInventory : Inventory
         PotEmpty = 0,
         PotColdWater = 1,
         PotHotWater = 2,
-        TeaBag = 3
+        TeaBag = 3,
+        Cup = 4,
     }
 
     public override void OnStateChanged(GameState newState, GameState oldState)

@@ -82,6 +82,11 @@ public class AnnanasOwlAnimator : MonoBehaviour {
         skeletonAnim.AnimationState.SetAnimation(2, "package_appear", false);
     }
 
+    public void PackageDisppear()
+    {
+        skeletonAnim.AnimationState.SetAnimation(2, "package_disappear", false);
+    }
+
     // Use this for initialization
     void Awake()
     {
