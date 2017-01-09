@@ -11,6 +11,8 @@ public class HubaBusSceneReducer : Reducer
         {
             case ActionType.GET_ELIXIR:
                 {
+                    InventoryAnimator.Instance.Animate();
+
                     // Pickup whatever was delivered
                     var pickedUp = new HashSet<int>(state.HubaBus.PickedUpItems);
                     var elixir = state.AnnanaHouse.OwlPackage;
