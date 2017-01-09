@@ -7,16 +7,6 @@ public abstract class TipManager : IChangable {
 
     public Text TutorialTipsText;
     
-    void OnMousOver()
-    {
-        Debug.Log("CLICK");
-    }
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
-
     sealed public override void OnStateChanged(GameState newState, GameState oldState)
     {
         if (!gameObject.activeInHierarchy)
@@ -24,11 +14,7 @@ public abstract class TipManager : IChangable {
 
         var oldText = TutorialTipsText.text;
         var text = GetTipText(newState, oldState);
-
-        // maybe later
-        // if (oldText != text)
-        //    gameObject.SetActive(false);
-
+        
         TutorialTipsText.text = text;
     }
 
