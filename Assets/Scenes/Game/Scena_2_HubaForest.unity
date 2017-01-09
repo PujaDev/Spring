@@ -2465,6 +2465,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   door: {fileID: 570663426}
   startPosition: {fileID: 202339996}
+  elixirEffect: {fileID: 0}
 --- !u!114 &844694844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3210,7 +3211,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1255143382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.76, y: 4.44, z: -2.24}
+  m_LocalPosition: {x: 82.76, y: 4.44, z: -2.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4501,7 +4502,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2022211954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.99, y: 1.27, z: -2.24}
+  m_LocalPosition: {x: -6.99, y: 1.27, z: -2.05}
   m_LocalScale: {x: 18.632366, y: 5.4973555, z: 1.3085032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
