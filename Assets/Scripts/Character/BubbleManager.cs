@@ -42,8 +42,12 @@ public class BubbleManager : MonoBehaviour {
 	// Use this for initialization
 	public void LoadImages () {
         images.Clear();
-        for(int i = 0; i < image_names.Length; i++)
+        for (int i = 0; i < image_names.Length; i++)
+        {
             images.Add(Resources.Load<Sprite>(string.Format("Sprites/Bubbles/{0}", image_names[i])));
+            if (images[i] == null)
+                throw new System.Exception("Couldn't load bubble image from resource");
+        }
     }
 
     public void PlayImages(float seconds = 1f, BubbleType form = BubbleType.SAY)
