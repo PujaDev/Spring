@@ -513,6 +513,7 @@ MonoBehaviour:
   StepPrefab: {fileID: 1000011515191230, guid: 6cc118cd1ecd4d34aa308a7ff33da07d, type: 2}
   PointerPrefab: {fileID: 1000013836896722, guid: 4c63e57706423544a8c44b0e6b386055,
     type: 2}
+  BrokenIndex: 2
 --- !u!114 &114000010599538210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +533,7 @@ MonoBehaviour:
   StepPrefab: {fileID: 1000011515191230, guid: 6cc118cd1ecd4d34aa308a7ff33da07d, type: 2}
   PointerPrefab: {fileID: 1000013836896722, guid: 4c63e57706423544a8c44b0e6b386055,
     type: 2}
+  BrokenIndex: -1
 --- !u!114 &114000011037014006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,6 +565,7 @@ MonoBehaviour:
   StepPrefab: {fileID: 1000011515191230, guid: 6cc118cd1ecd4d34aa308a7ff33da07d, type: 2}
   PointerPrefab: {fileID: 1000013836896722, guid: 4c63e57706423544a8c44b0e6b386055,
     type: 2}
+  BrokenIndex: -1
 --- !u!114 &114000011552890158
 MonoBehaviour:
   m_ObjectHideFlags: 1
