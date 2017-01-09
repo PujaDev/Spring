@@ -16,7 +16,7 @@ public class SilentForestTips : TipManager
             return "Huba must to get here by bus. Finish previous scene.";
 
         if (state.IsOnSite)
-            return ALL_DONE;
+            return "Although it may not seem like it, you have finished the game :)";
 
         // In forest with a coin
         if (!state.UsedItems.Contains((int)HubaForestInventory.ItemIds.Coin)
