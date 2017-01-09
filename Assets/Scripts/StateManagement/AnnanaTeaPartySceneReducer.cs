@@ -12,16 +12,12 @@ public class AnnanaTeaPartySceneReducer : Reducer
         HashSet<int> newItems;
         switch (action.Type)
         {
-            //case ActionType.GO_OUTSIDE:
-            //    {
-            //        GameState s = state.Set(state.AnnanaHouse.SetIsOutside(true));
-            //        return s.Set(s.AnnanaHouse.SetIsInside(false));
-            //    }
-            //case ActionType.GO_INSIDE:
-            //    {
-            //        GameState s = state.Set(state.AnnanaHouse.SetIsInside(true));
-            //        return s.Set(s.AnnanaHouse.SetIsOutside(false));
-            //    }
+            case ActionType.GO_OUTSIDE:
+                return state.Set(state.AnnanaTeaParty.SetIsInside(false));
+
+            case ActionType.GO_INSIDE:
+                return state.Set(state.AnnanaTeaParty.SetIsInside(true));
+
             case ActionType.TAKE:
                 int itemId = (int)action.Data;
                 var oldItems = state.AnnanaTeaParty.PickedUpItems;

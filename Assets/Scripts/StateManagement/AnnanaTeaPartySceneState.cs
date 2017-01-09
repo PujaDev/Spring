@@ -8,6 +8,7 @@ public class AnnanaTeaPartySceneState : SceneState
 	public bool DrankTea { get; private set; }
 	public bool InTheKitchen { get; private set; }
 	public bool IsHappy { get; private set; }
+	public bool IsInside { get; private set; }
 	public HashSet<int> PickedUpItems { get; private set; }
 	public bool TeaBagInTheCup { get; private set; }
 	/// <summary>
@@ -29,6 +30,7 @@ public class AnnanaTeaPartySceneState : SceneState
 		DrankTea = false;
 		InTheKitchen = true;
 		IsHappy = false;
+		IsInside = true;
 		PickedUpItems = new HashSet<int>(){(int)AnnanaTeaPartyInventory.ItemIds.TeaBag};
 		TeaBagInTheCup = false;
 		TeapotOnTheStove = -1;
@@ -43,6 +45,7 @@ public class AnnanaTeaPartySceneState : SceneState
 		DrankTea = template.DrankTea;
 		InTheKitchen = template.InTheKitchen;
 		IsHappy = template.IsHappy;
+		IsInside = template.IsInside;
 		PickedUpItems = template.PickedUpItems;
 		TeaBagInTheCup = template.TeaBagInTheCup;
 		TeapotOnTheStove = template.TeapotOnTheStove;
@@ -70,6 +73,13 @@ public class AnnanaTeaPartySceneState : SceneState
 	{
 		var copy = new AnnanaTeaPartySceneState(this);
 		copy.IsHappy = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetIsInside(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.IsInside = value;
 		return copy;
 	}
 
@@ -128,6 +138,9 @@ public class AnnanaTeaPartySceneState : SceneState
 
 		if(!IsHappy.Equals(other.IsHappy))
 			result.Add(String.Format("IsHappy:\t{0}\t>>>\t{1}",other.IsHappy,IsHappy));
+
+		if(!IsInside.Equals(other.IsInside))
+			result.Add(String.Format("IsInside:\t{0}\t>>>\t{1}",other.IsInside,IsInside));
 
 		if(!PickedUpItems.Equals(other.PickedUpItems))
 			result.Add(String.Format("PickedUpItems:\t{0}\t>>>\t{1}",other.PickedUpItems,PickedUpItems));
