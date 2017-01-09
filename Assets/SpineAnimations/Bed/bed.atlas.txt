@@ -1,0 +1,62 @@
+
+bed.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 0
+  rotate: false
+  xy: 2, 725
+  size: 592, 266
+  orig: 592, 266
+  offset: 0, 0
+  index: -1
+arm_front
+  rotate: true
+  xy: 2, 49
+  size: 69, 158
+  orig: 69, 158
+  offset: 0, 0
+  index: -1
+blanket
+  rotate: true
+  xy: 2, 120
+  size: 603, 255
+  orig: 603, 255
+  offset: 0, 0
+  index: -1
+ear_back
+  rotate: false
+  xy: 596, 750
+  size: 78, 113
+  orig: 78, 113
+  offset: 0, 0
+  index: -1
+ear_front
+  rotate: false
+  xy: 259, 619
+  size: 101, 104
+  orig: 101, 104
+  offset: 0, 0
+  index: -1
+hair_back
+  rotate: false
+  xy: 733, 928
+  size: 66, 63
+  orig: 66, 63
+  offset: 0, 0
+  index: -1
+hair_line
+  rotate: false
+  xy: 2, 2
+  size: 45, 45
+  orig: 45, 45
+  offset: 0, 0
+  index: -1
+head_torso_3
+  rotate: false
+  xy: 596, 865
+  size: 135, 126
+  orig: 135, 126
+  offset: 0, 0
+  index: -1
