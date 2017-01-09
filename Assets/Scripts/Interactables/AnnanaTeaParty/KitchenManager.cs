@@ -31,19 +31,28 @@ public class KitchenManager : IChangable
 
         if (!newState.AnnanaTeaParty.DrankTea)
         {
-            Camera.main.orthographicSize = ZoomedCameraSize;
-            Camera.main.transform.position = CameraPosition;
-            Character.transform.position = CharacterPosition;
-            //Character.transform.localScale = CharacterScale;
-            Renderer.sortingLayerName = "Midground";
-            Renderer.sortingOrder = 2;
-            GameController.Instance.CanCharacterMove = false;
-            ActionWheel.Instance.Rescale(0.45f, 4.8f);
+            if (oldState == null)
+            {
+                Camera.main.orthographicSize = ZoomedCameraSize;
+                Camera.main.transform.position = CameraPosition;
+                Character.transform.position = CharacterPosition;
+                //Character.transform.localScale = CharacterScale;
+                Renderer.sortingLayerName = "Midground";
+                Renderer.sortingOrder = 2;
+                GameController.Instance.CanCharacterMove = false;
+                ActionWheel.Instance.Rescale(0.45f, 4.8f);
+                DialogManager.Instance.SetDialogue(0);
+                DialogManager.Instance.Next();
+            }
         }
         else
         {
             if(oldState != null && oldState.AnnanaTeaParty.DrankTea == false)
             {
+                DialogManager.Instance.SetDialogue(
+                    oldState.AnnanaTeaParty.WaterInTheCup == 0 ? 1 : 2
+                    );
+                DialogManager.Instance.Next();
                 ActionWheel.Instance.Rescale(0.6f, 3.29f);
                 var t = TargetWalkableArea.GetComponent<CharacterInput>();
                 TargetWalkableArea.SetActive(true); // fuck

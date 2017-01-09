@@ -51,11 +51,11 @@ public class BubbleManager : MonoBehaviour {
         type = form;
         SwitchBubbles();
 
+        LoadImages();
         Spine.TrackEntry entry = skeletonAnim.AnimationState.SetAnimation(0, "grow", false);
         entry.mixDuration = 0f;
         entry.timeScale = 1f;
         skeletonAnim.skeleton.a = 1f;
-        LoadImages();
         StartCoroutine(SwitchImagesCoroutine(seconds));
     }
 
