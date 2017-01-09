@@ -49,5 +49,12 @@ public enum ActionType {
 
     // Annana Tea Party actions
     FILL_TEAPOT,
-    PUT_TEAPON_ON_THE_STOVE
+    PUT_TEAPON_ON_THE_STOVE,
+    WATER_BOILED,
+    FILL_CUP,
+    USE_TEA_BAG,
+    STEEP_TEA,
+    OVERSTEEP_TEA,
+    DRINK_TEA,
+    WALKED_OUT
 }
