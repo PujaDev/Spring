@@ -101,7 +101,12 @@ public class StateManager : MonoBehaviour
 
         State = newState;
 
+        if (!Debug.isDebugBuild)
+            File.Delete(SaveDirectory+ stateNumToFile(StateNum));
+
+
         StateNum++;
+
         saveStateToFile();
     }
 
