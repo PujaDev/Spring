@@ -20,7 +20,7 @@ public class PoliceOwl : IInteractable
 
         ActionsAfter = new SpringAction[]
         {
-            new SpringAction(ActionType.FLY_AWAY, "Send the owl away", icons[0])
+            new SpringAction(ActionType.FLY_AWAY, "Send the owl away", icons[1])
         };
         
     }
