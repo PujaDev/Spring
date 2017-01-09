@@ -8,6 +8,7 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
 {
     public DoorSwitch door;
     public Transform startPosition;
+    public ParticleSystem elixirEffect;
     private HashSet<int> UsableItems;
 
     public bool CanUseOnSelf(int itemId)
@@ -101,6 +102,18 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
                     default:
                         Debug.Log("WTF");
                         break;
+                }
+                if (oldState == null || !oldState.HubaBus.isDrunk) {
+                    if (elixirEffect == null)
+                    {
+
+                        var elGameObject = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/ElixirEffect"));
+                        elGameObject.transform.parent = gameObject.transform;
+                        elixirEffect = elGameObject.GetComponent<ParticleSystem>();
+                    }
+                    var em = elixirEffect.emission;
+                    em.enabled = true;
+                    Debug.Log("effect");
                 }
             }
 
