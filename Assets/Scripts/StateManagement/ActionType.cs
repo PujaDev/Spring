@@ -28,6 +28,7 @@ public enum ActionType {
     RESET_ALARM,
 
     // Forest actions
+    START_FOREST_SCENE,
     GIVE_MONEY_TO_SHRINE,
     BUY_IN_FOREST,
     START_READING_MAP,
