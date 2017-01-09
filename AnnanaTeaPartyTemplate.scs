@@ -2,7 +2,8 @@ AnnanaTeaPartySceneState
 bool;IsHappy;false;
 bool;DrankTea;false;
 bool;InTheKitchen;true;
-bool;IsInside;true;
+bool;IsInside;false;
+bool;IsOutside;false
 bool;IsReadingTheFine;false;
 bool;TookTheFine;false;
 bool;OwlFlownAway;false;

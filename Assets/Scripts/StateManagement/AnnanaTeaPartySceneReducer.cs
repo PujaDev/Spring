@@ -13,10 +13,15 @@ public class AnnanaTeaPartySceneReducer : Reducer
         switch (action.Type)
         {
             case ActionType.GO_OUTSIDE:
-                return state.Set(state.AnnanaTeaParty.SetIsInside(false));
-
+                {
+                    GameState s = state.Set(state.AnnanaTeaParty.SetIsOutside(true));
+                    return s.Set(s.AnnanaTeaParty.SetIsInside(false));
+                }
             case ActionType.GO_INSIDE:
-                return state.Set(state.AnnanaTeaParty.SetIsInside(true));
+                {
+                    GameState s = state.Set(state.AnnanaTeaParty.SetIsInside(true));
+                    return s.Set(s.AnnanaTeaParty.SetIsOutside(false));
+                }
 
             case ActionType.TAKE:
                 int itemId = (int)action.Data;

@@ -762,7 +762,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 274729288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1561,6 +1561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c7d892e283b994093f391f2ca0e3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Note: {fileID: 1634141343}
 --- !u!4 &488654421
 Transform:
   m_ObjectHideFlags: 0
@@ -3013,9 +3014,9 @@ MonoBehaviour:
     y: -481
     width: 1122
     height: 1164
-  selectedBlock: {fileID: 768941981}
+  selectedBlock: {fileID: 768941964}
   selectedCommands:
-  - {fileID: 768941984}
+  - {fileID: 768941978}
   variables: []
   description: 
   stepPause: 0
@@ -9822,6 +9823,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1528831439}
   m_RootOrder: 4
+--- !u!1 &1353660524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1353660525}
+  - 61: {fileID: 1353660526}
+  m_Layer: 0
+  m_Name: Fridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353660525
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353660524}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.316, y: 2.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1619678388}
+  m_RootOrder: 6
+--- !u!61 &1353660526
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353660524}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.05613303, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.7559209, y: 1}
 --- !u!1 &1360085124
 GameObject:
   m_ObjectHideFlags: 0
@@ -10860,6 +10904,7 @@ Transform:
   - {fileID: 2054144199}
   - {fileID: 512352292}
   - {fileID: 1280364698}
+  - {fileID: 1353660525}
   m_Father: {fileID: 75455288}
   m_RootOrder: 13
 --- !u!1 &1627457305
@@ -11073,7 +11118,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634141343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -14087,7 +14132,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -495284011
+  randomSeed: -517019032
   InitialModule:
     serializedVersion: 2
     enabled: 1

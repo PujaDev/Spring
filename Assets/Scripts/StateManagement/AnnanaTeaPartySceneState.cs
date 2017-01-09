@@ -9,6 +9,7 @@ public class AnnanaTeaPartySceneState : SceneState
 	public bool InTheKitchen { get; private set; }
 	public bool IsHappy { get; private set; }
 	public bool IsInside { get; private set; }
+	public bool IsOutside { get; private set; }
 	public bool IsReadingTheFine { get; private set; }
 	public bool OwlFlownAway { get; private set; }
 	public HashSet<int> PickedUpItems { get; private set; }
@@ -34,7 +35,8 @@ public class AnnanaTeaPartySceneState : SceneState
 		DrankTea = false;
 		InTheKitchen = true;
 		IsHappy = false;
-		IsInside = true;
+		IsInside = false;
+		IsOutside = false;
 		IsReadingTheFine = false;
 		OwlFlownAway = false;
 		PickedUpItems = new HashSet<int>(){(int)AnnanaTeaPartyInventory.ItemIds.TeaBag};
@@ -45,7 +47,6 @@ public class AnnanaTeaPartySceneState : SceneState
 		TookTheFine = false;
 		UsedItems = new HashSet<int>();
 		WaterInTheCup = -1;
-		SetCharacterPosition();
 	}
 
 	// copy constructor
@@ -54,6 +55,7 @@ public class AnnanaTeaPartySceneState : SceneState
 		InTheKitchen = template.InTheKitchen;
 		IsHappy = template.IsHappy;
 		IsInside = template.IsInside;
+		IsOutside = template.IsOutside;
 		IsReadingTheFine = template.IsReadingTheFine;
 		OwlFlownAway = template.OwlFlownAway;
 		PickedUpItems = template.PickedUpItems;
@@ -92,6 +94,13 @@ public class AnnanaTeaPartySceneState : SceneState
 	{
 		var copy = new AnnanaTeaPartySceneState(this);
 		copy.IsInside = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetIsOutside(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.IsOutside = value;
 		return copy;
 	}
 
@@ -181,6 +190,9 @@ public class AnnanaTeaPartySceneState : SceneState
 
 		if(!IsInside.Equals(other.IsInside))
 			result.Add(String.Format("IsInside:\t{0}\t>>>\t{1}",other.IsInside,IsInside));
+
+		if(!IsOutside.Equals(other.IsOutside))
+			result.Add(String.Format("IsOutside:\t{0}\t>>>\t{1}",other.IsOutside,IsOutside));
 
 		if(!IsReadingTheFine.Equals(other.IsReadingTheFine))
 			result.Add(String.Format("IsReadingTheFine:\t{0}\t>>>\t{1}",other.IsReadingTheFine,IsReadingTheFine));
