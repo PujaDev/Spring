@@ -377,6 +377,29 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013057392772, guid: 8c40cf26ad74d5d4a8e1a7effb4d34ac,
+        type: 2}
+      propertyPath: m_Text
+      value: "\tThis very potent elixir makes the user invisible for a brief period
+        of time. Very useful when sneaking. Sought-after mainly by members of the
+        thieves guild and Dark sisterhood.\n\nAddictiveness: High\n\nDesired effects:\n\tPoison\n\tVisibility\n\nPossible
+        ingredients:\n\tLeaf\n\tFlower"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010834278584, guid: 8c40cf26ad74d5d4a8e1a7effb4d34ac,
+        type: 2}
+      propertyPath: m_Text
+      value: "\tStandard antidote for most common types of poisoning. E.g. food, mushrooms,
+        deadly assasin poisons etc.\n\nAddictivness: None\n\nDesired effects:\n\tCure\n\tPoison\n\nPossible
+        ingredients:\n\tStar dust\n\tPoisonous pepper\n\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013149343856, guid: 8c40cf26ad74d5d4a8e1a7effb4d34ac,
+        type: 2}
+      propertyPath: m_Text
+      value: "\tSerum for those who grew too big. For consistent effects apply on
+        regular basis. If you want to sneak somewhere consider using Elixir of invisibility
+        (pg. 1).\n\nAddictivness: Average\n\nDesired effects:\n\tPoison\n\tSize\n\nPossible
+        ingredients:\n\tLeaf\n\tFlower"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c40cf26ad74d5d4a8e1a7effb4d34ac, type: 2}
   m_IsPrefabParent: 0
@@ -647,7 +670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &241016987
 RectTransform:
   m_ObjectHideFlags: 0
