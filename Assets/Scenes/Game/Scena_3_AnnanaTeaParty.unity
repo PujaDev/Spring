@@ -9289,6 +9289,7 @@ GameObject:
   - 114: {fileID: 1164734168}
   - 114: {fileID: 1164734169}
   - 114: {fileID: 1164734171}
+  - 114: {fileID: 1164734172}
   m_Layer: 10
   m_Name: AnnanaCharacter
   m_TagString: Character
@@ -9449,6 +9450,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8159c2771dcc044b2e43d5e76df8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1164734172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164734162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6188c1110c1675443b46377d6d4e4599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDialogue: 0
+  currentLine: 0
+  characters: []
+  BubbleObject: {fileID: 2015097388}
 --- !u!1 &1277034890
 GameObject:
   m_ObjectHideFlags: 0
@@ -13589,6 +13605,11 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2015097388 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013358632088, guid: 229e0c617c78b244893bd11b9f43b45f,
+    type: 2}
+  m_PrefabInternal: {fileID: 797458904}
 --- !u!1 &2016095669
 GameObject:
   m_ObjectHideFlags: 0
