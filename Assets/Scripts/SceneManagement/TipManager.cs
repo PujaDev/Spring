@@ -9,9 +9,6 @@ public abstract class TipManager : IChangable {
     
     sealed public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (!gameObject.activeInHierarchy)
-            return;
-
         var oldText = TutorialTipsText.text;
         var text = GetTipText(newState, oldState);
         
