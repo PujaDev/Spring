@@ -42,16 +42,20 @@ public class AnnanaTeaPartySceneReducer : Reducer
                             break;
                     }
 
+                    InventoryAnimator.Instance.Animate();
                     return state.Set(state.AnnanaTeaParty.SetPickedUpItems(newItems));
                 }
                 break;
 
             case ActionType.FILL_TEAPOT:
-                return state.Set(state.AnnanaTeaParty.SetPickedUpItems(
-                        swap(state,
-                            Item.PotColdWater,
-                            Item.PotEmpty
-                    )));
+                {
+                    InventoryAnimator.Instance.Animate();
+                    return state.Set(state.AnnanaTeaParty.SetPickedUpItems(
+                                            swap(state,
+                                                Item.PotColdWater,
+                                                Item.PotEmpty
+                                        )));
+                }
 
             case ActionType.PUT_TEAPON_ON_THE_STOVE:
                 var inventory = state.AnnanaTeaParty.PickedUpItems;
