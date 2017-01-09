@@ -59,7 +59,6 @@ public class LockController : MonoBehaviour
         {
             WrongLight.Toggle(true);
             float time = 3f;
-            CameraManager.Instance.Shake(time, magnitude: 0.3f);
             while (time > 0)
             {
                 time -= Time.deltaTime;
