@@ -864,7 +864,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3,
     type: 2}
   m_PrefabInternal: {fileID: 522768632}
---- !u!114 &314543342
+--- !u!114 &314543343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 314543341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db002fa5b5e67f4408619518401f43cd, type: 3}
+  m_Script: {fileID: 11500000, guid: beaf3e7a34415a04a86ec4bfc6d32998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TutorialTipsText: {fileID: 466915261}
