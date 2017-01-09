@@ -1,0 +1,242 @@
+{
+"skeleton": { "hash": "kwDixCGzL/rLgBPcc8S+MO93aV8", "spine": "3.5.43", "width": 603, "height": 255, "images": "./Bed_images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 84.54, "rotation": 138.32, "x": -57.73, "y": 57.67 },
+	{ "name": "bone2", "parent": "root", "length": 54.45, "rotation": 118.74, "x": -30.78, "y": 44.58 },
+	{ "name": "bone3", "parent": "bone2", "length": 31.43, "rotation": 2.22, "x": 54.45 },
+	{ "name": "bone4", "parent": "bone", "length": 88.31, "rotation": 179.5, "x": 77.76, "y": -3.97 }
+],
+"slots": [
+	{ "name": "head_torso_3", "bone": "bone" },
+	{ "name": "ear_back", "bone": "bone" },
+	{ "name": "hair_back", "bone": "bone" },
+	{ "name": "arm_front", "bone": "root" },
+	{ "name": "ear_front", "bone": "bone4" },
+	{ "name": "hair_line", "bone": "bone" },
+	{ "name": "Layer 0", "bone": "root" },
+	{ "name": "blanket", "bone": "root", "attachment": "blanket" }
+],
+"skins": {
+	"default": {
+		"Layer 0": {
+			"Layer 0": {
+				"type": "mesh",
+				"uvs": [ 0.39647, 0.02964, 0.32883, 0.10201, 0.28201, 0.23517, 0.22738, 0.31911, 0.01667, 0.57096, 0, 0.82859, 0.12983, 0.90385, 0.2794, 0.90096, 0.59937, 1, 0.78927, 0.69543, 0.99999, 0.35675, 1, 0.08464, 0.8543, 0.1078, 0.69302, 0.08464, 0.53564, 0, 0.44329, 0, 0.41077, 0.17148, 0.54214, 0.11069, 0.61628, 0.21201, 0.4576, 0.3249, 0.60717, 0.41464 ],
+				"triangles": [ 1, 0, 16, 2, 1, 16, 2, 16, 19, 17, 16, 0, 18, 17, 13, 17, 14, 13, 15, 14, 17, 19, 3, 2, 19, 7, 3, 4, 3, 7, 6, 5, 4, 8, 7, 9, 10, 12, 11, 20, 19, 18, 18, 12, 10, 12, 18, 13, 10, 20, 18, 9, 20, 10, 7, 19, 20, 7, 20, 9, 7, 6, 4, 18, 19, 16, 17, 0, 15, 18, 16, 17 ],
+				"vertices": [ 3, 0, -71.59, 98.48, 0.48674, 2, 66.88, 9.87, 0.15, 4, 40.12, 17.64, 0.36326, 4, 0, -111.63, 79.23, 0.39098, 2, 69.26, 54.23, 8.0E-5, 4, 23.37, -23.5, 0.16989, 1, 54.59, 19.74, 0.43905, 3, 0, -139.35, 43.81, 0.39118, 4, 26.61, -68.37, 0.14338, 1, 51.75, 64.62, 0.46544, 1, 0, -171.69, 21.48, 1, 1, 0, -296.43, -45.51, 1, 1, 0, -306.3, -114.04, 1, 1, 0, -229.44, -134.06, 1, 1, 0, -140.89, -133.29, 1, 1, 0, 48.53, -159.63, 1, 1, 0, 160.95, -78.62, 1, 1, 0, 285.7, 11.47, 1, 1, 0, 285.7, 83.85, 1, 1, 0, 199.45, 77.69, 1, 1, 0, 103.97, 83.85, 1, 2, 0, 10.8, 106.37, 0.85, 2, 34.18, -66.17, 0.15, 2, 0, -43.87, 106.37, 0.85, 2, 60.47, -18.23, 0.15, 2, 0, -63.12, 60.75, 2.3E-4, 1, 6.07, 1.28, 0.99977, 2, 0, 14.65, 76.92, 0.85, 2, 6.51, -55.38, 0.15, 1, 0, 58.54, 49.97, 1, 3, 0, -35.4, 19.94, 0.92158, 4, 119.67, -16.27, 0.03941, 1, -41.77, 13.33, 0.03901, 1, 0, 53.15, -3.93, 1 ],
+				"hull": 16,
+				"edges": [ 0, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 24, 24, 26, 26, 28, 28, 30, 0, 30 ],
+				"width": 592,
+				"height": 266
+			}
+		},
+		"arm_front": {
+			"arm_front": {
+				"type": "mesh",
+				"uvs": [ 0.97749, 0.49986, 0.80054, 0.30534, 0.53208, 0.12682, 0.29412, 0.00958, 0.02566, 0, 0, 0.10017, 0.06837, 0.21208, 0.1965, 0.2707, 0.33073, 0.43058, 0.64801, 0.57979, 0.56259, 0.94217, 0.89207, 1 ],
+				"triangles": [ 6, 4, 3, 5, 4, 6, 7, 6, 3, 7, 3, 2, 8, 7, 2, 9, 8, 2, 1, 9, 2, 9, 1, 0, 11, 9, 0, 10, 9, 11 ],
+				"vertices": [ 1, 2, -8.71, -13.39, 1, 1, 2, 24.11, -17.47, 1, 2, 2, 57.75, -14.79, 0.35656, 3, 2.73, -14.9, 0.64344, 1, 3, 27.06, -10.35, 1, 1, 3, 37.89, 4.75, 1, 1, 3, 25.23, 14.41, 1, 2, 2, 61.32, 19.75, 0.15829, 3, 7.64, 19.46, 0.84171, 2, 2, 48.95, 16.45, 0.7119, 3, -4.85, 16.65, 0.2881, 1, 2, 22.35, 20.47, 1, 1, 2, -8.85, 12.61, 1, 1, 2, -56.22, 45.31, 1, 1, 2, -75.16, 29.77, 1 ],
+				"hull": 12,
+				"edges": [ 0, 2, 2, 4, 4, 6, 6, 8, 8, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 0, 22 ],
+				"width": 69,
+				"height": 158
+			}
+		},
+		"blanket": {
+			"blanket": { "x": -6.91, "y": -32.42, "width": 603, "height": 255 }
+		},
+		"ear_back": {
+			"ear_back": { "x": 29.59, "y": 36.79, "rotation": -138.32, "width": 78, "height": 113 }
+		},
+		"ear_front": {
+			"ear_front": { "x": 57.36, "y": -4.68, "rotation": 42.17, "width": 101, "height": 104 }
+		},
+		"hair_back": {
+			"hair_back": { "x": 72.05, "y": 11.66, "rotation": -138.32, "width": 66, "height": 63 }
+		},
+		"hair_line": {
+			"hair_line": { "x": 77.5, "y": -10.26, "rotation": -138.32, "width": 45, "height": 45 }
+		},
+		"head_torso_3": {
+			"head_torso_3": { "x": -8.29, "y": -5.63, "rotation": -138.32, "width": 135, "height": 126 }
+		}
+	}
+},
+"animations": {
+	"empty": {
+		"slots": {
+			"Layer 0": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"arm_front": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"blanket": {
+				"attachment": [
+					{ "time": 0, "name": "blanket" }
+				]
+			},
+			"ear_back": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"ear_front": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"hair_back": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"hair_line": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"head_torso_3": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"full": {
+		"slots": {
+			"Layer 0": {
+				"attachment": [
+					{ "time": 0, "name": "Layer 0" }
+				]
+			},
+			"arm_front": {
+				"attachment": [
+					{ "time": 0, "name": "arm_front" }
+				]
+			},
+			"blanket": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"ear_back": {
+				"attachment": [
+					{ "time": 0, "name": "ear_back" }
+				]
+			},
+			"ear_front": {
+				"attachment": [
+					{ "time": 0, "name": "ear_front" }
+				]
+			},
+			"hair_back": {
+				"attachment": [
+					{ "time": 0, "name": "hair_back" }
+				]
+			},
+			"hair_line": {
+				"attachment": [
+					{ "time": 0, "name": "hair_line" }
+				]
+			},
+			"head_torso_3": {
+				"attachment": [
+					{ "time": 0, "name": "head_torso_3" }
+				]
+			}
+		},
+		"bones": {
+			"bone4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.6667, "angle": -6.42 },
+					{ "time": 3.3333, "angle": 0 }
+				]
+			},
+			"bone2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.6667, "angle": 14.88 },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 1.6667, "x": 13.02, "y": 8.29 },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"hand": {
+		"slots": {
+			"Layer 0": {
+				"attachment": [
+					{ "time": 0, "name": "Layer 0" }
+				]
+			},
+			"arm_front": {
+				"attachment": [
+					{ "time": 0, "name": "arm_front" }
+				]
+			},
+			"blanket": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"ear_back": {
+				"attachment": [
+					{ "time": 0, "name": "ear_back" }
+				]
+			},
+			"ear_front": {
+				"attachment": [
+					{ "time": 0, "name": "ear_front" }
+				]
+			},
+			"hair_back": {
+				"attachment": [
+					{ "time": 0, "name": "hair_back" }
+				]
+			},
+			"hair_line": {
+				"attachment": [
+					{ "time": 0, "name": "hair_line" }
+				]
+			},
+			"head_torso_3": {
+				"attachment": [
+					{ "time": 0, "name": "head_torso_3" }
+				]
+			}
+		},
+		"bones": {
+			"bone4": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": -6.42 },
+					{ "time": 1, "angle": 0 }
+				]
+			},
+			"bone2": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.5, "angle": -33.81 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 4.77, "y": 50.26 },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}
