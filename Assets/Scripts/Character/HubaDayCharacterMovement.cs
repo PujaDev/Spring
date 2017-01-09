@@ -126,6 +126,7 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
             }
         }
     }
+
     public void GetAngry()
     {
         skeletonAnim.AnimationState.SetAnimation(0, "anger", true);

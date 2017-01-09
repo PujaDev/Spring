@@ -10,7 +10,7 @@ public class DialogManager : MonoBehaviour
 
     public GameObject[] characters;
 
-    void Awake()
+    public void Awake()
     {
         if (Instance == null)
         {
