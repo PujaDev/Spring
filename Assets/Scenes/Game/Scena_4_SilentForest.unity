@@ -2051,8 +2051,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewSize: 16.11924
-  primaryAspectRatio: {x: 4, y: 3}
-  secondaryAspectRatio: {x: 2, y: 1}
+  primaryAspectRatio: {x: 16, y: 9}
+  secondaryAspectRatio: {x: 4, y: 3}
 --- !u!4 &297159825
 Transform:
   m_ObjectHideFlags: 0
@@ -4876,7 +4876,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 28d4852bc7a10c94aad07bbcaf626430, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
