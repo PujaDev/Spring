@@ -133,4 +133,18 @@ public class LockController : MonoBehaviour
 
         ForceReset();
     }
+
+    /// <summary>
+    /// Repairs the whole locks, assumes only one pin is missing
+    /// </summary>
+    public void RepairLock()
+    {
+        foreach (var c in Columns)
+        {
+            foreach (var s in c.Switches)
+            {
+                s.Repair();
+            }
+        }
+    }
 }
