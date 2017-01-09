@@ -60,6 +60,6 @@ public class AnnanaHouseTips : TipManager
             return "Send owl away";
 
 
-        return "There's nothing else you need to do";
+        return ALL_DONE;
     }
 }

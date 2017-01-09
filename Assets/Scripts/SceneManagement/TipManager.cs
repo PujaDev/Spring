@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public abstract class TipManager : IChangable {
 
     public Text TutorialTipsText;
+
+    protected const string ALL_DONE = "There's nothing else you need to do";
     
     void OnMousOver()
     {

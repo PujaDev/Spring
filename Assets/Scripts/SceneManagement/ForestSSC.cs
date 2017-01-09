@@ -75,6 +75,7 @@ public class ForestSSC : SceneSwitchControler
         else if (newState.HubaBus.getOnTheBus && !newState.HubaForest.IsSceneStarted)
         {
             // Set bus in front of Huba
+            Bus.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "walk", true);
             Bus.GetComponent<MeshRenderer>().sortingLayerName = "Character";
             Bus.GetComponent<MeshRenderer>().sortingOrder = 15;
             Flowchart.SendFungusMessage("GoStart");
