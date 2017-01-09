@@ -2846,7 +2846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Local bus No.4
   icons:
-  - {fileID: 21300000, guid: 59d4f61289ace0146b47a5b1de414368, type: 3}
+  - {fileID: 21300000, guid: e2ad7ffecd2cf6c4686f382c622feb4c, type: 3}
   orientation: 2
   tortoise: {fileID: 337749042}
 --- !u!114 &994768502
