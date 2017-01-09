@@ -12,11 +12,16 @@ public class LizardToPay : IChangable, IItemUsable
     {
         return UsableItems.Contains(itemId);
     }
-
+    IEnumerator WaitToMoveCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        StateManager.Instance.DispatchAction(new SpringAction(ActionType.IN_THE_BUS));
+    }
     public void UseOnSelf(int itemId)
     {
         if (CanUseOnSelf(itemId))
         {
+            StartCoroutine(WaitToMoveCoroutine());
             StateManager.Instance.DispatchAction(new SpringAction(ActionType.BUY_TICKET));
         }
     }

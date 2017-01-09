@@ -100,6 +100,10 @@ public class HubaBusSceneReducer : Reducer
                     GameState s = state.Set(state.HubaBus.SetUsedItems(used));
                     return s.Set(s.HubaBus.SetgetOnTheBus(true));
                 }
+            case ActionType.IN_THE_BUS:
+                {
+                    return state.Set(state.HubaBus.SetisInTheBus(true));
+                }
         }
 
         return state;
