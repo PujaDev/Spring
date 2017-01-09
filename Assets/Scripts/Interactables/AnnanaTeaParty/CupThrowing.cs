@@ -23,7 +23,6 @@ public class CupThrowing : IChangable
             oldState.AnnanaTeaParty.IsReadingTheFine)
         {
             Movement.ThrowTeaAnimation().Event += ThrowCup;
-            StateManager.Instance.DispatchAction(new SpringAction(ActionType.THROW_CUP));
         }
     }
 
@@ -39,6 +38,7 @@ public class CupThrowing : IChangable
     IEnumerator ThrowingCup()
     {
         Cup.SetActive(true);
+        StateManager.Instance.DispatchAction(new SpringAction(ActionType.THROW_CUP));
         Cup.GetComponent<Rigidbody2D>().AddForce(new Vector3(-300,200,500));
         yield return new WaitForSeconds(5);
         Cup.SetActive(false);
