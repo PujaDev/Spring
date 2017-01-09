@@ -39,8 +39,7 @@ public class ActionWheel : MonoBehaviour
     {
         actionLabel = gameObject.transform.GetChild(0).GetComponent<TextMesh>();
 
-        gameObject.transform.localScale = new Vector3(scale, scale, scale);
-        gameObject.GetComponent<CircleCollider2D>().radius = 4.5f * scale;
+        Rescale(scale, iconScale);
 
         children = new GameObject[0];
         spritesIdle = new Sprite[MAX_ACTIONS + 1, MAX_ACTIONS];
@@ -81,10 +80,10 @@ public class ActionWheel : MonoBehaviour
             return;
         resetHover();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
         var wheelPos = gameObject.transform.position;
+        mousePos.z = wheelPos.z;
         var distance = Vector3.Distance(mousePos, wheelPos);
-        if (distance < (1.35f * scale) * (1.35f * scale)) // It's a kind of magic
+        if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
         {
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
             actionNumber = -1;
@@ -150,7 +149,7 @@ public class ActionWheel : MonoBehaviour
             var iy = Mathf.Cos(i * 2 * Mathf.PI / length) * 1f;
             //            if (i < length / 2)
             //              iy = -1;
-            icon.transform.position = wheelPosition + new Vector3(ix, iy);
+            icon.transform.position = wheelPosition + new Vector3(ix, iy)*scale*scale/0.36f;
             icon.transform.localScale = gameObject.transform.localScale * iconScale;
         }
 
@@ -161,6 +160,15 @@ public class ActionWheel : MonoBehaviour
         cancelButton.transform.parent = gameObject.transform;
         cancelButton.transform.position = wheelPosition;
         cancelButton.transform.localScale = gameObject.transform.localScale;
+    }
+
+    public void Rescale(float scale, float iconScale)
+    {
+        this.scale = scale;
+        this.iconScale = iconScale;
+
+        gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        gameObject.GetComponent<CircleCollider2D>().radius = 4.5f * scale;
     }
 
     private void resetHover()
