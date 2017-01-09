@@ -1584,7 +1584,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 903229381}
-  - 114: {fileID: 496307657}
   - 114: {fileID: 496307656}
   - 114: {fileID: 496307658}
   m_Layer: 0
@@ -1616,19 +1615,6 @@ MonoBehaviour:
   scaleParam: 0.1
   defaultCharactecScale: 0.45
   title: {fileID: 1673040230}
---- !u!114 &496307657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000014145444322, guid: 4badebdc690a3ed49b26289653bd959f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 496307655}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d590b01aeec48a48b517333e08c1025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BedObject: {fileID: 0}
 --- !u!114 &496307658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,6 +1896,26 @@ Prefab:
     - target: {fileID: 1000010984443650, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012800783110, guid: a15abc69a7734d046b489b7f5a156ed3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012800783110, guid: a15abc69a7734d046b489b7f5a156ed3,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012800783110, guid: a15abc69a7734d046b489b7f5a156ed3,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012800783110, guid: a15abc69a7734d046b489b7f5a156ed3,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -13.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012045730632, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
@@ -2248,7 +2254,7 @@ MonoBehaviour:
   OriginalCameraSize: 5.5
   ZoomSpeed: 0.01
   CameraPosition: {x: -1.2, y: 1.92, z: -10}
-  CharacterPosition: {x: -0.26, y: -0.76, z: -2.71}
+  CharacterPosition: {x: -0.26, y: -0.76, z: 0}
   CharacterScale: {x: 0.42, y: 0.42, z: 0.584}
   TargetWalkableArea: {fileID: 997979632}
   TargetPosition: {x: -2.3, y: -4.2, z: 0}
@@ -6837,7 +6843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Police Owl
   icons:
-  - {fileID: 21300000, guid: 49e8b42f3bb1e2d48b6d9c2ebf84069b, type: 3}
+  - {fileID: 21300000, guid: 40e7c1ac58a07c843a3fdb5db33ecdae, type: 3}
+  - {fileID: 21300000, guid: 6200e52fdd4e19548b3d03396c13418f, type: 3}
   orientation: 2
 --- !u!114 &988604223
 MonoBehaviour:
