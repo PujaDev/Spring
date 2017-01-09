@@ -923,8 +923,8 @@ GameObject:
   - 114: {fileID: 197431165}
   - 114: {fileID: 197431168}
   - 114: {fileID: 197431167}
-  - 114: {fileID: 197431169}
   - 114: {fileID: 197431170}
+  - 114: {fileID: 197431169}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -970,8 +970,9 @@ MonoBehaviour:
     y: -375
     width: 1116
     height: 1065
-  selectedBlock: {fileID: 197431164}
-  selectedCommands: []
+  selectedBlock: {fileID: 197431136}
+  selectedCommands:
+  - {fileID: 197431132}
   variables: []
   description: 
   stepPause: 0
@@ -1089,7 +1090,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 197431135}
   commandList:
-  - {fileID: 197431170}
+  - {fileID: 197431169}
   - {fileID: 197431132}
   - {fileID: 197431133}
   - {fileID: 197431143}
@@ -1664,7 +1665,7 @@ MonoBehaviour:
   - {fileID: 197431166}
   - {fileID: 197431168}
   - {fileID: 197431167}
-  - {fileID: 197431169}
+  - {fileID: 197431170}
 --- !u!114 &197431165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,14 +1804,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 197431129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81be3d7e84da460788dccea95a3313a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 34
+  itemId: 37
   indentLevel: 0
   _targetGameObject:
     gameObjectRef: {fileID: 0}
     gameObjectVal: {fileID: 337749037}
+  activeState:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &197431170
 MonoBehaviour:
@@ -1820,14 +1824,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 197431129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81be3d7e84da460788dccea95a3313a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd8c931f22994b9d90e2037fffaa770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 35
+  itemId: 36
   indentLevel: 0
   _targetGameObject:
     gameObjectRef: {fileID: 0}
     gameObjectVal: {fileID: 337749037}
+  activeState:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
 --- !u!1 &219915080 stripped
 GameObject:

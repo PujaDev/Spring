@@ -75,12 +75,18 @@ public class ForestSSC : SceneSwitchControler
         else if (oldState == null && !newState.HubaBus.getOnTheBus)
         {
             Huba.SetActive(false);
+
+            // Disable all interactivity
             var cols = Resources.FindObjectsOfTypeAll<Collider2D>();
             foreach (var c in cols)
             {
                 c.enabled = false;
             }
+            
+            // We still need camera manager for some reason
             CameraManager.Instance.gameObject.GetComponentInChildren<Collider2D>().enabled = true;
+
+            // No character -> no inventory
             InvButton.SetActive(false);
         }
     }
