@@ -495,7 +495,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 203484117}
   - 61: {fileID: 203484118}
-  - 114: {fileID: 203484120}
   - 114: {fileID: 203484119}
   m_Layer: 0
   m_Name: Empty_Lizard
@@ -542,20 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea60d6675d65a804590fac2a2263d1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &203484120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 203484116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: 3
-  cursorMode: 0
-  hotSpot: {x: 0, y: 0}
 --- !u!1 &248935495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,12 +1616,12 @@ Prefab:
         type: 2}
       propertyPath: ItemSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: b7863fd3119017644a6c91e8335c914a,
+      objectReference: {fileID: 21300000, guid: 735ae84b2801dd742b7527fbde59c304,
         type: 3}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemNames.Array.data[2]
-      value: Antidote
+      value: Antidote elixir
       objectReference: {fileID: 0}
     - target: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
       propertyPath: m_IsActive
@@ -1646,34 +1631,34 @@ Prefab:
         type: 2}
       propertyPath: ItemSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 1ae9969cc71c4434f89a905698c25970,
+      objectReference: {fileID: 21300000, guid: ba162d0bf9044cd468b11618cdcd3878,
         type: 3}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemSprites.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: f900beb6fa115434c8ee84d2af989eb7,
+      objectReference: {fileID: 21300000, guid: e6c5880cfa44f074abb10b34560cb7a4,
         type: 3}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemSprites.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 84ed5a3af6b21334aa126718d9646bc1,
+      objectReference: {fileID: 21300000, guid: 619b96c07d863ca40a9ec3fc8d7b28ef,
         type: 3}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemNames.Array.data[3]
-      value: Shrink
+      value: Shrink elixir
       objectReference: {fileID: 0}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemNames.Array.data[4]
-      value: Invis
+      value: Invisibility elixir
       objectReference: {fileID: 0}
     - target: {fileID: 114000010262270234, guid: a15abc69a7734d046b489b7f5a156ed3,
         type: 2}
       propertyPath: ItemNames.Array.data[5]
-      value: Soup
+      value: Ambiguous elixir
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a15abc69a7734d046b489b7f5a156ed3, type: 2}
