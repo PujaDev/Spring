@@ -57,7 +57,7 @@ public class HubaBusFirstStop : IInteractable
                 if (!newState.HubaBus.getOnTheBus && DialogManager.Instance.currentDialogue != (int)HubaBusDialogManager.DialogueTypes.Edible && DialogManager.Instance.currentLine == 0)
                     tortoise.WaitToGetPaid();
 
-                if (newState.HubaBus.getOnTheBus)
+                if (newState.HubaBus.getOnTheBus && !newState.HubaBus.isInTheBus)
                     tortoise.GetPaid();
             }
         }
