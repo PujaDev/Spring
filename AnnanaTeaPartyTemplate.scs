@@ -1,2 +1,15 @@
 AnnanaTeaPartySceneState
+bool;IsHappy;false;
 bool;DrankTea;false;
+bool;InTheKitchen;true;
+bool;IsInside;true;
+bool;IsReadingTheFine;false;
+bool;TookTheFine;false;
+bool;OwlFlownAway;false;
+bool;ThrewCup;false;
+bool;TeapotOnTheTable;true;
+int;TeapotOnTheStove;-1;-1 - none, 0 - empty, 1 - cold water, 2 - hot water
+bool;TeaBagInTheCup;false;
+int;WaterInTheCup;-1;-1 - none, 0 - tea, 1- cold, 2 - hot, 3 - nasty
+HashSet<int>;PickedUpItems;new HashSet<int>(){(int)AnnanaTeaPartyInventory.ItemIds.TeaBag}
+HashSet<int>;UsedItems;new HashSet<int>()
