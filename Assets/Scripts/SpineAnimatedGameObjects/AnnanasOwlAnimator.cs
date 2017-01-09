@@ -79,13 +79,11 @@ public class AnnanasOwlAnimator : MonoBehaviour {
 
     public void PackageAppear()
     {
-        // Null check because of null reference exception when loading
-        if (skeletonAnim != null)
-            skeletonAnim.AnimationState.SetAnimation(2, "package_appear", false);
+        skeletonAnim.AnimationState.SetAnimation(2, "package_appear", false);
     }
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         skeletonAnim = GetComponent<SkeletonAnimation>();
         skeletonAnim.AnimationState.SetAnimation(0, "idle_breathing", true);
