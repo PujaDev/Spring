@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 public class LockController : MonoBehaviour
 {
+    public ToggleLight WrongLight;
+    public ToggleLight RightLight;
+
     private ColumnController[] Columns;
     private Coroutine UnlockCr;
     private bool Unlocking;
@@ -54,8 +57,8 @@ public class LockController : MonoBehaviour
         // Reset only if the player did not manage to open the lock
         if (!TryToOpen())
         {
+            WrongLight.Toggle(true);
             float time = 3f;
-            CameraManager.Instance.Shake(time, magnitude: 0.03f);
             while (time > 0)
             {
                 time -= Time.deltaTime;
@@ -64,6 +67,11 @@ public class LockController : MonoBehaviour
 
             ForceReset();
         }
+        else
+        {
+            RightLight.Toggle(true);
+        }
+
         Unlocking = false;
     }
 
@@ -110,6 +118,9 @@ public class LockController : MonoBehaviour
         {
             col.Reset();
         }
+
+        WrongLight.Toggle(false);
+        RightLight.Toggle(false);
     }
 
     /// <summary>
