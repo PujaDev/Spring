@@ -10,6 +10,7 @@ public class InventoryAnimator : MonoBehaviour
     public float Duration;
 
     private Coroutine AddCr;
+    private Vector3 OriginalScale;
 
     public void Awake()
     {
@@ -23,27 +24,36 @@ public class InventoryAnimator : MonoBehaviour
         }
     }
 
+    private void Reset()
+    {
+        ToAnimate.transform.localScale = OriginalScale;
+    }
+
     public void Animate()
     {
         if (AddCr != null)
+        {
+            Reset();
             StopCoroutine(AddCr);
+        }
         StartCoroutine(AddItemCoroutine());
     }
 
     private IEnumerator AddItemCoroutine()
     {
-        Vector3 origScale = ToAnimate.transform.localScale;
+        OriginalScale = ToAnimate.transform.localScale;
         float time = Duration;
         while (time > 0)
         {
             float normTime = time / Duration;
             time -= Time.deltaTime;
 
-            ToAnimate.transform.localScale = AddItemCurve.Evaluate(normTime) * origScale;
+            ToAnimate.transform.localScale = AddItemCurve.Evaluate(normTime) * OriginalScale;
 
             yield return null;
         }
 
-        ToAnimate.transform.localScale = origScale;
+        ToAnimate.transform.localScale = OriginalScale;
+        AddCr = null;
     }
 }
