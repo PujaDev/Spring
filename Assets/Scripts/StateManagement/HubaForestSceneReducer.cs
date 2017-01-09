@@ -20,6 +20,8 @@ public class HubaForestSceneReducer : Reducer
                 }
             case ActionType.BUY_IN_FOREST:
                 {
+                    InventoryAnimator.Instance.Animate();
+
                     // Pickup whatever was bought
                     int item = (int)action.Data;
                     var pickedUp = new HashSet<int>(state.HubaForest.PickedUpItems);
