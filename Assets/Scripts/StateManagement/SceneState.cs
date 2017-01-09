@@ -92,6 +92,9 @@ abstract public class SceneState
             {
                 var characterObject = GameObject.FindWithTag("Character");
 
+                if (characterObject == null)
+                    return;
+
                 CharacterPosition = new Vector3S(characterObject.transform.position);
 
                 CharacterFacingLeft = characterObject.GetComponent<SkeletonAnimation>().skeleton.FlipX;

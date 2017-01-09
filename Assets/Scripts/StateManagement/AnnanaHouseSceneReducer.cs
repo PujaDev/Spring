@@ -6,13 +6,23 @@ using System.Linq;
 
 public class AnnanaHouseSceneReducer : Reducer
 {
+    public GameObject BedObject;
+    AnnanaBedMovement Bed;
+
+    void Awake()
+    {
+        Bed = BedObject.GetComponent<AnnanaBedMovement>();
+    }
+
     public override GameState Reduce(GameState state, SpringAction action, IInteractable source = null)
     {
         switch (action.Type)
         {
             case ActionType.TURN_ALARM_OFF:
+                Bed.MoveHandAnimation();
                 return state.Set(state.AnnanaHouse.SetAlarmTurnedOff(true));
             case ActionType.POSTPONE_ALARM:
+                Bed.MoveHandAnimation();
                 return state.Set(state.AnnanaHouse.SetAlarmPostponed(true));
             case ActionType.RESET_ALARM:
                 return state.Set(state.AnnanaHouse.SetAlarmPostponed(false));

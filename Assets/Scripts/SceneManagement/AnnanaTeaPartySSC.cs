@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Spine.Unity;
 
 public class AnnanaTeaPartySSC : SceneSwitchControler
 {
+    public GameObject Note;
+
     public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (oldState != null && newState.AnnanaTeaParty.IsInside == oldState.AnnanaTeaParty.IsInside)
-            return;
+        // Initialization
+        if (oldState == null)
+        {
+            Note.SetActive(!newState.AnnanaHouse.IsAddressPickedUp);
+            GameObject.FindGameObjectWithTag("Character").GetComponent<SkeletonAnimation>().skeleton.SetSkin(newState.AnnanaHouse.AnnanaDress);
+        }
 
-        if (newState.AnnanaTeaParty.IsInside)
+        if (newState.AnnanaTeaParty.IsInside && (oldState == null || !oldState.AnnanaTeaParty.IsInside))
         {
             // Full animation while playing the game
             if (oldState != null)
@@ -18,10 +25,11 @@ public class AnnanaTeaPartySSC : SceneSwitchControler
             // Load saved game state
             else // oldState == null
             {
-               // Flowchart.SendFungusMessage("GoInSwitch");
+                Flowchart.SendFungusMessage("GoInSwitch");
             }
         }
-        else
+
+        if (newState.AnnanaTeaParty.IsOutside && (oldState == null || !oldState.AnnanaTeaParty.IsOutside))
         {
             // Full animation while playing the game
             if (oldState != null)
