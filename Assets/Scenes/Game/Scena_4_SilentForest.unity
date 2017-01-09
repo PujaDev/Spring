@@ -929,6 +929,7 @@ GameObject:
   - 114: {fileID: 197431171}
   - 114: {fileID: 197431174}
   - 114: {fileID: 197431173}
+  - 114: {fileID: 197431175}
   m_Layer: 0
   m_Name: Scenarios
   m_TagString: Scenarios
@@ -975,9 +976,9 @@ MonoBehaviour:
     y: -375
     width: 1116
     height: 1136.7319
-  selectedBlock: {fileID: 197431172}
+  selectedBlock: {fileID: 197431164}
   selectedCommands:
-  - {fileID: 197431173}
+  - {fileID: 197431175}
   variables: []
   description: 
   stepPause: 0
@@ -1669,6 +1670,7 @@ MonoBehaviour:
   - {fileID: 197431165}
   - {fileID: 197431166}
   - {fileID: 197431168}
+  - {fileID: 197431175}
   - {fileID: 197431167}
   - {fileID: 197431170}
 --- !u!114 &197431165
@@ -1914,6 +1916,22 @@ MonoBehaviour:
   targetObject: {fileID: 1453540254}
   methodName: TurnOff
   delay: 0
+--- !u!114 &197431175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197431129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616cd37e21c7645c58a89edf5abee56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 41
+  indentLevel: 0
+  duration: 15
+  amount: {x: 0.05, y: 0.2}
+  waitUntilFinished: 0
 --- !u!1 &219915080 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000010938544264, guid: a15abc69a7734d046b489b7f5a156ed3,
@@ -3341,7 +3359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e279fc11afe79d4cb7efacc8eb4df46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitAction: 28
+  ExitAction: 30
 --- !u!114 &719326513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3936,7 +3954,7 @@ MonoBehaviour:
   Book: {fileID: 341924506}
   OpenFadeInTime: 0.5
   TextFadeInTime: 0.3
-  StopReadingAction: 27
+  StopReadingAction: 29
   LeftPages:
   - {fileID: 2078668540}
   RightPages:
@@ -4784,6 +4802,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!114 &1348427461 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011908837152, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1356075635
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,7 +4900,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 28d4852bc7a10c94aad07bbcaf626430, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -6091,7 +6115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 0}
-  Action: 30
+  Action: 32
 --- !u!114 &1792317319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6620,6 +6644,23 @@ Transform:
   - {fileID: 1378803967}
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!1 &1928447752 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012170868066, guid: a15abc69a7734d046b489b7f5a156ed3,
+    type: 2}
+  m_PrefabInternal: {fileID: 522768632}
+--- !u!114 &1928447756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1928447752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6678c63a1abb5fa488355f5ba0e60723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TutorialTipsText: {fileID: 1348427461}
 --- !u!1 &1929268745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6663,7 +6704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 0}
-  Action: 29
+  Action: 31
 --- !u!114 &1929268748
 MonoBehaviour:
   m_ObjectHideFlags: 0
