@@ -24,11 +24,17 @@ public class HubaBusDialogManager : DialogManager
                         bubble = characters[(int)CharacterTypes.Huba].GetComponentInChildren<BubbleManager>();
                         bubble.image_names =  new string[]{ "Bubble__map", "Bubble__question"};
                         bubble.PlayImages();
+                        characters[(int)CharacterTypes.Huba].GetComponentInChildren<HubaDayCharacterMovement>().HeadUp();
                         break;
                     case 1:
                         bubble = characters[(int)CharacterTypes.Driver].GetComponentInChildren<BubbleManager>();
                         bubble.image_names = new string[] { "Bubble__poison" };
                         bubble.PlayImages(2f);
+                        characters[(int)CharacterTypes.Driver].GetComponentInChildren<TortoiseBusDayAnimator>().NoPoison();
+                        break;
+                    case 2:
+                        characters[(int)CharacterTypes.Huba].GetComponentInChildren<HubaDayCharacterMovement>().SetUpPosition();
+                        characters[(int)CharacterTypes.Driver].GetComponentInChildren<TortoiseBusDayAnimator>().BusDeparts();
                         break;
 
                 }
@@ -40,6 +46,7 @@ public class HubaBusDialogManager : DialogManager
                         bubble = characters[(int)CharacterTypes.Huba].GetComponentInChildren<BubbleManager>();
                         bubble.image_names = new string[] { "Bubble__map", "Bubble__question" };
                         bubble.PlayImages();
+                        characters[(int)CharacterTypes.Huba].GetComponentInChildren<HubaDayCharacterMovement>().HeadUp();
                         break;
                     case 1:
                         bubble = characters[(int)CharacterTypes.Driver].GetComponentInChildren<BubbleManager>();
@@ -60,7 +67,13 @@ public class HubaBusDialogManager : DialogManager
                         bubble = characters[(int)CharacterTypes.Huba].GetComponentInChildren<BubbleManager>();
                         bubble.image_names = new string[] { "Bubble__ok"};
                         bubble.PlayImages();
+                        //characters[(int)CharacterTypes.Huba].GetComponentInChildren<HubaDayCharacterMovement>().HandUp();
+                        //characters[(int)CharacterTypes.Driver].GetComponentInChildren<TortoiseBusDayAnimator>().NoPoison();
                         break;
+                    case 5:
+                        characters[(int)CharacterTypes.Driver].GetComponentInChildren<TortoiseBusDayAnimator>().WakeUpLizard();
+                        break;
+
 
                 }
                 break;

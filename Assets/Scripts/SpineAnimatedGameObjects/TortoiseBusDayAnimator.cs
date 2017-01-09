@@ -20,10 +20,17 @@ public class TortoiseBusDayAnimator : MonoBehaviour
     
     public void BusDeparts()
     {
-
+        StartCoroutine(LeaveToCoroutine(endPoint.position));
+    }
+    public void NoPoison() {
+        skeletonAnim.AnimationState.SetAnimation(1, "no_poison", false);
     }
 
-    
+    public void WakeUpLizard()
+    {
+        skeletonAnim.AnimationState.SetAnimation(1, "wake_up_lizard", false);
+        skeletonAnim.AnimationState.AddAnimation(1, "lizard_move", false, 0);
+    }
 
     public void BusArrives() {
         transform.position = startPoint.position;
@@ -68,6 +75,25 @@ public class TortoiseBusDayAnimator : MonoBehaviour
         }
     }
 
+    IEnumerator LeaveToCoroutine(Vector3 target)
+    {
+        if (skeletonAnim.AnimationName != "idle")
+            skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+
+        skeletonAnim.AnimationState.SetAnimation(1, "turn_to_ride", false);
+
+        yield return new WaitForSeconds(skeletonAnim.skeleton.data.FindAnimation("turn_to_ride").duration);
+
+        skeletonAnim.AnimationState.SetAnimation(0, "walk", true).timeScale = 1f;
+
+        while (Vector3.Distance(transform.position, target) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, Speed * Time.deltaTime);
+            yield return null;
+        }
+
+        StateManager.Instance.DispatchAction(new SpringAction(ActionType.DEPARTURE, "Bus has left"));
+    }
     public void Arrived()
     {
         transform.position = middlePoint.position;
@@ -76,5 +102,16 @@ public class TortoiseBusDayAnimator : MonoBehaviour
             skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
             skeletonAnim.AnimationState.SetAnimation(1, "turn_to_talk", false);
         }
+    }
+
+    public void WaitToGetPaid()
+    {
+        skeletonAnim.AnimationState.SetAnimation(1, "wake_up_lizard", false);
+        skeletonAnim.AnimationState.AddAnimation(1, "lizard_move", false, 0);
+    }
+
+    public void GetPaid()
+    {
+        skeletonAnim.AnimationState.SetAnimation(1, "Lizard_tongue", false).mixDuration = 0f;
     }
 }

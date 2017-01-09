@@ -26,6 +26,19 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
         };
     }
 
+    public void HeadUp() {
+        skeletonAnim.AnimationState.SetAnimation(2, "head_up", false);
+    }
+    public void HandUp()
+    {
+        skeletonAnim.AnimationState.SetAnimation(3, "give_money", false);
+    }
+    public void SetUpPosition()
+    {
+        skeletonAnim.AnimationState.SetEmptyAnimations(1f);
+        skeletonAnim.AnimationState.AddAnimation(0, "idle", true, 0f);
+    }
+
     public IEnumerator MoveToStartCoroutine()
     {
         yield return new WaitForSeconds(2f);
@@ -71,7 +84,7 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
                 switch (newState.AnnanaHouse.OwlPackage)
                 {
                     case (int)AnnanaInventory.ItemIds.Antidote:
-                        skeletonAnim.skeleton.SetSkin("Edible"); Debug.Log("edible");
+                        skeletonAnim.skeleton.SetSkin("Edible");
                         break;
                     case (int)AnnanaInventory.ItemIds.Invis:
                         skeletonAnim.skeleton.a = 0.15f;
@@ -79,7 +92,7 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
                     case (int)AnnanaInventory.ItemIds.Shrink:
                         float tmp = gameObject.transform.localScale.x;
                         tmp = tmp / 2f;
-                        gameObject.transform.localScale = new Vector3(tmp, tmp, tmp); Debug.Log("shrink");
+                        gameObject.transform.localScale = new Vector3(tmp, tmp, tmp);
                         SceneController.Instance.defaultCharactecScale = SceneController.Instance.defaultCharactecScale / 2f;
                         break;
                     //case (int)HubaBusInventory.ItemIds.Soup:
@@ -98,9 +111,17 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
             }
             else
             {
-                if (move == null && skeletonAnim.AnimationName != "idle")
-                {
+                if (newState.HubaBus.getOnTheBus && !newState.HubaBus.isInTheBus) {
                     skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+                    skeletonAnim.AnimationState.SetAnimation(1, "give_money", false);
+                    skeletonAnim.AnimationState.AddAnimation(1, "paid", false, 0);
+                    skeletonAnim.AnimationState.SetAnimation(2, "head_up", false);
+                }
+                else {
+                    if (move == null && skeletonAnim.AnimationName != "idle")
+                    {
+                        skeletonAnim.AnimationState.SetAnimation(0, "idle", true);
+                    }
                 }
             }
         }
@@ -116,10 +137,6 @@ public class HubaDayCharacterMovement : CharacterMovement, IMoveable, IItemUsabl
     {
         if (CanUseOnSelf(itemId))
         {
-            //if (itemId == (int)HubaForestInventory.ItemIds.Coin)
-            //{
-            //    ComeCloser(new SpringAction(ActionType.GIVE_MONEY_TO_SHRINE, "", null));
-            //}
             StateManager.Instance.DispatchAction(new SpringAction(ActionType.DRINK));
         }
     }

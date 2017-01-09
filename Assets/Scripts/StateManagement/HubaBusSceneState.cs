@@ -6,6 +6,8 @@ public class HubaBusSceneState : SceneState
 {
 
     public int AngerLevel { get; private set; }
+    public bool askedForTicket { get; private set; }
+    public bool getOnTheBus { get; private set; }
     /// <summary>
     /// Bus already arrived and left
     /// </summary>
@@ -23,11 +25,13 @@ public class HubaBusSceneState : SceneState
     /// Huba drank the elixir
     /// </summary>
     public bool isDrunk { get; private set; }
+    public bool isInTheBus { get; private set; }
     /// <summary>
     /// package is not there anymore
     /// </summary>
     public bool isOpened { get; private set; }
     public bool isOutOfTheHouse { get; private set; }
+    public bool isPaid { get; private set; }
     public HashSet<int> PickedUpItems { get; private set; }
     public HashSet<int> UsedItems { get; private set; }
 
@@ -38,13 +42,17 @@ public class HubaBusSceneState : SceneState
     public HubaBusSceneState(bool initial)
     {
         AngerLevel = 13;
+        askedForTicket = false;
+        getOnTheBus = false;
         hasBusLeft = false;
         CharPosition = new Vector3S(-11.5f, -1.4f, 0f);
         isBusWaiting = false;
         isDelivered = false;
         isDrunk = false;
+        isInTheBus = false;
         isOpened = false;
         isOutOfTheHouse = false;
+        isPaid = false;
         PickedUpItems = new HashSet<int>() { (int)HubaBusInventory.ItemIds.GoldCoins, (int)HubaBusInventory.ItemIds.SilverCoin };
         UsedItems = new HashSet<int>();
     }
@@ -53,13 +61,17 @@ public class HubaBusSceneState : SceneState
     private HubaBusSceneState(HubaBusSceneState template)
     {
         AngerLevel = template.AngerLevel;
+        askedForTicket = template.askedForTicket;
+        getOnTheBus = template.getOnTheBus;
         hasBusLeft = template.hasBusLeft;
         CharPosition = template.CharPosition;
         isBusWaiting = template.isBusWaiting;
         isDelivered = template.isDelivered;
         isDrunk = template.isDrunk;
+        isInTheBus = template.isInTheBus;
         isOpened = template.isOpened;
         isOutOfTheHouse = template.isOutOfTheHouse;
+        isPaid = template.isPaid;
         PickedUpItems = template.PickedUpItems;
         UsedItems = template.UsedItems;
         SetCharacterPosition();
@@ -69,6 +81,20 @@ public class HubaBusSceneState : SceneState
     {
         var copy = new HubaBusSceneState(this);
         copy.AngerLevel = value;
+        return copy;
+    }
+
+    public HubaBusSceneState SetaskedForTicket(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.askedForTicket = value;
+        return copy;
+    }
+
+    public HubaBusSceneState SetgetOnTheBus(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.getOnTheBus = value;
         return copy;
     }
 
@@ -107,6 +133,13 @@ public class HubaBusSceneState : SceneState
         return copy;
     }
 
+    public HubaBusSceneState SetisInTheBus(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.isInTheBus = value;
+        return copy;
+    }
+
     public HubaBusSceneState SetisOpened(bool value)
     {
         var copy = new HubaBusSceneState(this);
@@ -118,6 +151,13 @@ public class HubaBusSceneState : SceneState
     {
         var copy = new HubaBusSceneState(this);
         copy.isOutOfTheHouse = value;
+        return copy;
+    }
+
+    public HubaBusSceneState SetisPaid(bool value)
+    {
+        var copy = new HubaBusSceneState(this);
+        copy.isPaid = value;
         return copy;
     }
 
@@ -144,6 +184,12 @@ public class HubaBusSceneState : SceneState
         if (!AngerLevel.Equals(other.AngerLevel))
             result.Add(String.Format("AngerLevel:\t{0}\t>>>\t{1}", other.AngerLevel, AngerLevel));
 
+        if (!askedForTicket.Equals(other.askedForTicket))
+            result.Add(String.Format("askedForTicket:\t{0}\t>>>\t{1}", other.askedForTicket, askedForTicket));
+
+        if (!getOnTheBus.Equals(other.getOnTheBus))
+            result.Add(String.Format("getOnTheBus:\t{0}\t>>>\t{1}", other.getOnTheBus, getOnTheBus));
+
         if (!hasBusLeft.Equals(other.hasBusLeft))
             result.Add(String.Format("hasBusLeft:\t{0}\t>>>\t{1}", other.hasBusLeft, hasBusLeft));
 
@@ -159,11 +205,17 @@ public class HubaBusSceneState : SceneState
         if (!isDrunk.Equals(other.isDrunk))
             result.Add(String.Format("isDrunk:\t{0}\t>>>\t{1}", other.isDrunk, isDrunk));
 
+        if (!isInTheBus.Equals(other.isInTheBus))
+            result.Add(String.Format("isInTheBus:\t{0}\t>>>\t{1}", other.isInTheBus, isInTheBus));
+
         if (!isOpened.Equals(other.isOpened))
             result.Add(String.Format("isOpened:\t{0}\t>>>\t{1}", other.isOpened, isOpened));
 
         if (!isOutOfTheHouse.Equals(other.isOutOfTheHouse))
             result.Add(String.Format("isOutOfTheHouse:\t{0}\t>>>\t{1}", other.isOutOfTheHouse, isOutOfTheHouse));
+
+        if (!isPaid.Equals(other.isPaid))
+            result.Add(String.Format("isPaid:\t{0}\t>>>\t{1}", other.isPaid, isPaid));
 
         if (!PickedUpItems.Equals(other.PickedUpItems))
             result.Add(String.Format("PickedUpItems:\t{0}\t>>>\t{1}", other.PickedUpItems, PickedUpItems));

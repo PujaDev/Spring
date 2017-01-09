@@ -402,6 +402,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 203484117}
   - 61: {fileID: 203484118}
+  - 114: {fileID: 203484120}
+  - 114: {fileID: 203484119}
   m_Layer: 0
   m_Name: Empty_Lizard
   m_TagString: Untagged
@@ -416,7 +418,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 203484116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.07, y: 0, z: 0}
+  m_LocalPosition: {x: 42.03, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -428,14 +430,39 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 203484116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 2.0129318, y: 0.8189876}
+  m_Offset: {x: 2.5085373, y: 1.6750286}
   serializedVersion: 2
-  m_Size: {x: 1.4736304, y: 1.6512427}
+  m_Size: {x: 1.2934089, y: 1.7413535}
+--- !u!114 &203484119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203484116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea60d6675d65a804590fac2a2263d1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &203484120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203484116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91712758aa8746bafbfd01328320f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: 3
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1001 &299079702
 Prefab:
   m_ObjectHideFlags: 0
@@ -1791,7 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cbb308770d42143ab570695d0c0802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDialogue: 0
+  currentDialogue: -1
   currentLine: 0
   characters:
   - {fileID: 844694842}
@@ -2083,7 +2110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Local bus No.4
   icons:
-  - {fileID: 21300000, guid: 3d857a0d14cf692489d11020db20ba92, type: 3}
   - {fileID: 21300000, guid: 59d4f61289ace0146b47a5b1de414368, type: 3}
   orientation: 2
   tortoise: {fileID: 337749042}

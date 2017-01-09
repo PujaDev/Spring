@@ -26,7 +26,7 @@ public class BusTrigger : IChangable {
         if (isEnd) {
             HubaDayCharacterMovement character = GameObject.FindGameObjectWithTag("Character").GetComponent<HubaDayCharacterMovement>();
             character.Busy = false;
-            character.GetAngry();
+            if(StateManager.Instance.State.HubaBus.hasBusLeft) character.GetAngry();
         }
     }
      
