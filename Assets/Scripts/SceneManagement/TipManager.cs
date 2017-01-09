@@ -9,28 +9,11 @@ public abstract class TipManager : IChangable {
 
     protected const string ALL_DONE = "There's nothing else you need to do";
     
-    void OnMousOver()
-    {
-        Debug.Log("CLICK");
-    }
-
-    // Update is called once per frame
-    void Update () {
-	
-	}
-
     sealed public override void OnStateChanged(GameState newState, GameState oldState)
     {
-        if (!gameObject.activeInHierarchy)
-            return;
-
         var oldText = TutorialTipsText.text;
         var text = GetTipText(newState, oldState);
-
-        // maybe later
-        // if (oldText != text)
-        //    gameObject.SetActive(false);
-
+        
         TutorialTipsText.text = text;
     }
 
