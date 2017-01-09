@@ -3,13 +3,13 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using Spine.Unity;
 
 [Serializable]
 class PlayerData
 {
     public bool isSoundOn;
     public int lastPlayedTimeline;
-    public int[] stateNums;
     public bool playedAny;
 }
 
@@ -25,10 +25,10 @@ public class GameController : MonoBehaviour {
     public static GameController Instance { get; private set; }
 
     public bool isUI = false;
+    public bool CanCharacterMove = true;
     public float lastUITime = -1f;
     public Texture2D[] cursorIcons;
     public CursorIcon currentIcon = CursorIcon.NORMAL;
-
     private bool isSoundOn;
     private bool playedAny = false;
     private int lastPlayedTimeRange;
@@ -114,6 +114,23 @@ public class GameController : MonoBehaviour {
     
     public bool MoveCharToObject(GameObject obj, SpringAction action = null, IInteractable interactable = null)
     {
+        if (!CanCharacterMove)
+        {
+            if (action != null)
+            {
+                StateManager.Instance.DispatchAction(action, interactable);
+                if(interactable != null && interactable.orientation != Orientation.UNSPECIFIED)
+                {
+                    GameObject.FindGameObjectWithTag("Character")
+                        .GetComponent<SkeletonAnimation>()
+                        .skeleton.FlipX = interactable.orientation == Orientation.LEFT;
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+
         RaycastHit2D hit = Physics2D.Raycast(obj.transform.position, -Vector2.up, Mathf.Infinity, 0 | (1 << LayerMask.NameToLayer("WalkableArea")));
         Vector2 destination;
         //Debug.Log(hit.point);
