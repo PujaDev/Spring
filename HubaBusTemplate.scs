@@ -7,3 +7,9 @@ HashSet<int>;PickedUpItems;new HashSet<int>() {(int)HubaBusInventory.ItemIds.Gol
 HashSet<int>;UsedItems;new HashSet<int>()
 bool;isDelivered;false;Package is delivered on the ground
 bool;isDrunk;false;Huba drank the elixir
+bool;isOutOfTheHouse;false
+bool;isOpened;false;package is not there anymore
+bool;askedForTicket;false
+bool;isInTheBus;false
+bool;getOnTheBus;false
+bool;isPaid;false

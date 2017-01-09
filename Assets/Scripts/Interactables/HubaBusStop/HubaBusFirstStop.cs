@@ -22,8 +22,7 @@ public class HubaBusFirstStop : IInteractable
         base.Awake();
         Actions = new SpringAction[]
         {
-            new SpringAction(ActionType.LOOK, "Look at this old bus", icons[0]),
-            new SpringAction(ActionType.GET_TICKET, "Ask driver for a ticket", icons[1])
+            new SpringAction(ActionType.GET_TICKET, "Ask driver for a ticket", icons[0])
         };
     }
 
@@ -48,7 +47,19 @@ public class HubaBusFirstStop : IInteractable
         if (newState.HubaBus.isBusWaiting && !newState.HubaBus.hasBusLeft)
         {
             tortoise.Arrived();
-            setInteractibleActive(true);
+            if (!newState.HubaBus.askedForTicket)
+            {
+                setInteractibleActive(true);
+            }
+            else
+            {
+                setInteractibleActive(false);
+                if (!newState.HubaBus.getOnTheBus && DialogManager.Instance.currentDialogue != (int)HubaBusDialogManager.DialogueTypes.Edible && DialogManager.Instance.currentLine == 0)
+                    tortoise.WaitToGetPaid();
+
+                if (newState.HubaBus.getOnTheBus)
+                    tortoise.GetPaid();
+            }
         }
     }
 }

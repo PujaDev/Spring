@@ -77,6 +77,29 @@ public class HubaBusSceneReducer : Reducer
                     GameState s = state.Set(state.HubaBus.SetUsedItems(used));
                     return s.Set(s.HubaBus.SetisDrunk(true));
                 }
+            case ActionType.GET_TICKET:
+                {
+                    var elixir = state.AnnanaHouse.OwlPackage;
+                    if (elixir == (int)AnnanaInventory.ItemIds.Antidote)
+                    {
+                        DialogManager.Instance.SetDialogue((int)HubaBusDialogManager.DialogueTypes.Edible);
+                        DialogManager.Instance.Next();
+                    }
+                    else {
+                        DialogManager.Instance.SetDialogue((int)HubaBusDialogManager.DialogueTypes.Poisonous);
+                        DialogManager.Instance.Next();
+                    }
+                    //source.gameObject.SetActive(false);
+                    return state.Set(state.HubaBus.SetaskedForTicket(true));
+                }
+            case ActionType.BUY_TICKET:
+                {
+                    var used = new HashSet<int>(state.HubaBus.UsedItems);
+                    used.Add((int)HubaBusInventory.ItemIds.GoldCoins);
+
+                    GameState s = state.Set(state.HubaBus.SetUsedItems(used));
+                    return s.Set(s.HubaBus.SetgetOnTheBus(true));
+                }
         }
 
         return state;
