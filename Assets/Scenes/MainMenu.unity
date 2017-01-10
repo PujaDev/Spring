@@ -2477,8 +2477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: dac13c1ba6caa6e40ae23613e7f9e5a6, type: 3}
   - {fileID: 21300000, guid: 758fe8af8a70b884ab79f75f81a4935f, type: 3}
+  - {fileID: 21300000, guid: dac13c1ba6caa6e40ae23613e7f9e5a6, type: 3}
+  forSound: 0
 --- !u!1 &1846546064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2627,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 258782862d9191249bf367332fc1ac61, type: 3}
   - {fileID: 21300000, guid: 9bdffcc8bb43b904c8397ccb8514a526, type: 3}
+  forSound: 1
 --- !u!1 &1860454139
 GameObject:
   m_ObjectHideFlags: 0
