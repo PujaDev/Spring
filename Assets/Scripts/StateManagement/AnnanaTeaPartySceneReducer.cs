@@ -126,6 +126,13 @@ public class AnnanaTeaPartySceneReducer : Reducer
             case ActionType.THROW_CUP:
                 return state.Set(state.AnnanaTeaParty.SetThrewCup(true));
 
+            case ActionType.UNLOCK_FRIDGE:
+                LockManager.Instance.Open();
+                break;
+
+            case ActionType.FRIDGE_UNLOCKED:
+                return state.Set(state.AnnanaTeaParty.SetIsLockOpen(true));
+
         }
 
         return state;

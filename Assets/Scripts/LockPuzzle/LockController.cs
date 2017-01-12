@@ -70,11 +70,29 @@ public class LockController : MonoBehaviour
         else
         {
             RightLight.Toggle(true);
+            float time = 2f;
+            while (time > 0)
+            {
+                time -= Time.deltaTime;
+                yield return null;
+            }
+
+            LockManager.Instance.Unlock();
         }
 
         Unlocking = false;
     }
 
+    public void Initialize()
+    {
+        foreach (var col in Columns)
+        {
+            col.Initialize();
+        }
+
+        WrongLight.Toggle(false);
+        RightLight.Toggle(false);
+    }
 
     /// <summary>
     /// Check if lock is unlocked and can be open

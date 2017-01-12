@@ -9,6 +9,7 @@ public class AnnanaTeaPartySceneState : SceneState
 	public bool InTheKitchen { get; private set; }
 	public bool IsHappy { get; private set; }
 	public bool IsInside { get; private set; }
+	public bool IsLockOpen { get; private set; }
 	public bool IsOutside { get; private set; }
 	public bool IsReadingTheFine { get; private set; }
 	public bool OwlFlownAway { get; private set; }
@@ -36,6 +37,7 @@ public class AnnanaTeaPartySceneState : SceneState
 		InTheKitchen = true;
 		IsHappy = false;
 		IsInside = false;
+		IsLockOpen = false;
 		IsOutside = false;
 		IsReadingTheFine = false;
 		OwlFlownAway = false;
@@ -55,6 +57,7 @@ public class AnnanaTeaPartySceneState : SceneState
 		InTheKitchen = template.InTheKitchen;
 		IsHappy = template.IsHappy;
 		IsInside = template.IsInside;
+		IsLockOpen = template.IsLockOpen;
 		IsOutside = template.IsOutside;
 		IsReadingTheFine = template.IsReadingTheFine;
 		OwlFlownAway = template.OwlFlownAway;
@@ -94,6 +97,13 @@ public class AnnanaTeaPartySceneState : SceneState
 	{
 		var copy = new AnnanaTeaPartySceneState(this);
 		copy.IsInside = value;
+		return copy;
+	}
+
+	public AnnanaTeaPartySceneState SetIsLockOpen(bool value)
+	{
+		var copy = new AnnanaTeaPartySceneState(this);
+		copy.IsLockOpen = value;
 		return copy;
 	}
 
@@ -190,6 +200,9 @@ public class AnnanaTeaPartySceneState : SceneState
 
 		if(!IsInside.Equals(other.IsInside))
 			result.Add(String.Format("IsInside:\t{0}\t>>>\t{1}",other.IsInside,IsInside));
+
+		if(!IsLockOpen.Equals(other.IsLockOpen))
+			result.Add(String.Format("IsLockOpen:\t{0}\t>>>\t{1}",other.IsLockOpen,IsLockOpen));
 
 		if(!IsOutside.Equals(other.IsOutside))
 			result.Add(String.Format("IsOutside:\t{0}\t>>>\t{1}",other.IsOutside,IsOutside));

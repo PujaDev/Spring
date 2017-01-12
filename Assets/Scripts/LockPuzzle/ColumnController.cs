@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class ColumnController : MonoBehaviour
 {
@@ -75,6 +76,17 @@ public class ColumnController : MonoBehaviour
         Pointer = Instantiate(PointerPrefab, StepPositions[0] + PtrShift, Quaternion.identity) as GameObject;
     }
 
+    public void Initialize()
+    {
+        foreach (var s in Switches)
+        {
+            s.Reset();
+        }
+
+        CurrentAnswer = 0;
+        MovePointer(0, 0.0f);
+    }
+
     void OnClickCallback(bool isOn, int value)
     {
         if (isOn)
@@ -108,7 +120,14 @@ public class ColumnController : MonoBehaviour
         if (PtrMovement != null)
             StopCoroutine(PtrMovement);
 
-        PtrMovement = StartCoroutine(MovePointerCoroutine(StepPositions[index] + PtrShift, time));
+        if (time == 0f)
+        {
+            Pointer.transform.position = StepPositions[index] + PtrShift;
+        }
+        else
+        {
+            PtrMovement = StartCoroutine(MovePointerCoroutine(StepPositions[index] + PtrShift, time));
+        }
     }
 
     IEnumerator MovePointerCoroutine(Vector3 target, float time)

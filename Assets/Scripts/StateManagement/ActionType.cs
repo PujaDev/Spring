@@ -62,5 +62,8 @@ public enum ActionType
     WALKED_OUT,
     TAKE_FINE,
     FINISH_READING_FINE,
-    THROW_CUP
+    THROW_CUP,
+    UNLOCK_FRIDGE,
+    OPEN_FRIDGE,
+    FRIDGE_UNLOCKED
 }
