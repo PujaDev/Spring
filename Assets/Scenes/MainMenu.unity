@@ -2742,7 +2742,7 @@ MonoBehaviour:
   m_Text: "...was created in the Game development course by team Puja:\n\n<b>Pavel
     \u0160mejkal, programmer\nUr\u0161u\u013Ea \u017D\xE1kovsk\xE1, programmer\nJozef
     Leli\u010D, programmer\nAnna Neumannov\xE1, artist</b> \n\nSupervised by our mentors\n\n<b>Alexander
-    Pavelek\n&\nJi\u0159\xED Wallenfels</b>"
+    Pavelek\n&\nJi\u0159\xED Wallenfels</b>\n\nMusic:\nhttp://www.bensound.com/\nroyalty-free-music"
 --- !u!222 &1916894065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2764,8 +2764,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -38}
-  m_SizeDelta: {x: 564.3, y: 562}
+  m_AnchoredPosition: {x: 5, y: -60}
+  m_SizeDelta: {x: 564, y: 622}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937661296 stripped
 MonoBehaviour:
