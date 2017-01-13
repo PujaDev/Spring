@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ActionType {
+public enum ActionType
+{
     TELL_FORTUNE = 1,
     PUT_ON,
     SELL,
@@ -17,5 +18,52 @@ public enum ActionType {
     STOP_READING_VEGAN_BOOK,
     GO_OUTSIDE,
     GO_INSIDE,
-    FLY_AWAY
+    FLY_AWAY,
+    EMPTY_BOILER,
+    THROW_TO_BOILER,
+    FILL_ELIXIR,
+    GIVE_ADDRESS_TO_OWL,
+    GIVE_PACKAGE_TO_OWL,
+    START_READING_FRIDGE_NOTE,
+    STOP_READING_FRIDGE_NOTE,
+    RESET_ALARM,
+
+    // Forest actions
+    START_FOREST_SCENE,
+    GIVE_MONEY_TO_SHRINE,
+    BUY_IN_FOREST,
+    START_READING_MAP,
+    STOP_READING_MAP,
+    GO_TO_FOREST,
+    GO_FOREST_LEFT,
+    GO_FOREST_RIGHT,
+    GO_FOREST_FINISH,
+
+    // Huba TortoiseBus actions
+    GET_TICKET,
+    GET_ELIXIR,
+    DELIVERY,
+    ARRIVAL,
+    DEPARTURE,
+    EXIT_HOUSE,
+    DRINK,
+    BUY_TICKET,
+    IN_THE_BUS,
+
+    // Annana Tea Party actions
+    FILL_TEAPOT,
+    PUT_TEAPON_ON_THE_STOVE,
+    WATER_BOILED,
+    FILL_CUP,
+    USE_TEA_BAG,
+    STEEP_TEA,
+    OVERSTEEP_TEA,
+    DRINK_TEA,
+    WALKED_OUT,
+    TAKE_FINE,
+    FINISH_READING_FINE,
+    THROW_CUP,
+    UNLOCK_FRIDGE,
+    OPEN_FRIDGE,
+    FRIDGE_UNLOCKED
 }

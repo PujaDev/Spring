@@ -7,6 +7,7 @@ TagManager:
   - Character
   - BlockingVolume
   - Scenarios
+  - CharacterTarget
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Character
   - Foreground
   - WalkableArea
-  - 
+  - Triggered
   - 
   - 
   - 
@@ -47,6 +48,9 @@ TagManager:
   - name: Midground
     uniqueID: 3217583867
     locked: 0
+  - name: Triggered
+    uniqueID: 2595735529
+    locked: 0
   - name: Character
     uniqueID: 1003039223
     locked: 0
@@ -58,4 +62,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1689578477
+    locked: 0
+  - name: ItemHolder
+    uniqueID: 3419249463
     locked: 0

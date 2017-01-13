@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "s3D0b/Ns9byuL70F6BlFruZWMUs", "spine": "3.5.43", "width": 762, "height": 304.52, "images": "./OwlBackFly_images/" },
+"skeleton": { "hash": "zPpSG5mI2L+ZBqWWOTuJj5DXVdw", "spine": "3.5.43", "width": 762, "height": 304.52, "images": "./OwlBackFly_images/" },
 "bones": [
 	{ "name": "root", "y": 64.32 },
 	{ "name": "back", "parent": "root", "length": 86.89, "rotation": 90, "y": 1.46 },
@@ -29,6 +29,7 @@
 	{ "name": "head", "parent": "back", "length": 54.71, "x": 82.54, "scaleX": 1.172 }
 ],
 "slots": [
+	{ "name": "package", "bone": "tail" },
 	{ "name": "head_back", "bone": "root", "attachment": "head_back_flying" },
 	{ "name": "tail", "bone": "root", "attachment": "tail_fly" },
 	{ "name": "body", "bone": "root", "attachment": "body_flying" },
@@ -36,7 +37,11 @@
 	{ "name": "P_wing", "bone": "root", "attachment": "P_wing_fly" }
 ],
 "skins": {
-	"default": {},
+	"default": {
+		"package": {
+			"package": { "x": 139.55, "y": -3.03, "rotation": 87.51, "width": 78, "height": 83 }
+		}
+	},
 	"BrownOwl": {
 		"L_wing": {
 			"L_wing": {
@@ -760,6 +765,24 @@
 						"curve": [ 1, 0.01, 0.75, 0.99 ]
 					},
 					{ "time": 2, "x": 1, "y": 0.405 }
+				]
+			}
+		}
+	},
+	"package_appear": {
+		"slots": {
+			"package": {
+				"attachment": [
+					{ "time": 0, "name": "package" }
+				]
+			}
+		}
+	},
+	"package_disappear": {
+		"slots": {
+			"package": {
+				"attachment": [
+					{ "time": 0, "name": null }
 				]
 			}
 		}

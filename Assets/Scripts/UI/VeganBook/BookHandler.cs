@@ -9,6 +9,7 @@ public class BookHandler : MonoBehaviour
     public GameObject Book;
     public float OpenFadeInTime;
     public float TextFadeInTime;
+    public ActionType StopReadingAction;
     public GameObject[] LeftPages;
     public GameObject[] RightPages;
     public GameObject NextButton;
@@ -19,7 +20,7 @@ public class BookHandler : MonoBehaviour
     private int TotalPages;
     private int CurrentPageIdx;
     /// <summary>
-    /// Only false before first openning
+    /// Only false before first opening
     /// </summary>
     private bool WasOpen;
     private SpringAction StopReading;
@@ -35,7 +36,7 @@ public class BookHandler : MonoBehaviour
         }
         TotalPages = LeftPages.Length;
 
-        StopReading = new SpringAction(ActionType.STOP_READING_VEGAN_BOOK, null, null);
+        StopReading = new SpringAction(StopReadingAction, null, null);
         FadeIn = new List<Coroutine>();
     }
 

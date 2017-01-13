@@ -1,29 +1,54 @@
 ﻿using UnityEngine;
 
+public enum Orientation {
+    UNSPECIFIED,
+    LEFT,
+    RIGHT
+}
+
 /// <summary>
 /// Parent class for interactable objects
 /// </summary>
-public abstract class IInteractable : MonoBehaviour {
-
+public abstract class IInteractable : IChangable
+{
     public string tooltipText = "";
     public Sprite[] icons;
     private bool keepTooltipOpen = false;
+    public Orientation orientation = Orientation.UNSPECIFIED;
     //GameObject tooltipPrefab;
     //GameObject tooltipObject;
 
-    void Start()
+    protected Highlight Highlight;
+
+    /// <summary>
+    /// Creates instance of Highlight to be used. Override if you want custom highlights.
+    /// </summary>
+    /// <returns>Instance of Highlight to be used for highlighting</returns>
+    protected virtual Highlight CreateHighlight()
     {
-        //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
-        var gameState = StateManager.Instance.Subscribe(this);
-        OnStateChanged(gameState, null);
+        return new ColliderParticleHighlight(gameObject);
     }
 
+    protected virtual void Awake()
+    {
+        Highlight = CreateHighlight();
+    }
+
+    override protected void Start()
+    {
+        base.Start();
+
+        Highlight.Subscribe();
+
+        //tooltipPrefab = (GameObject)Resources.Load("Prefabs/tooltip_text", typeof(GameObject)); // OPTIMIZE
+        
+    }
 
     void OnMouseEnter()
     {
         keepTooltipOpen = false;
         //Destroy(tooltipObject);
-        if (!GameController.controller.isUI)
+        if (!GameController.Instance.isUI)
         {
             //tooltipObject = Instantiate(tooltipPrefab);
             //tooltipObject.GetComponent<TextMesh>().text = tooltipText;
@@ -42,7 +67,7 @@ public abstract class IInteractable : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (!GameController.controller.isUI)
+        if (!GameController.Instance.isUI)
         {
             var actionList = GetActionList();
             keepTooltipOpen = true;
@@ -59,12 +84,14 @@ public abstract class IInteractable : MonoBehaviour {
 
     public bool ComeCloser(SpringAction action = null)
     {
-        return GameController.controller.MoveCharToObject(gameObject, action, this);
+        return GameController.Instance.MoveCharToObject(gameObject, action, this);
     }
 
-    virtual public void OnStateChanged(GameState newState, GameState oldState)
+    override public void OnStateChanged(GameState newState, GameState oldState)
     {
     }
 
     abstract protected SpringAction[] GetActionList();
+
+    
 }

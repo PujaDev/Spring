@@ -5,8 +5,14 @@ public class SpringAction {
 
     public readonly string Label;
     public readonly ActionType Type;
-    public readonly object Payload;
+    public readonly object Data;
     public readonly Sprite Icon;
+
+    public SpringAction(ActionType type, string label = "")
+    {
+        Type = type;
+        Label = label;
+    }
 
     public SpringAction(ActionType type, string label, Sprite icon)
     {
@@ -15,10 +21,10 @@ public class SpringAction {
         Icon = icon;
     }
 
-    public SpringAction(ActionType type, string label, Sprite icon, object payload)
+    public SpringAction(ActionType type, string label, Sprite icon, object data)
     {
         Type = type;
-        Payload = payload;
+        Data = data;
         Label = label;
         Icon = icon;
     }

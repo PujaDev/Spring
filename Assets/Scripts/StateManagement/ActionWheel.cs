@@ -9,6 +9,9 @@ public class ActionWheel : MonoBehaviour
     public float iconScale = 2f;
     public static ActionWheel Instance { get; private set; }
     const int MAX_ACTIONS = 6;
+    /// <summary>
+    /// Index of hovered action, -1 if cancel button, -2 if outside of wheel
+    /// </summary>
     private int actionNumber = -1;
     private Sprite[,] spritesIdle;
     private Sprite[,] spritesHover;
@@ -36,8 +39,7 @@ public class ActionWheel : MonoBehaviour
     {
         actionLabel = gameObject.transform.GetChild(0).GetComponent<TextMesh>();
 
-        gameObject.transform.localScale = new Vector3(scale, scale, scale);
-        gameObject.GetComponent<CircleCollider2D>().radius = 4.5f * scale;
+        Rescale(scale, iconScale);
 
         children = new GameObject[0];
         spritesIdle = new Sprite[MAX_ACTIONS + 1, MAX_ACTIONS];
@@ -51,7 +53,7 @@ public class ActionWheel : MonoBehaviour
                 spritesHover[length, i] = Resources.Load<Sprite>(string.Format("Sprites/ActionWheel/{0}{1}h", length, i));
             }
         }
-        
+
     }
 
     void OnMouseDown()
@@ -68,6 +70,7 @@ public class ActionWheel : MonoBehaviour
 
     void OnMouseExit()
     {
+        actionNumber = -2;
         resetHover();
     }
 
@@ -77,10 +80,9 @@ public class ActionWheel : MonoBehaviour
             return;
         resetHover();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
         var wheelPos = gameObject.transform.position;
+        mousePos.z = wheelPos.z;
         var distance = Vector3.Distance(mousePos, wheelPos);
-
         if (distance < (1.19f * scale) * (1.19f * scale)) // It's a kind of magic
         {
             cancelButton.GetComponent<SpriteRenderer>().sprite = spritesHover[0, 0];
@@ -102,6 +104,16 @@ public class ActionWheel : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) &&
+            actions != null &&
+            actionNumber == -2)
+        {
+            killAndBuryChildren();
+        }
+    }
+
     public void ShowActions(SpringAction[] actions, IInteractable actionSource = null)
     {
         killAndBuryChildren();
@@ -109,13 +121,9 @@ public class ActionWheel : MonoBehaviour
         this.actions = actions;
         this.actionSource = actionSource;
         var length = actions.Length;
-        for (int i = 0; i < actions.Length; i++)
-        {
-            Debug.Log(actions[i]);
-        }
 
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var wheelPosition = new Vector3(mousePos.x, mousePos.y);
+        var wheelPosition = new Vector3(mousePos.x, mousePos.y, -0.5f);
         gameObject.transform.position = wheelPosition;
         children = new GameObject[length];
         SpriteRenderer spriteRenderer;
@@ -141,7 +149,7 @@ public class ActionWheel : MonoBehaviour
             var iy = Mathf.Cos(i * 2 * Mathf.PI / length) * 1f;
             //            if (i < length / 2)
             //              iy = -1;
-            icon.transform.position = wheelPosition + new Vector3(ix, iy);
+            icon.transform.position = wheelPosition + new Vector3(ix, iy)*scale*scale/0.36f;
             icon.transform.localScale = gameObject.transform.localScale * iconScale;
         }
 
@@ -152,6 +160,15 @@ public class ActionWheel : MonoBehaviour
         cancelButton.transform.parent = gameObject.transform;
         cancelButton.transform.position = wheelPosition;
         cancelButton.transform.localScale = gameObject.transform.localScale;
+    }
+
+    public void Rescale(float scale, float iconScale)
+    {
+        this.scale = scale;
+        this.iconScale = iconScale;
+
+        gameObject.transform.localScale = new Vector3(scale, scale, scale);
+        gameObject.GetComponent<CircleCollider2D>().radius = 4.5f * scale;
     }
 
     private void resetHover()
@@ -181,5 +198,7 @@ public class ActionWheel : MonoBehaviour
         gameObject.transform.position = Vector3.left * 500; // flee the crime scene
 
         actions = null; // deny everything
+
+        actionNumber = -1;
     }
 }

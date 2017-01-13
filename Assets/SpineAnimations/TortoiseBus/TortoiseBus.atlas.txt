@@ -1,0 +1,348 @@
+
+TortoiseBus.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BB_leg
+  rotate: true
+  xy: 2940, 170
+  size: 494, 548
+  orig: 494, 548
+  offset: 0, 0
+  index: -1
+BB_leg_D
+  rotate: false
+  xy: 3490, 116
+  size: 494, 548
+  orig: 494, 548
+  offset: 0, 0
+  index: -1
+BF_leg
+  rotate: false
+  xy: 3298, 1114
+  size: 597, 446
+  orig: 597, 446
+  offset: 0, 0
+  index: -1
+BF_leg_D
+  rotate: false
+  xy: 3298, 666
+  size: 597, 446
+  orig: 597, 446
+  offset: 0, 0
+  index: -1
+FB_leg
+  rotate: false
+  xy: 3298, 2301
+  size: 643, 737
+  orig: 643, 737
+  offset: 0, 0
+  index: -1
+FB_leg_D
+  rotate: false
+  xy: 3298, 1562
+  size: 643, 737
+  orig: 643, 737
+  offset: 0, 0
+  index: -1
+FF_leg
+  rotate: false
+  xy: 1945, 106
+  size: 629, 699
+  orig: 629, 699
+  offset: 0, 0
+  index: -1
+FF_leg_D
+  rotate: false
+  xy: 2327, 999
+  size: 629, 699
+  orig: 629, 699
+  offset: 0, 0
+  index: -1
+LB_leg
+  rotate: true
+  xy: 4020, 2272
+  size: 105, 64
+  orig: 105, 64
+  offset: 0, 0
+  index: -1
+LF_leg
+  rotate: true
+  xy: 1945, 58
+  size: 46, 76
+  orig: 46, 76
+  offset: 0, 0
+  index: -1
+RB_leg
+  rotate: true
+  xy: 3943, 1680
+  size: 91, 67
+  orig: 91, 67
+  offset: 0, 0
+  index: -1
+RF_leg
+  rotate: false
+  xy: 3943, 1598
+  size: 68, 80
+  orig: 68, 80
+  offset: 0, 0
+  index: -1
+arm
+  rotate: true
+  xy: 3943, 2366
+  size: 146, 75
+  orig: 146, 75
+  offset: 0, 0
+  index: -1
+arm _back
+  rotate: true
+  xy: 2826, 190
+  size: 180, 51
+  orig: 180, 51
+  offset: 0, 0
+  index: -1
+arm _back_D
+  rotate: false
+  xy: 2721, 1718
+  size: 180, 51
+  orig: 180, 51
+  offset: 0, 0
+  index: -1
+arm_D
+  rotate: true
+  xy: 3943, 2218
+  size: 146, 75
+  orig: 146, 75
+  offset: 0, 0
+  index: -1
+belly
+  rotate: false
+  xy: 2, 807
+  size: 2323, 891
+  orig: 2323, 891
+  offset: 0, 0
+  index: -1
+belly_D
+  rotate: true
+  xy: 2405, 1771
+  size: 2323, 891
+  orig: 2323, 891
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2327, 830
+  size: 182, 167
+  orig: 182, 167
+  offset: 0, 0
+  index: -1
+body_legs
+  rotate: true
+  xy: 3943, 2901
+  size: 137, 130
+  orig: 137, 130
+  offset: 0, 0
+  index: -1
+body_legs_D
+  rotate: true
+  xy: 3943, 2762
+  size: 137, 130
+  orig: 137, 130
+  offset: 0, 0
+  index: -1
+cousion
+  rotate: false
+  xy: 2576, 234
+  size: 248, 136
+  orig: 248, 136
+  offset: 0, 0
+  index: -1
+cousion_D
+  rotate: false
+  xy: 2576, 96
+  size: 248, 136
+  orig: 248, 136
+  offset: 0, 0
+  index: -1
+eyelid
+  rotate: true
+  xy: 4020, 2379
+  size: 133, 74
+  orig: 133, 74
+  offset: 0, 0
+  index: -1
+eyes
+  rotate: false
+  xy: 3943, 1773
+  size: 88, 80
+  orig: 88, 80
+  offset: 0, 0
+  index: -1
+eyes2
+  rotate: false
+  xy: 2940, 986
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1
+eyes2_D
+  rotate: false
+  xy: 2327, 817
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1
+eyes3
+  rotate: true
+  xy: 4086, 2365
+  size: 12, 8
+  orig: 12, 8
+  offset: 0, 0
+  index: -1
+eyes3_D
+  rotate: true
+  xy: 4086, 2351
+  size: 12, 8
+  orig: 12, 8
+  offset: 0, 0
+  index: -1
+gear
+  rotate: false
+  xy: 1058, 45
+  size: 885, 760
+  orig: 885, 760
+  offset: 0, 0
+  index: -1
+gearBack
+  rotate: false
+  xy: 2576, 372
+  size: 362, 625
+  orig: 362, 625
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 2511, 918
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1
+hair_D
+  rotate: false
+  xy: 2511, 837
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1
+hat_head
+  rotate: true
+  xy: 3943, 2091
+  size: 125, 85
+  orig: 125, 85
+  offset: 0, 0
+  index: -1
+hat_head_D
+  rotate: true
+  xy: 3943, 1964
+  size: 125, 85
+  orig: 125, 85
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 2, 47
+  size: 1054, 758
+  orig: 1054, 758
+  offset: 0, 0
+  index: -1
+head_D
+  rotate: true
+  xy: 3298, 3040
+  size: 1054, 758
+  orig: 1054, 758
+  offset: 0, 0
+  index: -1
+irises
+  rotate: false
+  xy: 2958, 1015
+  size: 82, 20
+  orig: 82, 20
+  offset: 0, 0
+  index: -1
+liz_head
+  rotate: false
+  xy: 3943, 1855
+  size: 88, 107
+  orig: 88, 107
+  offset: 0, 0
+  index: -1
+liz_tail
+  rotate: true
+  xy: 2405, 1702
+  size: 67, 314
+  orig: 67, 314
+  offset: 0, 0
+  index: -1
+money
+  rotate: true
+  xy: 3897, 1514
+  size: 46, 35
+  orig: 46, 35
+  offset: 0, 0
+  index: -1
+pelerine
+  rotate: false
+  xy: 3943, 2638
+  size: 118, 122
+  orig: 118, 122
+  offset: 0, 0
+  index: -1
+pelerine_D
+  rotate: false
+  xy: 3943, 2514
+  size: 118, 122
+  orig: 118, 122
+  offset: 0, 0
+  index: -1
+shell
+  rotate: false
+  xy: 2, 1700
+  size: 2401, 2394
+  orig: 2401, 2394
+  offset: 0, 0
+  index: -1
+tail
+  rotate: true
+  xy: 2958, 1404
+  size: 365, 338
+  orig: 365, 338
+  offset: 0, 0
+  index: -1
+tail_D
+  rotate: true
+  xy: 2958, 1037
+  size: 365, 338
+  orig: 365, 338
+  offset: 0, 0
+  index: -1
+tangue
+  rotate: true
+  xy: 2, 20
+  size: 25, 135
+  orig: 25, 135
+  offset: 0, 0
+  index: -1
+
+TortoiseBus2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shell_D
+  rotate: false
+  xy: 2, 9
+  size: 2401, 2394
+  orig: 2401, 2394
+  offset: 0, 0
+  index: -1

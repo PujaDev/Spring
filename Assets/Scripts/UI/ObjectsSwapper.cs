@@ -9,9 +9,11 @@ public class ObjectsSwapper : MonoBehaviour {
     public float duration = 0.5f;
     private float minScale = 2;
     private bool swapped = false;
-    
-    public void SwapObject()
+    public int index = 1;
+
+    public void SwapObject(int id = 1)
     {
+        index = id;
         StopCoroutine(Swap());
         minScale = 2;
         swapped = false;
@@ -32,7 +34,7 @@ public class ObjectsSwapper : MonoBehaviour {
                     if(forSprites)
                         GetComponent<SwitchSprites>().next();
                     else
-                        GetComponent<SwitchObjects>().next();
+                        GetComponent<SwitchObjects>().changeToIndex(index);
                 }
             }
 

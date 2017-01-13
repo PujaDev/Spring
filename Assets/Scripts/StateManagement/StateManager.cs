@@ -5,12 +5,19 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using Spine.Unity;
 
 /// <summary>
 /// Stores game state and handles its changes
 /// </summary>
 public class StateManager : MonoBehaviour
 {
+    public bool DebugLog = true;
+    public bool PressToLoadState = false;
+    public int StateNum = -1;
+    private string SaveDirectory;
     //-- Public --//
     // Singleton instance
     public static StateManager Instance { get; private set; }
@@ -25,20 +32,21 @@ public class StateManager : MonoBehaviour
     /// </summary>
     private HashSet<Reducer> reducers;
     /// <summary>
-    /// Set of interactables subscribed to state changes
+    /// Set of changables subscribed to state changes
     /// </summary>
-    private HashSet<IInteractable> interactables;
+    private HashSet<IChangable> Changables;
 
     void Awake()
     {
         if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
-            State = new GameState();
             // Ensures that OnSceneStart is called whenever
             // a scene is loaded
             SceneManager.sceneLoaded += OnSceneStart;
+            SceneManager.sceneUnloaded += OnSceneEnd;
             Instance = this;
+            SaveDirectory = Application.persistentDataPath + "/states/";
         }
         else if (Instance != this)
         {
@@ -48,11 +56,11 @@ public class StateManager : MonoBehaviour
 
     /// <summary>
     /// Changes game state depending on dispatched action.
-    /// Notifies subscribed interactables about these changes.
+    /// Notifies subscribed changables about these changes.
     /// </summary>
     /// <param name="action">Dispatched action</param>
     /// <param name="actionSource">Interactable that dispatched action</param>
-    public void DispatchAction(SpringAction action, IInteractable actionSource)
+    public void DispatchAction(SpringAction action, IInteractable actionSource = null)
     {
         var newState = State;
         foreach (var reducer in reducers)
@@ -60,23 +68,144 @@ public class StateManager : MonoBehaviour
             newState = reducer.Reduce(newState, action, actionSource);
         }
 
-        // TODO compare old and new state before notifying about changes
-        foreach(var interactable in interactables)
+        var differences = newState.CompareChanges(State);
+        var changed = differences.Count != 0;
+        if (DebugLog)
         {
-            interactable.OnStateChanged(newState, State);
+            Debug.Log("Action " + action.Type);
+            if (changed)
+            {
+                foreach (var d in differences)
+                {
+                    Debug.Log(d.Value.Count + " changes in " + d.Key);
+                    foreach (var change in d.Value)
+                    {
+                        Debug.Log(change);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("No changes.");
+            }
+
         }
+
+        if (!changed)
+            return;
+
+        foreach (var changable in Changables)
+        {
+            changable.OnStateChanged(newState, State);
+        }
+
         State = newState;
+
+        if (!Debug.isDebugBuild)
+            File.Delete(SaveDirectory+ stateNumToFile(StateNum));
+
+
+        StateNum++;
+
+        saveStateToFile();
+    }
+
+    public void LoadState(int stateNum)
+    {
+        if (DebugLog)
+            Debug.Log("Loading state " + stateNumToFile(stateNum));
+
+        var oldState = State;
+        State = loadStateFromFile(stateNum);
+         
+        //if(SceneManager.GetActiveScene().name != loadedState.SceneName)
+        //{
+        //    SceneManager.LoadScene(loadedState.SceneName);
+        //}
+
+        var character = GameObject.FindWithTag("Character");
+        if (character != null) {
+            var state = State.GetCurrentSceneState();
+            if (state.CharacterPosition != null) { 
+                character.transform.position = state.CharacterPosition.GetVector3();
+                character.GetComponent<SkeletonAnimation>().skeleton.FlipX = state.CharacterFacingLeft;
+            }
+            else
+            {
+                state.SetCharacterPosition();
+                saveStateToFile();
+            }
+        }
+
+        foreach (var changable in Changables)
+        {
+            changable.OnStateChanged(State, oldState);
+        }
+    }
+
+    public void ResetCurrentScene()
+    {
+        if (DebugLog)
+            Debug.Log("Reseting currest scene state!");
+        State = State.Reset(SceneManager.GetActiveScene().name);
+        StateNum++;
+        saveStateToFile();
     }
 
     /// <summary>
-    /// Clear all subscribed interactables and reducers
+    /// Clear all subscribed changables and reducers
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
     void OnSceneStart(Scene scene, LoadSceneMode mode)
     {
-        interactables = new HashSet<IInteractable>();
+        Changables = new HashSet<IChangable>();
         reducers = new HashSet<Reducer>();
+        try
+        {
+            string[] fileEntries = Directory.GetFiles(SaveDirectory);
+            Array.Sort(fileEntries);
+            if (fileEntries.Length > 0)
+            {
+                if(StateNum<0)
+                    StateNum = Int32.Parse(Path.GetFileName(fileEntries[fileEntries.Length - 1]));
+                LoadState(StateNum);
+            }
+            else
+            {
+                State = new GameState(true);
+                StateNum = 0;
+                saveStateToFile();
+            }
+        }
+        catch (DirectoryNotFoundException)
+        {
+            Directory.CreateDirectory(SaveDirectory);
+            State = new GameState(true);
+            StateNum = 0;
+            saveStateToFile();
+        }
+
+        var currentSceneState = State.GetCurrentSceneState();
+        if (currentSceneState != null) //main menu
+        {
+            var currentTimeRange = State.GetCurrentSceneState().TimeRange;
+            var previousTimeRange = GameController.Instance.LastPlayedTimeRange;
+
+            if (currentTimeRange < previousTimeRange)
+            {
+                if (DebugLog)
+                    Debug.Log("Returning to past, reseting future!");
+                State = State.ReturnTo(scene.name);
+                StateNum++;
+                saveStateToFile();
+            }
+            GameController.Instance.LastPlayedTimeRange = currentTimeRange;
+        }
+    }
+
+    private void OnSceneEnd(Scene scene)
+    {
     }
 
     /// <summary>
@@ -89,22 +218,65 @@ public class StateManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Registers new interactable to notify about state changes
+    /// Registers new changable to notify about state changes
     /// </summary>
-    /// <param name="interactable">Interactable to register</param>
+    /// <param name="changable">Changable to register</param>
     /// <returns>Current game state</returns>
-    public GameState Subscribe(IInteractable interactable)
+    public GameState Subscribe(IChangable changable)
     {
-        interactables.Add(interactable);
+        Changables.Add(changable);
         return State;
     }
+
     /// <summary>
-    /// Stops interactable from receiving notifications about state changes
+    /// Stops changable from receiving notifications about state changes
     /// </summary>
-    /// <param name="interactable">Interactable to register</param>
+    /// <param name="chnagable">Changable to register</param>
     /// <returns>Current game state</returns>
-    public void Unsubscribe(IInteractable interactable)
+    public void Unsubscribe(IChangable chnagable)
     {
-        interactables.Remove(interactable);
+        Changables.Remove(chnagable);
+    }
+
+    public void Update()
+    {
+        if (PressToLoadState)
+        {
+            PressToLoadState = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private GameState loadStateFromFile(int stateNum = -1)
+    {
+        if (stateNum < 0)
+            stateNum = StateNum;
+        using (Stream stream = File.Open(SaveDirectory + stateNumToFile(stateNum), FileMode.Open))
+        {
+            //var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            var formatter = new XmlSerializer(typeof(GameState));
+            return (GameState)formatter.Deserialize(stream);
+        }
+    }
+
+    private void saveStateToFile(int stateNum = -1)
+    {
+        if (stateNum < 0)
+            stateNum = StateNum;
+        //var formatter = new BinaryFormatter();
+        var formatter = new XmlSerializer(typeof(GameState));
+
+        FileStream file = File.Create(SaveDirectory + stateNumToFile());
+        formatter.Serialize(file, State);
+        file.Close();
+        if (DebugLog)
+            Debug.Log("State saved to " + stateNumToFile());
+    }
+
+    private string stateNumToFile(int stateNum = -1)
+    {
+        if (stateNum < 0)
+            stateNum = StateNum;
+        return stateNum.ToString().PadLeft(5, '0');
     }
 }

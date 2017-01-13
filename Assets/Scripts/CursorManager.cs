@@ -9,14 +9,14 @@ public class CursorManager : MonoBehaviour
 
     void OnMouseEnter()
     {
-        GameController.controller.currentIcon = icon;
-        if (!GameController.controller.isUI)
-            Cursor.SetCursor(GameController.controller.cursorIcons[(int)icon - 2], hotSpot, cursorMode);
+        GameController.Instance.currentIcon = icon;
+        if (!GameController.Instance.isUI)
+            Cursor.SetCursor(GameController.Instance.cursorIcons[(int)icon - 2], hotSpot, cursorMode);
     }
     void OnMouseExit()
     {
-        GameController.controller.currentIcon = CursorIcon.NORMAL;
-        if (!GameController.controller.isUI)
+        GameController.Instance.currentIcon = CursorIcon.NORMAL;
+        if (!GameController.Instance.isUI)
             Cursor.SetCursor(null, hotSpot, cursorMode);
     }
 }
